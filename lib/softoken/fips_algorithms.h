@@ -122,42 +122,38 @@ SFTKFIPSAlgorithmList sftk_fips_mechs[] = {
     { CKM_SHA512_HMAC_GENERAL, { 256, 512, CKF_SGN }, 1, SFTKFIPSNone },
     /* --------------------- Secret Key Operations ------------------------ */
     { CKM_GENERIC_SECRET_KEY_GEN, { 8, 256, CKF_GEN }, 1, SFTKFIPSNone },
-    /* ---------------------- SSL/TLS operations ------------------------- */
     { CKM_SHA224_KEY_DERIVATION, { 112, 224, CKF_KDF }, 1, SFTKFIPSNone },
     { CKM_SHA256_KEY_DERIVATION, { 128, 256, CKF_KDF }, 1, SFTKFIPSNone },
     { CKM_SHA384_KEY_DERIVATION, { 192, 384, CKF_KDF }, 1, SFTKFIPSNone },
     { CKM_SHA512_KEY_DERIVATION, { 256, 512, CKF_KDF }, 1, SFTKFIPSNone },
+    /* ---------------------- SSL/TLS operations ------------------------- */
     { CKM_TLS12_MASTER_KEY_DERIVE, { 384, 384, CKF_KDF }, 1, SFTKFIPSNone },
     { CKM_TLS12_MASTER_KEY_DERIVE_DH, { DH_FB_KEY, CKF_KDF }, 1, SFTKFIPSNone },
-    { CKM_TLS12_KEY_AND_MAC_DERIVE, { 384, 384, CKF_KDF }, 1, SFTKFIPSTlsKeyCheck },
+    { CKM_TLS12_KEY_AND_MAC_DERIVE, { 384, 384, CKF_KDF }, 1, SFTKFIPSTlsKeyCheck, offsetof(CK_TLS12_KEY_MAT_PARAMS, prfHashMechanism) },
+    { CKM_TLS_MAC, { 112, 512, CKF_SGN }, 1, SFTKFIPSChkHashTls, offsetof(CK_TLS_MAC_PARAMS, prfHashMechanism) },
     { CKM_TLS_PRF_GENERAL, { 8, 512, CKF_SGN }, 1, SFTKFIPSNone },
     { CKM_TLS_MAC, { 8, 512, CKF_SGN }, 1, SFTKFIPSNone },
     /* sigh, is this algorithm really tested. ssl doesn't seem to have a
      * way of turning the extension off */
-    { CKM_NSS_TLS_EXTENDED_MASTER_KEY_DERIVE, { 192, 1024, CKF_KDF }, 1, SFTKFIPSNone },
-    { CKM_NSS_TLS_EXTENDED_MASTER_KEY_DERIVE_DH, { 192, 1024, CKF_DERIVE }, 1, SFTKFIPSNone },
+    { CKM_NSS_TLS_EXTENDED_MASTER_KEY_DERIVE, { 192, 1024, CKF_KDF }, 1, SFTKFIPSChkHashTls, offsetof(CK_NSS_TLS_EXTENDED_MASTER_KEY_DERIVE_PARAMS, prfHashMechanism) },
+    { CKM_NSS_TLS_EXTENDED_MASTER_KEY_DERIVE_DH, { 192, 1024, CKF_DERIVE }, 1, SFTKFIPSChkHashTls, offsetof(CK_NSS_TLS_EXTENDED_MASTER_KEY_DERIVE_PARAMS, prfHashMechanism) },
 
     /* ------------------------- HKDF Operations -------------------------- */
-    { CKM_HKDF_DERIVE, { 8, 255 * 64 * 8, CKF_KDF }, 1, SFTKFIPSNone },
-    { CKM_HKDF_DATA, { 8, 255 * 64 * 8, CKF_KDF }, 1, SFTKFIPSNone },
+    { CKM_HKDF_DERIVE, { 112, 255 * 64 * 8, CKF_KDF }, 1, SFTKFIPSChkHash, offsetof(CK_HKDF_PARAMS, prfHashMechanism) },
+    { CKM_HKDF_DATA, { 112, 255 * 64 * 8, CKF_KDF }, 1, SFTKFIPSChkHash, offsetof(CK_HKDF_PARAMS, prfHashMechanism) },
     { CKM_HKDF_KEY_GEN, { 160, 224, CKF_GEN }, 1, SFTKFIPSNone },
     { CKM_HKDF_KEY_GEN, { 256, 512, CKF_GEN }, 128, SFTKFIPSNone },
     /* ------------------ NIST 800-108 Key Derivations  ------------------- */
-    { CKM_SP800_108_COUNTER_KDF, { 0, CK_MAX, CKF_KDF }, 1, SFTKFIPSNone },
-    { CKM_SP800_108_FEEDBACK_KDF, { 0, CK_MAX, CKF_KDF }, 1, SFTKFIPSNone },
-    { CKM_SP800_108_DOUBLE_PIPELINE_KDF, { 0, CK_MAX, CKF_KDF }, 1, SFTKFIPSNone },
-    { CKM_NSS_SP800_108_COUNTER_KDF_DERIVE_DATA, { 0, CK_MAX, CKF_KDF }, 1, SFTKFIPSNone },
-    { CKM_NSS_SP800_108_FEEDBACK_KDF_DERIVE_DATA, { 0, CK_MAX, CKF_KDF }, 1, SFTKFIPSNone },
-    { CKM_NSS_SP800_108_DOUBLE_PIPELINE_KDF_DERIVE_DATA, { 0, CK_MAX, CKF_KDF }, 1, SFTKFIPSNone },
+    { CKM_SP800_108_COUNTER_KDF, { 112, CK_MAX, CKF_KDF }, 1, SFTKFIPSChkHashSp800, offsetof(CK_SP800_108_KDF_PARAMS, prfType) },
+    { CKM_SP800_108_FEEDBACK_KDF, { 112, CK_MAX, CKF_KDF }, 1, SFTKFIPSChkHashSp800, offsetof(CK_SP800_108_KDF_PARAMS, prfType) },
+    { CKM_SP800_108_DOUBLE_PIPELINE_KDF, { 112, CK_MAX, CKF_KDF }, 1, SFTKFIPSChkHashSp800, offsetof(CK_SP800_108_KDF_PARAMS, prfType) },
+    { CKM_NSS_SP800_108_COUNTER_KDF_DERIVE_DATA, { 112, CK_MAX, CKF_KDF }, 1, SFTKFIPSChkHashSp800, offsetof(CK_SP800_108_KDF_PARAMS, prfType) },
+    { CKM_NSS_SP800_108_FEEDBACK_KDF_DERIVE_DATA, { 112, CK_MAX, CKF_KDF }, 1, SFTKFIPSChkHashSp800, offsetof(CK_SP800_108_KDF_PARAMS, prfType) },
     /* --------------------IPSEC ----------------------- */
-    { CKM_IKE2_PRF_PLUS_DERIVE, { 8, 255 * 64, CKF_KDF }, 1, SFTKFIPSNone },
-    { CKM_IKE_PRF_DERIVE, { 8, 64, CKF_KDF }, 1, SFTKFIPSNone },
-    { CKM_IKE1_PRF_DERIVE, { 8, 64, CKF_KDF }, 1, SFTKFIPSNone },
-    { CKM_IKE1_EXTENDED_DERIVE, { 8, 255 * 64, CKF_KDF }, 1, SFTKFIPSNone },
-    { CKM_NSS_IKE_PRF_PLUS_DERIVE, { 8, 255 * 64, CKF_KDF }, 1, SFTKFIPSNone },
-    { CKM_NSS_IKE_PRF_DERIVE, { 8, 64, CKF_KDF }, 1, SFTKFIPSNone },
-    { CKM_NSS_IKE1_PRF_DERIVE, { 8, 64, CKF_KDF }, 1, SFTKFIPSNone },
-    { CKM_NSS_IKE1_APP_B_PRF_DERIVE, { 8, 255 * 64, CKF_KDF }, 1, SFTKFIPSNone },
+    { CKM_IKE2_PRF_PLUS_DERIVE, { 112, 255 * 64 * 8, CKF_KDF }, 1, SFTKFIPSChkHash, offsetof(CK_NSS_IKE_PRF_PLUS_DERIVE_PARAMS, prfMechanism) },
+    { CKM_IKE_PRF_DERIVE, { 112, 64 * 8, CKF_KDF }, 1, SFTKFIPSChkHash, offsetof(CK_NSS_IKE_PRF_DERIVE_PARAMS, prfMechanism) },
+    { CKM_NSS_IKE_PRF_PLUS_DERIVE, { 112, 255 * 64 * 8, CKF_KDF }, 1, SFTKFIPSChkHash, offsetof(CK_NSS_IKE_PRF_PLUS_DERIVE_PARAMS, prfMechanism) },
+    { CKM_NSS_IKE_PRF_DERIVE, { 112, 64 * 8, CKF_KDF }, 1, SFTKFIPSChkHash, offsetof(CK_NSS_IKE_PRF_DERIVE_PARAMS, prfMechanism) },
     /* ------------------ PBE Key Derivations  ------------------- */
     { CKM_PKCS5_PBKD2, { 1, 256, CKF_GEN }, 1, SFTKFIPSNone },
     { CKM_NSS_PKCS12_PBE_SHA224_HMAC_KEY_GEN, { 224, 224, CKF_GEN }, 1, SFTKFIPSNone },
