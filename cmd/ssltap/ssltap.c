@@ -1343,8 +1343,9 @@ print_ssl3_handshake(unsigned char *recordBuf,
 
     if (s->msgBufOffset && s->msgBuf) {
         /* append recordBuf to msgBuf, then use msgBuf */
-        if (s->msgBufOffset + recordLen > s->msgBufSize) {
-            int newSize = s->msgBufOffset + recordLen;
+        if (s->msgBufOffset > s->msgBufSize - recordLen ||
+            recordLen > s->msgBufSize - s->msgBufOffset) {
+            unsigned int newSize = s->msgBufOffset + recordLen;
             unsigned char *newBuf = PORT_Realloc(s->msgBuf, newSize);
             if (!newBuf) {
                 PR_ASSERT(newBuf);
@@ -1588,7 +1589,7 @@ print_ssl3_handshake(unsigned char *recordBuf,
                                            "%a, %d-%b-%Y %H:%M:%S GMT", &et);
                 } else {
                     /* 0 means the lifetime of the ticket is unspecified */
-                    strcpy(lifetime, "unspecified");
+                    snprintf(lifetime, sizeof(lifetime), "unspecified");
                 }
                 ticketlength = GET_SHORT((hsdata +
                                           4));
@@ -2203,7 +2204,7 @@ print_hex(int amt, unsigned char *buf)
 
         if (i % 16 == 0) {                    /* if we are at the beginning of a line */
             PR_fprintf(PR_STDOUT, "%4x:", i); /* print the line number  */
-            strcpy(string, "");
+            snprintf(string, sizeof(string), "");
         }
 
         if (i % 4 == 0) {
