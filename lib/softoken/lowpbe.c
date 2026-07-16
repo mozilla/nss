@@ -1495,19 +1495,27 @@ sec_pkcs5_rc2(SECItem *key, SECItem *iv, SECItem *src, PRBool dummy,
 
                 /* assumes 8 byte blocks  -- remove padding */
                 if ((rv == SECSuccess) && (encrypt != PR_TRUE)) {
-                    pad = dest->data[dest->len - 1];
-                    if ((pad > 0) && (pad <= 8)) {
-                        if (dest->data[dest->len - pad] != pad) {
-                            PORT_SetError(SEC_ERROR_BAD_PASSWORD);
-                            rv = SECFailure;
-                        } else {
-                            dest->len -= pad;
-                        }
-                    } else {
+                    /* a padded plaintext holds at least one block; an empty
+                     * decryption result would make dest->len - 1 wrap. */
+                    if (dest->len < 8 /* RC2_BLOCK_SIZE */) {
                         PORT_SetError(SEC_ERROR_BAD_PASSWORD);
                         rv = SECFailure;
+                    } else {
+                        pad = dest->data[dest->len - 1];
+                        if ((pad > 0) && (pad <= 8)) {
+                            if (dest->data[dest->len - pad] != pad) {
+                                PORT_SetError(SEC_ERROR_BAD_PASSWORD);
+                                rv = SECFailure;
+                            } else {
+                                dest->len -= pad;
+                            }
+                        } else {
+                            PORT_SetError(SEC_ERROR_BAD_PASSWORD);
+                            rv = SECFailure;
+                        }
                     }
                 }
+                RC2_DestroyContext(ctxt, PR_TRUE);
             }
         }
     }
