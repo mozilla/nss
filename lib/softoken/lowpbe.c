@@ -2,6 +2,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+#include <limits.h> /* for UINT_MAX */
+
 #include "plarena.h"
 
 #include "seccomon.h"
@@ -116,6 +118,14 @@ nsspkcs5_PBKDF1(const SECHashObject *hashObj, SECItem *salt, SECItem *pwd,
     SECStatus rv = SECFailure;
 
     if ((salt == NULL) || (pwd == NULL) || (iter < 0)) {
+        return NULL;
+    }
+
+    /* salt->len + pwd->len is used below to size pre_hash and is also copied
+     * out in two pieces; reject inputs where the sum would wrap so we can't
+     * under-allocate and then overflow the buffer. */
+    if (salt->len >= UINT_MAX - pwd->len) {
+        PORT_SetError(SEC_ERROR_INVALID_ARGS);
         return NULL;
     }
 
@@ -330,8 +340,17 @@ nsspkcs5_PBKDF2_F(const SECHashObject *hashobj, SECItem *pwitem, SECItem *salt,
     unsigned int hLen = hashobj->length;
     SECStatus rv = SECFailure;
     unsigned char *last = NULL;
-    unsigned int lastLength = salt->len + 4;
+    unsigned int lastLength;
     unsigned int lastBufLength;
+
+    /* salt->len + 4 (the 4-byte block index is appended) must not wrap;
+     * otherwise lastBufLength would undersize the buffer that the
+     * PORT_Memcpy below fills with salt->len bytes. */
+    if (salt->len >= UINT_MAX - 4) {
+        PORT_SetError(SEC_ERROR_INVALID_ARGS);
+        goto loser;
+    }
+    lastLength = salt->len + 4;
 
     cx = HMAC_Create(hashobj, pwitem->data, pwitem->len, PR_FALSE);
     if (cx == NULL) {
@@ -464,8 +483,17 @@ nsspkcs5_PKCS12PBE(const SECHashObject *hashObject,
         goto loser;
     }
 
+    if (salt->len >= UINT_MAX - bufferLength ||
+        pwitem->len >= UINT_MAX - bufferLength) {
+        PORT_SetError(SEC_ERROR_INVALID_ARGS);
+        goto loser;
+    }
     SLen = NSSPBE_ROUNDUP(salt->len, bufferLength);
     PLen = NSSPBE_ROUNDUP(pwitem->len, bufferLength);
+    if (SLen > UINT_MAX - PLen) {
+        PORT_SetError(SEC_ERROR_INVALID_ARGS);
+        goto loser;
+    }
     I.len = SLen + PLen;
     I.data = (unsigned char *)PORT_ArenaZAlloc(arena, I.len);
     if (I.data == NULL) {
