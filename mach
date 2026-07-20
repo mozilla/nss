@@ -125,7 +125,7 @@ class cfAction(argparse.Action):
         try:
             with open(os.devnull, "w") as f:
                 subprocess.check_call(self.docker_command + ["images"], stdout=f)
-        except:
+        except Exception:
             self.docker_command = None
 
         if self.docker_command is None:
@@ -154,7 +154,7 @@ class cfAction(argparse.Action):
             ]
             with open(os.devnull, "w") as f:
                 subprocess.check_call(command, stdout=f)
-        except:
+        except Exception:
             print("I have to build the docker image first.")
             self.buildImage(docker_image, cf_docker_folder)
 
