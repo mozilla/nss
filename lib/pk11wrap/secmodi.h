@@ -167,6 +167,11 @@ CK_OBJECT_HANDLE pk11_FindPrivateKeyFromCertID(PK11SlotInfo *slot,
                                                SECItem *keyID);
 SECKEYPrivateKey *pk11_MakePrivKey(PK11SlotInfo *slot, KeyType keyType,
                                    PRBool isOwner, CK_OBJECT_HANDLE privID, void *wincx);
+/* create the token public key that matches an already imported private key.
+ * Tokens aren't required to support permanent public keys, so callers should
+ * treat a failure here as non-fatal. */
+SECStatus SECKEY_SetPublicValue(SECKEYPrivateKey *privKey,
+                                const SECItem *publicValue);
 CERTCertificate *PK11_MakeCertFromHandle(PK11SlotInfo *slot,
                                          CK_OBJECT_HANDLE certID, CK_ATTRIBUTE *privateLabel);
 

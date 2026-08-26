@@ -49,22 +49,79 @@ dumpItem(const char *label, const SECItem *item)
     printf("};\n");
 }
 
+/*
+ * An imported private key should have a CKA_ID, and, because we import it as
+ * a token key, the token should have a matching permanent public key.
+ */
+PRBool
+verifyImportedKey(char *progName, PK11SlotInfo *slot,
+                  SECKEYPrivateKey *privKey)
+{
+    SECStatus rv;
+    SECItem privID = { 0 };
+    SECItem pubID = { 0 };
+    SECItem token = { 0 };
+    PK11GenericObject *objs = NULL;
+    PK11GenericObject *obj = NULL;
+    PRBool keyFound = 0;
+
+    rv = PK11_ReadRawAttribute(PK11_TypePrivKey, privKey, CKA_ID, &privID);
+    if (rv != SECSuccess) {
+        SECU_PrintError(progName, "Couldn't read CKA_ID from priv key");
+        goto cleanup;
+    }
+    dumpItem("privKey CKA_ID", &privID);
+    objs = PK11_FindGenericObjects(slot, CKO_PUBLIC_KEY);
+    for (obj = objs; obj; obj = PK11_GetNextGenericObject(obj)) {
+        rv = PK11_ReadRawAttribute(PK11_TypeGeneric, obj, CKA_ID, &pubID);
+        if (rv != SECSuccess) {
+            SECU_PrintError(progName,
+                            "Couldn't read CKA_ID from object, checking next key");
+            continue;
+        }
+        dumpItem("pubKey CKA_ID", &pubID);
+        if (!SECITEM_ItemsAreEqual(&privID, &pubID)) {
+            fprintf(stderr,
+                    "CKA_ID does not match priv key, checking next key\n");
+            SECITEM_FreeItem(&pubID, PR_FALSE);
+            continue;
+        }
+        SECITEM_FreeItem(&pubID, PR_FALSE);
+        rv = PK11_ReadRawAttribute(PK11_TypeGeneric, obj, CKA_TOKEN, &token);
+        if (rv == SECSuccess) {
+            if (token.len == 1) {
+                keyFound = token.data[0];
+            }
+            SECITEM_FreeItem(&token, PR_FALSE);
+        }
+        if (keyFound) {
+            printf("matching public key found\n");
+            break;
+        }
+        printf("Matching key was not a token key, checking next key\n");
+    }
+
+cleanup:
+    if (objs) {
+        PK11_DestroyGenericObjects(objs);
+    }
+    SECITEM_FreeItem(&privID, PR_FALSE);
+    SECITEM_FreeItem(&pubID, PR_FALSE);
+    SECITEM_FreeItem(&token, PR_FALSE);
+    return keyFound;
+}
+
 SECStatus
 handleEncryptedPrivateImportTest(char *progName, PK11SlotInfo *slot,
                                  char *testname, CK_MECHANISM_TYPE genMech,
                                  PRBool noPub, void *params, void *pwArgs)
 {
     SECStatus rv = SECSuccess;
-    SECItem privID = { 0 };
-    SECItem pubID = { 0 };
     SECItem pubValue = { 0 };
     SECItem pbePwItem = { 0 };
     SECItem nickname = { 0 };
-    SECItem token = { 0 };
     SECKEYPublicKey *pubKey = NULL;
     SECKEYPrivateKey *privKey = NULL;
-    PK11GenericObject *objs = NULL;
-    PK11GenericObject *obj = NULL;
     SECKEYEncryptedPrivateKeyInfo *epki = NULL;
     PRBool keyFound = 0;
     KeyType keyType;
@@ -125,50 +182,10 @@ handleEncryptedPrivateImportTest(char *progName, PK11SlotInfo *slot,
         goto cleanup;
     }
 
-    /* verify the public key exists */
-    rv = PK11_ReadRawAttribute(PK11_TypePrivKey, privKey, CKA_ID, &privID);
-    if (rv != SECSuccess) {
-        SECU_PrintError(progName,
-                        "Couldn't read CKA_ID from pub key, checking next key");
-        goto cleanup;
-    }
-    dumpItem("privKey CKA_ID", &privID);
-    objs = PK11_FindGenericObjects(slot, CKO_PUBLIC_KEY);
-    for (obj = objs; obj; obj = PK11_GetNextGenericObject(obj)) {
-        rv = PK11_ReadRawAttribute(PK11_TypeGeneric, obj, CKA_ID, &pubID);
-        if (rv != SECSuccess) {
-            SECU_PrintError(progName,
-                            "Couldn't read CKA_ID from object, checking next key");
-            continue;
-        }
-        dumpItem("pubKey CKA_ID", &pubID);
-        if (!SECITEM_ItemsAreEqual(&privID, &pubID)) {
-            fprintf(stderr,
-                    "CKA_ID does not match priv key, checking next key\n");
-            SECITEM_FreeItem(&pubID, PR_FALSE);
-            continue;
-        }
-        SECITEM_FreeItem(&pubID, PR_FALSE);
-        rv = PK11_ReadRawAttribute(PK11_TypeGeneric, obj, CKA_TOKEN, &token);
-        if (rv == SECSuccess) {
-            if (token.len == 1) {
-                keyFound = token.data[0];
-            }
-            SECITEM_FreeItem(&token, PR_FALSE);
-        }
-        if (keyFound) {
-            printf("matching public key found\n");
-            break;
-        }
-        printf("Matching key was not a token key, checking next key\n");
-    }
+    keyFound = verifyImportedKey(progName, slot, privKey);
 
 cleanup:
-    if (objs) {
-        PK11_DestroyGenericObjects(objs);
-    }
     SECITEM_FreeItem(&pubValue, PR_FALSE);
-    SECITEM_FreeItem(&privID, PR_FALSE);
     if (epki && epki->arena) {
         PORT_FreeArena(epki->arena, PR_TRUE);
     }
@@ -177,6 +194,116 @@ cleanup:
     fprintf(stderr, "%s PrivateKeyImport %s ***********************\n",
             testname, keyFound ? "PASSED" : "FAILED");
     return keyFound ? SECSuccess : SECFailure;
+}
+
+/*
+ * Same as above, but going through the unencrypted PrivateKeyInfo interface.
+ * That interface is really only meant for testing, but it should give the
+ * same semantics as the encrypted one.
+ *
+ * PK11_ExportPrivKeyInfo doesn't handle every key type PK11_ExportEncrypted-
+ * PrivKeyInfo does. Report the ones it can't export as skipped rather than
+ * failed, so that this test picks them up automatically if that changes.
+ */
+SECStatus
+handlePrivateImportTest(char *progName, PK11SlotInfo *slot,
+                        char *testname, CK_MECHANISM_TYPE genMech,
+                        PRBool noPub, void *params, void *pwArgs)
+{
+    SECStatus rv = SECSuccess;
+    SECItem pubValue = { 0 };
+    SECItem nickname = { 0 };
+    SECKEYPublicKey *pubKey = NULL;
+    SECKEYPrivateKey *privKey = NULL;
+    SECKEYPrivateKeyInfo *pki = NULL;
+    PRBool keyFound = 0;
+    PRBool skipped = 0;
+
+    fprintf(stderr,
+            "Testing %s unencrypted PrivateKeyImport *******************\n",
+            testname);
+
+    /* generate a temp key. Unlike the encrypted export, which wraps the key
+     * on the token, an unencrypted export has to read the private attributes
+     * out, so the key can't be sensitive. */
+    privKey = PK11_GenerateKeyPair(slot, genMech, params, &pubKey,
+                                   PR_FALSE, PR_FALSE, pwArgs);
+    if (privKey == NULL) {
+        SECU_PrintError(progName, "PK11_GenerateKeyPair Failed");
+        goto cleanup;
+    }
+
+    pki = PK11_ExportPrivKeyInfo(privKey, pwArgs);
+    if (pki == NULL) {
+        if (PORT_GetError() == PR_NOT_IMPLEMENTED_ERROR) {
+            skipped = 1;
+        } else {
+            SECU_PrintError(progName, "PK11_ExportPrivKeyInfo Failed");
+        }
+        goto cleanup;
+    }
+
+    /* Save the public value, which we will need on import */
+    if (!noPub) {
+        const SECItem *idValue = PK11_GetPublicValueFromPublicKey(pubKey);
+        if (!idValue) {
+            SECU_PrintError(progName, "Unable to get public value from key");
+            goto cleanup;
+        }
+        /* copy the value so it doesn't disappear when we free the key */
+        SECITEM_CopyItem(NULL, &pubValue, idValue);
+        if (pubValue.data == NULL) {
+            SECU_PrintError(progName, "Unable to allocate memory");
+            goto cleanup;
+        }
+        dumpItem("pubValue", &pubValue);
+    }
+
+    /* when Asymetric keys represent session keys, those session keys are
+     * destroyed when we destroy the Asymetric key representations */
+    SECKEY_DestroyPublicKey(pubKey);
+    pubKey = NULL;
+    SECKEY_DestroyPrivateKey(privKey);
+    privKey = NULL;
+
+    /* import the temp key as a perm */
+    nickname.data = (unsigned char *)"testKey";
+    nickname.len = sizeof("testKey");
+    rv = PK11_ImportPrivateKeyInfoAndReturnKey(
+        slot, pki, &nickname, noPub ? NULL : &pubValue,
+        PR_TRUE, PR_TRUE, KU_ALL, &privKey, NULL);
+    if (rv != SECSuccess) {
+        SECU_PrintError(progName, "PK11_ImportPrivateKeyInfo Failed");
+        goto cleanup;
+    }
+
+    keyFound = verifyImportedKey(progName, slot, privKey);
+
+cleanup:
+    SECITEM_FreeItem(&pubValue, PR_FALSE);
+    if (pki) {
+        SECKEY_DestroyPrivateKeyInfo(pki, PR_TRUE);
+    }
+    SECKEY_DestroyPublicKey(pubKey);
+    SECKEY_DestroyPrivateKey(privKey);
+    fprintf(stderr,
+            "%s unencrypted PrivateKeyImport %s *******************\n",
+            testname, skipped ? "SKIPPED" : (keyFound ? "PASSED" : "FAILED"));
+    return (skipped || keyFound) ? SECSuccess : SECFailure;
+}
+
+SECStatus
+handleImportTests(char *progName, PK11SlotInfo *slot, char *testname,
+                  CK_MECHANISM_TYPE genMech, PRBool noPub, void *params,
+                  void *pwArgs)
+{
+    SECStatus encrypted = handleEncryptedPrivateImportTest(
+        progName, slot, testname, genMech, noPub, params, pwArgs);
+    SECStatus plain = handlePrivateImportTest(
+        progName, slot, testname, genMech, noPub, params, pwArgs);
+
+    return ((encrypted == SECSuccess) && (plain == SECSuccess)) ? SECSuccess
+                                                                : SECFailure;
 }
 
 static const char *const usageInfo[] = {
@@ -351,18 +478,18 @@ main(int argc, char **argv)
         PK11RSAGenParams rsaParams;
         rsaParams.keySizeInBits = keySize;
         rsaParams.pe = 0x010001;
-        rv = handleEncryptedPrivateImportTest(progName, slot, "RSA",
-                                              CKM_RSA_PKCS_KEY_PAIR_GEN,
-                                              noPub, &rsaParams, &pwArgs);
+        rv = handleImportTests(progName, slot, "RSA",
+                               CKM_RSA_PKCS_KEY_PAIR_GEN,
+                               noPub, &rsaParams, &pwArgs);
         if (rv != SECSuccess) {
             fprintf(stderr, "RSA Import Failed!\n");
             failed = PR_TRUE;
         }
     }
     if (doDSA) {
-        rv = handleEncryptedPrivateImportTest(progName, slot, "DSA",
-                                              CKM_DSA_KEY_PAIR_GEN,
-                                              noPub, pqgParams, &pwArgs);
+        rv = handleImportTests(progName, slot, "DSA",
+                               CKM_DSA_KEY_PAIR_GEN,
+                               noPub, pqgParams, &pwArgs);
         if (rv != SECSuccess) {
             fprintf(stderr, "DSA Import Failed!\n");
             failed = PR_TRUE;
@@ -372,9 +499,9 @@ main(int argc, char **argv)
         SECKEYDHParams dhParams;
         dhParams.prime = pqgParams->prime;
         dhParams.base = pqgParams->base;
-        rv = handleEncryptedPrivateImportTest(progName, slot, "DH",
-                                              CKM_DH_PKCS_KEY_PAIR_GEN,
-                                              noPub, &dhParams, &pwArgs);
+        rv = handleImportTests(progName, slot, "DH",
+                               CKM_DH_PKCS_KEY_PAIR_GEN,
+                               noPub, &dhParams, &pwArgs);
         if (rv != SECSuccess) {
             fprintf(stderr, "DH Import Failed!\n");
             failed = PR_TRUE;
@@ -396,9 +523,9 @@ main(int argc, char **argv)
         ecParams.data[1] = (unsigned char)curve->oid.len;
         PORT_Memcpy(&ecParams.data[2], curve->oid.data, curve->oid.len);
         ecParams.len = curve->oid.len + 2;
-        rv = handleEncryptedPrivateImportTest(progName, slot, "ECC",
-                                              CKM_EC_KEY_PAIR_GEN,
-                                              noPub, &ecParams, &pwArgs);
+        rv = handleImportTests(progName, slot, "ECC",
+                               CKM_EC_KEY_PAIR_GEN,
+                               noPub, &ecParams, &pwArgs);
         PORT_Free(ecParams.data);
     ec_failed:
         if (rv != SECSuccess) {
@@ -410,9 +537,9 @@ main(int argc, char **argv)
     if (doMLKEM) {
         CK_ML_KEM_PARAMETER_SET_TYPE paramSet = CKP_ML_KEM_768;
 
-        rv = handleEncryptedPrivateImportTest(progName, slot, "MLKEM",
-                                              CKM_ML_KEM_KEY_PAIR_GEN,
-                                              noPub, &paramSet, &pwArgs);
+        rv = handleImportTests(progName, slot, "MLKEM",
+                               CKM_ML_KEM_KEY_PAIR_GEN,
+                               noPub, &paramSet, &pwArgs);
         if (rv != SECSuccess) {
             fprintf(stderr, "MLKEM Import Failed!\n");
             failed = PR_TRUE;
@@ -421,9 +548,9 @@ main(int argc, char **argv)
 
     if (doMLDSA) {
         CK_ML_DSA_PARAMETER_SET_TYPE paramSet = CKP_ML_DSA_44;
-        rv = handleEncryptedPrivateImportTest(progName, slot, "ML-DSA",
-                                              CKM_ML_DSA_KEY_PAIR_GEN,
-                                              noPub, &paramSet, &pwArgs);
+        rv = handleImportTests(progName, slot, "ML-DSA",
+                               CKM_ML_DSA_KEY_PAIR_GEN,
+                               noPub, &paramSet, &pwArgs);
         if (rv != SECSuccess) {
             fprintf(stderr, "ML-DSA Import Failed!\n");
             failed = PR_TRUE;

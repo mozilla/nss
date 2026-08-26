@@ -12,6 +12,8 @@
 
 #include "gtest/gtest.h"
 #include "nss_scoped_ptrs.h"
+#include "pk11_keygen.h"
+#include "pq_pkcs8.h"
 
 namespace nss_test {
 
@@ -140,6 +142,54 @@ const std::vector<uint8_t> kP256ShortScalarNoPublicKey = {
     0xaa, 0xaa, 0xaa, 0xaa, 0xaa, 0xaa, 0xaa, 0xaa, 0xaa, 0xaa, 0xaa,
     0xaa, 0xaa, 0xaa, 0xaa, 0xaa, 0xaa, 0xaa, 0xaa, 0xaa, 0xaa, 0xaa,
     0xaa, 0xaa, 0xaa, 0xaa, 0xaa, 0xaa, 0xaa, 0xaa, 0xaa};
+
+// A 1024-bit DSA PrivateKeyInfo. A DSAPrivateKey is just the INTEGER x, so
+// there is never a public value in the encoding and the token always has to
+// regenerate y = g^x mod p for us.
+const std::vector<uint8_t> kDsa1024KeyNoPublicKey = {
+    0x30, 0x82, 0x01, 0x4b, 0x02, 0x01, 0x00, 0x30, 0x82, 0x01, 0x2b, 0x06,
+    0x07, 0x2a, 0x86, 0x48, 0xce, 0x38, 0x04, 0x01, 0x30, 0x82, 0x01, 0x1e,
+    0x02, 0x81, 0x81, 0x00, 0x84, 0x89, 0xf5, 0xd0, 0xf2, 0xd9, 0x1b, 0x3c,
+    0x1f, 0xb0, 0x17, 0x5c, 0xd1, 0xeb, 0xf6, 0xef, 0x46, 0x0a, 0x6b, 0xf7,
+    0x17, 0x8a, 0x45, 0x98, 0x08, 0x58, 0xa8, 0xf7, 0x61, 0x52, 0x6e, 0x41,
+    0xb4, 0x24, 0x05, 0x53, 0xbe, 0x60, 0x2a, 0x6a, 0xe8, 0xd1, 0x77, 0xaf,
+    0xf3, 0x94, 0x7d, 0x30, 0xe1, 0xd8, 0xf4, 0x5a, 0x28, 0x97, 0x88, 0x3e,
+    0x88, 0x1a, 0x53, 0x9f, 0x92, 0x57, 0xb7, 0x34, 0x50, 0x58, 0x89, 0xcb,
+    0x59, 0x46, 0xf2, 0x3a, 0xc2, 0x68, 0x39, 0xa6, 0x2e, 0xd9, 0x8a, 0x95,
+    0x3b, 0x22, 0x3c, 0x29, 0x83, 0x7b, 0xc3, 0xc2, 0x75, 0xcb, 0x4c, 0x0e,
+    0x87, 0x67, 0xd4, 0xf9, 0x4d, 0xfe, 0x55, 0xce, 0xd9, 0x96, 0xa5, 0xd9,
+    0x8c, 0xe7, 0xf0, 0x2c, 0x9d, 0x75, 0x96, 0xdf, 0x5a, 0xd6, 0x6d, 0x08,
+    0x8f, 0x5c, 0x10, 0x83, 0x94, 0x78, 0x4b, 0x81, 0xf3, 0xf8, 0xa9, 0xf9,
+    0x02, 0x15, 0x00, 0x9e, 0x52, 0x2b, 0xcd, 0xb8, 0xed, 0x8d, 0x22, 0x43,
+    0xfb, 0xcc, 0xa7, 0x38, 0xf1, 0xde, 0xa2, 0x74, 0xcc, 0x71, 0xaf, 0x02,
+    0x81, 0x80, 0x45, 0x5f, 0x19, 0xa6, 0xe7, 0x07, 0xcb, 0x55, 0x05, 0x96,
+    0x3d, 0x88, 0x85, 0x46, 0x8f, 0x3a, 0xa3, 0xc1, 0x74, 0x5b, 0xc9, 0x61,
+    0xb9, 0x05, 0x69, 0xf9, 0x94, 0xe4, 0xb5, 0x9b, 0x4e, 0x0f, 0x79, 0x61,
+    0x7d, 0xd1, 0x32, 0xbf, 0x06, 0x53, 0xef, 0x9a, 0x93, 0xc1, 0x69, 0xf4,
+    0x85, 0x7d, 0x53, 0x55, 0x22, 0x37, 0xf3, 0xd6, 0xa1, 0x6c, 0x7c, 0x82,
+    0x48, 0x5c, 0x9d, 0x25, 0xea, 0x2a, 0x34, 0xdd, 0x74, 0x15, 0x40, 0x69,
+    0x0e, 0xa4, 0xa5, 0x21, 0xda, 0x17, 0xb8, 0xd4, 0xf9, 0x37, 0x7e, 0xa4,
+    0x98, 0xd0, 0x8d, 0x2d, 0x89, 0x15, 0x20, 0x2a, 0xe2, 0x0e, 0x07, 0x1d,
+    0xc5, 0xdf, 0x79, 0x0e, 0xf0, 0x2a, 0xbd, 0x16, 0x77, 0x91, 0xa6, 0xb2,
+    0xb0, 0xe5, 0xee, 0x17, 0x04, 0x30, 0xac, 0x71, 0xbc, 0x93, 0xca, 0xf5,
+    0xe0, 0x75, 0x05, 0xd9, 0x71, 0x4f, 0xb4, 0x58, 0x8b, 0xdd, 0x04, 0x17,
+    0x02, 0x15, 0x00, 0x87, 0x43, 0x3b, 0x76, 0x62, 0x12, 0x92, 0xfa, 0xcc,
+    0xd4, 0x64, 0xaa, 0x12, 0xc5, 0x38, 0xc9, 0x1b, 0x72, 0x24, 0x84};
+
+// y for the key above, as CKA_VALUE of the public key: a bare unsigned
+// big-endian integer, which is what PK11_MakeIDFromPubKey hashes.
+const std::vector<uint8_t> kDsa1024PublicValue = {
+    0x64, 0x06, 0x6b, 0x54, 0xd4, 0x6d, 0x23, 0xbf, 0x66, 0x55, 0xff, 0x95,
+    0xbe, 0x9d, 0x7b, 0x4b, 0x15, 0x62, 0x33, 0x94, 0xe4, 0xe1, 0xaa, 0xa4,
+    0x85, 0x2e, 0xea, 0x2d, 0x1d, 0xcc, 0xa8, 0xd1, 0x39, 0xb1, 0x3b, 0x64,
+    0xf8, 0xc3, 0x9c, 0xed, 0x6f, 0x56, 0xac, 0xba, 0x71, 0x61, 0x0c, 0x0f,
+    0x4c, 0xcb, 0x81, 0x9e, 0x03, 0x18, 0x84, 0xd0, 0xf9, 0x69, 0xeb, 0x50,
+    0x6c, 0xd4, 0x38, 0x03, 0x67, 0x68, 0xe6, 0xda, 0xfc, 0x60, 0xe1, 0x61,
+    0x0f, 0x5f, 0x91, 0xa4, 0x75, 0xe7, 0x87, 0x5e, 0x45, 0xa5, 0x48, 0xc8,
+    0xf0, 0x44, 0xff, 0x05, 0xb4, 0xa3, 0x1f, 0x94, 0x49, 0xcf, 0xb0, 0xff,
+    0x7f, 0xf7, 0x13, 0x3c, 0x12, 0xa6, 0x2b, 0xa6, 0xea, 0xce, 0x75, 0xab,
+    0x42, 0xdd, 0x62, 0x73, 0xe8, 0x3e, 0x9a, 0x39, 0xa7, 0x0e, 0xce, 0xa6,
+    0x88, 0x56, 0xd5, 0x07, 0xf0, 0x87, 0xcf, 0x7f};
 
 const std::vector<uint8_t> kInvalidZeroLengthKey = {
     0x30, 0x1a,        // SEQUENCE(len=26)
@@ -348,5 +398,368 @@ TEST_F(DERPrivateKeyImportTest, ImportEd25519WithNonEmptyAlgorithmParams) {
   EXPECT_FALSE(ParsePrivateKey(kEd25519WithNonEmptyAlgorithmParams, false));
   EXPECT_EQ(PORT_GetError(), SEC_ERROR_UNSUPPORTED_KEYALG);
 }
+
+// An imported private key needs a CKA_ID, or it can never be found again.
+// PK11_ImportAndReturnPrivateKey builds one from the public value when it has
+// one; when the PrivateKeyInfo carries none (and the caller passes none), it
+// has the token regenerate the public key and uses that.
+//
+// ML-KEM and ML-DSA are covered the same way in pk11_kem_unittest.cc and
+// pk11_mldsa_unittest.cc, which have to assemble their PKCS#8 by hand.
+class PrivateKeyImportCkaIdTest : public ::testing::Test {
+ protected:
+  void SetUp() override {
+    slot_.reset(PK11_GetInternalKeySlot());
+    ASSERT_TRUE(slot_);
+    if (PK11_NeedUserInit(slot_.get())) {
+      ASSERT_EQ(SECSuccess, PK11_InitPin(slot_.get(), nullptr, nullptr));
+    }
+    ASSERT_EQ(SECSuccess, PK11_Authenticate(slot_.get(), PR_TRUE, nullptr));
+  }
+
+  ScopedSECKEYPrivateKey Import(const std::vector<uint8_t>& pkcs8,
+                                PRBool isPerm) {
+    SECItem der = {siBuffer, const_cast<unsigned char*>(pkcs8.data()),
+                   static_cast<unsigned int>(pkcs8.size())};
+    SECKEYPrivateKey* privk = nullptr;
+    PORT_SetError(0);
+    SECStatus rv = PK11_ImportDERPrivateKeyInfoAndReturnKey(
+        slot_.get(), &der, nullptr, nullptr, isPerm, PR_FALSE, KU_ALL, &privk,
+        nullptr);
+    EXPECT_EQ(rv == SECSuccess, privk != nullptr);
+    return ScopedSECKEYPrivateKey(privk);
+  }
+
+  // The key's CKA_ID should be the hash of publicValue, and looking that ID
+  // up in the slot should come back to this same key.
+  void ExpectCkaIdFor(SECKEYPrivateKey* privKey, const SECItem* publicValue) {
+    ScopedSECItem expected(PK11_MakeIDFromPubKey(publicValue));
+    ASSERT_TRUE(expected);
+
+    ScopedSECItem ckaId(SECITEM_AllocItem(nullptr, nullptr, 0));
+    ASSERT_TRUE(ckaId);
+    ASSERT_EQ(SECSuccess, PK11_ReadRawAttribute(PK11_TypePrivKey, privKey,
+                                                CKA_ID, ckaId.get()))
+        << PORT_ErrorToString(PORT_GetError());
+    EXPECT_EQ(0, SECITEM_CompareItem(expected.get(), ckaId.get()));
+
+    ScopedSECKEYPrivateKey found(
+        PK11_FindKeyByKeyID(slot_.get(), expected.get(), nullptr));
+    ASSERT_TRUE(found) << PORT_ErrorToString(PORT_GetError());
+    EXPECT_EQ(privKey->pkcs11ID, found->pkcs11ID);
+  }
+
+  // When the token can't reconstruct the public key there is nothing to make
+  // an ID out of, so the key is usable but can't be looked up.
+  void ExpectNoCkaId(SECKEYPrivateKey* privKey, const SECItem* publicValue) {
+    ScopedSECItem ckaId(SECITEM_AllocItem(nullptr, nullptr, 0));
+    ASSERT_TRUE(ckaId);
+    ASSERT_EQ(SECSuccess, PK11_ReadRawAttribute(PK11_TypePrivKey, privKey,
+                                                CKA_ID, ckaId.get()))
+        << PORT_ErrorToString(PORT_GetError());
+    EXPECT_EQ(0U, ckaId->len);
+
+    ScopedSECItem wanted(PK11_MakeIDFromPubKey(publicValue));
+    ASSERT_TRUE(wanted);
+    ScopedSECKEYPrivateKey found(
+        PK11_FindKeyByKeyID(slot_.get(), wanted.get(), nullptr));
+    EXPECT_FALSE(found);
+  }
+
+  // Importing a token key should also leave a matching token public key
+  // behind, the same way PK11_ImportEncryptedPrivateKeyInfoAndReturnKey does.
+  bool HasMatchingTokenPublicKey(const SECItem* publicValue) {
+    ScopedSECItem wanted(PK11_MakeIDFromPubKey(publicValue));
+    EXPECT_TRUE(wanted);
+    if (!wanted) {
+      return false;
+    }
+
+    bool found = false;
+    PK11GenericObject* objs =
+        PK11_FindGenericObjects(slot_.get(), CKO_PUBLIC_KEY);
+    for (PK11GenericObject* obj = objs; obj && !found;
+         obj = PK11_GetNextGenericObject(obj)) {
+      SECItem id = {siBuffer, nullptr, 0};
+      if (PK11_ReadRawAttribute(PK11_TypeGeneric, obj, CKA_ID, &id) !=
+          SECSuccess) {
+        continue;
+      }
+      bool matches = SECITEM_ItemsAreEqual(wanted.get(), &id);
+      SECITEM_FreeItem(&id, PR_FALSE);
+      if (!matches) {
+        continue;
+      }
+      SECItem token = {siBuffer, nullptr, 0};
+      if (PK11_ReadRawAttribute(PK11_TypeGeneric, obj, CKA_TOKEN, &token) ==
+          SECSuccess) {
+        found = token.len == 1 && token.data[0];
+        SECITEM_FreeItem(&token, PR_FALSE);
+      }
+    }
+    if (objs) {
+      PK11_DestroyGenericObjects(objs);
+    }
+    return found;
+  }
+
+  // Token keys outlive the test, so take them back out again.
+  void DeleteTokenKey(ScopedSECKEYPrivateKey& key) {
+    EXPECT_EQ(SECSuccess, PK11_DeleteTokenPrivateKey(key.release(), true));
+    // PK11_DeleteTokenPrivateKey leaves an error set when the key has no
+    // cert, which is the normal case here.
+    if (PORT_GetError() == SSL_ERROR_NO_CERTIFICATE) {
+      PORT_SetError(0);
+    }
+  }
+
+  ScopedPK11SlotInfo slot_;
+};
+
+struct CkaIdKeyType {
+  const char* name;
+  CK_MECHANISM_TYPE mech;
+  SECOidTag curve;
+};
+
+class PrivateKeyImportCkaIdRoundTripTest
+    : public PrivateKeyImportCkaIdTest,
+      public ::testing::WithParamInterface<CkaIdKeyType> {};
+
+// Generate a key, round-trip it through an unencrypted PrivateKeyInfo, and
+// check that what comes back can be found by its CKA_ID. RSA and EC carry a
+// public value in the encoding; Ed25519 and X25519 do not, so those two go
+// through the regenerate-from-the-token path.
+TEST_P(PrivateKeyImportCkaIdRoundTripTest, SessionKeyGetsCkaId) {
+  const CkaIdKeyType& keyType = GetParam();
+  Pkcs11KeyPairGenerator generator(keyType.mech, keyType.curve);
+  ScopedSECKEYPrivateKey priv;
+  ScopedSECKEYPublicKey pub;
+  // an unencrypted export reads the private attributes out of the token, so
+  // the key it reads them from can't be sensitive
+  generator.GenerateKey(&priv, &pub, /*sensitive=*/false);
+  ASSERT_TRUE(priv);
+  ASSERT_TRUE(pub);
+
+  const SECItem* publicValue = PK11_GetPublicValueFromPublicKey(pub.get());
+  ASSERT_TRUE(publicValue);
+  std::vector<uint8_t> pubBytes(publicValue->data,
+                                publicValue->data + publicValue->len);
+  SECItem expectedPub = {siBuffer, pubBytes.data(),
+                         static_cast<unsigned int>(pubBytes.size())};
+
+  ScopedSECItem der(PK11_ExportDERPrivateKeyInfo(priv.get(), nullptr));
+  ASSERT_TRUE(der) << PORT_ErrorToString(PORT_GetError());
+  std::vector<uint8_t> pkcs8(der->data, der->data + der->len);
+
+  // drop the generated pair, so the lookup below can only find the import
+  priv.reset();
+  pub.reset();
+
+  ScopedSECKEYPrivateKey imported(Import(pkcs8, PR_FALSE));
+  ASSERT_TRUE(imported) << PORT_ErrorToString(PORT_GetError());
+  ExpectCkaIdFor(imported.get(), &expectedPub);
+}
+
+// Same, but as a token key, which should also get a matching token public key.
+TEST_P(PrivateKeyImportCkaIdRoundTripTest, TokenKeyGetsCkaIdAndPublicKey) {
+  const CkaIdKeyType& keyType = GetParam();
+  Pkcs11KeyPairGenerator generator(keyType.mech, keyType.curve);
+  ScopedSECKEYPrivateKey priv;
+  ScopedSECKEYPublicKey pub;
+  generator.GenerateKey(&priv, &pub, /*sensitive=*/false);
+  ASSERT_TRUE(priv);
+  ASSERT_TRUE(pub);
+
+  const SECItem* publicValue = PK11_GetPublicValueFromPublicKey(pub.get());
+  ASSERT_TRUE(publicValue);
+  std::vector<uint8_t> pubBytes(publicValue->data,
+                                publicValue->data + publicValue->len);
+  SECItem expectedPub = {siBuffer, pubBytes.data(),
+                         static_cast<unsigned int>(pubBytes.size())};
+
+  ScopedSECItem der(PK11_ExportDERPrivateKeyInfo(priv.get(), nullptr));
+  ASSERT_TRUE(der) << PORT_ErrorToString(PORT_GetError());
+  std::vector<uint8_t> pkcs8(der->data, der->data + der->len);
+
+  priv.reset();
+  pub.reset();
+
+  ScopedSECKEYPrivateKey imported(Import(pkcs8, PR_TRUE));
+  ASSERT_TRUE(imported) << PORT_ErrorToString(PORT_GetError());
+  ExpectCkaIdFor(imported.get(), &expectedPub);
+  EXPECT_TRUE(HasMatchingTokenPublicKey(&expectedPub));
+  DeleteTokenKey(imported);
+}
+
+INSTANTIATE_TEST_SUITE_P(
+    PrivateKeyImportCkaIdRoundTripTest, PrivateKeyImportCkaIdRoundTripTest,
+    ::testing::Values(
+        CkaIdKeyType{"RSA", CKM_RSA_PKCS_KEY_PAIR_GEN, SEC_OID_UNKNOWN},
+        CkaIdKeyType{"ECDSA_P256", CKM_EC_KEY_PAIR_GEN,
+                     SEC_OID_SECG_EC_SECP256R1},
+        CkaIdKeyType{"ECDSA_P384", CKM_EC_KEY_PAIR_GEN,
+                     SEC_OID_SECG_EC_SECP384R1},
+        CkaIdKeyType{"Ed25519", CKM_EC_EDWARDS_KEY_PAIR_GEN,
+                     SEC_OID_ED25519_PUBLIC_KEY},
+        CkaIdKeyType{"X25519", CKM_EC_MONTGOMERY_KEY_PAIR_GEN, SEC_OID_X25519}),
+    [](const ::testing::TestParamInfo<CkaIdKeyType>& i) {
+      return std::string(i.param.name);
+    });
+
+// An ECPrivateKey may omit the optional [1] publicKey. The token has to
+// recompute the point before we can make a CKA_ID out of it.
+TEST_F(PrivateKeyImportCkaIdTest, EcdsaWithoutPublicKey) {
+  ScopedSECKEYPrivateKey imported(Import(kValidP256KeyNoPublicKey, PR_FALSE));
+  ASSERT_TRUE(imported) << PORT_ErrorToString(PORT_GetError());
+
+  SECItem expected = {siBuffer,
+                      const_cast<unsigned char*>(kValidP256PublicKey.data()),
+                      static_cast<unsigned int>(kValidP256PublicKey.size())};
+  ExpectCkaIdFor(imported.get(), &expected);
+}
+
+// A DSAPrivateKey is only the private scalar, so this always goes through the
+// regenerate path. This used to be rejected outright.
+TEST_F(PrivateKeyImportCkaIdTest, DsaWithoutPublicKey) {
+  ScopedSECKEYPrivateKey imported(Import(kDsa1024KeyNoPublicKey, PR_FALSE));
+  ASSERT_TRUE(imported) << PORT_ErrorToString(PORT_GetError());
+
+  SECItem expected = {siBuffer,
+                      const_cast<unsigned char*>(kDsa1024PublicValue.data()),
+                      static_cast<unsigned int>(kDsa1024PublicValue.size())};
+  ExpectCkaIdFor(imported.get(), &expected);
+}
+
+TEST_F(PrivateKeyImportCkaIdTest, DsaTokenKeyWithoutPublicKey) {
+  ScopedSECKEYPrivateKey imported(Import(kDsa1024KeyNoPublicKey, PR_TRUE));
+  ASSERT_TRUE(imported) << PORT_ErrorToString(PORT_GetError());
+
+  SECItem expected = {siBuffer,
+                      const_cast<unsigned char*>(kDsa1024PublicValue.data()),
+                      static_cast<unsigned int>(kDsa1024PublicValue.size())};
+  ExpectCkaIdFor(imported.get(), &expected);
+  EXPECT_TRUE(HasMatchingTokenPublicKey(&expected));
+  DeleteTokenKey(imported);
+}
+
+// ML-DSA and ML-KEM never carry a public value in a PrivateKeyInfo, so they
+// always go through the regenerate path. PK11_ExportPrivKeyInfo can't encode
+// either algorithm, so build the three private key CHOICEs by hand.
+struct PqCkaIdKeyType {
+  const char* name;
+  CK_MECHANISM_TYPE mech;
+  CK_ULONG paramSet;
+  SECOidTag oid;
+  // Whether the token can get back to the public key from an expandedKey with
+  // no seed. For ML-KEM the encapsulation key is a substring of the
+  // decapsulation key; for ML-DSA it would mean recomputing t = A*s1 + s2,
+  // which libcrux doesn't expose, so softoken needs the seed.
+  bool derivesFromExpandedKey;
+};
+
+class PrivateKeyImportPqCkaIdTest
+    : public PrivateKeyImportCkaIdTest,
+      public ::testing::WithParamInterface<PqCkaIdKeyType> {
+ protected:
+  // Generate a key pair and pull out the pieces a PrivateKeyInfo can carry,
+  // along with the public value the imported key has to hash to.
+  void GenerateAndExtract() {
+    const PqCkaIdKeyType& keyType = GetParam();
+    CK_ULONG paramSet = keyType.paramSet;
+    SECKEYPublicKey* pub = nullptr;
+    ScopedSECKEYPrivateKey priv(PK11_GenerateKeyPair(slot_.get(), keyType.mech,
+                                                     &paramSet, &pub, PR_FALSE,
+                                                     PR_FALSE, nullptr));
+    ScopedSECKEYPublicKey pubKey(pub);
+    ASSERT_TRUE(priv) << PORT_ErrorToString(PORT_GetError());
+    ASSERT_TRUE(pubKey);
+
+    ScopedSECItem seed(SECITEM_AllocItem(nullptr, nullptr, 0));
+    ScopedSECItem value(SECITEM_AllocItem(nullptr, nullptr, 0));
+    ASSERT_TRUE(seed);
+    ASSERT_TRUE(value);
+    ASSERT_EQ(SECSuccess, PK11_ReadRawAttribute(PK11_TypePrivKey, priv.get(),
+                                                CKA_SEED, seed.get()))
+        << PORT_ErrorToString(PORT_GetError());
+    ASSERT_EQ(SECSuccess, PK11_ReadRawAttribute(PK11_TypePrivKey, priv.get(),
+                                                CKA_VALUE, value.get()))
+        << PORT_ErrorToString(PORT_GetError());
+    ASSERT_NE(0U, seed->len);
+    ASSERT_NE(0U, value->len);
+    seed_.assign(seed->data, seed->data + seed->len);
+    key_.assign(value->data, value->data + value->len);
+
+    const SECItem* publicValue = PK11_GetPublicValueFromPublicKey(pubKey.get());
+    ASSERT_TRUE(publicValue);
+    pubBytes_.assign(publicValue->data, publicValue->data + publicValue->len);
+    expectedPub_ = {siBuffer, pubBytes_.data(),
+                    static_cast<unsigned int>(pubBytes_.size())};
+
+    // priv and pubKey go away here, so the lookups below can only be
+    // satisfied by the key each case imports.
+  }
+
+  std::vector<uint8_t> seed_;
+  std::vector<uint8_t> key_;
+  std::vector<uint8_t> pubBytes_;
+  SECItem expectedPub_ = {siBuffer, nullptr, 0};
+};
+
+TEST_P(PrivateKeyImportPqCkaIdTest, SessionKeyGetsCkaId) {
+  ASSERT_NO_FATAL_FAILURE(GenerateAndExtract());
+  const PqCkaIdKeyType& keyType = GetParam();
+
+  const struct {
+    const char* name;
+    std::vector<uint8_t> pkcs8;
+    bool expectId;
+  } cases[] = {
+      {"seed", BuildPqPkcs8(keyType.oid, PqSeedChoice(seed_)), true},
+      {"both", BuildPqPkcs8(keyType.oid, PqBothChoice(seed_, key_)), true},
+      {"expandedKey", BuildPqPkcs8(keyType.oid, PqExpandedKeyChoice(key_)),
+       keyType.derivesFromExpandedKey},
+  };
+
+  for (const auto& testCase : cases) {
+    SCOPED_TRACE(testCase.name);
+    ScopedSECKEYPrivateKey imported(Import(testCase.pkcs8, PR_FALSE));
+    ASSERT_TRUE(imported) << PORT_ErrorToString(PORT_GetError());
+    if (testCase.expectId) {
+      ExpectCkaIdFor(imported.get(), &expectedPub_);
+    } else {
+      ExpectNoCkaId(imported.get(), &expectedPub_);
+    }
+  }
+}
+
+TEST_P(PrivateKeyImportPqCkaIdTest, TokenKeyGetsCkaIdAndPublicKey) {
+  ASSERT_NO_FATAL_FAILURE(GenerateAndExtract());
+  const PqCkaIdKeyType& keyType = GetParam();
+
+  ScopedSECKEYPrivateKey imported(
+      Import(BuildPqPkcs8(keyType.oid, PqSeedChoice(seed_)), PR_TRUE));
+  ASSERT_TRUE(imported) << PORT_ErrorToString(PORT_GetError());
+  ExpectCkaIdFor(imported.get(), &expectedPub_);
+  EXPECT_TRUE(HasMatchingTokenPublicKey(&expectedPub_));
+  DeleteTokenKey(imported);
+}
+
+INSTANTIATE_TEST_SUITE_P(
+    PrivateKeyImportPqCkaIdTest, PrivateKeyImportPqCkaIdTest,
+    ::testing::Values(PqCkaIdKeyType{"ML_KEM_768", CKM_ML_KEM_KEY_PAIR_GEN,
+                                     CKP_ML_KEM_768, SEC_OID_ML_KEM_768, true},
+                      PqCkaIdKeyType{"ML_KEM_1024", CKM_ML_KEM_KEY_PAIR_GEN,
+                                     CKP_ML_KEM_1024, SEC_OID_ML_KEM_1024,
+                                     true},
+                      PqCkaIdKeyType{"ML_DSA_44", CKM_ML_DSA_KEY_PAIR_GEN,
+                                     CKP_ML_DSA_44, SEC_OID_ML_DSA_44, false},
+                      PqCkaIdKeyType{"ML_DSA_65", CKM_ML_DSA_KEY_PAIR_GEN,
+                                     CKP_ML_DSA_65, SEC_OID_ML_DSA_65, false},
+                      PqCkaIdKeyType{"ML_DSA_87", CKM_ML_DSA_KEY_PAIR_GEN,
+                                     CKP_ML_DSA_87, SEC_OID_ML_DSA_87, false}),
+    [](const ::testing::TestParamInfo<PqCkaIdKeyType>& i) {
+      return std::string(i.param.name);
+    });
 
 }  // namespace nss_test
