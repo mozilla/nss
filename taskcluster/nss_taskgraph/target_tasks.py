@@ -75,6 +75,14 @@ def filter_try_syntax(options, task):
         if not any(t in options["unittests"] for t in tests):
             return False
 
+    # Filter fuzz tasks. Fuzzing runs are opt-in on try (`-u fuzz`, or `-u all`)
+    # because every target burns a worker for its whole MAX_FUZZ_TIME. Once
+    # selected they are narrowed by platform and build type like anything else.
+    if task.kind == "fuzz" and not any(
+        t in options["unittests"] for t in ("all", "fuzz")
+    ):
+        return False
+
     # Filter extra builds.
     if group == "builds" and not options["extra"]:
         return False

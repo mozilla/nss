@@ -4,6 +4,7 @@
 ---
 
 transforms:
+    - nss_taskgraph.transforms.fuzz
     - taskgraph.transforms.task_context
 
 kind-dependencies:

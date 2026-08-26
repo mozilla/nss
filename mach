@@ -1118,6 +1118,11 @@ def _tc_try_options():
             else:
                 syms.add(sym.lower())
 
+    # The fuzz kind is selected as a whole rather than per target (see
+    # filter_try_syntax in target_tasks.py), so it contributes one token.
+    if os.path.isdir(os.path.join(tc, "kinds", "fuzz")):
+        groups.add("fuzz")
+
     tests = sorted(groups) + sorted(syms)
 
     # Tools: lowercased treeherder symbols from the tools kind YAML.
