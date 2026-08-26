@@ -9,6 +9,7 @@
 #define _BLAPIT_H_
 
 #include "seccomon.h"
+#include "eccutil.h"
 #include "prlink.h"
 #include "plarena.h"
 #include "ecl-exp.h"
@@ -87,13 +88,6 @@ typedef int __BLAPI_DEPRECATED __attribute__((deprecated));
 
 #define ECD_MAX_KEY_BITS 255 /* in bits */
 #define ECD_MIN_KEY_BITS 255 /* in bits */
-
-/* EC point compression format */
-#define EC_POINT_FORM_COMPRESSED_Y0 0x02
-#define EC_POINT_FORM_COMPRESSED_Y1 0x03
-#define EC_POINT_FORM_UNCOMPRESSED 0x04
-#define EC_POINT_FORM_HYBRID_Y0 0x06
-#define EC_POINT_FORM_HYBRID_Y1 0x07
 
 /*
  * Number of bytes each hash algorithm produces

@@ -18,6 +18,7 @@
  *   that created or generated them.
  */
 #include "seccomon.h"
+#include "eccutil.h"
 #include "secitem.h"
 /* we need to use the deprecated mechanisms values for backward compatibility */
 #include "pkcs11.h"
@@ -2251,29 +2252,36 @@ sftk_GetPubKey(SFTKObject *object, CK_KEY_TYPE key_type,
                                           object, CKA_EC_POINT);
             if (crv == CKR_OK) {
                 unsigned int keyLen = EC_GetPointSize(&pubKey->u.ec.ecParams);
-                /* special note: We can't just use the first byte to distinguish
-                 * between EC_POINT_FORM_UNCOMPRESSED and SEC_ASN1_OCTET_STRING.
-                 * Both are 0x04. */
+                SECItem *point = &pubKey->u.ec.publicValue;
+                /* ECPoint_IsBare wants one coordinate, not the whole point */
+                unsigned int fieldLen = keyLen ? (keyLen - 1) / 2 : 0;
 
                 /* Handle the non-DER encoded case.
                  * Some curves are always pressumed to be non-DER.
                  */
+                if (pubKey->u.ec.ecParams.type != ec_params_named) {
+                    break;
+                }
 
-                /* is the public key in uncompressed form? */
-                if (pubKey->u.ec.ecParams.type != ec_params_named ||
-                    (pubKey->u.ec.publicValue.len == keyLen &&
-                     pubKey->u.ec.publicValue.data[0] == EC_POINT_FORM_UNCOMPRESSED)) {
-                    break; /* key was not DER encoded, no need to unwrap */
+                /* Due to a bug in some NSS version, we may have a bare SEC#1
+                 * point in uncompressed format. If so, skip the decoding
+                 * step. */
+                if (ECPoint_IsBare(point, fieldLen)) {
+                    if (point->data[0] != EC_POINT_FORM_UNCOMPRESSED) {
+                        crv = CKR_ATTRIBUTE_VALUE_INVALID;
+                    }
+                    break;
                 }
 
                 /* handle the encoded case */
-                if (pubKey->u.ec.publicValue.data[0] == SEC_ASN1_OCTET_STRING) {
+                if (point->len != 0 &&
+                    point->data[0] == SEC_ASN1_OCTET_STRING) {
                     SECItem publicValue;
                     SECStatus rv;
 
                     rv = SEC_QuickDERDecodeItem(arena, &publicValue,
                                                 SEC_ASN1_GET(SEC_OctetStringTemplate),
-                                                &pubKey->u.ec.publicValue);
+                                                point);
                     /* nope, didn't decode correctly */
                     if (rv != SECSuccess) {
                         crv = CKR_ATTRIBUTE_VALUE_INVALID;
@@ -2880,7 +2888,9 @@ sftk_PutPubKey(SFTKObject *publicKey, SFTKObject *privateKey, CK_KEY_TYPE keyTyp
             break;
         case CKK_EC:
         case CKK_EC_MONTGOMERY:
-        case CKK_EC_EDWARDS:
+        case CKK_EC_EDWARDS: {
+            SECItem encodedPoint = { siBuffer, NULL, 0 };
+            const SECItem *point = &pubKey->u.ec.publicValue;
             sftk_DeleteAttributeType(publicKey, CKA_EC_PARAMS);
             sftk_DeleteAttributeType(publicKey, CKA_EC_POINT);
             crv = sftk_AddAttributeType(publicKey, CKA_EC_PARAMS,
@@ -2888,9 +2898,25 @@ sftk_PutPubKey(SFTKObject *publicKey, SFTKObject *privateKey, CK_KEY_TYPE keyTyp
             if (crv != CKR_OK) {
                 break;
             }
+            /* NSC_GenerateKeyPair stores a CKK_EC point DER encoded and an
+             * Edwards or Montgomery one bare, so match that here. What
+             * nsslowkey_ConvertToPublicKey handed us is normally the bare
+             * point, but don't wrap it twice if it isn't. */
+            if (keyType == CKK_EC &&
+                ECPoint_IsBare(point,
+                               (EC_GetPointSize(&pubKey->u.ec.ecParams) - 1) / 2)) {
+                if (SEC_ASN1EncodeItem(NULL, &encodedPoint, point,
+                                       SEC_ASN1_GET(SEC_OctetStringTemplate)) == NULL) {
+                    crv = CKR_HOST_MEMORY;
+                    break;
+                }
+                point = &encodedPoint;
+            }
             crv = sftk_AddAttributeType(publicKey, CKA_EC_POINT,
-                                        sftk_item_expand(&pubKey->u.ec.publicValue));
+                                        sftk_item_expand(point));
+            SECITEM_FreeItem(&encodedPoint, PR_FALSE);
             break;
+        }
         default:
             return CKR_KEY_TYPE_INCONSISTENT;
     }

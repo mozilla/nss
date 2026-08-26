@@ -4,6 +4,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+#include <algorithm>
 #include <climits>
 #include <memory>
 #include "nss.h"
@@ -190,6 +191,27 @@ const std::vector<uint8_t> kDsa1024PublicValue = {
     0x7f, 0xf7, 0x13, 0x3c, 0x12, 0xa6, 0x2b, 0xa6, 0xea, 0xce, 0x75, 0xab,
     0x42, 0xdd, 0x62, 0x73, 0xe8, 0x3e, 0x9a, 0x39, 0xa7, 0x0e, 0xce, 0xa6,
     0x88, 0x56, 0xd5, 0x07, 0xf0, 0x87, 0xcf, 0x7f};
+
+// A P-256 key whose uncompressed public point 04 || X || Y happens to start
+// 04 3f, so the raw 65 bytes are also a well formed DER OCTET STRING of
+// length 0x3f. Roughly one EC key in 256 looks like this, which is what made
+// the SECKEY_ConvertToPublicKey heuristic strip two bytes at random. The [1]
+// publicKey field is omitted so the token has to recompute the point.
+const std::vector<uint8_t> kP256AmbiguousPointKeyNoPublicKey = {
+    0x30, 0x41, 0x02, 0x01, 0x00, 0x30, 0x13, 0x06, 0x07, 0x2a, 0x86, 0x48,
+    0xce, 0x3d, 0x02, 0x01, 0x06, 0x08, 0x2a, 0x86, 0x48, 0xce, 0x3d, 0x03,
+    0x01, 0x07, 0x04, 0x27, 0x30, 0x25, 0x02, 0x01, 0x01, 0x04, 0x20, 0xb2,
+    0x7f, 0xa3, 0xc3, 0x08, 0x09, 0x95, 0xa9, 0x6e, 0x7b, 0x3d, 0x9c, 0x53,
+    0xac, 0x6a, 0x50, 0xb1, 0xf5, 0x5b, 0x34, 0x4e, 0x11, 0xf8, 0xae, 0x2d,
+    0x1a, 0xd6, 0xed, 0x49, 0x52, 0x25, 0xa0};
+
+const std::vector<uint8_t> kP256AmbiguousPoint = {
+    0x04, 0x3f, 0xb0, 0x67, 0x4b, 0x4b, 0xd3, 0xc3, 0xf7, 0xb6, 0x30,
+    0xed, 0xf3, 0xea, 0xf7, 0x9d, 0xde, 0x73, 0x4d, 0x37, 0x8b, 0x89,
+    0x04, 0x67, 0xf7, 0x57, 0x8d, 0x94, 0xbb, 0xdf, 0x6e, 0x7c, 0xfb,
+    0xf5, 0xf1, 0x50, 0xf7, 0x1b, 0xd4, 0x51, 0xf3, 0x3a, 0xf3, 0x20,
+    0x08, 0xd7, 0x62, 0x3c, 0xc3, 0xe7, 0x82, 0x73, 0x98, 0x6f, 0xe9,
+    0x69, 0x5d, 0x63, 0x73, 0x40, 0xd1, 0x04, 0xf4, 0xc3, 0x37};
 
 const std::vector<uint8_t> kInvalidZeroLengthKey = {
     0x30, 0x1a,        // SEQUENCE(len=26)
@@ -761,5 +783,103 @@ INSTANTIATE_TEST_SUITE_P(
     [](const ::testing::TestParamInfo<PqCkaIdKeyType>& i) {
       return std::string(i.param.name);
     });
+
+// The CKA_EC_POINT a token hands back may or may not be wrapped in an OCTET
+// STRING, and SECKEY_ConvertToPublicKey has to tell the two apart. A bare
+// uncompressed point is itself a well formed OCTET STRING once in every 256
+// keys, so these check the whole EC public value survives a round trip rather
+// than losing its first two bytes. Both paths reach the same heuristic:
+// PK11_ExportPrivKeyInfo falls back to SECKEY_ConvertToPublicKey because
+// softoken keeps no CKA_EC_POINT on an EC private key, and the CKA_ID that
+// PK11_ImportAndReturnPrivateKey derives comes from there too.
+struct EcCurve {
+  const char* name;
+  SECOidTag curve;
+  unsigned int pointLen;  // 2 * fieldLen + 1
+};
+
+class EcPublicValueTest : public PrivateKeyImportCkaIdTest,
+                          public ::testing::WithParamInterface<EcCurve> {
+ protected:
+  void GenerateKey(ScopedSECKEYPrivateKey* priv, ScopedSECKEYPublicKey* pub) {
+    Pkcs11KeyPairGenerator generator(CKM_EC_KEY_PAIR_GEN, GetParam().curve);
+    generator.GenerateKey(priv, pub, /*sensitive=*/false);
+  }
+};
+
+// SECKEY_ConvertToPublicKey is where the wrapped/bare decision is made, so
+// check it against a key whose public value we already know.
+TEST_P(EcPublicValueTest, ConvertToPublicKeyKeepsWholePoint) {
+  ScopedSECKEYPrivateKey priv;
+  ScopedSECKEYPublicKey pub;
+  ASSERT_NO_FATAL_FAILURE(GenerateKey(&priv, &pub));
+  ASSERT_TRUE(priv);
+  ASSERT_EQ(GetParam().pointLen, pub->u.ec.publicValue.len);
+
+  ScopedSECKEYPublicKey converted(SECKEY_ConvertToPublicKey(priv.get()));
+  ASSERT_TRUE(converted) << PORT_ErrorToString(PORT_GetError());
+  EXPECT_EQ(GetParam().pointLen, converted->u.ec.publicValue.len);
+  EXPECT_EQ(0, SECITEM_CompareItem(&pub->u.ec.publicValue,
+                                   &converted->u.ec.publicValue));
+}
+
+// An exported PrivateKeyInfo has to carry the point the key actually has. The
+// [1] publicKey is a BIT STRING, so a truncated point shows up as a length
+// that doesn't match the curve.
+TEST_P(EcPublicValueTest, ExportedPkcs8CarriesWholePoint) {
+  ScopedSECKEYPrivateKey priv;
+  ScopedSECKEYPublicKey pub;
+  ASSERT_NO_FATAL_FAILURE(GenerateKey(&priv, &pub));
+  ASSERT_TRUE(priv);
+
+  ScopedSECItem der(PK11_ExportDERPrivateKeyInfo(priv.get(), nullptr));
+  ASSERT_TRUE(der) << PORT_ErrorToString(PORT_GetError());
+
+  // the point is the tail of the encoding, so just look for it there
+  const std::vector<uint8_t> encoded(der->data, der->data + der->len);
+  const std::vector<uint8_t> point(
+      pub->u.ec.publicValue.data,
+      pub->u.ec.publicValue.data + pub->u.ec.publicValue.len);
+  EXPECT_NE(encoded.end(), std::search(encoded.begin(), encoded.end(),
+                                       point.begin(), point.end()))
+      << "exported PrivateKeyInfo does not contain the full public point";
+}
+
+INSTANTIATE_TEST_SUITE_P(
+    EcPublicValueTest, EcPublicValueTest,
+    ::testing::Values(EcCurve{"P256", SEC_OID_SECG_EC_SECP256R1, 65},
+                      EcCurve{"P384", SEC_OID_SECG_EC_SECP384R1, 97},
+                      EcCurve{"P521", SEC_OID_SECG_EC_SECP521R1, 133}),
+    [](const ::testing::TestParamInfo<EcCurve>& i) {
+      return std::string(i.param.name);
+    });
+
+// The deterministic version of the above: this key's point starts 04 3f, so
+// the raw 65 bytes parse as an OCTET STRING of length 0x3f. The PrivateKeyInfo
+// omits the public key, so the CKA_ID can only come from the point the token
+// recomputes, which is exactly where the two forms get confused.
+TEST_F(PrivateKeyImportCkaIdTest, EcdsaAmbiguousPointIsNotUnwrapped) {
+  ScopedSECKEYPrivateKey imported(
+      Import(kP256AmbiguousPointKeyNoPublicKey, PR_FALSE));
+  ASSERT_TRUE(imported) << PORT_ErrorToString(PORT_GetError());
+
+  SECItem expected = {siBuffer,
+                      const_cast<unsigned char*>(kP256AmbiguousPoint.data()),
+                      static_cast<unsigned int>(kP256AmbiguousPoint.size())};
+  ExpectCkaIdFor(imported.get(), &expected);
+
+  ScopedSECKEYPublicKey converted(SECKEY_ConvertToPublicKey(imported.get()));
+  ASSERT_TRUE(converted) << PORT_ErrorToString(PORT_GetError());
+  EXPECT_EQ(0, SECITEM_CompareItem(&expected, &converted->u.ec.publicValue));
+
+  // and exporting it again has to write the whole point back out
+  ScopedSECItem der(PK11_ExportDERPrivateKeyInfo(imported.get(), nullptr));
+  ASSERT_TRUE(der) << PORT_ErrorToString(PORT_GetError());
+  const std::vector<uint8_t> encoded(der->data, der->data + der->len);
+  EXPECT_NE(encoded.end(),
+            std::search(encoded.begin(), encoded.end(),
+                        kP256AmbiguousPoint.begin(), kP256AmbiguousPoint.end()))
+      << "exported PrivateKeyInfo does not contain the full public point";
+}
 
 }  // namespace nss_test
