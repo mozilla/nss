@@ -4,7 +4,7 @@
 
 (nss-sample-code-0-utilities)=
 
-## [NSS Sample Code 0: Utilities.](#nss_sample_code_0_utilities.)
+## NSS Sample Code 0: Utilities.
 
 :::{container}
 These utility functions are adapted from those found in the sectool library used by the NSS
@@ -21,7 +21,7 @@ It shows the following:
 - Print data as hexadecimal.
 :::
 
-### [util.h](#util.h)
+### util.h
 
 :::{container}
 
@@ -173,7 +173,7 @@ ReadDERFromFile(SECItem *der, const char *inFileName, PRBool ascii);
 
 :::
 
-### [Util.c](#util.c)
+### Util.c
 
 :::{container}
 

@@ -2,13 +2,13 @@
 
 # FC_SignEncryptUpdate
 
-## [Name](#name)
+## Name
 
 :::{container}
 FC_SignEncryptUpdate - continue a multi-part signing and encryption operation
 :::
 
-## [Syntax](#syntax)
+## Syntax
 
 :::{container}
 
@@ -24,7 +24,7 @@ CK_RV FC_SignEncryptUpdate(
 
 :::
 
-## [Parameters](#parameters)
+## Parameters
 
 :::{container}
 `hSession`
@@ -48,7 +48,7 @@ CK_RV FC_SignEncryptUpdate(
 : [in] pointer to the length of the encrypted part buffer.
 :::
 
-## [Description](#description)
+## Description
 
 :::{container}
 `FC_SignEncryptUpdate` continues a multi-part signature and encryption operation. After calling
@@ -59,11 +59,11 @@ A user must log into the token (to assume the NSS User role) before calling
 `FC_SignEncryptUpdate`.
 :::
 
-## [Return value](#return_value)
+## Return value
 
-## [Examples](#examples)
+## Examples
 
-## [See also](#see_also)
+## See also
 
 :::{container}
 

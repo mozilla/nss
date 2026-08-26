@@ -2,13 +2,13 @@
 
 # FC_GetInfo
 
-## [Name](#name)
+## Name
 
 :::{container}
 FC_GetInfo - return general information about the PKCS #11 library.
 :::
 
-## [Syntax](#syntax)
+## Syntax
 
 :::{container}
 
@@ -18,7 +18,7 @@ CK_RV  FC_GetInfo(CK_INFO_PTR pInfo);
 
 :::
 
-## [Parameters](#parameters)
+## Parameters
 
 :::{container}
 `FC_GetInfo` has one parameter:
@@ -28,7 +28,7 @@ CK_RV  FC_GetInfo(CK_INFO_PTR pInfo);
 : points to a [CK_INFO](/en-US/CK_INFO) structure
 :::
 
-## [Description](#description)
+## Description
 
 :::{container}
 `FC_GetInfo` returns general information about the PKCS #11 library. On return, the `CK_INFO`
@@ -47,7 +47,7 @@ structure that `pInfo` points to has the following information:
 A user may call `FC_GetInfo` without logging into the token (to assume the NSS User role).
 :::
 
-## [Return value](#return_value)
+## Return value
 
 ::::{container}
 `FC_GetInfo` always returns `CKR_OK`.
@@ -60,7 +60,7 @@ initialized.
 :::
 ::::
 
-## [Examples](#examples)
+## Examples
 
 :::{container}
 Note the use of the `%.32s` format string to print the `manufacturerID` and
@@ -95,7 +95,7 @@ printf("\n");
 
 :::
 
-## [See also](#see_also)
+## See also
 
 :::{container}
 

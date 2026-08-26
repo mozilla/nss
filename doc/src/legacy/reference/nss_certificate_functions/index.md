@@ -2,7 +2,7 @@
 
 # NSS Certificate Functions
 
-## [Certificate Functions](#certificate_functions)
+## Certificate Functions
 
 :::{container}
 This chapter describes the functions and related types used to work with a certificate database

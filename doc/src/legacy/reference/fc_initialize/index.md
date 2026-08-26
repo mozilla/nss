@@ -10,7 +10,7 @@
 FC_Initialize - initialize the PKCS #11 library.
 :::
 
-## [Syntax](#syntax)
+## Syntax
 
 :::{container}
 
@@ -20,7 +20,7 @@ CK_RV FC_Initialize(CK_VOID_PTR pInitArgs);
 
 :::
 
-### [Parameters](#parameters)
+### Parameters
 
 :::{container}
 `pInitArgs`
@@ -28,7 +28,7 @@ CK_RV FC_Initialize(CK_VOID_PTR pInitArgs);
 : Points to a `CK_C_INITIALIZE_ARGS` structure.
 :::
 
-## [Description](#description)
+## Description
 
 :::{container}
 `FC_Initialize` initializes the {ref}`mozilla-projects-nss-reference-nss-cryptographic-module`
@@ -72,7 +72,7 @@ See {ref}`mozilla-projects-nss-pkcs11-module-specs` for complete documentation o
 parameters string.
 :::
 
-### [Return value](#return_value)
+### Return value
 
 :::{container}
 `FC_Initialize` returns the following return codes.
@@ -101,7 +101,7 @@ parameters string.
 - `CKR_HOST_MEMORY`: we ran out of memory.
 :::
 
-## [Examples](#examples)
+## Examples
 
 :::{container}
 

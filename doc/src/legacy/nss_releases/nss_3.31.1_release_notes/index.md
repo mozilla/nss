@@ -9,14 +9,14 @@
 :::
 ::::
 
-## [Introduction](#introduction)
+## Introduction
 
 :::{container}
 The Network Security Services (NSS) team has released NSS 3.31.1, which is a patch release for
 NSS 3.31.
 :::
 
-## [Distribution information](#distribution_information)
+## Distribution information
 
 :::{container}
 The hg tag is NSS_3_31_1_RTM. NSS 3.31.1 requires Netscape Portable Runtime (NSPR) 4.15, or
@@ -30,7 +30,7 @@ NSS 3.31.1 source distributions are available on ftp.mozilla.org for secure HTTP
 
 (new-in-nss-3-31-1)=
 
-## [New in NSS 3.31.1](#new_in_nss_3.31.1)
+## New in NSS 3.31.1
 
 :::{container}
 No new functionality is introduced in this release.
@@ -38,7 +38,7 @@ No new functionality is introduced in this release.
 
 (bugs-fixed-in-nss-3-31-1)=
 
-## [Bugs fixed in NSS 3.31.1](#bugs_fixed_in_nss_3.31.1)
+## Bugs fixed in NSS 3.31.1
 
 :::{container}
 
@@ -46,7 +46,7 @@ No new functionality is introduced in this release.
   when using an external PKCS#11 token.
 :::
 
-## [Compatibility](#compatibility)
+## Compatibility
 
 :::{container}
 NSS 3.31.1 shared libraries are backward compatible with all older NSS 3.x shared libraries. A
@@ -56,7 +56,7 @@ to the functions listed in NSS Public Functions will remain compatible with futu
 the NSS shared libraries.
 :::
 
-## [Feedback](#feedback)
+## Feedback
 
 :::{container}
 Bugs discovered should be reported by filing a bug report with

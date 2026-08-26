@@ -2,13 +2,13 @@
 
 # FC_CloseAllSessions
 
-## [Name](#name)
+## Name
 
 :::{container}
 FC_CloseAllSessions - close all sessions between an application and a token.
 :::
 
-## [Syntax](#syntax)
+## Syntax
 
 :::{container}
 
@@ -20,7 +20,7 @@ CK_RV FC_CloseAllSessions(
 
 :::
 
-## [Parameters](#parameters)
+## Parameters
 
 :::{container}
 `slotID`
@@ -28,7 +28,7 @@ CK_RV FC_CloseAllSessions(
 : [in] the ID of the token's slot.
 :::
 
-## [Description](#description)
+## Description
 
 :::{container}
 `FC_CloseAllSessions` closes all sessions between an application and the token in the slot with
@@ -41,11 +41,11 @@ A user may call `FC_CloseAllSessions` without logging into the token (to assume 
 role).
 :::
 
-## [Return value](#return_value)
+## Return value
 
-## [Examples](#examples)
+## Examples
 
-## [See also](#see_also)
+## See also
 
 :::{container}
 

@@ -2,14 +2,14 @@
 
 # FC_GetFunctionList
 
-## [Name](#name)
+## Name
 
 :::{container}
 FC_GetFunctionList - get a pointer to the list of function pointers in the FIPS mode of
 operation.
 :::
 
-## [Syntax](#syntax)
+## Syntax
 
 :::{container}
 
@@ -19,7 +19,7 @@ CK_RV FC_GetFunctionList(CK_FUNCTION_LIST_PTR *ppFunctionList);
 
 :::
 
-## [Parameters](#parameters)
+## Parameters
 
 :::{container}
 `FC_GetFunctionList` has one parameter:
@@ -30,7 +30,7 @@ CK_RV FC_GetFunctionList(CK_FUNCTION_LIST_PTR *ppFunctionList);
   pointers.
 :::
 
-## [Description](#description)
+## Description
 
 :::{container}
 `FC_GetFunctionList` stores in `*ppFunctionList` a pointer to the
@@ -41,13 +41,13 @@ A user may call `FC_GetFunctionList` without logging into the token (to assume t
 role).
 :::
 
-## [Return value](#return_value)
+## Return value
 
 :::{container}
 `FC_GetFunctionList` always returns `CKR_OK`.
 :::
 
-## [Examples](#examples)
+## Examples
 
 :::{container}
 
@@ -65,7 +65,7 @@ assert(crv == CKR_OK);
 
 :::
 
-## [See also](#see_also)
+## See also
 
 :::{container}
 

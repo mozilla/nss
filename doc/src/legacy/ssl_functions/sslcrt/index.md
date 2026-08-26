@@ -36,7 +36,7 @@ such as the `cert7.db` database provided with Communicator.
 [Comparing SecItem Objects](#1055384)
 :::
 
-## [Validating Certificates](#validating_certificates)
+## Validating Certificates
 
 :::{container}
 `` `CERT_VerifyCertNow ``
@@ -300,7 +300,7 @@ The function returns one of these values:
   code.
 :::
 
-## [Manipulating Certificates](#manipulating_certificates)
+## Manipulating Certificates
 
 :::{container}
 `` `CERT_DupCertificate ``
@@ -398,7 +398,7 @@ Never alter the contents of a certificate or key structure. If you attempt to do
 affects all the shallow copies of that structure and can cause severe problems.
 :::
 
-## [Getting Certificate Information](#getting_certificate_information)
+## Getting Certificate Information
 
 :::{container}
 `` `CERT_FindCertByName ``
@@ -618,7 +618,7 @@ The function returns one of these values:
 - `kt_kea_size`
 :::
 
-## [Comparing SecItem Objects](#comparing_secitem_objects)
+## Comparing SecItem Objects
 
 :::{container}
 

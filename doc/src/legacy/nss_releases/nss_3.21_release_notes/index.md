@@ -7,13 +7,13 @@
 sections "Security Fixes" and "Acknowledgements" have been added.
 :::
 
-## [Introduction](#introduction)
+## Introduction
 
 :::{container}
 The NSS team has released Network Security Services (NSS) 3.21, which is a minor release.
 :::
 
-## [Distribution Information](#distribution_information)
+## Distribution Information
 
 :::{container}
 The HG tag is NSS_3_21_RTM. NSS 3.21 requires NSPR 4.10.10 or newer.
@@ -26,7 +26,7 @@ NSS 3.21 source distributions are available on ftp.mozilla.org for secure HTTPS 
 
 (security-fixes-in-nss-3-21)=
 
-## [Security Fixes in NSS 3.21](#security_fixes_in_nss_3.21)
+## Security Fixes in NSS 3.21
 
 :::{container}
 
@@ -38,9 +38,9 @@ NSS 3.21 source distributions are available on ftp.mozilla.org for secure HTTPS 
 
 (new-in-nss-3-21)=
 
-## [New in NSS 3.21](#new_in_nss_3.21)
+## New in NSS 3.21
 
-### [New Functionality](#new_functionality)
+### New Functionality
 
 :::{container}
 
@@ -160,7 +160,7 @@ NSS 3.21 source distributions are available on ftp.mozilla.org for secure HTTPS 
 
 (notable-changes-in-nss-3-21)=
 
-## [Notable Changes in NSS 3.21](#notable_changes_in_nss_3.21)
+## Notable Changes in NSS 3.21
 
 :::{container}
 
@@ -233,7 +233,7 @@ NSS 3.21 source distributions are available on ftp.mozilla.org for secure HTTPS 
 
 (bugs-fixed-in-nss-3-21)=
 
-## [Bugs fixed in NSS 3.21](#bugs_fixed_in_nss_3.21)
+## Bugs fixed in NSS 3.21
 
 :::{container}
 This Bugzilla query returns all the bugs fixed in NSS 3.21:
@@ -241,7 +241,7 @@ This Bugzilla query returns all the bugs fixed in NSS 3.21:
 <https://bugzilla.mozilla.org/buglist.cgi?resolution=FIXED&classification=Components&query_format=advanced&product=NSS&target_milestone=3.21>
 :::
 
-## [Acknowledgements](#acknowledgements)
+## Acknowledgements
 
 :::{container}
 The NSS development team would like to thank Karthikeyan Bhargavan from
@@ -249,7 +249,7 @@ The NSS development team would like to thank Karthikeyan Bhargavan from
 1158489](https://bugzilla.mozilla.org/show_bug.cgi?id=1158489).
 :::
 
-## [Compatibility](#compatibility)
+## Compatibility
 
 :::{container}
 NSS 3.21 shared libraries are backward compatible with all older NSS 3.x shared libraries. A
@@ -259,7 +259,7 @@ to the functions listed in NSS Public Functions will remain compatible with futu
 the NSS shared libraries.
 :::
 
-## [Feedback](#feedback)
+## Feedback
 
 :::{container}
 Bugs discovered should be reported by filing a bug report with

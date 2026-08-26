@@ -2,13 +2,13 @@
 
 # NSS 3.24 release notes
 
-## [Introduction](#introduction)
+## Introduction
 
 :::{container}
 The Network Security Services (NSS) team has released NSS 3.24, which is a minor release.
 :::
 
-## [Distribution information](#distribution_information)
+## Distribution information
 
 :::{container}
 The hg tag is NSS_3_24_RTM. NSS 3.24 requires Netscape Portable Runtime(NSPR) 4.12 or newer.
@@ -21,14 +21,14 @@ NSS 3.24 source distributions are available on ftp.mozilla.org for secure HTTPS 
 
 (new-in-nss-3-24)=
 
-## [New in NSS 3.24](#new_in_nss_3.24)
+## New in NSS 3.24
 
 :::{container}
 NSS 3.24 includes two NSS softoken updates, a new function to configure SSL/TLS server sockets,
 and two functions to improve the use of temporary arenas.
 :::
 
-### [New functionality](#new_functionality)
+### New functionality
 
 :::{container}
 
@@ -71,7 +71,7 @@ and two functions to improve the use of temporary arenas.
 
 (new-elements)=
 
-### [New elements](#new_elements)
+### New elements
 
 :::{container}
 This section lists and briefly describes the new functions, types, and macros in NSS 3.24.
@@ -122,7 +122,7 @@ This section lists and briefly describes the new functions, types, and macros in
 
 (notable-changes-in-nss-3-24)=
 
-## [Notable changes in NSS 3.24](#notable_changes_in_nss_3.24)
+## Notable changes in NSS 3.24
 
 :::{container}
 Additions, deprecations, and other changes in NSS 3.24 are listed below.
@@ -165,7 +165,7 @@ Additions, deprecations, and other changes in NSS 3.24 are listed below.
 
 (bugs-fixed-in-nss-3-24)=
 
-## [Bugs fixed in NSS 3.24](#bugs_fixed_in_nss_3.24)
+## Bugs fixed in NSS 3.24
 
 :::{container}
 This Bugzilla query returns all the bugs fixed in NSS 3.24:
@@ -173,14 +173,14 @@ This Bugzilla query returns all the bugs fixed in NSS 3.24:
 <https://bugzilla.mozilla.org/buglist.cgi?resolution=FIXED&classification=Components&query_format=advanced&product=NSS&target_milestone=3.24>
 :::
 
-## [Acknowledgements](#acknowledgements)
+## Acknowledgements
 
 :::{container}
 The NSS development team would like to thank Yuval Yarom for responsibly disclosing the
 Cachebleed attack by providing advance copies of their research.
 :::
 
-## [Compatibility](#compatibility)
+## Compatibility
 
 :::{container}
 NSS 3.24 shared libraries are backward-compatible with all older NSS 3.x shared libraries. A
@@ -190,7 +190,7 @@ to the functions listed in NSS Public Functions will remain compatible with futu
 the NSS shared libraries.
 :::
 
-## [Feedback](#feedback)
+## Feedback
 
 :::{container}
 Bugs discovered should be reported by filing a bug report with

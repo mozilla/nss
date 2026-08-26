@@ -11,7 +11,7 @@ SSL functions in NSS. These NSPR functions are listed in this section.
 
 (nspr-initialization-and-shutdown)=
 
-## [NSPR initialization and shutdown](#nspr_initialization_and_shutdown)
+## NSPR initialization and shutdown
 
 :::{container}
 NSPR is automatically initialized by the first NSPR function called by the application. Call
@@ -22,7 +22,7 @@ NSPR is automatically initialized by the first NSPR function called by the appli
 
 (error-reporting)=
 
-## [Error reporting](#error_reporting)
+## Error reporting
 
 :::{container}
 NSS uses NSPR's thread-specific error code to report errors. Call
@@ -39,7 +39,7 @@ and `PR_SetError`.
 
 (calendar-time)=
 
-## [Calendar time](#calendar_time)
+## Calendar time
 
 :::{container}
 NSS certificate verification functions take a `PRTime` parameter that specifies the time
@@ -51,7 +51,7 @@ instant at which the validity of the certificate should verified. The NSPR funct
 
 (interval-time)=
 
-## [Interval time](#interval_time)
+## Interval time
 
 :::{container}
 The NSPR socket I/O functions `` `PR_Recv `` \</en-US/PR_Recv>\`\_\_ and
@@ -66,7 +66,7 @@ convert a time interval in seconds or milliseconds to `PRIntervalTime`.
 
 (nspr-io-layering)=
 
-## [NSPR I/O layering](#nspr_io_layering)
+## NSPR I/O layering
 
 :::{container}
 NSPR file descriptors can be layered, corresponding to the layers in the network stack. The SSL
@@ -87,7 +87,7 @@ functions allow you to create your own NSPR I/O layer and manipulate it.
 
 (wrapping-a-native-file-descriptor)=
 
-## [Wrapping a native file descriptor](#wrapping_a_native_file_descriptor)
+## Wrapping a native file descriptor
 
 :::{container}
 If your current TCP socket code uses the standard BSD socket API, a lighter-weight method than
@@ -99,7 +99,7 @@ method is convenient and works for most applications.
 
 (socket-io-functions)=
 
-## [Socket I/O functions](#socket_io_functions)
+## Socket I/O functions
 
 :::{container}
 As mentioned above, the SSL library in NSS implements the SSL protocol as an NSPR I/O layer.

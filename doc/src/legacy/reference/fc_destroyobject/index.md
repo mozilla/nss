@@ -2,13 +2,13 @@
 
 # FC_DestroyObject
 
-## [Name](#name)
+## Name
 
 :::{container}
 FC_DestroyObject - destroy an object.
 :::
 
-## [Syntax](#syntax)
+## Syntax
 
 :::{container}
 
@@ -21,7 +21,7 @@ CK_RV FC_DestroyObject(
 
 :::
 
-## [Parameters](#parameters)
+## Parameters
 
 :::{container}
 `hSession`
@@ -33,7 +33,7 @@ CK_RV FC_DestroyObject(
 : [in] object handle.
 :::
 
-## [Description](#description)
+## Description
 
 :::{container}
 `FC_DestroyObject` destroys an object.
@@ -42,11 +42,11 @@ A user must log into the token (to assume the NSS User role) before destroying a
 private key object.
 :::
 
-## [Return value](#return_value)
+## Return value
 
-## [Examples](#examples)
+## Examples
 
-## [See also](#see_also)
+## See also
 
 :::{container}
 

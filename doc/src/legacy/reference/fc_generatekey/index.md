@@ -2,13 +2,13 @@
 
 # FC_GenerateKey
 
-## [Name](#name)
+## Name
 
 :::{container}
 FC_GenerateKey - generate a new key
 :::
 
-## [Syntax](#syntax)
+## Syntax
 
 :::{container}
 
@@ -24,7 +24,7 @@ CK_RV FC_GenerateKey(
 
 :::
 
-## [Parameters](#parameters)
+## Parameters
 
 :::{container}
 `hSession`
@@ -48,7 +48,7 @@ CK_RV FC_GenerateKey(
 : [out] pointer to the location to receive the handle of the new key.
 :::
 
-## [Description](#description)
+## Description
 
 :::{container}
 `FC_GenerateKey` generates a secret key, creating a new key object. The handle of new key is
@@ -57,11 +57,11 @@ returned.
 A user must log into the token (to assume the NSS User role) before calling `FC_GenerateKey`.
 :::
 
-## [Return value](#return_value)
+## Return value
 
-## [Examples](#examples)
+## Examples
 
-## [See also](#see_also)
+## See also
 
 :::{container}
 

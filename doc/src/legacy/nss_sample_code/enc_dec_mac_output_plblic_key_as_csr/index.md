@@ -4,7 +4,7 @@
 
 (nss-sample-code-5-encryptiondecryption-and-mac-and-output-public-as-a-csr)=
 
-## [NSS Sample Code 5: Encryption/Decryption and MAC and output Public as a CSR.](#nss_sample_code_5_encryptiondecryption_and_mac_and_output_public_as_a_csr.)
+## NSS Sample Code 5: Encryption/Decryption and MAC and output Public as a CSR.
 
 :::{container}
 Generates encryption/mac keys and outputs public key as certificate signing request

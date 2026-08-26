@@ -4,7 +4,7 @@
 
 (using-the-certificate-database-tool)=
 
-## [Using the Certificate Database Tool](#using_the_certificate_database_tool)
+## Using the Certificate Database Tool
 
 :::{container}
 The Certificate Database Tool is a command-line utility that can create and modify the Netscape
@@ -24,13 +24,13 @@ This document discusses certificate and key database management. For information
 database management, see {ref}`mozilla_projects_nss_reference_nss_tools_:_modutil`
 :::
 
-## [Availability](#availability)
+## Availability
 
 :::{container}
 See the release notes for the platforms this tool is available on.
 :::
 
-## [Syntax](#syntax)
+## Syntax
 
 :::{container}
 To run the Certificate Database Tool, type the command
@@ -44,7 +44,7 @@ following section. Each command takes one option. Each option may take zero or m
 see a usage string, issue the command without options, or with the `-H` option.
 :::
 
-### [Options and Arguments](#options_and_arguments)
+### Options and Arguments
 
 :::{container}
 Options specify an action and are uppercase. Option arguments modify an action and are lowercase.
@@ -459,7 +459,7 @@ Certificate Database Tool command options and their arguments are defined as fol
 
 :::
 
-## [Usage](#usage)
+## Usage
 
 :::{container}
 The Certificate Database Tool's capabilities are grouped as follows, using these combinations of
@@ -521,11 +521,11 @@ square brackets are required.
 - Displaying a list of the options and arguments used by the Certificate Database Tool:
 :::
 
-## [Examples](#examples)
+## Examples
 
 (creating-a-new-certificate-database)=
 
-### [Creating a New Certificate Database](#creating_a_new_certificate_database)
+### Creating a New Certificate Database
 
 :::{container}
 This example creates a new certificate database (`cert8.db` file) in the specified directory:
@@ -540,7 +540,7 @@ Tool or other tools.
 
 (listing-certificates-in-a-database)=
 
-### [Listing Certificates in a Database](#listing_certificates_in_a_database)
+### Listing Certificates in a Database
 
 :::{container}
 This example lists all the certificates in the `cert8.db` file in the specified directory:
@@ -558,7 +558,7 @@ The Certificate Database Tool displays output similar to the following:
 
 (creating-a-certificate-request)=
 
-### [Creating a Certificate Request](#creating_a_certificate_request)
+### Creating a Certificate Request
 
 :::{container}
 This example generates a binary certificate request file named `e95c.req` in the specified
@@ -578,7 +578,7 @@ Enter Password or Pin for "Communicator Certificate DB":
 
 (creating-a-certificate)=
 
-### [Creating a Certificate](#creating_a_certificate)
+### Creating a Certificate
 
 :::{container}
 A valid certificate must be issued by a trusted CA. If a CA key pair is not available, you can
@@ -602,7 +602,7 @@ certutil -C -m 2345 -i mycert.req -o mycert.crt -c myissuer -d certdir
 
 (adding-a-certificate-to-the-database)=
 
-### [Adding a Certificate to the Database](#adding_a_certificate_to_the_database)
+### Adding a Certificate to the Database
 
 :::{container}
 This example adds a certificate to the certificate database:
@@ -628,7 +628,7 @@ The Certificate Database Tool displays output similar to the following:
 
 (validating-a-certificate)=
 
-### [Validating a Certificate](#validating_a_certificate)
+### Validating a Certificate
 
 :::{container}
 This example validates a certificate:

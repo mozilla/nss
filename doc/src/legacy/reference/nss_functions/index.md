@@ -15,7 +15,7 @@ Keywords:
 - Updated - function has new arguments such as new flag or addition to structure.
 :::
 
-## [SSL functions](#ssl_functions)
+## SSL functions
 
 ::::{container}
 
@@ -26,7 +26,7 @@ Keywords:
 
 (deprecated-ssl-functions)=
 
-## [Deprecated SSL functions](#deprecated_ssl_functions)
+## Deprecated SSL functions
 
 ::::{container}
 
@@ -35,7 +35,7 @@ Keywords:
 :::
 ::::
 
-## [Certificate functions](#certificate_functions)
+## Certificate functions
 
 ::::{container}
 
@@ -46,7 +46,7 @@ Keywords:
 
 (cryptography-functions)=
 
-## [Cryptography functions](#cryptography_functions)
+## Cryptography functions
 
 ::::{container}
 
@@ -55,7 +55,7 @@ Keywords:
 :::
 ::::
 
-## [Utility functions](#utility_functions)
+## Utility functions
 
 ::::{container}
 
@@ -66,7 +66,7 @@ Keywords:
 
 (s-2fmime-functions)=
 
-## [S/MIME functions](#s.2fmime_functions)
+## S/MIME functions
 
 ::::{container}
 
@@ -75,7 +75,7 @@ Keywords:
 :::
 ::::
 
-## [PKCS #7 functions](#pkcs_.237_functions)
+## PKCS #7 functions
 
 ::::{container}
 
@@ -84,7 +84,7 @@ Keywords:
 :::
 ::::
 
-## [PKCS #12 functions](#pkcs_.2312_functions)
+## PKCS #12 functions
 
 ::::{container}
 

@@ -14,7 +14,7 @@ intended for Firefox ESR 78, which was released on **16 June 2020**.
 
 (past-releases)=
 
-## [Past releases](#past_releases)
+## Past releases
 
 :::{container}
 
@@ -151,7 +151,7 @@ intended for Firefox ESR 78, which was released on **16 June 2020**.
 
 (future-releases)=
 
-## [Future releases](#future_releases)
+## Future releases
 
 :::{container}
 Release planning is done on the Mozilla wiki: [NSS:Release

@@ -2,13 +2,13 @@
 
 # FC_GetTokenInfo
 
-## [Name](#name)
+## Name
 
 :::{container}
 FC_GetTokenInfo - obtain information about a particular token in the system.
 :::
 
-## [Syntax](#syntax)
+## Syntax
 
 :::{container}
 
@@ -18,7 +18,7 @@ CK_RV FC_GetTokenInfo(CK_SLOT_ID slotID, CK_TOKEN_INFO_PTR pInfo);
 
 :::
 
-## [Parameters](#parameters)
+## Parameters
 
 :::{container}
 `FC_GetTokenInfo` has two parameters:
@@ -32,7 +32,7 @@ CK_RV FC_GetTokenInfo(CK_SLOT_ID slotID, CK_TOKEN_INFO_PTR pInfo);
 : points to a [CK_TOKEN_INFO](/en-US/CK_TOKEN_INFO) structure
 :::
 
-## [Description](#description)
+## Description
 
 :::{container}
 `FC_GetTokenInfo` returns information about the token in the specified slot. On return, the
@@ -76,7 +76,7 @@ CK_RV FC_GetTokenInfo(CK_SLOT_ID slotID, CK_TOKEN_INFO_PTR pInfo);
 A user may call `FC_GetTokenInfo` without logging into the token (to assume the NSS User role).
 :::
 
-## [Return value](#return_value)
+## Return value
 
 ::::{container}
 `CKR_OK`
@@ -96,14 +96,14 @@ FC_GetTokenInfo should return CKR_ARGUMENTS_BAD if pInfo is NULL.
 :::
 ::::
 
-## [Examples](#examples)
+## Examples
 
 :::{container}
 Note the use of the `%.32s` format string to print the `label` and `manufacturerID` members
 of the `CK_TOKEN_INFO` structure.
 :::
 
-## [See also](#see_also)
+## See also
 
 :::{container}
 

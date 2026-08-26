@@ -4,7 +4,7 @@
 
 (using-jss-1)=
 
-## [Using JSS](#using_jss)
+## Using JSS
 
 :::{container}
 *Newsgroup:*[mozilla.dev.tech.crypto](news://news.mozilla.org:119/mozilla.dev.tech.crypto)
@@ -22,7 +22,7 @@ are planning to use a binary release of JSS, here's how to get JSS working with 
 
 (gather-components)=
 
-### [Gather components](#gather_components)
+### Gather components
 
 :::{container}
 
@@ -130,7 +130,7 @@ are planning to use a binary release of JSS, here's how to get JSS working with 
 
 (setup-your-runtime-environment)=
 
-### [Setup your runtime environment](#setup_your_runtime_environment)
+### Setup your runtime environment
 
 :::{container}
 You need to set some environment variables before building and running Java applications with
@@ -149,7 +149,7 @@ JSS.
 
 (initialize-jss-in-your-application)=
 
-### [Initialize JSS in your application](#initialize_jss_in_your_application)
+### Initialize JSS in your application
 
 :::{container}
 Before calling any JSS methods, you must initialize JSS by calling one of the

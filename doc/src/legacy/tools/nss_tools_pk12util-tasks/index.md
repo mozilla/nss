@@ -4,13 +4,13 @@
 
 (nss-security-tools-pk12util-tasks)=
 
-## [NSS Security Tools: pk12util Tasks](#nss_security_tools_pk12util_tasks)
+## NSS Security Tools: pk12util Tasks
 
 :::{container}
 Newsgroup: [mozilla.dev.tech.crypto](news://news.mozilla.org/mozilla.dev.tech.crypto)
 :::
 
-### [Task List](#task_list)
+### Task List
 
 :::{container}
 

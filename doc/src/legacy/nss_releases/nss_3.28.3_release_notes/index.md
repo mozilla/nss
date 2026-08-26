@@ -2,14 +2,14 @@
 
 # NSS 3.28.3 release notes
 
-## [Introduction](#introduction)
+## Introduction
 
 :::{container}
 Network Security Services (NSS) 3.28.3 is a patch release for NSS 3.28. The bug fixes in NSS
 3.28.3 are described in the "Bugs Fixed" section below.
 :::
 
-## [Distribution Information](#distribution_information)
+## Distribution Information
 
 :::{container}
 The HG tag is NSS_3_28_3_RTM. NSS 3.28.3 requires Netscape Portable Runtime(NSPR) 4.13.1 or
@@ -23,9 +23,9 @@ NSS 3.28.3 source distributions are available on ftp.mozilla.org for secure HTTP
 
 (new-in-nss-3-28-3)=
 
-## [New in NSS 3.28.3](#new_in_nss_3.28.3)
+## New in NSS 3.28.3
 
-### [New Functionality](#new_functionality)
+### New Functionality
 
 :::{container}
 No new functionality is introduced in this release. This is a patch release to fix binary
@@ -34,7 +34,7 @@ compatibility issues.
 
 (bugs-fixed-in-nss-3-28-3)=
 
-## [Bugs fixed in NSS 3.28.3](#bugs_fixed_in_nss_3.28.3)
+## Bugs fixed in NSS 3.28.3
 
 :::{container}
 NSS version 3.28, 3.28.1 and 3.28.2 contained changes that were in violation with the NSS
@@ -54,7 +54,7 @@ longer reads the attribute, and will always set it to ECPoint_Undefined. See [bu
 1340103](https://bugzilla.mozilla.org/show_bug.cgi?id=1340103).
 :::
 
-## [Compatibility](#compatibility)
+## Compatibility
 
 :::{container}
 NSS 3.28.3 shared libraries are backward compatible with most older NSS 3.x shared libraries, but
@@ -75,7 +75,7 @@ and rather use NSS 3.29.1 or a newer version. See also the
 {ref}`mozilla-projects-nss-nss-3-29-1-release-notes`
 :::
 
-## [Feedback](#feedback)
+## Feedback
 
 :::{container}
 Bugs discovered should be reported by filing a bug report with

@@ -19,7 +19,7 @@ for installing PKCS #11 modules.
 
 (using-the-firefox-preferences-to-install-pkcs-11-modules)=
 
-## [Using the Firefox preferences to install PKCS #11 modules](#using_the_firefox_preferences_to_install_pkcs_11_modules)
+## Using the Firefox preferences to install PKCS #11 modules
 
 :::{container}
 
@@ -34,14 +34,14 @@ for installing PKCS #11 modules.
 
 (provisioning-pkcs-11-modules-using-the-pkcs11-api)=
 
-## [Provisioning PKCS #11 modules using the pkcs11 API](#provisioning_pkcs_11_modules_using_the_pkcs11_api)
+## Provisioning PKCS #11 modules using the pkcs11 API
 
 :::{container}
 Starting with Firefox 58, extensions can use the `pkcs11` browser extension API to enumerate
 PKCS #11 modules and make them accessible to the browser as sources of keys and certificates.
 :::
 
-## [See also](#see_also)
+## See also
 
 :::{container}
 

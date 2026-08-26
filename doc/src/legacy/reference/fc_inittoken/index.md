@@ -2,13 +2,13 @@
 
 # FC_InitToken
 
-## [Name](#name)
+## Name
 
 :::{container}
 `FC_InitToken()` - initialize or re-initialize a token.
 :::
 
-## [Syntax](#syntax)
+## Syntax
 
 :::{container}
 
@@ -23,7 +23,7 @@ CK_RV FC_InitToken(
 
 :::
 
-## [Parameters](#parameters)
+## Parameters
 
 :::{container}
 `FC_InitToken()` has the following parameters:
@@ -46,7 +46,7 @@ CK_RV FC_InitToken(
   null-terminated
 :::
 
-## [Description](#description)
+## Description
 
 ::::{container}
 `FC_InitToken()` initializes a brand new token or re-initializes a token that was initialized
@@ -66,7 +66,7 @@ password and needs to blow away the password-encrypted private key database and 
 :::
 ::::
 
-## [Return value](#return_value)
+## Return value
 
 :::{container}
 `FC_InitToken()` returns the following return codes.
@@ -83,7 +83,7 @@ password and needs to blow away the password-encrypted private key database and 
 - `CKR_DEVICE_ERROR`: failed to reset the key database.
 :::
 
-## [Application usage](#application_usage)
+## Application usage
 
 ::::{container}
 `FC_InitToken()` is used to reset the password for the key database when the user forgets the
@@ -100,7 +100,7 @@ those keys.
 :::
 ::::
 
-## [See also](#see_also)
+## See also
 
 :::{container}
 

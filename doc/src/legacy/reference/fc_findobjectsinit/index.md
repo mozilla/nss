@@ -2,13 +2,13 @@
 
 # FC_FindObjectsInit
 
-## [Name](#name)
+## Name
 
 :::{container}
 FC_FindObjectsInit - initialize the parameters for an object search.
 :::
 
-## [Syntax](#syntax)
+## Syntax
 
 :::{container}
 
@@ -22,7 +22,7 @@ CK_RV FC_FindObjectsInit(
 
 :::
 
-## [Parameters](#parameters)
+## Parameters
 
 :::{container}
 `hSession`
@@ -38,7 +38,7 @@ CK_RV FC_FindObjectsInit(
 : [in] number of attributes in the template.
 :::
 
-## [Description](#description)
+## Description
 
 :::{container}
 `FC_FindObjectsInit` sets the attribute list for an object search. If `FC_FindObjectsInit` is
@@ -49,11 +49,11 @@ A user must log into the token (to assume the NSS User role) before searching fo
 private key objects.
 :::
 
-## [Return value](#return_value)
+## Return value
 
-## [Examples](#examples)
+## Examples
 
-## [See also](#see_also)
+## See also
 
 :::{container}
 

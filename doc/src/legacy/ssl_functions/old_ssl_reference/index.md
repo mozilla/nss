@@ -19,7 +19,7 @@
 
 (ssl-reference)=
 
-## [SSL Reference](#ssl_reference)
+## SSL Reference
 
 :::{container}
 *Newsgroup:*[mozilla.dev.tech.crypto](news://news.mozilla.org/mozilla.dev.tech.crypto)\*

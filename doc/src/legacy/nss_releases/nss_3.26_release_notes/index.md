@@ -2,13 +2,13 @@
 
 # NSS 3.26 release notes
 
-## [Introduction](#introduction)
+## Introduction
 
 :::{container}
 The Network Security Services (NSS) team has released NSS 3.26, which is a minor release.
 :::
 
-## [Distribution information](#distribution_information)
+## Distribution information
 
 :::{container}
 The hg tag is NSS_3_26_RTM. NSS 3.26 requires Netscape Portable Runtime(NSPR) 4.12 or newer.
@@ -21,9 +21,9 @@ NSS 3.26 source distributions are available on ftp.mozilla.org for secure HTTPS 
 
 (new-in-nss-3-26)=
 
-## [New in NSS 3.26](#new_in_nss_3.26)
+## New in NSS 3.26
 
-### [New Functionality](#new_functionality)
+### New Functionality
 
 :::{container}
 
@@ -36,7 +36,7 @@ NSS 3.26 source distributions are available on ftp.mozilla.org for secure HTTPS 
 
 (notable-changes-in-nss-3-26)=
 
-## [Notable Changes in NSS 3.26](#notable_changes_in_nss_3.26)
+## Notable Changes in NSS 3.26
 
 :::{container}
 
@@ -56,7 +56,7 @@ NSS 3.26 source distributions are available on ftp.mozilla.org for secure HTTPS 
 
 (bugs-fixed-in-nss-3-26)=
 
-## [Bugs fixed in NSS 3.26](#bugs_fixed_in_nss_3.26)
+## Bugs fixed in NSS 3.26
 
 :::{container}
 This Bugzilla query returns all the bugs fixed in NSS 3.26:
@@ -64,7 +64,7 @@ This Bugzilla query returns all the bugs fixed in NSS 3.26:
 <https://bugzilla.mozilla.org/buglist.cgi?resolution=FIXED&classification=Components&query_format=advanced&product=NSS&target_milestone=3.26>
 :::
 
-## [Compatibility](#compatibility)
+## Compatibility
 
 :::{container}
 NSS 3.26 shared libraries are backwards compatible with all older NSS 3.x shared libraries. A
@@ -74,7 +74,7 @@ functions listed in NSS Public Functions, will remain compatible with future ver
 shared libraries.
 :::
 
-## [Feedback](#feedback)
+## Feedback
 
 :::{container}
 Bugs discovered should be reported by filing a bug report with

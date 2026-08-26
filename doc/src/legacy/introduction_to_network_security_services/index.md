@@ -9,7 +9,7 @@ standards. For a general overview of NSS and the standards it supports, see
 {ref}`mozilla-projects-nss-overview`.
 :::
 
-## [Shared libraries](#shared_libraries)
+## Shared libraries
 
 :::{container}
 Network Security Services provides both static libraries and shared libraries. Applications that
@@ -34,7 +34,7 @@ threading and I/O. (Note that NSPR is a separate Mozilla project; see [Netscape 
 Runtime](https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSPR) for details.)
 :::
 
-## [Naming conventions and special libraries](#naming_conventions_and_special_libraries)
+## Naming conventions and special libraries
 
 :::{container}
 Windows and Unix use different naming conventions for static and dynamic libraries:
@@ -79,7 +79,7 @@ directly:
 
 (support-for-ilp32)=
 
-## [Support for ILP32](#support_for_ilp32)
+## Support for ILP32
 
 :::{container}
 In NSS 3.2 and later versions, there are two new shared libraries for the platforms HP-UX for
@@ -118,7 +118,7 @@ NSS 3.x does not have these two extra shared libraries.
 
 (what-you-should-already-know)=
 
-## [What you should already know](#what_you_should_already_know)
+## What you should already know
 
 :::{container}
 Before using NSS, you should be familiar with the following topics:
@@ -131,7 +131,7 @@ Before using NSS, you should be familiar with the following topics:
 
 (where-to-find-more-information)=
 
-## [Where to find more information](#where_to_find_more_information)
+## Where to find more information
 
 :::{container}
 For information about PKI and SSL that you should understand before using NSS, see the following:

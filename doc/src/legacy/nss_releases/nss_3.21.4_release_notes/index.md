@@ -2,14 +2,14 @@
 
 # NSS 3.21.4 release notes
 
-## [Introduction](#introduction)
+## Introduction
 
 :::{container}
 Network Security Services (NSS) 3.21.4 is a security patch release for NSS 3.21. The bug fixes in
 NSS 3.21.4 are described in the "Bugs Fixed" section below.
 :::
 
-## [Distribution Information](#distribution_information)
+## Distribution Information
 
 :::{container}
 The HG tag is NSS_3_21_4_RTM. NSS 3.21.4 requires NSPR 4.12 or newer.
@@ -22,7 +22,7 @@ NSS 3.21.4 source distributions are available on ftp.mozilla.org for secure HTTP
 
 (new-in-nss-3-21-4)=
 
-## [New in NSS 3.21.4](#new_in_nss_3.21.4)
+## New in NSS 3.21.4
 
 :::{container}
 No new functionality is introduced in this release.
@@ -30,7 +30,7 @@ No new functionality is introduced in this release.
 
 (bugs-fixed-in-nss-3-21-4)=
 
-## [Bugs fixed in NSS 3.21.4](#bugs_fixed_in_nss_3.21.4)
+## Bugs fixed in NSS 3.21.4
 
 :::{container}
 
@@ -41,14 +41,14 @@ No new functionality is introduced in this release.
   ([CVE-2017-5462](https://www.mozilla.org/en-US/security/advisories/mfsa2017-10/#CVE-2017-5462))
 :::
 
-## [Acknowledgements](#acknowledgements)
+## Acknowledgements
 
 :::{container}
 The NSS development team would like to thank Ronald Crane and Vladimir Klebanov for responsibly
 disclosing the issues by providing advance copies of their research.
 :::
 
-## [Compatibility](#compatibility)
+## Compatibility
 
 :::{container}
 NSS 3.21.4 shared libraries are backward compatible with all older NSS 3.x shared libraries. A
@@ -58,7 +58,7 @@ to the functions listed in NSS Public Functions will remain compatible with futu
 the NSS shared libraries.
 :::
 
-## [Feedback](#feedback)
+## Feedback
 
 :::{container}
 Bugs discovered should be reported by filing a bug report with

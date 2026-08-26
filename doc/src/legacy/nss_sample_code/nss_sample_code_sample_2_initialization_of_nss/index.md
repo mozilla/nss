@@ -4,14 +4,14 @@
 
 (nss-sample-code-2-initializing-nss)=
 
-## [NSS Sample Code 2: Initializing NSS](#nss_sample_code_2_initializing_nss)
+## NSS Sample Code 2: Initializing NSS
 
 :::{container}
 This example program demonstrates how to initialize the NSS Database. This program illustrates
 password handling.
 :::
 
-### [Sample Code 1](#sample_code_1)
+### Sample Code 1
 
 :::{container}
 

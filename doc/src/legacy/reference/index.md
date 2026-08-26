@@ -4,7 +4,7 @@
 
 (initial-notes)=
 
-## [Initial Notes](#initial_notes)
+## Initial Notes
 
 ::::{container}
 
@@ -24,7 +24,7 @@
 
 (building-and-installing-nss)=
 
-## [Building and installing NSS](#building_and_installing_nss)
+## Building and installing NSS
 
 :::{container}
 {ref}`mozilla-projects-nss-reference-building-and-installing-nss`
@@ -32,7 +32,7 @@
 
 (overview-of-an-nss-application)=
 
-## [Overview of an NSS application](#overview_of_an_nss_application)
+## Overview of an NSS application
 
 :::{container}
 Based on {ref}`mozilla-projects-nss-ssl-functions-sslintro` in the SSL Reference.
@@ -40,13 +40,13 @@ Based on {ref}`mozilla-projects-nss-ssl-functions-sslintro` in the SSL Reference
 
 (getting-started-with-nss)=
 
-## [Getting started with NSS](#getting_started_with_nss)
+## Getting started with NSS
 
 :::{container}
 Based on {ref}`mozilla-projects-nss-ssl-functions-gtstd` in the SSL Reference.
 :::
 
-## [Data types](#data_types)
+## Data types
 
 :::{container}
 Based on {ref}`mozilla-projects-nss-ssl-functions-ssltyp` in the SSL Reference.
@@ -54,7 +54,7 @@ Based on {ref}`mozilla-projects-nss-ssl-functions-ssltyp` in the SSL Reference.
 
 (nss-initialization-and-shutdown)=
 
-## [NSS initialization and shutdown](#nss_initialization_and_shutdown)
+## NSS initialization and shutdown
 
 :::{container}
 
@@ -65,14 +65,14 @@ Based on {ref}`mozilla-projects-nss-ssl-functions-ssltyp` in the SSL Reference.
 - NSS_Shutdown
 :::
 
-## [Utility functions](#utility_functions)
+## Utility functions
 
 :::{container}
 Based on {ref}`mozilla_projects_nss_reference_nss_functions#utility_functions` in NSS Public
 Functions.
 :::
 
-## [Certificate functions](#certificate_functions)
+## Certificate functions
 
 :::{container}
 Based on {ref}`mozilla-projects-nss-ssl-functions-sslcrt` in the SSL Reference and
@@ -107,7 +107,7 @@ Functions.
   - {ref}`mozilla_projects_nss_reference_nss_certificate_functions#secitem_compareitem`
 :::
 
-## [Key functions](#key_functions)
+## Key functions
 
 :::{container}
 {ref}`mozilla-projects-nss-reference-nss-key-functions`
@@ -118,7 +118,7 @@ Functions.
 
 (digital-signatures)=
 
-## [Digital signatures](#digital_signatures)
+## Digital signatures
 
 :::{container}
 This API consists of the routines used to perform signature generation and the routines used to
@@ -127,13 +127,13 @@ perform signature verification.
 
 (encryption-2fdecryption)=
 
-## [Encryption/decryption](#encryption.2fdecryption)
+## Encryption/decryption
 
-## [Hashing](#hashing)
+## Hashing
 
 (key-generation)=
 
-## [Key generation](#key_generation)
+## Key generation
 
 :::{container}
 Generate keys, key pairs, and domain parameters.
@@ -141,7 +141,7 @@ Generate keys, key pairs, and domain parameters.
 
 (random-number-generation)=
 
-## [Random number generation](#random_number_generation)
+## Random number generation
 
 :::{container}
 This API consists of the two routines used for pseudorandom number generation --
@@ -149,7 +149,7 @@ PK11_GenerateRandomOnSlot and PK11_GenerateRandom -- and the two routines used f
 pseudorandom number generation -- PK11_SeedRandom and PK11_RandomUpdate.
 :::
 
-## [PKCS #11 functions](#pkcs_.2311_functions)
+## PKCS #11 functions
 
 :::{container}
 Based on {ref}`mozilla-projects-nss-ssl-functions-pkfnc` in the SSL Reference and
@@ -170,7 +170,7 @@ Functions.
 - {ref}`mozilla_projects_nss_pkcs11_functions#pk11_setpasswordfunc`
 :::
 
-## [SSL Functions](#ssl_functions)
+## SSL Functions
 
 :::{container}
 Based on {ref}`mozilla-projects-nss-ssl-functions-sslfnc` in the SSL Reference and
@@ -184,7 +184,7 @@ Functions.
 
 (s-2fmime)=
 
-## [S/MIME](#s.2fmime)
+## S/MIME
 
 :::{container}
 Based on the [S/MIME
@@ -193,7 +193,7 @@ has one written chapter) and
 {ref}`mozilla_projects_nss_reference_nss_functions#s_2fmime_functions` in NSS Public Functions.
 :::
 
-## [PKCS #7 functions](#pkcs_.237_functions)
+## PKCS #7 functions
 
 :::{container}
 Based on ["Archived PKCS #7 Functions
@@ -202,7 +202,7 @@ documentation."](https://www-archive.mozilla.org/projects/security/pki/nss/ref/n
 
 (pkcs-235-functions)=
 
-## [PKCS #5 functions](#pkcs_.235_functions)
+## PKCS #5 functions
 
 :::{container}
 Password-based encryption
@@ -215,7 +215,7 @@ Password-based encryption
 - SEC_PKCS5IsAlgorithmPBEAlg
 :::
 
-## [PKCS #12 functions](#pkcs_.2312_functions)
+## PKCS #12 functions
 
 :::{container}
 Based on ["Archived PKCS #12 Functions
@@ -246,14 +246,14 @@ Used to exchange data such as private keys and certificates between two parties.
 
 (nspr-functions)=
 
-## [NSPR functions](#nspr_functions)
+## NSPR functions
 
 :::{container}
 A small number of {ref}`mozilla-projects-nss-reference-nspr-functions` are required for using the
 certificate verification and SSL functions in NSS. These functions are listed in this section.
 :::
 
-## [Error codes](#error_codes)
+## Error codes
 
 :::{container}
 Based on {ref}`mozilla-projects-nss-ssl-functions-sslerr` in the SSL Reference.
@@ -261,7 +261,7 @@ Based on {ref}`mozilla-projects-nss-ssl-functions-sslerr` in the SSL Reference.
 
 (nss-environment-variables)=
 
-## [NSS Environment variables](#nss_environment_variables)
+## NSS Environment variables
 
 :::{container}
 {ref}`mozilla-projects-nss-reference-nss-environment-variables`
@@ -269,7 +269,7 @@ Based on {ref}`mozilla-projects-nss-ssl-functions-sslerr` in the SSL Reference.
 
 (nss-cryptographic-module)=
 
-## [NSS cryptographic module](#nss_cryptographic_module)
+## NSS cryptographic module
 
 :::{container}
 {ref}`mozilla-projects-nss-reference-nss-cryptographic-module`
@@ -277,13 +277,13 @@ Based on {ref}`mozilla-projects-nss-ssl-functions-sslerr` in the SSL Reference.
 
 (nss-tech-notes)=
 
-## [NSS Tech Notes](#nss_tech_notes)
+## NSS Tech Notes
 
 :::{container}
 {ref}`mozilla-projects-nss-nss-tech-notes` {ref}`mozilla-projects-nss-memory-allocation`
 :::
 
-## [Tools](#tools)
+## Tools
 
 :::{container}
 Based on {ref}`mozilla-projects-nss-tools` documentation.

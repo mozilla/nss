@@ -4,7 +4,7 @@
 
 (nss-sample-code-5-pki-encryption-with-a-raw-public-private-key-in-der-format)=
 
-## [NSS Sample Code 5: PKI Encryption with a raw public & private key in DER format](#nss_sample_code_5_pki_encryption_with_a_raw_public_private_key_in_der_format)
+## NSS Sample Code 5: PKI Encryption with a raw public & private key in DER format
 
 :::{container}
 

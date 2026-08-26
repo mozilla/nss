@@ -4,14 +4,14 @@
 
 (nss-sample-code-1-hashing-a-file)=
 
-## [NSS Sample Code 1: Hashing a file.](#nss_sample_code_1_hashing_a_file.)
+## NSS Sample Code 1: Hashing a file.
 
 :::{container}
 This is an example program that demonstrates how to compute the hash of a file and save it to
 another file. This program illustrates the use of NSS message APIs.
 :::
 
-### [Sample Code 1](#sample_code_1)
+### Sample Code 1
 
 :::{container}
 

@@ -2,7 +2,7 @@
 
 # NSS 3.58 release notes
 
-## [Introduction](#introduction)
+## Introduction
 
 :::{container}
 The NSS team has released Network Security Services (NSS) 3.58 on **16 October 2020**, which is a
@@ -13,7 +13,7 @@ The NSS team would like to recognize first-time contributors:
 - Ricky Stewart
 :::
 
-## [Distribution Information](#distribution_information)
+## Distribution Information
 
 :::{container}
 The HG tag is NSS_3_58_RTM. NSS 3.58 requires NSPR 4.29 or newer.
@@ -28,7 +28,7 @@ Other releases are available {ref}`mozilla-projects-nss-nss-releases`.
 
 (bugs-fixed-in-nss-3-58)=
 
-## [Bugs fixed in NSS 3.58](#bugs_fixed_in_nss_3.58)
+## Bugs fixed in NSS 3.58
 
 :::{container}
 
@@ -51,7 +51,7 @@ This Bugzilla query returns all the bugs fixed in NSS 3.58:
 <https://bugzilla.mozilla.org/buglist.cgi?resolution=FIXED&classification=Components&query_format=advanced&product=NSS&target_milestone=3.58>
 :::
 
-## [Compatibility](#compatibility)
+## Compatibility
 
 :::{container}
 NSS 3.58 shared libraries are backward compatible with all older NSS 3.x shared libraries. A
@@ -61,7 +61,7 @@ to the functions listed in NSS Public Functions will remain compatible with futu
 the NSS shared libraries.
 :::
 
-## [Feedback](#feedback)
+## Feedback
 
 :::{container}
 Bugs discovered should be reported by filing a bug report with

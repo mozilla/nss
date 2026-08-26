@@ -2,14 +2,14 @@
 
 # NSS 3.19 release notes
 
-## [Introduction](#introduction)
+## Introduction
 
 :::{container}
 The NSS team has released Network Security Services (NSS) 3.19, which is a minor
 security release.
 :::
 
-## [Distribution Information](#distribution_information)
+## Distribution Information
 
 :::{container}
 The HG tag is NSS_3_19_RTM. NSS 3.19 requires NSPR 4.10.8 or newer.
@@ -22,7 +22,7 @@ NSS 3.19 source distributions are available on ftp.mozilla.org for secure HTTPS 
 
 (security-fixes-in-nss-3-19)=
 
-## [Security Fixes in NSS 3.19](#security_fixes_in_nss_3.19)
+## Security Fixes in NSS 3.19
 
 :::{container}
 
@@ -34,9 +34,9 @@ NSS 3.19 source distributions are available on ftp.mozilla.org for secure HTTPS 
 
 (new-in-nss-3-19)=
 
-## [New in NSS 3.19](#new_in_nss_3.19)
+## New in NSS 3.19
 
-### [New Functionality](#new_functionality)
+### New Functionality
 
 :::{container}
 
@@ -59,7 +59,7 @@ NSS 3.19 source distributions are available on ftp.mozilla.org for secure HTTPS 
 
 (notable-changes-in-nss-3-19)=
 
-## [Notable Changes in NSS 3.19](#notable_changes_in_nss_3.19)
+## Notable Changes in NSS 3.19
 
 :::{container}
 
@@ -73,7 +73,7 @@ NSS 3.19 source distributions are available on ftp.mozilla.org for secure HTTPS 
 
 (bugs-fixed-in-nss-3-19)=
 
-## [Bugs fixed in NSS 3.19](#bugs_fixed_in_nss_3.19)
+## Bugs fixed in NSS 3.19
 
 :::{container}
 This Bugzilla query returns all the bugs fixed in NSS 3.19:
@@ -81,7 +81,7 @@ This Bugzilla query returns all the bugs fixed in NSS 3.19:
 <https://bugzilla.mozilla.org/buglist.cgi?resolution=FIXED&classification=Components&query_format=advanced&product=NSS&target_milestone=3.19>
 :::
 
-## [Acknowledgements](#acknowledgements)
+## Acknowledgements
 
 :::{container}
 The NSS development team would like to thank Karthikeyan Bhargavan from
@@ -89,7 +89,7 @@ The NSS development team would like to thank Karthikeyan Bhargavan from
 1086145](https://bugzilla.mozilla.org/show_bug.cgi?id=1086145).
 :::
 
-## [Compatibility](#compatibility)
+## Compatibility
 
 :::{container}
 NSS 3.19 shared libraries are backward compatible with all older NSS 3.x shared libraries. A
@@ -99,7 +99,7 @@ to the functions listed in NSS Public Functions will remain compatible with futu
 the NSS shared libraries.
 :::
 
-## [Feedback](#feedback)
+## Feedback
 
 :::{container}
 Bugs discovered should be reported by filing a bug report with

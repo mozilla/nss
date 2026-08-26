@@ -4,13 +4,13 @@
 
 (nss-security-tools-dbck-tasks)=
 
-## [NSS Security Tools: dbck Tasks](#nss_security_tools_dbck_tasks)
+## NSS Security Tools: dbck Tasks
 
 :::{container}
 Newsgroup: [mozilla.dev.tech.crypto](news://news.mozilla.org/mozilla.dev.tech.crypto)
 :::
 
-### [Task List](#task_list)
+### Task List
 
 :::{container}
 

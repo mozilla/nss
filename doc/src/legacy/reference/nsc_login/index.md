@@ -2,13 +2,13 @@
 
 # NSC_Login
 
-## [Name](#name)
+## Name
 
 :::{container}
 `NSC_Login()` - log a user into a token.
 :::
 
-## [Syntax](#syntax)
+## Syntax
 
 :::{container}
 
@@ -23,7 +23,7 @@ CK_RV NSC_Login(
 
 :::
 
-## [Parameters](#parameters)
+## Parameters
 
 :::{container}
 `NSC_Login()` takes four parameters:
@@ -45,7 +45,7 @@ CK_RV NSC_Login(
 : [in] the length of the PIN
 :::
 
-## [Description](#description)
+## Description
 
 :::{container}
 `NSC_Login()` logs a user into a token.
@@ -55,7 +55,7 @@ the empty string. The NSS cryptographic module doesn't allow the SO to log in if
 user's PIN is already initialized.
 :::
 
-## [Return value](#return_value)
+## Return value
 
 ::::{container}
 `NSC_Login()` returns the following return codes.
@@ -85,7 +85,7 @@ user's PIN is already initialized.
   - `userType` is `CKU_SO` and the normal user's PIN is already initialized.
 ::::
 
-## [See also](#see_also)
+## See also
 
 :::{container}
 

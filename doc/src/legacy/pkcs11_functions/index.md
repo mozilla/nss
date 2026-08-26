@@ -2,7 +2,7 @@
 
 # NSS PKCS11 Functions
 
-## [PKCS #11 Functions](#pkcs_.2311_functions)
+## PKCS #11 Functions
 
 :::{container}
 This chapter describes the core PKCS #11 functions that an application needs for communicating

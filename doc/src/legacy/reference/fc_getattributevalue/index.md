@@ -2,13 +2,13 @@
 
 # FC_GetAttributeValue
 
-## [Name](#name)
+## Name
 
 :::{container}
 FC_GetAttributeValue - get the value of attributes of an object.
 :::
 
-## [Syntax](#syntax)
+## Syntax
 
 :::{container}
 
@@ -23,7 +23,7 @@ CK_RV FC_GetAttributeValue(
 
 :::
 
-## [Parameters](#parameters)
+## Parameters
 
 :::{container}
 `hSession`
@@ -43,7 +43,7 @@ CK_RV FC_GetAttributeValue(
 : [in] number of attributes in the template.
 :::
 
-## [Description](#description)
+## Description
 
 :::{container}
 `FC_GetAttributeValue` gets the value of one or more attributes of an object.
@@ -52,11 +52,11 @@ A user must log into the token (to assume the NSS User role) before getting the 
 of a secret or private key object.
 :::
 
-## [Return value](#return_value)
+## Return value
 
-## [Examples](#examples)
+## Examples
 
-## [See also](#see_also)
+## See also
 
 :::{container}
 

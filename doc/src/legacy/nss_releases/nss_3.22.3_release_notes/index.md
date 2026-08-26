@@ -2,14 +2,14 @@
 
 # NSS 3.22.3 release notes
 
-## [Introduction](#introduction)
+## Introduction
 
 :::{container}
 Network Security Services (NSS) 3.22.3 is a patch release for NSS 3.22. The bug fixes in NSS
 3.22.3 are described in the "Bugs fixed" section below.
 :::
 
-## [Distribution Information](#distribution_information)
+## Distribution Information
 
 :::{container}
 The HG tag is NSS_3_22_3_RTM. NSS 3.22.3 requires NSPR 4.12 or newer.
@@ -22,9 +22,9 @@ NSS 3.22.3 source distributions are available on ftp.mozilla.org for secure HTTP
 
 (new-in-nss-3-22-3)=
 
-## [New in NSS 3.22.3](#new_in_nss_3.22.3)
+## New in NSS 3.22.3
 
-### [New Functionality](#new_functionality)
+### New Functionality
 
 :::{container}
 No new functionality is introduced in this release.
@@ -32,7 +32,7 @@ No new functionality is introduced in this release.
 
 (bugs-fixed-in-nss-3-22-3)=
 
-## [Bugs fixed in NSS 3.22.3](#bugs_fixed_in_nss_3.22.3)
+## Bugs fixed in NSS 3.22.3
 
 :::{container}
 
@@ -41,7 +41,7 @@ No new functionality is introduced in this release.
   handshake
 :::
 
-## [Compatibility](#compatibility)
+## Compatibility
 
 :::{container}
 NSS 3.22.3 shared libraries are backward compatible with all older NSS 3.x shared libraries. A
@@ -51,7 +51,7 @@ to the functions listed in NSS Public Functions will remain compatible with futu
 the NSS shared libraries.
 :::
 
-## [Feedback](#feedback)
+## Feedback
 
 :::{container}
 Bugs discovered should be reported by filing a bug report with

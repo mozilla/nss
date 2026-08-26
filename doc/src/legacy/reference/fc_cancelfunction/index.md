@@ -2,13 +2,13 @@
 
 # FC_CancelFunction
 
-## [Name](#name)
+## Name
 
 :::{container}
 FC_CancelFunction - cancel a function running in parallel
 :::
 
-## [Syntax](#syntax)
+## Syntax
 
 :::{container}
 
@@ -20,7 +20,7 @@ CK_RV FC_CancelFunction(
 
 :::
 
-## [Parameters](#parameters)
+## Parameters
 
 :::{container}
 `hSession`
@@ -28,22 +28,22 @@ CK_RV FC_CancelFunction(
 : [in] session handle.
 :::
 
-## [Description](#description)
+## Description
 
 :::{container}
 Parallel functions are not implemented. `FC_CancelFunction` is a legacy function that simply
 returns `CKR_FUNCTION_NOT_PARALLEL`.
 :::
 
-## [Return value](#return_value)
+## Return value
 
 :::{container}
 `FC_CancelFunction` always returns `CKR_FUNCTION_NOT_PARALLEL`.
 :::
 
-## [Examples](#examples)
+## Examples
 
-## [See also](#see_also)
+## See also
 
 :::{container}
 

@@ -2,13 +2,13 @@
 
 # FC_SeedRandom
 
-## [Name](#name)
+## Name
 
 :::{container}
 `FC_SeedRandom()` - mix additional seed material into the random number generator.
 :::
 
-## [Syntax](#syntax)
+## Syntax
 
 :::{container}
 
@@ -22,7 +22,7 @@ CK_RV FC_SeedRandom(
 
 :::
 
-## [Parameters](#parameters)
+## Parameters
 
 :::{container}
 `hSession`
@@ -38,7 +38,7 @@ CK_RV FC_SeedRandom(
 : [in] length of the seed material in bytes.
 :::
 
-## [Description](#description)
+## Description
 
 :::{container}
 `FC_SeedRandom()` mixes additional seed material into the token's random number generator. Note
@@ -53,11 +53,11 @@ A user may call
 role).
 :::
 
-## [Return value](#return_value)
+## Return value
 
-## [Examples](#examples)
+## Examples
 
-## [See also](#see_also)
+## See also
 
 :::{container}
 

@@ -4,11 +4,11 @@
 
 (using-nss-to-perform-miscellaneous-cryptographic-operations)=
 
-## [Using NSS to perform miscellaneous cryptographic operations](#using_nss_to_perform_miscellaneous_cryptographic_operations)
+## Using NSS to perform miscellaneous cryptographic operations
 
 (nss-technical-note-5)=
 
-### [NSS Technical Note: 5](#nss_technical_note_5)
+### NSS Technical Note: 5
 
 :::{container}
 
@@ -23,7 +23,7 @@
   to show a certain way.
 :::
 
-## [Encrypt/Decrypt](#encryptdecrypt)
+## Encrypt/Decrypt
 
 :::{container}
 
@@ -120,7 +120,7 @@ You can also look at a
 
 (hash-digest)=
 
-## [Hash / Digest](#hash_digest)
+## Hash / Digest
 
 :::{container}
 
@@ -157,7 +157,7 @@ You can also look at a
 
 (hash-digest-with-secret-key-included)=
 
-## [Hash / Digest with secret key included](#hash_digest_with_secret_key_included)
+## Hash / Digest with secret key included
 
 :::{container}
 
@@ -228,7 +228,7 @@ You can also look at a
 You can also look at a [sample program](../sample-code/sample3.html) illustrating this
 :::
 
-## [HMAC](#hmac)
+## HMAC
 
 :::{container}
 
@@ -308,7 +308,7 @@ You can also look at a
 
 (symmetric-key-wrappingunwrapping-of-a-symmetric-key)=
 
-## [Symmetric Key Wrapping/Unwrapping of a Symmetric Key](#symmetric_key_wrappingunwrapping_of_a_symmetric_key)
+## Symmetric Key Wrapping/Unwrapping of a Symmetric Key
 
 :::{container}
 01. Include headers
@@ -434,7 +434,7 @@ You can also look at a
 
 (symmetric-key-wrappingunwrapping-of-a-private-key)=
 
-## [Symmetric Key Wrapping/Unwrapping of a Private Key](#symmetric_key_wrappingunwrapping_of_a_private_key)
+## Symmetric Key Wrapping/Unwrapping of a Private Key
 
 :::{container}
 01. Include headers
@@ -662,7 +662,7 @@ Also look at a [sample program](../sample-code/sample1.html) that uses the above
 
 (generate-a-symmetric-key-2)=
 
-## [Generate a Symmetric Key](#generate_a_symmetric_key_2)
+## [Generate a Symmetric Key](#generate-a-symmetric-key-2)
 
 :::{container}
 Subsequent to the operation, the symmetric key may need to be transported/stored in wrapped or
@@ -709,7 +709,7 @@ key = PK11_FindFixedKey(slot, cipherMech, &keyid, 0);*
 
 (moving-a-key-from-one-slot-to-another-2)=
 
-## [Moving a Key from one slot to another](#moving_a_key_from_one_slot_to_another_2)
+## [Moving a Key from one slot to another](#moving-a-key-from-one-slot-to-another-2)
 
 :::{container}
 
@@ -722,7 +722,7 @@ key = PK11_FindFixedKey(slot, cipherMech, &keyid, 0);*
 
 (generate-an-rsa-key-pair)=
 
-## [Generate an RSA Key Pair](#generate_an_rsa_key_pair)
+## Generate an RSA Key Pair
 
 :::{container}
 *PK11_GenerateKeyPair*\<big> is the function to use\</big>. See a [sample
@@ -746,7 +746,7 @@ SECStatus s = PK11_Sign(pvtkey, &signature, &data);*
 
 (misc-useful-functions)=
 
-## [Misc Useful Functions](#misc_useful_functions)
+## Misc Useful Functions
 
 :::{container}
 

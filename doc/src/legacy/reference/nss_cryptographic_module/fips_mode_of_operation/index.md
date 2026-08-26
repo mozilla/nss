@@ -2,7 +2,7 @@
 
 # FIPS mode of operation
 
-## [General-purpose functions](#general-purpose_functions)
+## General-purpose functions
 
 :::{container}
 
@@ -14,7 +14,7 @@
 
 (slot-and-token-management-functions)=
 
-## [Slot and token management functions](#slot_and_token_management_functions)
+## Slot and token management functions
 
 :::{container}
 
@@ -31,7 +31,7 @@
 
 (session-management-functions)=
 
-## [Session management functions](#session_management_functions)
+## Session management functions
 
 :::{container}
 
@@ -47,7 +47,7 @@
 
 (object-management-functions)=
 
-## [Object management functions](#object_management_functions)
+## Object management functions
 
 :::{container}
 These functions manage certificates and keys.
@@ -65,7 +65,7 @@ These functions manage certificates and keys.
 
 (encryption-functions)=
 
-## [Encryption functions](#encryption_functions)
+## Encryption functions
 
 :::{container}
 These functions support Triple DES and AES in ECB and CBC modes.
@@ -78,7 +78,7 @@ These functions support Triple DES and AES in ECB and CBC modes.
 
 (decryption-functions)=
 
-## [Decryption functions](#decryption_functions)
+## Decryption functions
 
 :::{container}
 These functions support Triple DES and AES in ECB and CBC modes.
@@ -91,7 +91,7 @@ These functions support Triple DES and AES in ECB and CBC modes.
 
 (message-digesting-functions)=
 
-## [Message digesting functions](#message_digesting_functions)
+## Message digesting functions
 
 :::{container}
 These functions support SHA-1, SHA-256, SHA-384, and SHA-512.
@@ -105,7 +105,7 @@ These functions support SHA-1, SHA-256, SHA-384, and SHA-512.
 
 (signature-and-mac-generation-functions)=
 
-## [Signature and MAC generation functions](#signature_and_mac_generation_functions)
+## Signature and MAC generation functions
 
 :::{container}
 These functions support DSA, RSA, ECDSA, and HMAC.
@@ -120,7 +120,7 @@ These functions support DSA, RSA, ECDSA, and HMAC.
 
 (signature-and-mac-verification-functions)=
 
-## [Signature and MAC verification functions](#signature_and_mac_verification_functions)
+## Signature and MAC verification functions
 
 :::{container}
 These functions support DSA, RSA, ECDSA, and HMAC.
@@ -135,7 +135,7 @@ These functions support DSA, RSA, ECDSA, and HMAC.
 
 (dual-function-cryptographic-functions)=
 
-## [Dual-function cryptographic functions](#dual-function_cryptographic_functions)
+## Dual-function cryptographic functions
 
 :::{container}
 
@@ -147,7 +147,7 @@ These functions support DSA, RSA, ECDSA, and HMAC.
 
 (key-management-functions)=
 
-## [Key management functions](#key_management_functions)
+## Key management functions
 
 :::{container}
 
@@ -161,7 +161,7 @@ These functions support DSA, RSA, ECDSA, and HMAC.
 
 (random-number-generation-functions)=
 
-## [Random number generation functions](#random_number_generation_functions)
+## Random number generation functions
 
 :::{container}
 
@@ -172,7 +172,7 @@ These functions support DSA, RSA, ECDSA, and HMAC.
 
 (parallel-function-management-functions)=
 
-## [Parallel function management functions](#parallel_function_management_functions)
+## Parallel function management functions
 
 :::{container}
 

@@ -4,13 +4,13 @@
 
 (nss-security-tools)=
 
-## [NSS Security Tools](#nss_security_tools)
+## NSS Security Tools
 
 :::{container}
 Newsgroup: [mozilla.dev.tech.crypto](news://news.mozilla.org/mozilla.dev.tech.crypto)
 :::
 
-### [Overview](#overview)
+### Overview
 
 :::{container}
 The NSS Security Tools allow developers to test, debug, and manage applications that use NSS. The
@@ -30,7 +30,7 @@ the preferred forum for all questions about NSS and NSS tools.
 
 (overall-objectives)=
 
-### [Overall Objectives](#overall_objectives)
+### Overall Objectives
 
 :::{container}
 
@@ -44,7 +44,7 @@ the preferred forum for all questions about NSS and NSS tools.
 
 (tools-information)=
 
-### [Tools information](#tools_information)
+### Tools information
 
 :::{container}
 

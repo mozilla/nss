@@ -2,13 +2,13 @@
 
 # FC_DecryptFinal
 
-## [Name](#name)
+## Name
 
 :::{container}
 FC_DecryptFinal - finish a multi-part decryption operation.
 :::
 
-## [Syntax](#syntax)
+## Syntax
 
 :::{container}
 
@@ -22,7 +22,7 @@ CK_RV FC_DecryptFinal(
 
 :::
 
-## [Parameters](#parameters)
+## Parameters
 
 :::{container}
 `hSession`
@@ -38,7 +38,7 @@ CK_RV FC_DecryptFinal(
 : [in,out] pointer to location where the number of bytes of recovered data is to be stored.
 :::
 
-## [Description](#description)
+## Description
 
 :::{container}
 `FC_DecryptFinal` returns the last block of data of a multi-part decryption operation.
@@ -46,11 +46,11 @@ CK_RV FC_DecryptFinal(
 A user must log into the token (to assume the NSS User role) before calling `FC_DecryptFinal`.
 :::
 
-## [Return value](#return_value)
+## Return value
 
-## [Examples](#examples)
+## Examples
 
-## [See also](#see_also)
+## See also
 
 :::{container}
 

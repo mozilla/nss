@@ -4,7 +4,7 @@
 
 (nss-sample-code-2-initialize-the-nss-database)=
 
-## [NSS sample code 2: initialize the NSS database.](#nss_sample_code_2_initialize_the_nss_database.)
+## NSS sample code 2: initialize the NSS database.
 
 :::{container}
 The NSS sample code below demonstrates how to initialize the NSS database.

@@ -2,13 +2,13 @@
 
 # FC_SignRecoverInit
 
-## [Name](#name)
+## Name
 
 :::{container}
 FC_SignRecoverInit - initialize a sign recover operation.
 :::
 
-## [Syntax](#syntax)
+## Syntax
 
 :::{container}
 
@@ -22,7 +22,7 @@ CK_RV FC_SignRecoverInit(
 
 :::
 
-## [Parameters](#parameters)
+## Parameters
 
 :::{container}
 `hSession`
@@ -38,7 +38,7 @@ CK_RV FC_SignRecoverInit(
 : [in] handle of the key to be used.
 :::
 
-## [Description](#description)
+## Description
 
 :::{container}
 `FC_SignRecoverInit` initializes a initializes a signature operation where the (digest) data
@@ -48,11 +48,11 @@ A user must log into the token (to assume the NSS User role) before calling
 `FC_SignRecoverInit`.
 :::
 
-## [Return value](#return_value)
+## Return value
 
-## [Examples](#examples)
+## Examples
 
-## [See also](#see_also)
+## See also
 
 :::{container}
 

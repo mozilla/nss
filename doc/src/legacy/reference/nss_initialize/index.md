@@ -2,13 +2,13 @@
 
 # NSS_Initialize
 
-## [Name](#name)
+## Name
 
 :::{container}
 NSS_Initialize - initialize NSS.
 :::
 
-## [Syntax](#syntax)
+## Syntax
 
 :::{container}
 
@@ -22,7 +22,7 @@ SECStatus NSS_Initialize(const char *configdir,
 
 :::
 
-## [Parameters](#parameters)
+## Parameters
 
 :::{container}
 `NSS_Initialize` has five parameters:
@@ -49,7 +49,7 @@ SECStatus NSS_Initialize(const char *configdir,
 : [in] bit flags that specify how NSS should be initialized.
 :::
 
-## [Description](#description)
+## Description
 
 :::{container}
 `NSS_Initialize` initializes NSS. It is more flexible than `NSS_Init`, `NSS_InitReadWrite`,
@@ -85,13 +85,13 @@ The `flags` parameter is a bitwise OR of the following flags:
   NSS and the Java SunPKCS11 provider.
 :::
 
-## [Return value](#return_value)
+## Return value
 
 :::{container}
 `NSS_Initialize` returns SECSuccess on success, or SECFailure on failure.
 :::
 
-## [Examples](#examples)
+## Examples
 
 :::{container}
 
@@ -107,7 +107,7 @@ rv = NSS_Initialize(configdir, "", "", SECMOD_DB, NSS_INIT_NOROOTINIT | NSS_INIT
 
 :::
 
-## [See also](#see_also)
+## See also
 
 :::{container}
 

@@ -2,13 +2,13 @@
 
 # FC_SetAttributeValue
 
-## [Name](#name)
+## Name
 
 :::{container}
 FC_SetAttributeValue - set the values of attributes of an object.
 :::
 
-## [Syntax](#syntax)
+## Syntax
 
 :::{container}
 
@@ -23,7 +23,7 @@ CK_RV FC_SetAttributeValue(
 
 :::
 
-## [Parameters](#parameters)
+## Parameters
 
 :::{container}
 `hSession`
@@ -43,7 +43,7 @@ CK_RV FC_SetAttributeValue(
 : [in] number of attributes in the template.
 :::
 
-## [Description](#description)
+## Description
 
 :::{container}
 `FC_SetAttributeValue` sets the value of one or more attributes of an object.
@@ -52,11 +52,11 @@ A user must log into the token before setting the attribute values of a secret o
 object.
 :::
 
-## [Return value](#return_value)
+## Return value
 
-## [Examples](#examples)
+## Examples
 
-## [See also](#see_also)
+## See also
 
 :::{container}
 

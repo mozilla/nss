@@ -2,13 +2,13 @@
 
 # FC_GetOperationState
 
-## [Name](#name)
+## Name
 
 :::{container}
 FC_GetOperationState - get the cryptographic operation state of a session.
 :::
 
-## [Syntax](#syntax)
+## Syntax
 
 :::{container}
 
@@ -22,7 +22,7 @@ CK_RV FC_GetOperationState(
 
 :::
 
-## [Parameters](#parameters)
+## Parameters
 
 :::{container}
 `hSession`
@@ -40,7 +40,7 @@ CK_RV FC_GetOperationState(
   the operation state.
 :::
 
-## [Description](#description)
+## Description
 
 :::{container}
 `FC_GetOperationState` saves the state of the cryptographic operation in a session. This
@@ -48,11 +48,11 @@ function only works for digest operations for now. Therefore, a user may call
 `FC_GetOperationState` without logging into the token (to assume the NSS User role).
 :::
 
-## [Return value](#return_value)
+## Return value
 
-## [Examples](#examples)
+## Examples
 
-## [See also](#see_also)
+## See also
 
 :::{container}
 

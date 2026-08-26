@@ -2,7 +2,7 @@
 
 # NSS 3.51 release notes
 
-## [Introduction](#introduction)
+## Introduction
 
 :::{container}
 The NSS team has released Network Security Services (NSS) 3.51 on **6 March 2020**, which is a
@@ -14,7 +14,7 @@ The NSS team would like to recognize first-time contributors:
 - Victor Tapia
 :::
 
-## [Distribution Information](#distribution_information)
+## Distribution Information
 
 :::{container}
 The HG tag is NSS_3_51_RTM. NSS 3.51 requires NSPR 4.25 or newer.
@@ -29,7 +29,7 @@ Other releases are available {ref}`mozilla-projects-nss-nss-releases`.
 
 (notable-changes-in-nss-3-51)=
 
-## [Notable Changes in NSS 3.51](#notable_changes_in_nss_3.51)
+## Notable Changes in NSS 3.51
 
 :::{container}
 
@@ -39,7 +39,7 @@ Other releases are available {ref}`mozilla-projects-nss-nss-releases`.
 
 (bugs-fixed-in-nss-3-51)=
 
-## [Bugs fixed in NSS 3.51](#bugs_fixed_in_nss_3.51)
+## Bugs fixed in NSS 3.51
 
 :::{container}
 
@@ -78,7 +78,7 @@ This Bugzilla query returns all the bugs fixed in NSS 3.51:
 <https://bugzilla.mozilla.org/buglist.cgi?resolution=FIXED&classification=Components&query_format=advanced&product=NSS&target_milestone=3.51>
 :::
 
-## [Compatibility](#compatibility)
+## Compatibility
 
 :::{container}
 NSS 3.51 shared libraries are backward compatible with all older NSS 3.x shared libraries. A
@@ -88,7 +88,7 @@ to the functions listed in NSS Public Functions will remain compatible with futu
 the NSS shared libraries.
 :::
 
-## [Feedback](#feedback)
+## Feedback
 
 :::{container}
 Bugs discovered should be reported by filing a bug report with

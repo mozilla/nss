@@ -4,7 +4,7 @@
 
 (nss-3-12-5-release-notes-1)=
 
-## [NSS 3.12.5 release notes](#nss_3.12.5_release_notes)
+## NSS 3.12.5 release notes
 
 ::::::{container}
 

@@ -4,7 +4,7 @@
 
 (nss-sample-code-1-hashing)=
 
-## [NSS sample code 1: hashing.](#nss_sample_code_1_hashing.)
+## NSS sample code 1: hashing.
 
 :::{container}
 The NSS same code below computes the hash of a file and saves it to another file, this

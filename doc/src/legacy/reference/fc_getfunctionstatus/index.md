@@ -2,13 +2,13 @@
 
 # FC_GetFunctionStatus
 
-## [Name](#name)
+## Name
 
 :::{container}
 FC_GetFunctionStatus - get the status of a function running in parallel
 :::
 
-## [Syntax](#syntax)
+## Syntax
 
 :::{container}
 
@@ -20,7 +20,7 @@ CK_RV FC_GetFunctionStatus(
 
 :::
 
-## [Parameters](#parameters)
+## Parameters
 
 :::{container}
 `hSession`
@@ -28,21 +28,21 @@ CK_RV FC_GetFunctionStatus(
 : [in] session handle.
 :::
 
-## [Description](#description)
+## Description
 
 :::{container}
 `FC_GetFunctionStatus` is a legacy function that simply returns `CKR_FUNCTION_NOT_PARALLEL`.
 :::
 
-## [Return value](#return_value)
+## Return value
 
 :::{container}
 `FC_GetFunctionStatus` always returns `CKR_FUNCTION_NOT_PARALLEL`.
 :::
 
-## [Examples](#examples)
+## Examples
 
-## [See also](#see_also)
+## See also
 
 :::{container}
 

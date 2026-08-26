@@ -4,7 +4,7 @@
 
 (sample-code-3-hashing-mac)=
 
-## [Sample Code 3: Hashing, MAC](#sample_code_3_hashing_mac)
+## Sample Code 3: Hashing, MAC
 
 :::{container}
 

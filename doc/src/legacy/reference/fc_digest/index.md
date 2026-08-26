@@ -2,13 +2,13 @@
 
 # FC_Digest
 
-## [Name](#name)
+## Name
 
 :::{container}
 FC_Digest - digest a block of data.
 :::
 
-## [Syntax](#syntax)
+## Syntax
 
 :::{container}
 
@@ -24,7 +24,7 @@ CK_RV FC_Digest(
 
 :::
 
-## [Parameters](#parameters)
+## Parameters
 
 :::{container}
 `hSession`
@@ -49,7 +49,7 @@ CK_RV FC_Digest(
   message digest if the operation is successful.
 :::
 
-## [Description](#description)
+## Description
 
 :::{container}
 `FC_Digest` digests a message in a single operation according to the attributes of the previous
@@ -58,11 +58,11 @@ call to `FC_DigestInit`.
 A user may call `FC_Digest` without logging into the token (to assume the NSS User role).
 :::
 
-## [Return value](#return_value)
+## Return value
 
-## [Examples](#examples)
+## Examples
 
-## [See also](#see_also)
+## See also
 
 :::{container}
 

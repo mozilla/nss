@@ -6,7 +6,7 @@
 Newsgroup: [mozilla.dev.tech.crypto](news://news.mozilla.org/mozilla.dev.tech.crypto)
 :::
 
-## [Introduction](#introduction)
+## Introduction
 
 :::{container}
 This document describes how the NSS code is organized, the libraries that get built from the NSS
@@ -21,7 +21,7 @@ code won't follow all these rules.
 
 (nss-api-structure)=
 
-## [NSS API Structure](#nss_api_structure)
+## NSS API Structure
 
 :::{container}
 This section explains the structure and relationships of the NSS libraries. The
@@ -30,7 +30,7 @@ functions wrap low-level functions. The [Libraries](#libraries) section describe
 libraries, the functionality each provides, and the layer in which the library (mostly) operates.
 :::
 
-### [Layering](#layering)
+### Layering
 
 :::{container}
 Each separate component of the API should live in its own layer. The functions in these APIs
@@ -49,7 +49,7 @@ throughout the code) is:
 4. PKCS #12 and PKCS #5
 :::
 
-### [Libraries](#libraries)
+### Libraries
 
 :::{container}
 NSS compiles into the libraries described below. The Layer indicates the main layer, seen in the
@@ -284,7 +284,7 @@ functions, that are publicly available to higer-level APIs.
 
 :::
 
-## [Naming Conventions](#naming_conventions)
+## Naming Conventions
 
 :::{container}
 This section describes the rules that (ideally) should be followed for naming and identifying new
@@ -293,7 +293,7 @@ files, functions, and data types.
 
 (cvs-id)=
 
-### [CVS ID](#cvs_id)
+### CVS ID
 
 :::{container}
 Each file should include a CVS ID string for identification. The preferred format is:
@@ -324,7 +324,7 @@ If you're good with tagging your releases, and then checking out (or exporting!)
 your build, this saves you from messing around with specific files revision numbers.
 :::
 
-### [Header Files](#header_files)
+### Header Files
 
 ::::{container}
 We have a preferred naming system for include files. We had been moving towards one, for some
@@ -364,7 +364,7 @@ In short:
    have a trailing "m."
 ::::
 
-### [Functions and Types](#functions_and_types)
+### Functions and Types
 
 :::{container}
 There are a number of ways of doing things in our API, as well as naming decisions for functions
@@ -417,7 +417,7 @@ security library, since consistency is more important than debates about what mi
    SECKEYPrivateKey.
 :::
 
-## [Opaque Data Structures](#opaque_data_structures)
+## Opaque Data Structures
 
 :::{container}
 There are many data structures in the security library whose definition is effectively private,
@@ -463,7 +463,7 @@ structures need to be examined on a case by case basis, to determine if
 
 (memory-allocation-with-arenas)=
 
-## [Memory Allocation with Arenas](#memory_allocation_with_arenas)
+## Memory Allocation with Arenas
 
 :::{container}
 This section discusses memory allocation using arenas. NSS code uses arenas, and this section
@@ -521,7 +521,7 @@ the heap as a default arena you can't destroy.
 
 (error-handling)=
 
-## [Error Handling](#error_handling)
+## Error Handling
 
 ::::{container}
 NSS 3.0 introduces the concept of an error stack. When something goes wrong, the call stack
@@ -592,7 +592,7 @@ these are in NSPR.
 
 (thread-safety)=
 
-## [Thread Safety](#thread_safety)
+## Thread Safety
 
 ::::{container}
 Code developed using the NSS APIs needs to make use of thread safety features. First to examine
@@ -683,11 +683,11 @@ application at initialization time.
 
 (methodsfunctions-design)=
 
-## [Methods/Functions Design](#methodsfunctions_design)
+## Methods/Functions Design
 
 (init-shutdown-functions)=
 
-### [Init, Shutdown Functions](#init_shutdown_functions)
+### Init, Shutdown Functions
 
 :::{container}
 If a layer has some global initialization tasks, which need to be completed before the layer can
@@ -699,7 +699,7 @@ LAYER_Shutdown() should decrement that count, and shutdown when the count reache
 
 (open-close-functions)=
 
-### [Open, Close Functions](#open_close_functions)
+### Open, Close Functions
 
 :::{container}
 Open functions should have a corresponding close function. Open and close function are not
@@ -708,7 +708,7 @@ reference counted, like init and shutdown functions.
 
 (creation-functions)=
 
-### [Creation Functions](#creation_functions)
+### Creation Functions
 
 :::{container}
 In general, data objects should all have functions which create them. These functions should have
@@ -718,7 +718,7 @@ from PK11_KeyGen() to PK11_CreateSymKey().
 
 (destruction-functions)=
 
-### [Destruction Functions](#destruction_functions)
+### Destruction Functions
 
 ::::{container}
 In the security library we have 3 different ways of saying 'get rid of this data object': Free,
@@ -753,7 +753,7 @@ the 'freeit' PRBool, since the structures being freed are opaque.
 
 (dup-copy-and-reference-functions)=
 
-### [Dup, Copy, and Reference Functions](#dup_copy_and_reference_functions)
+### Dup, Copy, and Reference Functions
 
 :::{container}
 Functions that return a new reference or copy of a given object should have the form
@@ -764,7 +764,7 @@ PK11_DupContext().
 
 (search-functions)=
 
-### [Search Functions](#search_functions)
+### Search Functions
 
 :::{container}
 There are several different kinds of searches done via the security library. The first is a
@@ -788,7 +788,7 @@ LAYER_LookupDataType{List|Array}\[ByDataType\]().
 
 (accesssor-functions)=
 
-### [Accesssor Functions](#accesssor_functions)
+### Accesssor Functions
 
 :::{container}
 Accessor Functions should take the following formats:
@@ -805,7 +805,7 @@ Examples: PK11_SlotGetSeries(), PK11_SymKeyGetSeries(), CERT_CertificateExtractP
 
 (parameter-ordering)=
 
-### [Parameter ordering](#parameter_ordering)
+### Parameter ordering
 
 :::{container}
 Most functions will have a 'Natural' ordering for parameters. To keep consistency we should have
@@ -847,7 +847,7 @@ Within your layer, multiple similar functions should have consistent parameter o
 
 (callback-functions)=
 
-### [Callback Functions](#callback_functions)
+### Callback Functions
 
 :::{container}
 Callback functions should all contain an opaque parameter (void \*) as their first argument,

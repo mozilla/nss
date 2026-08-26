@@ -2,7 +2,7 @@
 
 # HTTP delegation
 
-## [Background](#background)
+## Background
 
 :::{container}
 Up to version 3.11, {ref}`mozilla-projects-nss` connects directly over

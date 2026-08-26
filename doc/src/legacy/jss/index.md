@@ -2,7 +2,7 @@
 
 # JSS
 
-## [Documentation](#documentation)
+## Documentation
 
 ::::{container}
 

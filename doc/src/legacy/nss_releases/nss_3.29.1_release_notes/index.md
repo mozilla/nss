@@ -2,14 +2,14 @@
 
 # NSS 3.29.1 release notes
 
-## [Introduction](#introduction)
+## Introduction
 
 :::{container}
 Network Security Services (NSS) 3.29.1 is a patch release for NSS 3.29. The bug fixes in NSS
 3.29.1 are described in the "Bugs Fixed" section below.
 :::
 
-## [Distribution Information](#distribution_information)
+## Distribution Information
 
 :::{container}
 The HG tag is NSS_3_29_1_RTM. NSS 3.29.1 requires Netscape Portable Runtime(NSPR) 4.13.1 or
@@ -23,9 +23,9 @@ NSS 3.29.1 source distributions are available on ftp.mozilla.org for secure HTTP
 
 (new-in-nss-3-29-1)=
 
-## [New in NSS 3.29.1](#new_in_nss_3.29.1)
+## New in NSS 3.29.1
 
-### [New Functionality](#new_functionality)
+### New Functionality
 
 :::{container}
 No new functionality is introduced in this release. This is a patch release to fix binary
@@ -34,7 +34,7 @@ compatibility issues.
 
 (bugs-fixed-in-nss-3-29-1)=
 
-## [Bugs fixed in NSS 3.29.1](#bugs_fixed_in_nss_3.29.1)
+## Bugs fixed in NSS 3.29.1
 
 :::{container}
 NSS version 3.28, 3.28.1, 3.28.2 and 3.29 contained changes that were in violation with the NSS
@@ -57,7 +57,7 @@ Note that NSS 3.28.3 from the older NSS 3.28.x branch
 {ref}`mozilla-projects-nss-nss-3-28-3-release-notes` with the identical fixes.
 :::
 
-## [Compatibility](#compatibility)
+## Compatibility
 
 :::{container}
 NSS 3.29.1 shared libraries are backward compatible with most older NSS 3.x shared libraries, but
@@ -74,7 +74,7 @@ NSS 3.29, it is recommended that you recompile your application against NSS 3.29
 3.28.3), at the time you upgrade to NSS 3.29.1 (or NSS 3.28.3).
 :::
 
-## [Feedback](#feedback)
+## Feedback
 
 :::{container}
 Bugs discovered should be reported by filing a bug report with

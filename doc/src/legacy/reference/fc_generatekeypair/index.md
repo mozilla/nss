@@ -2,13 +2,13 @@
 
 # FC_GenerateKeyPair
 
-## [Name](#name)
+## Name
 
 :::{container}
 FC_GenerateKeyPair - generate a new public/private key pair
 :::
 
-## [Syntax](#syntax)
+## Syntax
 
 :::{container}
 
@@ -27,7 +27,7 @@ CK_RV FC_GenerateKeyPair(
 
 :::
 
-## [Parameters](#parameters)
+## Parameters
 
 :::{container}
 `hSession`
@@ -63,7 +63,7 @@ CK_RV FC_GenerateKeyPair(
 : [out] pointer to the location to receive the handle of the new private key.
 :::
 
-## [Description](#description)
+## Description
 
 :::{container}
 `FC_GenerateKeyPair` generates a public/private key pair, creating new key objects. The handles
@@ -73,11 +73,11 @@ A user must log into the token (to assume the NSS User role) before calling
 `FC_GenerateKeyPair`.
 :::
 
-## [Return value](#return_value)
+## Return value
 
-## [Examples](#examples)
+## Examples
 
-## [See also](#see_also)
+## See also
 
 :::{container}
 

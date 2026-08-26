@@ -2,7 +2,7 @@
 
 # NSS 3.60 release notes
 
-## [Introduction](#introduction)
+## Introduction
 
 :::{container}
 The NSS team has released Network Security Services (NSS) 3.60 on **11 December 2020**, which is
@@ -13,7 +13,7 @@ The NSS team would like to recognize first-time contributors:
 - yogesh
 :::
 
-## [Distribution Information](#distribution_information)
+## Distribution Information
 
 :::{container}
 The HG tag is NSS_3_60_RTM. NSS 3.60 requires NSPR 4.29 or newer.
@@ -28,7 +28,7 @@ Other releases are available {ref}`mozilla-projects-nss-nss-releases`.
 
 (notable-changes-in-nss-3-60)=
 
-## [Notable Changes in NSS 3.60](#notable_changes_in_nss_3.60)
+## Notable Changes in NSS 3.60
 
 :::{container}
 
@@ -37,7 +37,7 @@ Other releases are available {ref}`mozilla-projects-nss-nss-releases`.
   1654332](https://bugzilla.mozilla.org/show_bug.cgi?id=1654332) for more information.
 :::
 
-### [Certificate Authority Changes](#certificate_authority_changes)
+### Certificate Authority Changes
 
 :::{container}
 
@@ -95,7 +95,7 @@ Other releases are available {ref}`mozilla-projects-nss-nss-releases`.
 
 (bugs-fixed-in-nss-3-60)=
 
-## [Bugs fixed in NSS 3.60](#bugs_fixed_in_nss_3.60)
+## Bugs fixed in NSS 3.60
 
 :::{container}
 
@@ -117,7 +117,7 @@ This Bugzilla query returns all the bugs fixed in NSS 3.60:
 <https://bugzilla.mozilla.org/buglist.cgi?resolution=FIXED&classification=Components&query_format=advanced&product=NSS&target_milestone=3.60>
 :::
 
-## [Compatibility](#compatibility)
+## Compatibility
 
 :::{container}
 NSS 3.60 shared libraries are backward compatible with all older NSS 3.x shared libraries. A
@@ -127,7 +127,7 @@ to the functions listed in NSS Public Functions will remain compatible with futu
 the NSS shared libraries.
 :::
 
-## [Feedback](#feedback)
+## Feedback
 
 :::{container}
 Bugs discovered should be reported by filing a bug report with

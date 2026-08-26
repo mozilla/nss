@@ -2,13 +2,13 @@
 
 # FC_GenerateRandom
 
-## [Name](#name)
+## Name
 
 :::{container}
 FC_GenerateRandom - generate a random number.
 :::
 
-## [Syntax](#syntax)
+## Syntax
 
 :::{container}
 
@@ -22,7 +22,7 @@ CK_RV FC_GenerateRandom(
 
 :::
 
-## [Parameters](#parameters)
+## Parameters
 
 :::{container}
 `hSession`
@@ -38,7 +38,7 @@ CK_RV FC_GenerateRandom(
 : [in] length of the buffer in bytes.
 :::
 
-## [Description](#description)
+## Description
 
 :::{container}
 `FC_GenerateRandom` generates random data of the specified length.
@@ -47,11 +47,11 @@ A user may call `FC_GenerateRandom` without logging into the token (to assume th
 role).
 :::
 
-## [Return value](#return_value)
+## Return value
 
-## [Examples](#examples)
+## Examples
 
-## [See also](#see_also)
+## See also
 
 :::{container}
 

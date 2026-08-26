@@ -2,13 +2,13 @@
 
 # FC_GetSlotList
 
-## [Name](#name)
+## Name
 
 :::{container}
 FC_GetSlotList - Obtain a list of slots in the system.
 :::
 
-## [Syntax](#syntax)
+## Syntax
 
 :::{container}
 
@@ -22,7 +22,7 @@ CK_RV FC_GetSlotList(
 
 :::
 
-## [Parameters](#parameters)
+## Parameters
 
 :::{container}
 `tokenPresent`
@@ -39,7 +39,7 @@ CK_RV FC_GetSlotList(
 : [out] Pointer to a `CK_ULONG` variable which receives the slot count.;
 :::
 
-## [Description](#description)
+## Description
 
 :::{container}
 `FC_GetSlotList` obtains a list of slots in the system.
@@ -47,15 +47,15 @@ CK_RV FC_GetSlotList(
 A user may call `FC_GetSlotList` without logging into the token (to assume the NSS User role).
 :::
 
-## [Return value](#return_value)
+## Return value
 
 :::{container}
 `CKR_OK`
 :::
 
-## [Examples](#examples)
+## Examples
 
-## [See also](#see_also)
+## See also
 
 :::{container}
 

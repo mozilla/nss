@@ -2,14 +2,14 @@
 
 # NSS 3.29.2 release notes
 
-## [Introduction](#introduction)
+## Introduction
 
 :::{container}
 Network Security Services (NSS) 3.29.2 is a patch release for NSS 3.29. The bug fixes in NSS
 3.29.2 are described in the "Bugs Fixed" section below.
 :::
 
-## [Distribution Information](#distribution_information)
+## Distribution Information
 
 :::{container}
 The HG tag is NSS_3_29_2_RTM. NSS 3.29.2 requires Netscape Portable Runtime(NSPR) 4.13.1 or
@@ -23,9 +23,9 @@ NSS 3.29.2 source distributions are available on ftp.mozilla.org for secure HTTP
 
 (new-in-nss-3-29-2)=
 
-## [New in NSS 3.29.2](#new_in_nss_3.29.2)
+## New in NSS 3.29.2
 
-### [New Functionality](#new_functionality)
+### New Functionality
 
 :::{container}
 No new functionality is introduced in this release.
@@ -33,7 +33,7 @@ No new functionality is introduced in this release.
 
 (bugs-fixed-in-nss-3-29-2)=
 
-## [Bugs fixed in NSS 3.29.2](#bugs_fixed_in_nss_3.29.2)
+## Bugs fixed in NSS 3.29.2
 
 :::{container}
 NSS 3.29 and 3.29.1 included a change that reduced the time that NSS considered a TLS session
@@ -41,7 +41,7 @@ ticket to be valid. This release restores the session ticket lifetime to the int
 [Bug 1340841](https://bugzilla.mozilla.org/show_bug.cgi?id=1340841) for details.
 :::
 
-## [Compatibility](#compatibility)
+## Compatibility
 
 :::{container}
 NSS 3.29.2 shared libraries are backward compatible with all older NSS 3.x shared libraries. A
@@ -51,7 +51,7 @@ to the functions listed in NSS Public Functions will remain compatible with futu
 the NSS shared libraries.
 :::
 
-## [Feedback](#feedback)
+## Feedback
 
 :::{container}
 Bugs discovered should be reported by filing a bug report with

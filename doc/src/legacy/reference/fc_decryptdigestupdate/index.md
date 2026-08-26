@@ -2,13 +2,13 @@
 
 # FC_DecryptDigestUpdate
 
-## [Name](#name)
+## Name
 
 :::{container}
 FC_DecryptDigestUpdate - continue a multi-part decrypt and digest operation
 :::
 
-## [Syntax](#syntax)
+## Syntax
 
 :::{container}
 
@@ -24,7 +24,7 @@ CK_RV FC_DecryptDigestUpdate(
 
 :::
 
-## [Parameters](#parameters)
+## Parameters
 
 :::{container}
 `hSession`
@@ -48,7 +48,7 @@ CK_RV FC_DecryptDigestUpdate(
 : [in] pointer to the length of the recovered part buffer.
 :::
 
-## [Description](#description)
+## Description
 
 :::{container}
 `FC_DecryptDigestUpdate` continues a multi-part decrypt and digest operation. After calling
@@ -60,11 +60,11 @@ A user must log into the token (to assume the NSS User role) before calling
 `FC_DecryptDigestUpdate`.
 :::
 
-## [Return value](#return_value)
+## Return value
 
-## [Examples](#examples)
+## Examples
 
-## [See also](#see_also)
+## See also
 
 :::{container}
 

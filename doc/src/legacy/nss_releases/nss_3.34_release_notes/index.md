@@ -2,13 +2,13 @@
 
 # NSS 3.34 release notes
 
-## [Introduction](#introduction)
+## Introduction
 
 :::{container}
 The Network Security Services (NSS) team has released NSS 3.34, which is a minor release.
 :::
 
-## [Distribution information](#distribution_information)
+## Distribution information
 
 :::{container}
 The hg tag is NSS_3_34_RTM. NSS 3.34 requires Netscape Portable Runtime (NSPR) 4.17, or newer.
@@ -21,7 +21,7 @@ NSS 3.34 source distributions are available on ftp.mozilla.org for secure HTTPS 
 
 (notable-changes-in-nss-3-34)=
 
-## [Notable Changes in NSS 3.34](#notable_changes_in_nss_3.34)
+## Notable Changes in NSS 3.34
 
 :::{container}
 
@@ -145,9 +145,9 @@ NSS 3.34 source distributions are available on ftp.mozilla.org for secure HTTPS 
 - libfreebl no longer requires SSE2 instructions.
 :::
 
-## [New in NSS 3.34](#new_in_nss_3.34)
+## New in NSS 3.34
 
-### [New Functionality](#new_functionality)
+### New Functionality
 
 :::{container}
 
@@ -179,7 +179,7 @@ NSS 3.34 source distributions are available on ftp.mozilla.org for secure HTTPS 
 
 (bugs-fixed-in-nss-3-34)=
 
-## [Bugs fixed in NSS 3.34](#bugs_fixed_in_nss_3.34)
+## Bugs fixed in NSS 3.34
 
 :::{container}
 This Bugzilla query returns all the bugs fixed in NSS 3.34:
@@ -187,7 +187,7 @@ This Bugzilla query returns all the bugs fixed in NSS 3.34:
 <https://bugzilla.mozilla.org/buglist.cgi?resolution=FIXED&classification=Components&query_format=advanced&product=NSS&target_milestone=3.34>
 :::
 
-## [Compatibility](#compatibility)
+## Compatibility
 
 :::{container}
 NSS 3.34 shared libraries are backward compatible with all older NSS 3.x shared libraries. A
@@ -197,7 +197,7 @@ to the functions listed in NSS Public Functions will remain compatible with futu
 the NSS shared libraries.
 :::
 
-## [Feedback](#feedback)
+## Feedback
 
 :::{container}
 Bugs discovered should be reported by filing a bug report with

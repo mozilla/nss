@@ -12,7 +12,7 @@
 
 (proven-application-security-architecture)=
 
-## [Proven Application Security Architecture](#proven_application_security_architecture)
+## Proven Application Security Architecture
 
 :::{container}
 If you want to add support for SSL, S/MIME, or other Internet security standards to your
@@ -62,7 +62,7 @@ Page](https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSPR).
 
 (interoperability-and-open-standards)=
 
-## [Interoperability and Open Standards](#interoperability_and_open_standards)
+## Interoperability and Open Standards
 
 :::{container}
 You can use NSS to support a range of security standards in your application, including the
@@ -122,7 +122,7 @@ Technologies](https://www.mozilla.org/projects/security/pki/nss/nss-3.11/nss-3.1
 
 (fips-140-validation-and-niscc-testing)=
 
-## [FIPS 140 Validation and NISCC Testing](#fips_140_validation_and_niscc_testing)
+## FIPS 140 Validation and NISCC Testing
 
 :::{container}
 The NSS software crypto module has been validated three times for conformance to FIPS 140 at
@@ -137,7 +137,7 @@ million test cases of invalid input data).
 
 (complete-software-development-kit)=
 
-## [Complete Software Development Kit](#complete_software_development_kit)
+## Complete Software Development Kit
 
 :::{container}
 In addition to libraries and APIs, NSS provides {ref}`mozilla-projects-nss-tools` required for
@@ -155,7 +155,7 @@ without recompiling or relinking their applications.
 
 (open-source-licensing-and-distribution)=
 
-## [Open-Source Licensing and Distribution](#open-source_licensing_and_distribution)
+## Open-Source Licensing and Distribution
 
 :::{container}
 NSS is available under the [Mozilla Public License](https://www.mozilla.org/MPL/), version 2.

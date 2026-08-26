@@ -2,13 +2,13 @@
 
 # NSS 3.28 release notes
 
-## [Introduction](#introduction)
+## Introduction
 
 :::{container}
 The Network Security Services (NSS) team has released NSS 3.28, which is a minor release.
 :::
 
-## [Distribution information](#distribution_information)
+## Distribution information
 
 :::{container}
 The hg tag is NSS_3_28_RTM. NSS 3.28 requires Netscape Portable Runtime(NSPR) 4.13.1 or newer.
@@ -21,9 +21,9 @@ NSS 3.28 source distributions are available on ftp.mozilla.org for secure HTTPS 
 
 (new-in-nss-3-28)=
 
-## [New in NSS 3.28](#new_in_nss_3.28)
+## New in NSS 3.28
 
-### [New Functionality](#new_functionality)
+### New Functionality
 
 :::{container}
 
@@ -64,7 +64,7 @@ NSS 3.28 source distributions are available on ftp.mozilla.org for secure HTTPS 
 
 (request-to-test-and-prepare-for-tls-1-3)=
 
-## [Request to test and prepare for TLS 1.3](#request_to_test_and_prepare_for_tls_1.3)
+## Request to test and prepare for TLS 1.3
 
 :::{container}
 This release contains improved support for TLS 1.3, however, the code that supports TLS 1.3 is
@@ -86,7 +86,7 @@ issues that you encounter in your tests.
 
 (notable-changes-in-nss-3-28)=
 
-## [Notable Changes in NSS 3.28](#notable_changes_in_nss_3.28)
+## Notable Changes in NSS 3.28
 
 :::{container}
 
@@ -134,7 +134,7 @@ issues that you encounter in your tests.
 
 (bugs-fixed-in-nss-3-28)=
 
-## [Bugs fixed in NSS 3.28](#bugs_fixed_in_nss_3.28)
+## Bugs fixed in NSS 3.28
 
 :::{container}
 This Bugzilla query returns all the bugs fixed in NSS 3.28:
@@ -142,7 +142,7 @@ This Bugzilla query returns all the bugs fixed in NSS 3.28:
 <https://bugzilla.mozilla.org/buglist.cgi?resolution=FIXED&classification=Components&query_format=advanced&product=NSS&target_milestone=3.28>
 :::
 
-## [Compatibility](#compatibility)
+## Compatibility
 
 :::{container}
 NSS 3.28 shared libraries are backward compatible with all older NSS 3.x shared libraries. A
@@ -152,7 +152,7 @@ to the functions listed in NSS Public Functions will remain compatible with futu
 the NSS shared libraries.
 :::
 
-## [Feedback](#feedback)
+## Feedback
 
 :::{container}
 Bugs discovered should be reported by filing a bug report with

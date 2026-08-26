@@ -4,7 +4,7 @@
 
 (implementing-pkcs-2311-for-nss)=
 
-## [Implementing PKCS #11 for NSS](#implementing_pkcs_.2311_for_nss)
+## Implementing PKCS #11 for NSS
 
 :::{container}
 **NOTE:** This document was originally for the Netscape Security Library that came with Netscape
@@ -30,7 +30,7 @@ PKCS #11: Cryptographic Token Interface Standard, version 2.0. To understand thi
 should be familiar with the standard specification.
 :::
 
-### [General-Purpose Functions](#general-purpose_functions)
+### General-Purpose Functions
 
 :::{container}
 
@@ -68,7 +68,7 @@ versions of NSS.).
 
 (slot-and-token-management)=
 
-### [Slot and Token Management](#slot_and_token_management)
+### Slot and Token Management
 
 :::{container}
 
@@ -196,7 +196,7 @@ CFK_LOGIN_REQUIRED = TRUE and CFK_USER_PIN_INITIALIZED = FALSE.
 
 (session-management)=
 
-### [Session Management](#session_management)
+### Session Management
 
 :::{container}
 
@@ -255,7 +255,7 @@ The NSS calls C_Logout on a token's initial session
 
 (object-management)=
 
-### [Object Management](#object_management)
+### Object Management
 
 :::{container}
 
@@ -414,7 +414,7 @@ and C_UnwrapKey are optional. The NSS always attempts to use these two functions
 C_Encrypt and C_Decrypt instead if C_WrapKey and C_UnwrapKey aren't implemented.
 :::
 
-### [Installation](#installation)
+### Installation
 
 :::{container}
 You can install your module in any convenient location on the user's hard disk, but you must tell
@@ -433,7 +433,7 @@ deeply.
 
 (semantics-unique-to-nss)=
 
-### [Semantics Unique to NSS](#semantics_unique_to_nss)
+### Semantics Unique to NSS
 
 :::{container}
 These sections describe semantics required by NSS but not specified by PKCS #11.

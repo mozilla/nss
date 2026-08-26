@@ -2,13 +2,13 @@
 
 # FC_Encrypt
 
-## [Name](#name)
+## Name
 
 :::{container}
 FC_Encrypt - Encrypt a block of data.
 :::
 
-## [Syntax](#syntax)
+## Syntax
 
 :::{container}
 
@@ -24,7 +24,7 @@ CK_RV FC_Encrypt(
 
 :::
 
-## [Parameters](#parameters)
+## Parameters
 
 :::{container}
 `hSession`
@@ -48,7 +48,7 @@ CK_RV FC_Encrypt(
 : [in/out] number of bytes.
 :::
 
-## [Description](#description)
+## Description
 
 :::{container}
 `FC_Encrypt` encrypts a block of data according to the attributes of the previous call to
@@ -57,11 +57,11 @@ CK_RV FC_Encrypt(
 A user must log into the token (to assume the NSS User role) before calling `FC_Encrypt`.
 :::
 
-## [Return value](#return_value)
+## Return value
 
-## [Examples](#examples)
+## Examples
 
-## [See also](#see_also)
+## See also
 
 :::{container}
 

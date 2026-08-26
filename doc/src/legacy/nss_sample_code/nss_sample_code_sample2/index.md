@@ -4,7 +4,7 @@
 
 (nss-sample-code-2-symmetric-encryption)=
 
-## [NSS Sample Code 2: Symmetric Encryption](#nss_sample_code_2_symmetric_encryption)
+## NSS Sample Code 2: Symmetric Encryption
 
 :::{container}
 

@@ -4,7 +4,7 @@
 
 (project-information)=
 
-## [Project Information](#project_information)
+## Project Information
 
 :::{container}
 python-nss is a Python binding for NSS (Network Security Services) and NSPR (Netscape Portable
@@ -26,7 +26,7 @@ For information on NSS and NSPR, see the following:
 
 (design-goals)=
 
-### [Design Goals](#design_goals)
+### Design Goals
 
 :::{container}
 NSS and NSPR are C language API's which python-nss "wraps" and exposes to Python programs. The
@@ -115,7 +115,7 @@ design of python-nss follows these basic guiding principles:
 
 (project-history)=
 
-## [Project History](#project_history)
+## Project History
 
 :::{container}
 Red Hat utilizes both NSS and Python in many of it's projects, however it was not previously
@@ -149,7 +149,7 @@ provided to assist them.
 
 (licensing-information)=
 
-## [Licensing Information](#licensing_information)
+## Licensing Information
 
 :::{container}
 python-nss is available under the Mozilla Public License, the GNU General Public License, and the
@@ -157,7 +157,7 @@ GNU Lesser General Public License. For information on downloading python-nss rel
 files, see [Source Download](#sourcedownload).
 :::
 
-## [Documentation](#documentation)
+## Documentation
 
 :::{container}
 
@@ -196,7 +196,7 @@ The doc directory contains other files you may wish to review.
 
 (how-to-report-a-bug)=
 
-## [How to Report a Bug](#how_to_report_a_bug)
+## How to Report a Bug
 
 :::{container}
 python-nss bugs are currently being tracked in the Red Hat bugzilla system for Fedora. You can
@@ -206,7 +206,7 @@ enter a bug report
 
 (source-download-area)=
 
-## [Source Download Area](#source_download_area)
+## Source Download Area
 
 :::{container}
 Source downloads are maintained
@@ -244,11 +244,11 @@ The old deprecated python-nss CVS source code location is `mozilla/security/pyth
 
 (release-information)=
 
-## [Release Information](#release_information)
+## Release Information
 
 (release-1-0-1)=
 
-### [Release 1.0.1](#release_1.0.1)
+### Release 1.0.1
 
 :::{container}
 
@@ -279,7 +279,7 @@ The old deprecated python-nss CVS source code location is `mozilla/security/pyth
 
 (release-1-0-0)=
 
-### [Release 1.0.0](#release_1.0.0)
+### Release 1.0.0
 
 :::{container}
 
@@ -336,7 +336,7 @@ The old deprecated python-nss CVS source code location is `mozilla/security/pyth
 
 (release-1-0-0beta1)=
 
-### [Release 1.0.0beta1](#release_1.0.0beta1)
+### Release 1.0.0beta1
 
 :::{container}
 
@@ -382,7 +382,7 @@ The old deprecated python-nss CVS source code location is `mozilla/security/pyth
 
 (release-0-17-0)=
 
-### [Release 0.17.0](#release_0.17.0)
+### Release 0.17.0
 
 :::{container}
 
@@ -429,7 +429,7 @@ The old deprecated python-nss CVS source code location is `mozilla/security/pyth
 
 (release-0-16-0)=
 
-### [Release 0.16.0](#release_0.16.0)
+### Release 0.16.0
 
 :::{container}
 
@@ -657,7 +657,7 @@ The old deprecated python-nss CVS source code location is `mozilla/security/pyth
 
 (release-0-15-0)=
 
-### [Release 0.15.0](#release_0.15.0)
+### Release 0.15.0
 
 :::{container}
 
@@ -723,7 +723,7 @@ The old deprecated python-nss CVS source code location is `mozilla/security/pyth
 
 (release-0-14-1)=
 
-### [Release 0.14.1](#release_0.14.1)
+### Release 0.14.1
 
 :::{container}
 
@@ -788,7 +788,7 @@ The old deprecated python-nss CVS source code location is `mozilla/security/pyth
 
 (release-0-14-0)=
 
-### [Release 0.14.0](#release_0.14.0)
+### Release 0.14.0
 
 :::{container}
 Release Date
@@ -985,7 +985,7 @@ Internal Changes
 
 (release-0-13-0)=
 
-### [Release 0.13.0](#release_0.13.0)
+### Release 0.13.0
 
 :::{container}
 
@@ -1075,7 +1075,7 @@ Internal Changes
 
 (release-0-12-0)=
 
-### [Release 0.12.0](#release_0.12.0)
+### Release 0.12.0
 
 :::{container}
 
@@ -1247,7 +1247,7 @@ Internal Changes
 
 (release-0-11-0)=
 
-### [Release 0.11.0](#release_0.11.0)
+### Release 0.11.0
 
 :::{container}
 
@@ -1371,7 +1371,7 @@ Internal Changes
 
 (release-0-10-0)=
 
-### [Release 0.10.0](#release_0.10.0)
+### Release 0.10.0
 
 :::{container}
 
@@ -1424,7 +1424,7 @@ Internal Changes
 
 (release-0-9-0)=
 
-### [Release 0.9.0](#release_0.9.0)
+### Release 0.9.0
 
 :::{container}
 
@@ -1592,7 +1592,7 @@ Internal Changes
 
 (release-0-8-0)=
 
-### [Release 0.8.0](#release_0.8.0)
+### Release 0.8.0
 
 :::{container}
 
@@ -1633,7 +1633,7 @@ Internal Changes
 
 (release-0-7-0)=
 
-### [Release 0.7.0](#release_0.7.0)
+### Release 0.7.0
 
 :::{container}
 
@@ -1705,7 +1705,7 @@ Internal Changes
 
 (release-0-6-0)=
 
-### [Release 0.6.0](#release_0.6.0)
+### Release 0.6.0
 
 :::{container}
 
@@ -1730,7 +1730,7 @@ Internal Changes
 
 (release-0-5-0)=
 
-### [Release 0.5.0](#release_0.5.0)
+### Release 0.5.0
 
 :::{container}
 
@@ -1755,7 +1755,7 @@ Internal Changes
 
 (release-0-4-0)=
 
-### [Release 0.4.0](#release_0.4.0)
+### Release 0.4.0
 
 :::{container}
 
@@ -1781,7 +1781,7 @@ Internal Changes
 
 (release-0-3-0)=
 
-### [Release 0.3.0](#release_0.3.0)
+### Release 0.3.0
 
 :::{container}
 
@@ -1805,7 +1805,7 @@ Internal Changes
 
 (release-0-2-0)=
 
-### [Release 0.2.0](#release_0.2.0)
+### Release 0.2.0
 
 :::{container}
 
@@ -1845,7 +1845,7 @@ Internal Changes
 
 (release-0-1-0)=
 
-### [Release 0.1.0](#release_0.1.0)
+### Release 0.1.0
 
 :::{container}
 

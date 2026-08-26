@@ -4,7 +4,7 @@
 
 (nss-sample-code-4-encryptiondecryption-and-mac-keys-using-session)=
 
-## [NSS Sample Code 4: Encryption/Decryption and MAC Keys Using Session.](#nss_sample_code_4_encryptiondecryption_and_mac_keys_using_session.)
+## NSS Sample Code 4: Encryption/Decryption and MAC Keys Using Session.
 
 :::{container}
 Generates encryption/mac keys and uses session objects.

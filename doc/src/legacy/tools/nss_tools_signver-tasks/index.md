@@ -4,13 +4,13 @@
 
 (nss-security-tools-signver-tasks)=
 
-## [NSS Security Tools: signver Tasks](#nss_security_tools_signver_tasks)
+## NSS Security Tools: signver Tasks
 
 :::{container}
 Newsgroup: [mozilla.dev.tech.crypto](news://news.mozilla.org/mozilla.dev.tech.crypto)
 :::
 
-### [Task List](#task_list)
+### Task List
 
 :::{container}
 

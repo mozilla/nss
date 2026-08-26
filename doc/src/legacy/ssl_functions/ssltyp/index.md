@@ -35,7 +35,7 @@ types are described with the functions that use them or in the header files.
 
 (types-and-structures)=
 
-## [Types and Structures](#types_and_structures)
+## Types and Structures
 
 :::{container}
 These types and structures are described here:
@@ -261,7 +261,7 @@ The enum includes the following enumerators:
 
 (managing-secitem-memory)=
 
-## [Managing SECItem Memory](#managing_secitem_memory)
+## Managing SECItem Memory
 
 :::{container}
 These functions are available for managing the memory associated with `SECItem` structures and

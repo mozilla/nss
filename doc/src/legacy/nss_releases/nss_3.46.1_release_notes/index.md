@@ -2,14 +2,14 @@
 
 # NSS 3.46.1 release notes
 
-## [Introduction](#introduction)
+## Introduction
 
 :::{container}
 Network Security Services (NSS) 3.46.1 is a patch release for NSS 3.46. The bug fixes in NSS
 3.46.1 are described in the "Bugs Fixed" section below. It was released on 2 October 2019.
 :::
 
-## [Distribution Information](#distribution_information)
+## Distribution Information
 
 :::{container}
 The HG tag is NSS_3_46_1_RTM. NSS 3.46.1 requires NSPR 4.22 or newer.
@@ -24,7 +24,7 @@ Other releases are available in NSS Releases.
 
 (new-in-nss-3-46-1)=
 
-## [New in NSS 3.46.1](#new_in_nss_3.46.1)
+## New in NSS 3.46.1
 
 :::{container}
 No new functionality is introduced in this release.
@@ -32,7 +32,7 @@ No new functionality is introduced in this release.
 
 (bugs-fixed-in-nss-3-46-1)=
 
-## [Bugs fixed in NSS 3.46.1](#bugs_fixed_in_nss_3.46.1)
+## Bugs fixed in NSS 3.46.1
 
 :::{container}
 
@@ -46,7 +46,7 @@ This Bugzilla query returns all the bugs fixed in NSS 3.46.1:
 <https://bugzilla.mozilla.org/buglist.cgi?resolution=FIXED&classification=Components&query_format=advanced&product=NSS&target_milestone=3.46.1>
 :::
 
-## [Compatibility](#compatibility)
+## Compatibility
 
 :::{container}
 NSS 3.46.1 shared libraries are backward compatible with all older NSS 3.x shared libraries. A
@@ -56,7 +56,7 @@ to the functions listed in NSS Public Functions will remain compatible with futu
 the NSS shared libraries.
 :::
 
-## [Feedback](#feedback)
+## Feedback
 
 :::{container}
 Bugs discovered should be reported by filing a bug report with

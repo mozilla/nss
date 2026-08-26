@@ -19,7 +19,7 @@
 
 ::::
 
-## [Chapter 2](#chapter_2_getting_started_with_ssl) Getting Started With SSL
+## [Chapter 2](#chapter-2-getting-started-with-ssl) Getting Started With SSL
 
 :::{container}
 This chapter describes how to set up your environment, including certificate and key databases.
@@ -33,7 +33,7 @@ This chapter describes how to set up your environment, including certificate and
 
 (ssl-pkcs-11-and-the-default-security-databases)=
 
-## [SSL, PKCS #11, and the Default Security Databases](#ssl_pkcs_11_and_the_default_security_databases)
+## SSL, PKCS #11, and the Default Security Databases
 
 :::{container}
 The basic relationships among the NSS libraries are described in [Introduction to Network
@@ -103,7 +103,7 @@ providers for cryptographic operations.
 
 (setting-up-the-certificate-and-key-databases)=
 
-## [Setting Up the Certificate and Key Databases](#setting_up_the_certificate_and_key_databases)
+## Setting Up the Certificate and Key Databases
 
 :::{container}
 Before you can run the sample programs (`server.c` and `client.c`) that come with NSS, you
@@ -143,7 +143,7 @@ For complete information about the command-line options used in the examples tha
 
 (setting-up-the-ca-db-and-certificate)=
 
-### [Setting Up the CA DB and Certificate](#setting_up_the_ca_db_and_certificate)
+### Setting Up the CA DB and Certificate
 
 :::{container}
 Set up the CA with its own separate set of databases.
@@ -165,7 +165,7 @@ CA can issue SSL client and server certificates with these databases.
 
 (setting-up-the-server-db-and-certificate)=
 
-### [Setting Up the Server DB and Certificate](#setting_up_the_server_db_and_certificate)
+### Setting Up the Server DB and Certificate
 
 :::{container}
 The sections that follow describe how to set up the Server DB and certificate:
@@ -196,7 +196,7 @@ for this certificate. This is necessary for the SSL server to be able to do its 
 
 (setting-up-the-client-db-and-certificate)=
 
-### [Setting Up the Client DB and Certificate](#setting_up_the_client_db_and_certificate)
+### Setting Up the Client DB and Certificate
 
 :::{container}
 Setting up the client certificate database involves three stages:
@@ -226,7 +226,7 @@ server.
 
 (verifying-the-server-and-client-certificates)=
 
-### [Verifying the Server and Client Certificates](#verifying_the_server_and_client_certificates)
+### Verifying the Server and Client Certificates
 
 :::{container}
 When you have finished setting up the server and client certificate databases, verify that the
@@ -239,7 +239,7 @@ client and server certificates are valid, as follows:
 
 (building-nss-programs)=
 
-## [Building NSS Programs](#building_nss_programs)
+## Building NSS Programs
 
 :::{container}
 On Unix, use the GNU utility `gmake` to run the makefile. On Windows NT, use the `nmake`

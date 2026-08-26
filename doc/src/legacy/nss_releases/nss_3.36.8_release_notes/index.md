@@ -2,14 +2,14 @@
 
 # NSS 3.36.8 release notes
 
-## [Introduction](#introduction)
+## Introduction
 
 :::{container}
 Network Security Services (NSS) 3.36.8 is a patch release for NSS 3.36. The bug fixes in NSS
 3.36.8 are described in the "Bugs Fixed" section below. It was released on 21 June 2019.
 :::
 
-## [Distribution Information](#distribution_information)
+## Distribution Information
 
 :::{container}
 The HG tag is NSS_3_36_8_RTM. NSS 3.36.8 requires NSPR 4.19 or newer.
@@ -24,9 +24,9 @@ Other releases are available {ref}`mozilla-projects-nss-nss-releases`.
 
 (new-in-nss-3-36-8)=
 
-## [New in NSS 3.36.8](#new_in_nss_3.36.8)
+## New in NSS 3.36.8
 
-### [New Functionality](#new_functionality)
+### New Functionality
 
 :::{container}
 No new functionality is introduced in this release. This is a patch release to fix bugs.
@@ -34,7 +34,7 @@ No new functionality is introduced in this release. This is a patch release to f
 
 (bugs-fixed-in-nss-3-36-8)=
 
-## [Bugs fixed in NSS 3.36.8](#bugs_fixed_in_nss_3.36.8)
+## Bugs fixed in NSS 3.36.8
 
 ::::{container}
 
@@ -53,7 +53,7 @@ No new functionality is introduced in this release. This is a patch release to f
   :::
 ::::
 
-## [Compatibility](#compatibility)
+## Compatibility
 
 :::{container}
 NSS 3.36.8 shared libraries are backward compatible with all older NSS 3.x shared libraries. A
@@ -63,7 +63,7 @@ to the functions listed in NSS Public Functions will remain compatible with futu
 the NSS shared libraries.
 :::
 
-## [Feedback](#feedback)
+## Feedback
 
 :::{container}
 Bugs discovered should be reported by filing a bug report with

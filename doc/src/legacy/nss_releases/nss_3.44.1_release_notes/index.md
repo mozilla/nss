@@ -2,7 +2,7 @@
 
 # NSS 3.44.1 release notes
 
-## [Introduction](#introduction)
+## Introduction
 
 :::{container}
 Network Security Services (NSS) 3.44.1 is a patch release for NSS 3.44. The bug fixes in NSS
@@ -11,7 +11,7 @@ Network Security Services (NSS) 3.44.1 is a patch release for NSS 3.44. The bug 
 The NSS team would like to recognize first-time contributors: Greg Rubin
 :::
 
-## [Distribution Information](#distribution_information)
+## Distribution Information
 
 :::{container}
 The HG tag is NSS_3_44_1_RTM. NSS 3.44.1 requires NSPR 4.21 or newer.
@@ -26,9 +26,9 @@ Other releases are available {ref}`mozilla-projects-nss-nss-releases`.
 
 (new-in-nss-3-44-1)=
 
-## [New in NSS 3.44.1](#new_in_nss_3.44.1)
+## New in NSS 3.44.1
 
-### [New Functionality](#new_functionality)
+### New Functionality
 
 ::::{container}
 
@@ -44,7 +44,7 @@ Other releases are available {ref}`mozilla-projects-nss-nss-releases`.
 
 (bugs-fixed-in-nss-3-44-1)=
 
-## [Bugs fixed in NSS 3.44.1](#bugs_fixed_in_nss_3.44.1)
+## Bugs fixed in NSS 3.44.1
 
 ::::{container}
 
@@ -84,7 +84,7 @@ Other releases are available {ref}`mozilla-projects-nss-nss-releases`.
   :::
 ::::
 
-## [Compatibility](#compatibility)
+## Compatibility
 
 :::{container}
 NSS 3.44.1 shared libraries are backward compatible with all older NSS 3.x shared libraries. A
@@ -94,7 +94,7 @@ to the functions listed in NSS Public Functions will remain compatible with futu
 the NSS shared libraries.
 :::
 
-## [Feedback](#feedback)
+## Feedback
 
 :::{container}
 Bugs discovered should be reported by filing a bug report with

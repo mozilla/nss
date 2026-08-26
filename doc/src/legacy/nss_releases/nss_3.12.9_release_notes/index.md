@@ -2,7 +2,7 @@
 
 (removed-functions)=
 
-## [Removed functions](#removed_functions)
+## Removed functions
 
 ::::::{container}
 2010-09-23

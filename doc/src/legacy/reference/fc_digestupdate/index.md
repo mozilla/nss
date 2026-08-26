@@ -2,13 +2,13 @@
 
 # FC_DigestUpdate
 
-## [Name](#name)
+## Name
 
 :::{container}
 FC_DigestUpdate - process the next block of a multi-part digest operation.
 :::
 
-## [Syntax](#syntax)
+## Syntax
 
 :::{container}
 
@@ -22,7 +22,7 @@ CK_RV FC_DigestUpdate(
 
 :::
 
-## [Parameters](#parameters)
+## Parameters
 
 :::{container}
 `hSession`
@@ -38,7 +38,7 @@ CK_RV FC_DigestUpdate(
 : [in] length of data block in bytes.
 :::
 
-## [Description](#description)
+## Description
 
 :::{container}
 `FC_DigestUpdate` starts or continues a multi-part digest operation. One or more blocks may be
@@ -48,11 +48,11 @@ part of the message digest operation. The digest for the entire message is retur
 A user may call `FC_DigestUpdate` without logging into the token (to assume the NSS User role).
 :::
 
-## [Return value](#return_value)
+## Return value
 
-## [Examples](#examples)
+## Examples
 
-## [See also](#see_also)
+## See also
 
 :::{container}
 

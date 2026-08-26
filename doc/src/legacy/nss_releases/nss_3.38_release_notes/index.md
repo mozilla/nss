@@ -2,13 +2,13 @@
 
 # NSS 3.38 release notes
 
-## [Introduction](#introduction)
+## Introduction
 
 :::{container}
 The NSS team has released Network Security Services (NSS) 3.38, which is a minor release.
 :::
 
-## [Distribution Information](#distribution_information)
+## Distribution Information
 
 :::{container}
 The HG tag is NSS_3_38_RTM. NSS 3.38 requires NSPR 4.19 or newer.
@@ -21,9 +21,9 @@ NSS 3.38 source distributions are available on ftp.mozilla.org for secure HTTPS 
 
 (new-in-nss-3-38)=
 
-## [New in NSS 3.38](#new_in_nss_3.38)
+## New in NSS 3.38
 
-### [New Functionality](#new_functionality)
+### New Functionality
 
 :::{container}
 
@@ -51,7 +51,7 @@ NSS 3.38 source distributions are available on ftp.mozilla.org for secure HTTPS 
 
 (notable-changes-in-nss-3-38)=
 
-## [Notable Changes in NSS 3.38](#notable_changes_in_nss_3.38)
+## Notable Changes in NSS 3.38
 
 :::{container}
 
@@ -66,7 +66,7 @@ NSS 3.38 source distributions are available on ftp.mozilla.org for secure HTTPS 
 
 (bugs-fixed-in-nss-3-38)=
 
-## [Bugs fixed in NSS 3.38](#bugs_fixed_in_nss_3.38)
+## Bugs fixed in NSS 3.38
 
 :::{container}
 This Bugzilla query returns all the bugs fixed in NSS 3.38:
@@ -74,7 +74,7 @@ This Bugzilla query returns all the bugs fixed in NSS 3.38:
 <https://bugzilla.mozilla.org/buglist.cgi?resolution=FIXED&classification=Components&query_format=advanced&product=NSS&target_milestone=3.38>
 :::
 
-## [Compatibility](#compatibility)
+## Compatibility
 
 :::{container}
 NSS 3.38 shared libraries are backward compatible with all older NSS 3.x shared libraries. A
@@ -84,7 +84,7 @@ to the functions listed in NSS Public Functions will remain compatible with futu
 the NSS shared libraries.
 :::
 
-## [Feedback](#feedback)
+## Feedback
 
 :::{container}
 Bugs discovered should be reported by filing a bug report with

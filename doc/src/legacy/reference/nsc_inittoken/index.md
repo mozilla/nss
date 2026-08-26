@@ -2,13 +2,13 @@
 
 # NSC_InitToken
 
-## [Name](#name)
+## Name
 
 :::{container}
 `NSC_InitToken()` - initialize or re-initialize a token.
 :::
 
-## [Syntax](#syntax)
+## Syntax
 
 :::{container}
 
@@ -23,7 +23,7 @@ CK_RV NSC_InitToken(
 
 :::
 
-## [Parameters](#parameters)
+## Parameters
 
 :::{container}
 `NSC_InitToken()` has the following parameters:
@@ -46,7 +46,7 @@ CK_RV NSC_InitToken(
   null-terminated
 :::
 
-## [Description](#description)
+## Description
 
 ::::{container}
 `NSC_InitToken()` initializes a brand new token or re-initializes a token that was initialized
@@ -62,7 +62,7 @@ are the certificates that have their associated private keys in the key database
 :::
 ::::
 
-## [Return value](#return_value)
+## Return value
 
 :::{container}
 `NSC_InitToken()` returns the following return codes.
@@ -81,9 +81,9 @@ are the certificates that have their associated private keys in the key database
 - `CKR_DEVICE_ERROR`: failed to reset the key database.
 :::
 
-## [Examples](#examples)
+## Examples
 
-## [Application usage](#application_usage)
+## Application usage
 
 ::::{container}
 `NSC_InitToken()` is used to reset the password for the key database when the user forgets the
@@ -100,7 +100,7 @@ those keys.
 :::
 ::::
 
-## [See also](#see_also)
+## See also
 
 :::{container}
 

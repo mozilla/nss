@@ -4,7 +4,7 @@
 
 (pkcs-2311-module-specs)=
 
-## [PKCS #11 Module Specs](#pkcs_.2311_module_specs)
+## PKCS #11 Module Specs
 
 :::{container}
 The following is a proposal to the [PKCS](https://en.wikipedia.org/wiki/PKCS) #11 working
@@ -93,7 +93,7 @@ PKCS #11 libraries which accept parameters must check if the 'new' `pReserved` f
 
 (nss-specific-parameters-in-module-specs)=
 
-## [NSS Specific Parameters in Module Specs](#nss_specific_parameters_in_module_specs)
+## NSS Specific Parameters in Module Specs
 
 :::{container}
 Here are the NSS Application specific parameters in use. This data is currently stored in
@@ -290,7 +290,7 @@ library=core32.dll name="Litronic Netsign"
 
 (softoken-specific-parameters)=
 
-## [Softoken Specific Parameters](#softoken_specific_parameters)
+## Softoken Specific Parameters
 
 :::{container}
 The internal NSS PKCS #11 implementation (softoken) requires Applications parameters. It will not

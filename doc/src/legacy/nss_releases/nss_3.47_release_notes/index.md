@@ -2,7 +2,7 @@
 
 # NSS 3.47 release notes
 
-## [Introduction](#introduction)
+## Introduction
 
 :::{container}
 The NSS team has released Network Security Services (NSS) 3.47 on **18 October 2019**, which is a
@@ -15,7 +15,7 @@ The NSS team would like to recognize first-time contributors:
 - Jenine
 :::
 
-## [Distribution Information](#distribution_information)
+## Distribution Information
 
 :::{container}
 The HG tag is NSS_3_47_RTM. NSS 3.47 requires NSPR 4.23 or newer.
@@ -28,7 +28,7 @@ NSS 3.47 source distributions are available on ftp.mozilla.org for secure HTTPS 
 Other releases are available {ref}`mozilla-projects-nss-nss-releases`.
 :::
 
-## [Upcoming changes to default TLS configuration](#upcoming_changes_to_default_tls_configuration)
+## Upcoming changes to default TLS configuration
 
 :::{container}
 The next NSS team plans to make two changes to the default TLS configuration in NSS 3.48, which
@@ -44,7 +44,7 @@ will be released in early December:
 
 (notable-changes-in-nss-3-47)=
 
-## [Notable Changes in NSS 3.47](#notable_changes_in_nss_3.47)
+## Notable Changes in NSS 3.47
 
 :::{container}
 
@@ -58,7 +58,7 @@ will be released in early December:
 
 (bugs-fixed-in-nss-3-47)=
 
-## [Bugs fixed in NSS 3.47](#bugs_fixed_in_nss_3.47)
+## Bugs fixed in NSS 3.47
 
 :::{container}
 
@@ -151,7 +151,7 @@ This Bugzilla query returns all the bugs fixed in NSS 3.47:
 <https://bugzilla.mozilla.org/buglist.cgi?resolution=FIXED&classification=Components&query_format=advanced&product=NSS&target_milestone=3.47>
 :::
 
-## [Compatibility](#compatibility)
+## Compatibility
 
 :::{container}
 NSS 3.47 shared libraries are backward compatible with all older NSS 3.x shared libraries. A
@@ -161,7 +161,7 @@ to the functions listed in NSS Public Functions will remain compatible with futu
 the NSS shared libraries.
 :::
 
-## [Feedback](#feedback)
+## Feedback
 
 :::{container}
 Bugs discovered should be reported by filing a bug report with

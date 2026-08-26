@@ -2,14 +2,14 @@
 
 # NSS 3.20.1 release notes
 
-## [Introduction](#introduction)
+## Introduction
 
 :::{container}
 Network Security Services (NSS) 3.20.1 is a patch release for NSS 3.20. The bug fixes in NSS
 3.20.1 are described in the "Security Advisories" section below.
 :::
 
-## [Distribution Information](#distribution_information)
+## Distribution Information
 
 :::{container}
 The HG tag is NSS_3_20_1_RTM. NSS 3.20.1 requires NSPR 4.10.10 or newer.
@@ -22,7 +22,7 @@ HTTPS download:
   <https://ftp.mozilla.org/pub/nspr/releases/v4.10.10/src/>
 :::
 
-## [Security Advisories](#security_advisories)
+## Security Advisories
 
 :::{container}
 The following security-relevant bugs have been resolved in NSS 3.20.1. Users are encouraged to
@@ -48,16 +48,16 @@ NSPR 4.10.10 when building NSS.
 
 (new-in-nss-3-20-1)=
 
-## [New in NSS 3.20.1](#new_in_nss_3.20.1)
+## New in NSS 3.20.1
 
-### [New Functionality](#new_functionality)
+### New Functionality
 
 :::{container}
 No new functionality is introduced in this release. This is a patch release to fix
 security-relevant bugs.
 :::
 
-## [Compatibility](#compatibility)
+## Compatibility
 
 :::{container}
 NSS 3.20.1 shared libraries are backward compatible with all older NSS 3.x shared libraries. A
@@ -67,7 +67,7 @@ to the functions listed in NSS Public Functions will remain compatible with futu
 the NSS shared libraries.
 :::
 
-## [Feedback](#feedback)
+## Feedback
 
 :::{container}
 Bugs discovered should be reported by filing a bug report with

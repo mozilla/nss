@@ -2,14 +2,14 @@
 
 # NSS 3.19.1 release notes
 
-## [Introduction](#introduction)
+## Introduction
 
 :::{container}
 Network Security Services (NSS) 3.19.1 is a security release for NSS 3.19. The bug fixes in NSS
 3.19.1 are described in the "Bugs Fixed" section below.
 :::
 
-## [Distribution Information](#distribution_information)
+## Distribution Information
 
 :::{container}
 The HG tag is NSS_3_19_1_RTM. NSS 3.19.1 requires NSPR 4.10.8 or newer.
@@ -22,7 +22,7 @@ NSS 3.19.1 source distributions are available on ftp.mozilla.org for secure HTTP
 
 (security-fixes-in-nss-3-19-1)=
 
-## [Security Fixes in NSS 3.19.1](#security_fixes_in_nss_3.19.1)
+## Security Fixes in NSS 3.19.1
 
 :::{container}
 
@@ -34,9 +34,9 @@ NSS 3.19.1 source distributions are available on ftp.mozilla.org for secure HTTP
 
 (new-in-nss-3-19-1)=
 
-## [New in NSS 3.19.1](#new_in_nss_3.19.1)
+## New in NSS 3.19.1
 
-### [New Functionality](#new_functionality)
+### New Functionality
 
 :::{container}
 No new functionality is introduced in this release. This patch release includes a fix for the
@@ -45,7 +45,7 @@ recently published [logjam attack](https://weakdh.org/).
 
 (notable-changes-in-nss-3-19-1)=
 
-## [Notable Changes in NSS 3.19.1](#notable_changes_in_nss_3.19.1)
+## Notable Changes in NSS 3.19.1
 
 :::{container}
 
@@ -63,7 +63,7 @@ recently published [logjam attack](https://weakdh.org/).
 
 (bugs-fixed-in-nss-3-19-1)=
 
-## [Bugs fixed in NSS 3.19.1](#bugs_fixed_in_nss_3.19.1)
+## Bugs fixed in NSS 3.19.1
 
 :::{container}
 This Bugzilla query returns all the bugs fixed in NSS 3.19.1:
@@ -71,7 +71,7 @@ This Bugzilla query returns all the bugs fixed in NSS 3.19.1:
 <https://bugzilla.mozilla.org/buglist.cgi?resolution=FIXED&classification=Components&query_format=advanced&product=NSS&target_milestone=3.19.1>
 :::
 
-## [Acknowledgements](#acknowledgements)
+## Acknowledgements
 
 :::{container}
 The NSS development team would like to thank Matthew Green and Karthikeyan Bhargavan for
@@ -79,7 +79,7 @@ responsibly disclosing the issue in [bug
 1138554](https://bugzilla.mozilla.org/show_bug.cgi?id=1138554).
 :::
 
-## [Compatibility](#compatibility)
+## Compatibility
 
 :::{container}
 NSS 3.19.1 shared libraries are backward compatible with all older NSS 3.x shared libraries. A
@@ -93,7 +93,7 @@ to break some applications. {ref}`mozilla-projects-nss-nss-3-19-2-release-notes`
 behaviour to the NSS 3.19 and earlier limits.
 :::
 
-## [Feedback](#feedback)
+## Feedback
 
 :::{container}
 Bugs discovered should be reported by filing a bug report with

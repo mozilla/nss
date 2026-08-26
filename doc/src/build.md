@@ -2,7 +2,7 @@
 
 # Building NSS
 
-## [Introduction](#introduction)
+## Introduction
 
 :::{container}
 This page has detailed information on how to build NSS. Because NSS is a
@@ -13,7 +13,7 @@ concurrently: a `Make` based and a `gyp` based system.
 
 (build-environment)=
 
-## [Prerequisites](#build_environment)
+## [Prerequisites](#build-environment)
 
 :::{container}
 NSS needs a C and C++ compiler. It has minimal dependencies, including only
@@ -73,7 +73,7 @@ install [git-cinnabar](https://github.com/glandium/git-cinnabar).
 
 (get-the-source)=
 
-## [Source code](#get_the_source)
+## [Source code](#get-the-source)
 
 :::{container}
 NSS and NSPR use Mercurial for source control like other Mozilla projects. To
@@ -118,7 +118,7 @@ Other build options can be displayed by running `./build.sh --help`
 
 (build-with-make)=
 
-## [Build with make](#build_with_make)
+## Build with make
 
 :::{container}
 Alternatively, there is a `make` target, which produces a similar
@@ -160,7 +160,7 @@ may be set to.
 
 (unit-testing)=
 
-## [Unit testing](#unit_testing)
+## Unit testing
 
 :::{container}
 NSS contains extensive unit tests. Scripts to run these are found in the `tests` directory.
@@ -174,7 +174,7 @@ HOST=localhost DOMSUF=localdomain USE_64=1 ./tests/all.sh
 
 (unit-test-configuration)=
 
-### [Unit test configuration](#unit_test_configuration)
+### Unit test configuration
 
 :::{container}
 NSS tests are configured using environment variables.
@@ -197,7 +197,7 @@ Remove the `USE_64=1` override if using a 32-bit build.
 
 (test-results)=
 
-### [Test results](#test_results)
+### Test results
 
 :::{container}
 Running all tests can take a considerable amount of time.
@@ -213,11 +213,11 @@ save some time at the cost of coverage.
 
 (mozilla-projects-nss-build-artifacts)=
 
-## [Build artifacts](#build_artifacts)
+## Build artifacts
 
 (shared-libraries)=
 
-### [Shared libraries](#shared_libraries)
+### Shared libraries
 
 :::{container}
 Network Security Services provides both static libraries and shared libraries. Applications that
@@ -236,7 +236,7 @@ versions of those libraries until deprecated.
 
 (naming-conventions-and-special-libraries)=
 
-### [Naming conventions](#naming_conventions_and_special_libraries)
+### [Naming conventions](#naming-conventions-and-special-libraries)
 
 :::{container}
 Windows and Unix use different naming conventions for static and dynamic

@@ -2,11 +2,11 @@
 
 (how-to-use-the-nss-asn-1-and-quickder-decoders)=
 
-## [How to use the NSS ASN.1 and QuickDER decoders](#how_to_use_the_nss_asn.1_and_quickder_decoders)
+## How to use the NSS ASN.1 and QuickDER decoders
 
 (nss-technical-note-1)=
 
-### [NSS Technical Note: 1](#nss_technical_note_1)
+### NSS Technical Note: 1
 
 :::{container}
 NSS 3.6 contains several decoders for ASN.1 and DER.Two of them are extensively used and are part

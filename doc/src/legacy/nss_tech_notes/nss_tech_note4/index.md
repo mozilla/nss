@@ -4,11 +4,11 @@
 
 (pulling-certificate-extension-information-out-of-ssl-certificates)=
 
-## [Pulling certificate extension information out of SSL certificates](#pulling_certificate_extension_information_out_of_ssl_certificates)
+## Pulling certificate extension information out of SSL certificates
 
 (nss-technical-note-4)=
 
-### [NSS Technical Note: 4](#nss_technical_note_4)
+### NSS Technical Note: 4
 
 :::{container}
 **Note:** This document contains code snippets that focus on essential aspects of the task and
@@ -232,7 +232,7 @@ SECITEM_FreeItem(&data.maxusers, PR_FALSE);
 
 (for-more-information)=
 
-## [For more information](#for_more_information)
+## For more information
 
 :::{container}
 

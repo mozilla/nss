@@ -2,13 +2,13 @@
 
 # FC_WaitForSlotEvent
 
-## [Name](#name)
+## Name
 
 :::{container}
 FC_WaitForSlotEvent - waits for a slot event, such as token insertion or token removal, to occur.
 :::
 
-## [Syntax](#syntax)
+## Syntax
 
 :::{container}
 
@@ -18,7 +18,7 @@ CK_RV FC_WaitForSlotEvent(CK_FLAGS flags, CK_SLOT_ID_PTR pSlot CK_VOID_PTR pRese
 
 :::
 
-## [Parameters](#parameters)
+## Parameters
 
 :::{container}
 `FC_WaitForSlotEvent` takes three parameters:
@@ -28,21 +28,21 @@ CK_RV FC_WaitForSlotEvent(CK_FLAGS flags, CK_SLOT_ID_PTR pSlot CK_VOID_PTR pRese
 `pReserved`.
 :::
 
-## [Description](#description)
+## Description
 
 :::{container}
 This function is not supported by the NSS cryptographic module.
 :::
 
-## [Return value](#return_value)
+## Return value
 
 :::{container}
 `FC_WaitForSlotEvent` always returns `CKR_FUNCTION_NOT_SUPPORTED`.
 :::
 
-## [Examples](#examples)
+## Examples
 
-## [See also](#see_also)
+## See also
 
 :::{container}
 

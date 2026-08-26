@@ -11,7 +11,7 @@
 
 (run-time-environment-variables)=
 
-## [Run-Time Environment Variables](#run-time_environment_variables)
+## Run-Time Environment Variables
 
 :::{container}
 These environment variables affect the RUN TIME behavior of NSS shared libraries. There is a
@@ -368,7 +368,7 @@ separate set of environment variables that affect how NSS is built, documented b
 
 (build-time-environment-variables)=
 
-## [Build-Time Environment Variables](#build-time_environment_variables)
+## Build-Time Environment Variables
 
 ::::{container}
 These environment variables affect the build (compilation) of NSS.

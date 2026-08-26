@@ -2,13 +2,13 @@
 
 # FC_DigestFinal
 
-## [Name](#name)
+## Name
 
 :::{container}
 FC_DigestFinal - finish a multi-part digest operation.
 :::
 
-## [Syntax](#syntax)
+## Syntax
 
 :::{container}
 
@@ -22,7 +22,7 @@ CK_RV FC_DigestFinal(
 
 :::
 
-## [Parameters](#parameters)
+## Parameters
 
 :::{container}
 `hSession`
@@ -38,7 +38,7 @@ CK_RV FC_DigestFinal(
 : [in, out] pointer to location containing the maximum buffer size.
 :::
 
-## [Description](#description)
+## Description
 
 :::{container}
 `FC_DigestFinal` finishes a multi-part digest operation by returning the complete digest and
@@ -48,11 +48,11 @@ clearing the operation context. If `pDigest` is NULL the length of the digest is
 A user may call `FC_DigestFinal` without logging into the token (to assume the NSS User role).
 :::
 
-## [Return value](#return_value)
+## Return value
 
-## [Examples](#examples)
+## Examples
 
-## [See also](#see_also)
+## See also
 
 :::{container}
 

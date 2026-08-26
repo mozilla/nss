@@ -4,7 +4,7 @@
 
 (new-nss-sample-code)=
 
-## [New NSS Sample Code](#new_nss_sample_code)
+## New NSS Sample Code
 
 :::{container}
 This collection of sample code demonstrates how NSS can be used for cryptographic operations,

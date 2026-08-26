@@ -20,7 +20,7 @@ certificates and keys in such files.
 See the [release notes](../release_notes.html) for the platforms this tool is available on.
 :::
 
-## [Synopsis](#synopsis)
+## Synopsis
 
 :::{container}
 **pk12util** `-i p12File [-h tokenname] [-v] [common-options]`
@@ -34,7 +34,7 @@ where
 `[-d dir] [-P dbprefix] [-k slotPasswordFile | -K slotPassword] [-w p12filePasswordFile | -W p12filePassword]`
 :::
 
-## [Syntax](#syntax)
+## Syntax
 
 :::{container}
 To run the PKCS #12 Tool, type the command `pk12util` *option*`[`*arguments*`]` where
@@ -44,7 +44,7 @@ invocation. Each command takes several options. Options may take zero or more ar
 usage string, issue the pkcs12util command without any options.
 :::
 
-## [Options and Arguments](#options_and_arguments)
+## Options and Arguments
 
 :::{container}
 Options specify an action. Option arguments modify an action. The options and arguments for the

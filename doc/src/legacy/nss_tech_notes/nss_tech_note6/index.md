@@ -10,7 +10,7 @@ ______________________________________________________________________
 
 (nss-technical-note-6)=
 
-## [NSS Technical Note: 6](#nss_technical_note_6)
+## NSS Technical Note: 6
 
 :::{container}
 In NSS 3.8, we added checksum files required for the NSS softoken to operate in FIPS 140 mode.

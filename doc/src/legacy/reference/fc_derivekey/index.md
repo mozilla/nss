@@ -2,13 +2,13 @@
 
 # FC_DeriveKey
 
-## [Name](#name)
+## Name
 
 :::{container}
 FC_DeriveKey - derive a key from a base key
 :::
 
-## [Syntax](#syntax)
+## Syntax
 
 :::{container}
 
@@ -25,7 +25,7 @@ CK_RV FC_DeriveKey(
 
 :::
 
-## [Parameters](#parameters)
+## Parameters
 
 :::{container}
 `hSession`
@@ -57,7 +57,7 @@ CK_RV FC_DeriveKey(
 : [out] pointer to the location to receive the handle of the new key.
 :::
 
-## [Description](#description)
+## Description
 
 :::{container}
 `FC_DeriveKey` derives (decrypts) a key and creates a new key object.
@@ -65,11 +65,11 @@ CK_RV FC_DeriveKey(
 A user must log into the token (to assume the NSS User role) before calling `FC_DeriveKey`.
 :::
 
-## [Return value](#return_value)
+## Return value
 
-## [Examples](#examples)
+## Examples
 
-## [See also](#see_also)
+## See also
 
 :::{container}
 

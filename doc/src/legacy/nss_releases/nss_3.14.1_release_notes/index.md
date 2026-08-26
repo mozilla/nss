@@ -2,7 +2,7 @@
 
 # NSS 3.14.1 release notes
 
-## [Introduction](#introduction)
+## Introduction
 
 :::{container}
 Network Security Services (NSS) 3.14.1 is a patch release for NSS 3.14. The bug fixes in NSS
@@ -11,7 +11,7 @@ Network Security Services (NSS) 3.14.1 is a patch release for NSS 3.14. The bug 
 NSS 3.14.1 is licensed under the MPL 2.0.
 :::
 
-## [Distribution Information](#distribution_information)
+## Distribution Information
 
 :::{container}
 The CVS tag is NSS_3_14_1_RTM. NSS 3.14.1 requires NSPR 4.9.4 or newer.
@@ -24,9 +24,9 @@ NSS 3.14.1 source distributions are also available on ftp.mozilla.org for secure
 
 (new-in-nss-3-14-1)=
 
-## [New in NSS 3.14.1](#new_in_nss_3.14.1)
+## New in NSS 3.14.1
 
-### [New Functionality](#new_functionality)
+### New Functionality
 
 :::{container}
 
@@ -56,7 +56,7 @@ NSS 3.14.1 source distributions are also available on ftp.mozilla.org for secure
 
 (notable-changes-in-nss-3-14-1)=
 
-### [Notable Changes in NSS 3.14.1](#notable_changes_in_nss_3.14.1)
+### Notable Changes in NSS 3.14.1
 
 :::{container}
 
@@ -90,7 +90,7 @@ NSS 3.14.1 source distributions are also available on ftp.mozilla.org for secure
 
 (bugs-fixed-in-nss-3-14-1)=
 
-## [Bugs fixed in NSS 3.14.1](#bugs_fixed_in_nss_3.14.1)
+## Bugs fixed in NSS 3.14.1
 
 :::{container}
 The following Bugzilla query returns all of the bugs fixed in NSS 3.14.1:
@@ -98,7 +98,7 @@ The following Bugzilla query returns all of the bugs fixed in NSS 3.14.1:
 <https://bugzilla.mozilla.org/buglist.cgi?list_id=5216669;resolution=FIXED;query_format=advanced;bug_status=RESOLVED;bug_status=VERIFIED;target_milestone=3.14.1;product=NSS>
 :::
 
-## [Compatability](#compatability)
+## Compatability
 
 :::{container}
 NSS 3.14.1 shared libraries are backward compatible with all older NSS 3.x shared libraries. A
@@ -108,7 +108,7 @@ to the functions listed in NSS Public Functions will remain compatible with futu
 the NSS shared libraries.
 :::
 
-## [Feedback](#feedback)
+## Feedback
 
 :::{container}
 Bugs discovered in this release should be reported by filing a bug report at

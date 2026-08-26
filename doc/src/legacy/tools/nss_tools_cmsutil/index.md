@@ -4,7 +4,7 @@
 
 (using-cmsutil)=
 
-## [Using cmsutil](#using_cmsutil)
+## Using cmsutil
 
 :::{container}
 Newsgroup: [mozilla.dev.tech.crypto](news://news.mozilla.org/mozilla.dev.tech.crypto)
@@ -22,7 +22,7 @@ Each command takes one option. Each option may take zero or more arguments. To s
 string, issue the command without options.
 :::
 
-### [Options and Arguments](#options_and_arguments)
+### Options and Arguments
 
 :::{container}
 Options specify an action. Option arguments modify an action. The options and arguments for the
@@ -95,7 +95,7 @@ Options specify an action. Option arguments modify an action. The options and ar
 
 :::
 
-## [Usage](#usage)
+## Usage
 
 :::{container}
 cmsutil -C \[-i *infile*\] \[-o *outfile*\] \[-d *dbdir*\] \[-p *password*\] -r

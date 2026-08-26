@@ -2,13 +2,13 @@
 
 # FC_SetOperationState
 
-## [Name](#name)
+## Name
 
 :::{container}
 FC_SetOperationState - restore the cryptographic operation state of a session.
 :::
 
-## [Syntax](#syntax)
+## Syntax
 
 :::{container}
 
@@ -24,7 +24,7 @@ CK_RV FC_SetOperationState(
 
 :::
 
-## [Parameters](#parameters)
+## Parameters
 
 :::{container}
 `hSession`
@@ -50,7 +50,7 @@ CK_RV FC_SetOperationState(
   needed.
 :::
 
-## [Description](#description)
+## Description
 
 :::{container}
 `FC_SetOperationState` restores the cryptographic operations state of a session from an array
@@ -59,11 +59,11 @@ for now. Therefore, a user may call `FC_SetOperationState` without logging into 
 assume the NSS User role).
 :::
 
-## [Return value](#return_value)
+## Return value
 
-## [Examples](#examples)
+## Examples
 
-## [See also](#see_also)
+## See also
 
 :::{container}
 

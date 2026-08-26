@@ -2,14 +2,14 @@
 
 # NSS 3.30.2 release notes
 
-## [Introduction](#introduction)
+## Introduction
 
 :::{container}
 Network Security Services (NSS) 3.30.2 is a patch release for NSS 3.30. The bug fixes in NSS
 3.30.2 are described in the "Bugs Fixed" section below.
 :::
 
-## [Distribution Information](#distribution_information)
+## Distribution Information
 
 :::{container}
 The HG tag is NSS_3_30_2_RTM. NSS 3.30.2 requires NSPR 4.14 or newer.
@@ -22,7 +22,7 @@ NSS 3.30.2 source distributions are available on ftp.mozilla.org for secure HTTP
 
 (new-in-nss-3-30-2)=
 
-## [New in NSS 3.30.2](#new_in_nss_3.30.2)
+## New in NSS 3.30.2
 
 :::{container}
 No new functionality is introduced in this release. This is a patch release to update the list of
@@ -31,7 +31,7 @@ root CA certificates.
 
 (notable-changes-in-nss-3-30-2)=
 
-## [Notable Changes in NSS 3.30.2](#notable_changes_in_nss_3.30.2)
+## Notable Changes in NSS 3.30.2
 
 :::{container}
 
@@ -79,7 +79,7 @@ root CA certificates.
 
 (bugs-fixed-in-nss-3-30-2)=
 
-## [Bugs fixed in NSS 3.30.2](#bugs_fixed_in_nss_3.30.2)
+## Bugs fixed in NSS 3.30.2
 
 :::{container}
 
@@ -89,7 +89,7 @@ root CA certificates.
   name constraints for CA: TUBITAK Kamu SM SSL Kok Sertifikasi - Surum 1
 :::
 
-## [Compatibility](#compatibility)
+## Compatibility
 
 :::{container}
 NSS 3.30.2 shared libraries are backward compatible with all older NSS 3.x shared libraries. A
@@ -99,7 +99,7 @@ to the functions listed in NSS Public Functions will remain compatible with futu
 the NSS shared libraries.
 :::
 
-## [Feedback](#feedback)
+## Feedback
 
 :::{container}
 Bugs discovered should be reported by filing a bug report with

@@ -2,14 +2,14 @@
 
 # NSS 3.59.1 release notes
 
-## [Introduction](#introduction)
+## Introduction
 
 :::{container}
 The NSS team has released Network Security Services (NSS) 3.59.1 on **18 December 2020**, which
 is a patch release for NSS 3.59.
 :::
 
-## [Distribution Information](#distribution_information)
+## Distribution Information
 
 :::{container}
 The HG tag is NSS_3_59_1_RTM. NSS 3.59.1 requires NSPR 4.29 or newer.
@@ -24,7 +24,7 @@ Other releases are available {ref}`mozilla-projects-nss-nss-releases`.
 
 (bugs-fixed-in-nss-3-59-1)=
 
-## [Bugs fixed in NSS 3.59.1](#bugs_fixed_in_nss_3.59.1)
+## Bugs fixed in NSS 3.59.1
 
 :::{container}
 
@@ -32,7 +32,7 @@ Other releases are available {ref}`mozilla-projects-nss-nss-releases`.
   deadlock with certain third-party PKCS11 modules.
 :::
 
-## [Compatibility](#compatibility)
+## Compatibility
 
 :::{container}
 NSS 3.59.1 shared libraries are backward compatible with all older NSS 3.x shared libraries. A
@@ -42,7 +42,7 @@ to the functions listed in NSS Public Functions will remain compatible with futu
 the NSS shared libraries.
 :::
 
-## [Feedback](#feedback)
+## Feedback
 
 :::{container}
 Bugs discovered should be reported by filing a bug report with

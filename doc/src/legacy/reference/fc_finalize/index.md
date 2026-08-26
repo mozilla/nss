@@ -2,13 +2,13 @@
 
 # FC_Finalize
 
-## [Name](#name)
+## Name
 
 :::{container}
 FC_Finalize - indicate that an application is done with the PKCS #11 library.
 :::
 
-## [Syntax](#syntax)
+## Syntax
 
 :::{container}
 
@@ -18,7 +18,7 @@ CK_RV FC_Finalize (CK_VOID_PTR pReserved);
 
 :::
 
-## [Parameters](#parameters)
+## Parameters
 
 :::{container}
 `FC_Finalize` has one parameter:
@@ -28,7 +28,7 @@ CK_RV FC_Finalize (CK_VOID_PTR pReserved);
 : must be `NULL`
 :::
 
-## [Description](#description)
+## Description
 
 :::{container}
 `FC_Finalize` shuts down the {ref}`mozilla-projects-nss-reference-nss-cryptographic-module` in
@@ -38,7 +38,7 @@ library is not initialized, it does nothing.
 The `pReserved` argument is not used and must be `NULL`.
 :::
 
-## [Return value](#return_value)
+## Return value
 
 ::::{container}
 `FC_Finalize` always returns `CKR_OK`.
@@ -52,7 +52,7 @@ initialized.
 :::
 ::::
 
-## [Examples](#examples)
+## Examples
 
 :::{container}
 
@@ -73,7 +73,7 @@ crv = pFunctionList->C_Finalize(NULL);
 
 :::
 
-## [See also](#see_also)
+## See also
 
 :::{container}
 

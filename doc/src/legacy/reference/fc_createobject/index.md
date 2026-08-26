@@ -2,13 +2,13 @@
 
 # FC_CreateObject
 
-## [Name](#name)
+## Name
 
 :::{container}
 FC_CreateObject - create a new object.
 :::
 
-## [Syntax](#syntax)
+## Syntax
 
 :::{container}
 
@@ -23,7 +23,7 @@ CK_RV FC_CreateObject(
 
 :::
 
-## [Parameters](#parameters)
+## Parameters
 
 :::{container}
 `hSession`
@@ -43,7 +43,7 @@ CK_RV FC_CreateObject(
 : [out] pointer to location to receive the new objects handle.
 :::
 
-## [Description](#description)
+## Description
 
 :::{container}
 `FC_CreateObject` creates an object using the attributes specified in the template.
@@ -51,11 +51,11 @@ CK_RV FC_CreateObject(
 A user must log into the token (to assume the NSS User role) before calling `FC_CreateObject`.
 :::
 
-## [Return value](#return_value)
+## Return value
 
-## [Examples](#examples)
+## Examples
 
-## [See also](#see_also)
+## See also
 
 :::{container}
 

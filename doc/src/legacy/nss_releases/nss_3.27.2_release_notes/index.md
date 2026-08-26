@@ -2,13 +2,13 @@
 
 # NSS 3.27.2 Release Notes
 
-## [Introduction](#introduction)
+## Introduction
 
 :::{container}
 Network Security Services (NSS) 3.27.2 is a patch release for NSS 3.27.
 :::
 
-## [Distribution Information](#distribution_information)
+## Distribution Information
 
 :::{container}
 The HG tag is NSS_3_27_2_RTM. NSS 3.27.2 requires NSPR 4.13 or newer.
@@ -21,9 +21,9 @@ NSS 3.27.2 source distributions are available on ftp.mozilla.org for secure HTTP
 
 (new-in-nss-3-27-2)=
 
-## [New in NSS 3.27.2](#new_in_nss_3.27.2)
+## New in NSS 3.27.2
 
-### [New Functionality](#new_functionality)
+### New Functionality
 
 :::{container}
 No new functionality is introduced in this release. This is a patch release to address a memory
@@ -32,7 +32,7 @@ leak in the `SSL_SetTrustAnchors()` function.
 
 (notable-changes-in-nss-3-27-2)=
 
-## [Notable Changes in NSS 3.27.2](#notable_changes_in_nss_3.27.2)
+## Notable Changes in NSS 3.27.2
 
 :::{container}
 The `SSL_SetTrustAnchors()` function is used to set the distinguished names that an NSS server
@@ -46,7 +46,7 @@ Previous versions of NSS leaked the memory used to store distinguished names whe
 
 (bugs-fixed-in-nss-3-27-2)=
 
-## [Bugs fixed in NSS 3.27.2](#bugs_fixed_in_nss_3.27.2)
+## Bugs fixed in NSS 3.27.2
 
 :::{container}
 
@@ -54,7 +54,7 @@ Previous versions of NSS leaked the memory used to store distinguished names whe
   leaks](https://bugzilla.mozilla.org/show_bug.cgi?id=1318561)
 :::
 
-## [Compatibility](#compatibility)
+## Compatibility
 
 :::{container}
 NSS 3.27.2 shared libraries are backward compatible with all older NSS 3.x shared libraries. A
@@ -64,7 +64,7 @@ to the functions listed in NSS Public Functions will remain compatible with futu
 the NSS shared libraries.
 :::
 
-## [Feedback](#feedback)
+## Feedback
 
 :::{container}
 Bugs discovered should be reported by filing a bug report with

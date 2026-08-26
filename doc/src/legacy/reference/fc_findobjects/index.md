@@ -2,13 +2,13 @@
 
 # FC_FindObjects
 
-## [Name](#name)
+## Name
 
 :::{container}
 FC_FindObjects - Search for one or more objects
 :::
 
-## [Syntax](#syntax)
+## Syntax
 
 :::{container}
 
@@ -23,7 +23,7 @@ CK_RV FC_FindObjects(
 
 :::
 
-## [Parameters](#parameters)
+## Parameters
 
 :::{container}
 `hSession`
@@ -43,7 +43,7 @@ CK_RV FC_FindObjects(
 : [out] pointer to location to receive the number of returned handles.
 :::
 
-## [Description](#description)
+## Description
 
 :::{container}
 `FC_FindObjects` returns the next set of object handles matching the criteria set up by the
@@ -51,11 +51,11 @@ previous call to `FC_FindObjectsInit` and sets the object count variable to thei
 zero if there are none.
 :::
 
-## [Return value](#return_value)
+## Return value
 
-## [Examples](#examples)
+## Examples
 
-## [See also](#see_also)
+## See also
 
 :::{container}
 

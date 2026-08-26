@@ -2,14 +2,14 @@
 
 # NSS 3.21.2 release notes
 
-## [Introduction](#introduction)
+## Introduction
 
 :::{container}
 Network Security Services (NSS) 3.21.2 is a security patch release for NSS 3.21.1. The bug fixes
 in NSS 3.21.2 are described in the "Security Fixes" section below.
 :::
 
-## [Distribution Information](#distribution_information)
+## Distribution Information
 
 :::{container}
 The HG tag is NSS_3_21_2_RTM. NSS 3.21.2 requires NSPR 4.10.10 or newer.
@@ -22,9 +22,9 @@ NSS 3.21.2 source distributions are available on ftp.mozilla.org for secure HTTP
 
 (new-in-nss-3-21-2)=
 
-## [New in NSS 3.21.2](#new_in_nss_3.21.2)
+## New in NSS 3.21.2
 
-### [New Functionality](#new_functionality)
+### New Functionality
 
 :::{container}
 No new functionality is introduced in this release.
@@ -32,7 +32,7 @@ No new functionality is introduced in this release.
 
 (security-fixes-in-nss-3-21-2)=
 
-## [Security Fixes in NSS 3.21.2](#security_fixes_in_nss_3.21.2)
+## Security Fixes in NSS 3.21.2
 
 :::{container}
 
@@ -41,7 +41,7 @@ No new functionality is introduced in this release.
   a timing side channel in the TLS CBC code.
 :::
 
-## [Compatibility](#compatibility)
+## Compatibility
 
 :::{container}
 NSS 3.21.2 shared libraries are backward compatible with all older NSS 3.x shared libraries. A
@@ -51,7 +51,7 @@ to the functions listed in NSS Public Functions will remain compatible with futu
 the NSS shared libraries.
 :::
 
-## [Feedback](#feedback)
+## Feedback
 
 :::{container}
 Bugs discovered should be reported by filing a bug report with

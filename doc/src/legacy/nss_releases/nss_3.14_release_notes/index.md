@@ -2,7 +2,7 @@
 
 # NSS 3.14 release notes
 
-## [Introduction](#introduction)
+## Introduction
 
 :::{container}
 The NSS team has released Network Security Services (NSS) 3.14, which is a minor release with the
@@ -30,7 +30,7 @@ NSS_3_14_RTM.
 
 (new-in-nss-3-14)=
 
-## [New in NSS 3.14](#new_in_nss_3.14)
+## New in NSS 3.14
 
 ::::{container}
 The sections that follow discuss specific changes in NSS 3.14 in more detail.
@@ -124,7 +124,7 @@ Changes in NSS 3.14
 
 (changes-in-nss-3-14)=
 
-## [Changes in NSS 3.14](#changes_in_nss_3.14)
+## Changes in NSS 3.14
 
 :::{container}
 
@@ -161,7 +161,7 @@ Changes in NSS 3.14
 
 (bugs-fixed-in-nss-3-14)=
 
-## [Bugs fixed in NSS 3.14](#bugs_fixed_in_nss_3.14)
+## Bugs fixed in NSS 3.14
 
 :::{container}
 This Bugzilla query returns all the bugs fixed in NSS 3.14:

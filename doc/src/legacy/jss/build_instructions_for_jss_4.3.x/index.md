@@ -4,7 +4,7 @@
 
 (build-instructions-for-jss-4-3-x-1)=
 
-## [Build Instructions for JSS 4.3.x](#build_instructions_for_jss_4.3.x)
+## Build Instructions for JSS 4.3.x
 
 :::{container}
 Newsgroup: [mozilla.dev.tech.crypto](news://news.mozilla.org/mozilla.dev.tech.crypto)

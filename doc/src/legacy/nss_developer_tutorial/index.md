@@ -4,9 +4,9 @@
 
 (nss-coding-style)=
 
-## [NSS Coding Style](#nss_coding_style)
+## NSS Coding Style
 
-### [Formatting](#formatting)
+### Formatting
 
 :::{container}
 **Line length** should not exceed 80 characters.
@@ -104,7 +104,7 @@ or
 
 :::
 
-### [Naming](#naming)
+### Naming
 
 :::{container}
 Public functions are named `FOO_DoOneAction`.
@@ -115,7 +115,7 @@ Variable, and function parameter names, always start with a lowercase letter. Th
 style is `fooBarBaz`, although `foobarbaz` and `foo_bar_baz` are also used.
 :::
 
-### [Miscellaneous](#miscellaneous)
+### Miscellaneous
 
 :::{container}
 **goto** can be used, to simplify resource deallocation, before returning from a function.
@@ -136,7 +136,7 @@ Unfortunately, this can be a source of integer overflow bugs on 64-bit systems.
 
 (c-features)=
 
-## [C Features](#c_features)
+## C Features
 
 :::{container}
 NSS requires C99. However, not all features from C99 are equally available.
@@ -166,9 +166,9 @@ Ask on nss-dev@ if you think this is restrictive, or if you wish to prohibit a s
 
 (nss-c-abi-backward-compatibility)=
 
-## [NSS C ABI backward compatibility](#nss_c_abi_backward_compatibility)
+## NSS C ABI backward compatibility
 
-### [Functions](#functions)
+### Functions
 
 :::{container}
 Exported functions cannot be removed.
@@ -181,9 +181,9 @@ The function prototype of an exported function, cannot be changed, with these ex
   case-by-case basis.
 :::
 
-## [Types](#types)
+## Types
 
-### [Structs](#structs)
+### Structs
 
 :::{container}
 Members of an exported struct, cannot be reordered or removed.
@@ -194,7 +194,7 @@ Opaque structs give us complete freedom to change them, but require applications
 functions, to allocate and free them.
 :::
 
-### [Enums](#enums)
+### Enums
 
 :::{container}
 The numeric values of public enumerators cannot be changed. To stress this fact, we often
@@ -204,7 +204,7 @@ the compiler.
 
 (symbol-export-lists)=
 
-### [Symbol export lists](#symbol_export_lists)
+### Symbol export lists
 
 :::{container}
 The `manifest.mn` file, in a directory in the NSS source tree, specifies which headers are
@@ -225,7 +225,7 @@ historical reasons. The symbol export lists are the authoritative source of publ
 
 (behavioral-changes)=
 
-### [Behavioral changes](#behavioral_changes)
+### Behavioral changes
 
 :::{container}
 **Bug/quirk compatible**: Occasionally we cannot fix a bug, because applications may depend on
@@ -236,7 +236,7 @@ Similarly, **new options** often need to be disabled by default.
 
 (nss-reviewfeature-approval-process)=
 
-## [NSS review/feature approval process](#nss_reviewfeature_approval_process)
+## NSS review/feature approval process
 
 :::{container}
 NSS doesn’t have 'super reviewers'. We wish to increase the number of NSS developers, who have
@@ -251,7 +251,7 @@ different company or organization than your own, to avoid any perceptions of bia
 
 (update-nss-in-mozilla-inbound-and-mozilla-central)=
 
-## [Update NSS in mozilla-inbound and mozilla-central](#update_nss_in_mozilla-inbound_and_mozilla-central)
+## Update NSS in mozilla-inbound and mozilla-central
 
 :::{container}
 The procedure is documented at

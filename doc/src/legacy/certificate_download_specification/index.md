@@ -9,7 +9,7 @@ document is currently being revised and has not yet been reviewed for accuracy.
 
 (data-formats)=
 
-## [Data Formats](#data_formats)
+## Data Formats
 
 :::{container}
 NSS can accept certificates in several formats. In all cases the certificates are X509 version 1,
@@ -18,7 +18,7 @@ NSS can accept certificates in several formats. In all cases the certificates ar
 
 (binary-formats)=
 
-### [Binary Formats](#binary_formats)
+### Binary Formats
 
 :::{container}
 NSS's certificate loader will recognize several binary formats. They are:
@@ -50,7 +50,7 @@ more information about how multiple certificates are handled.
 
 (text-formats)=
 
-### [Text Formats](#text_formats)
+### Text Formats
 
 :::{container}
 Any of the above {ref}`mozilla_projects_nss_certificate_download_specification#binary_formats`
@@ -81,7 +81,7 @@ and `END` lines must begin and end with 5 dashes, with no extra leading or trail
 
 (importing-certificate-chains)=
 
-## [Importing Certificate Chains](#importing_certificate_chains)
+## Importing Certificate Chains
 
 :::{container}
 Several of the formats described above can contain several certificates. When NSS's certificate
@@ -101,7 +101,7 @@ following way:
 
 (importing-certificates-into-mozilla-browsers)=
 
-### [Importing Certificates into Mozilla browsers](#importing_certificates_into_mozilla_browsers)
+### Importing Certificates into Mozilla browsers
 
 :::{container}
 Mozilla browsers import certificates found in HTTP protocol responses. There are several mime
@@ -134,7 +134,7 @@ or LineFeeds are added at the end of the object.
 
 (importing-certificates-into-nss-based-servers)=
 
-### [Importing Certificates into NSS-based servers](#importing_certificates_into_nss-based_servers)
+### Importing Certificates into NSS-based servers
 
 :::{container}
 Consult your server's administration guide for the most accurate information. For some NSS-base
@@ -153,7 +153,7 @@ local database.
 
 (object-identifiers)=
 
-## [Object Identifiers](#object_identifiers)
+## Object Identifiers
 
 :::{container}
 The base of all Netscape object ids is:

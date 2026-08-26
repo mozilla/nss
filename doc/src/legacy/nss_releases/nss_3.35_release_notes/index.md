@@ -2,13 +2,13 @@
 
 # NSS 3.35 release notes
 
-## [Introduction](#introduction)
+## Introduction
 
 :::{container}
 The NSS team has released Network Security Services (NSS) 3.35, which is a minor release.
 :::
 
-## [Distribution Information](#distribution_information)
+## Distribution Information
 
 :::{container}
 The HG tag is NSS_3_35_RTM. NSS 3.35 requires NSPR 4.18, or newer.
@@ -21,9 +21,9 @@ NSS 3.35 source distributions are available on ftp.mozilla.org for secure HTTPS 
 
 (new-in-nss-3-35)=
 
-## [New in NSS 3.35](#new_in_nss_3.35)
+## New in NSS 3.35
 
-### [New Functionality](#new_functionality)
+### New Functionality
 
 :::{container}
 
@@ -44,7 +44,7 @@ NSS 3.35 source distributions are available on ftp.mozilla.org for secure HTTPS 
 
 (notable-changes-in-nss-3-35)=
 
-## [Notable Changes in NSS 3.35](#notable_changes_in_nss_3.35)
+## Notable Changes in NSS 3.35
 
 :::{container}
 
@@ -161,7 +161,7 @@ NSS 3.35 source distributions are available on ftp.mozilla.org for secure HTTPS 
 
 (experimental-apis-and-functionality)=
 
-## [Experimental APIs and Functionality](#experimental_apis_and_functionality)
+## Experimental APIs and Functionality
 
 :::{container}
 The functionality and the APIs listed in this section are experimental. Any of these APIs may be
@@ -180,7 +180,7 @@ code is necessary.
 
 (new-experimental-functionality-provided)=
 
-### [New experimental functionality provided](#new_experimental_functionality_provided)
+### New experimental functionality provided
 
 :::{container}
 Below are descriptions of experimental functionality, which might not be available in future
@@ -210,7 +210,7 @@ releases of NSS.
 
 (new-experimental-apis)=
 
-### [New experimental APIs](#new_experimental_apis)
+### New experimental APIs
 
 :::{container}
 Below is a list of experimental functions, which might not be available in future releases of
@@ -229,7 +229,7 @@ NSS.
 
 (removed-experimental-apis)=
 
-### [Removed experimental APIs](#removed_experimental_apis)
+### Removed experimental APIs
 
 :::{container}
 Note that experimental APIs might get removed from NSS without announcing removals in the release
@@ -240,7 +240,7 @@ notes. This section might be incomplete.
 
 (bugs-fixed-in-nss-3-35)=
 
-## [Bugs fixed in NSS 3.35](#bugs_fixed_in_nss_3.35)
+## Bugs fixed in NSS 3.35
 
 :::{container}
 This Bugzilla query returns all the bugs fixed in NSS 3.35:
@@ -248,7 +248,7 @@ This Bugzilla query returns all the bugs fixed in NSS 3.35:
 <https://bugzilla.mozilla.org/buglist.cgi?resolution=FIXED&classification=Components&query_format=advanced&product=NSS&target_milestone=3.35>
 :::
 
-## [Compatibility](#compatibility)
+## Compatibility
 
 :::{container}
 NSS 3.35 shared libraries are backward compatible with all older NSS 3.x shared libraries. A
@@ -258,7 +258,7 @@ to the functions listed in NSS Public Functions will remain compatible with futu
 the NSS shared libraries.
 :::
 
-## [Feedback](#feedback)
+## Feedback
 
 :::{container}
 Bugs discovered should be reported by filing a bug report with

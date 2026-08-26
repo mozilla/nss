@@ -2,13 +2,13 @@
 
 # FC_GetMechanismList
 
-## [Name](#name)
+## Name
 
 :::{container}
 FC_GetMechanismList - get a list of mechanism types supported by a token.
 :::
 
-## [Syntax](#syntax)
+## Syntax
 
 :::{container}
 
@@ -22,7 +22,7 @@ CK_RV FC_GetMechanismList(
 
 :::
 
-## [Parameters](#parameters)
+## Parameters
 
 :::{container}
 `FC_GetMechanismList` takes three parameters:
@@ -37,7 +37,7 @@ CK_RV FC_GetMechanismList(
   pointers.
 :::
 
-## [Description](#description)
+## Description
 
 :::{container}
 `FC_GetMechanismList` obtains a list of mechanism types supported by a token.
@@ -46,15 +46,15 @@ A user may call `FC_GetMechanismList` without logging into the token (to assume 
 role).
 :::
 
-## [Return value](#return_value)
+## Return value
 
 :::{container}
 `CKR_OK`
 :::
 
-## [Examples](#examples)
+## Examples
 
-## [See also](#see_also)
+## See also
 
 :::{container}
 

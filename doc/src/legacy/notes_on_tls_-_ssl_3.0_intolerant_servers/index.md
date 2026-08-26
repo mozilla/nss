@@ -2,7 +2,7 @@
 
 # Notes on TLS - SSL 3.0 Intolerant Servers
 
-## [Problem](#problem)
+## Problem
 
 :::{container}
 A number of Netscape 6.x/7.x and Mozilla users have reported that some secure sites -- typically
@@ -11,7 +11,7 @@ any content at all. The connection seems terminated and a blank page is displaye
 main symptom of the problem when Mozilla based browsers encounter TLS/SSL 3.0 intolerant servers.
 :::
 
-## [Cause](#cause)
+## Cause
 
 :::{container}
 There are some number of web servers in production today which incorrectly implement the SSL 3.0
@@ -24,7 +24,7 @@ specification, and the users cannot utilize sites which have this problem.
 
 (technical-information)=
 
-## [Technical Information](#technical_information)
+## Technical Information
 
 :::{container}
 The **SSL 3.0** and **TLS (aka SSL 3.1)** specs both contain a provision -- the same provision --
@@ -45,7 +45,7 @@ with Mozilla-based browsers. See
 
 (servers-currently-known-to-exhibit-this-intolerant-behavior)=
 
-## [Servers currently known to exhibit this intolerant behavior](#servers_currently_known_to_exhibit_this_intolerant_behavior)
+## Servers currently known to exhibit this intolerant behavior
 
 :::{container}
 As of this writing, this problem has been reported for the following servers: (Wherever there is
@@ -69,7 +69,7 @@ such a server, feel free to add it to this page. For up-to-date information, you
 
 (users-how-to-avoid-this-problem-3f)=
 
-## [Users: How to avoid this problem?](#users:_how_to_avoid_this_problem.3f)
+## Users: How to avoid this problem?
 
 :::{container}
 
@@ -102,7 +102,7 @@ details.
 
 (website-administrators-how-to-avoid-this-problem-3f)=
 
-## [Website Administrators: How to avoid this problem?](#website_administrators:_how_to_avoid_this_problem.3f)
+## Website Administrators: How to avoid this problem?
 
 :::{container}
 
@@ -123,7 +123,7 @@ details.
 
 (detecting-intolerant-servers)=
 
-## [Detecting intolerant servers](#detecting_intolerant_servers)
+## Detecting intolerant servers
 
 :::{container}
 Because newer versions of Netscape and Mozilla have built-in workaround for the problem servers,
@@ -143,7 +143,7 @@ not catch all problem servers.
 
 (how-to-report-an-intolerant-server)=
 
-## [How to report an intolerant server](#how_to_report_an_intolerant_server)
+## How to report an intolerant server
 
 :::{container}
 
@@ -159,7 +159,7 @@ not catch all problem servers.
 
 (original-document-information)=
 
-## [Original Document Information](#original_document_information)
+## Original Document Information
 
 :::{container}
 

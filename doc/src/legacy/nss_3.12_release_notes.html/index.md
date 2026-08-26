@@ -4,30 +4,30 @@
 
 (nss-3-12-release-notes)=
 
-## [NSS 3.12 Release Notes](#nss_3.12_release_notes)
+## NSS 3.12 Release Notes
 
 (june-2008)=
 
-### [17 June 2008](#17_june_2008)
+### 17 June 2008
 
 :::{container}
 Newsgroup: [mozilla.dev.tech.crypto](news://news.mozilla.org/mozilla.dev.tech.crypto)
 :::
 
-### [Contents](#contents)
+### Contents
 
 :::{container}
 
 - [Introduction](#introduction)
-- [Distribution Information](#distribution_information)
-- [New in NSS 3.12](#new_in_nss_3.12)
-- [Bugs Fixed](#bugs_fixed)
+- [Distribution Information](#distribution-information)
+- [New in NSS 3.12](#new-in-nss-312)
+- [Bugs Fixed](#bugs-fixed)
 - [Documentation](#documentation)
 - [Compatibility](#compatibility)
 - [Feedback](#feedback)
 :::
 
-### [Introduction](#introduction)
+### Introduction
 
 :::{container}
 Network Security Services (NSS) 3.12 is a minor release with the following new features:
@@ -42,7 +42,7 @@ Note: Firefox 3 uses NSS 3.12, but not the new SQLite-based shareable certificat
 databases. We missed the deadline to enable that feature in Firefox 3.
 :::
 
-### [Distribution Information](#distribution_information)
+### Distribution Information
 
 :::{container}
 The CVS tag for the NSS 3.12 release is NSS_3_12_RTM. NSS 3.12 requires [NSPR
@@ -78,7 +78,7 @@ NSS 3.12 libraries have the following versions:
 
 (new-in-nss-3-12)=
 
-### [New in NSS 3.12](#new_in_nss_3.12)
+### New in NSS 3.12
 
 :::{container}
 
@@ -329,7 +329,7 @@ NSS 3.12 libraries have the following versions:
   - TLS_ECDH_anon_WITH_AES_256_CBC_SHA
 :::
 
-### [Bugs Fixed](#bugs_fixed)
+### Bugs Fixed
 
 :::{container}
 The following bugs have been fixed in NSS 3.12.
@@ -862,7 +862,7 @@ The following bugs have been fixed in NSS 3.12.
   bogus trust flags
 :::
 
-### [Documentation](#documentation)
+### Documentation
 
 :::{container}
 For a list of the primary NSS documentation pages on mozilla.org, see [NSS
@@ -874,7 +874,7 @@ release of NSS 3.11 include the following:
 - {ref}`mozilla-projects-nss-reference-nss-environment-variables`
 :::
 
-### [Compatibility](#compatibility)
+### Compatibility
 
 :::{container}
 NSS 3.12 shared libraries are backward compatible with all older NSS 3.x shared libraries. A
@@ -884,7 +884,7 @@ to the functions listed in [NSS Public Functions](../ref/nssfunctions.html) will
 compatible with future versions of the NSS shared libraries.
 :::
 
-### [Feedback](#feedback)
+### Feedback
 
 :::{container}
 Bugs discovered should be reported by filing a bug report with [mozilla.org

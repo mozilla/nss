@@ -2,14 +2,14 @@
 
 # NSS 3.61 release notes
 
-## [Introduction](#introduction)
+## Introduction
 
 :::{container}
 The NSS team released Network Security Services (NSS) 3.61 on **22 January 2021**, which is a
 minor release.
 :::
 
-## [Distribution Information](#distribution_information)
+## Distribution Information
 
 :::{container}
 The HG tag is NSS_3_61_RTM. NSS 3.61 requires NSPR 4.29 or newer.
@@ -24,7 +24,7 @@ Other releases are available {ref}`mozilla-projects-nss-nss-releases`.
 
 (bugs-fixed-in-nss-3-61)=
 
-## [Bugs fixed in NSS 3.61](#bugs_fixed_in_nss_3.61)
+## Bugs fixed in NSS 3.61
 
 :::{container}
 
@@ -40,7 +40,7 @@ This Bugzilla query returns all the bugs fixed in NSS 3.61:
 <https://bugzilla.mozilla.org/buglist.cgi?resolution=FIXED&classification=Components&query_format=advanced&product=NSS&target_milestone=3.61>
 :::
 
-## [Compatibility](#compatibility)
+## Compatibility
 
 :::{container}
 NSS 3.61 shared libraries are backwards-compatible with all older NSS 3.x shared libraries. A
@@ -50,7 +50,7 @@ to the functions listed in NSS Public Functions will remain compatible with futu
 the NSS shared libraries.
 :::
 
-## [Feedback](#feedback)
+## Feedback
 
 :::{container}
 Bugs discovered should be reported by filing a bug report on

@@ -4,7 +4,7 @@
 
 (nss-sample-code-4-pki-encryption)=
 
-## [NSS Sample Code 4: PKI Encryption](#nss_sample_code_4_pki_encryption)
+## NSS Sample Code 4: PKI Encryption
 
 :::{container}
 

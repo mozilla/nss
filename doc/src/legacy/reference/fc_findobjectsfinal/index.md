@@ -2,13 +2,13 @@
 
 # FC_FindObjectsFinal
 
-## [Name](#name)
+## Name
 
 :::{container}
 FC_FindObjectsFinal - terminate an object search.
 :::
 
-## [Syntax](#syntax)
+## Syntax
 
 :::{container}
 
@@ -20,7 +20,7 @@ CK_RV FC_FindObjectsFinal(
 
 :::
 
-## [Parameters](#parameters)
+## Parameters
 
 :::{container}
 `hSession`
@@ -28,17 +28,17 @@ CK_RV FC_FindObjectsFinal(
 : [in] session handle.
 :::
 
-## [Description](#description)
+## Description
 
 :::{container}
 Clears the object search criteria for a session.
 :::
 
-## [Return value](#return_value)
+## Return value
 
-## [Examples](#examples)
+## Examples
 
-## [See also](#see_also)
+## See also
 
 :::{container}
 

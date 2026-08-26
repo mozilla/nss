@@ -2,13 +2,13 @@
 
 # FC_VerifyRecoverInit
 
-## [Name](#name)
+## Name
 
 :::{container}
 FC_VerifyRecoverInit - initialize a verification operation where data is recoverable.
 :::
 
-## [Syntax](#syntax)
+## Syntax
 
 :::{container}
 
@@ -22,7 +22,7 @@ CK_RV FC_VerifyRecoverInit(
 
 :::
 
-## [Parameters](#parameters)
+## Parameters
 
 :::{container}
 `hSession`
@@ -38,7 +38,7 @@ CK_RV FC_VerifyRecoverInit(
 : [in] handle of the key to be used.
 :::
 
-## [Description](#description)
+## Description
 
 :::{container}
 `FC_VerifyRecoverInit` initializes a signature verification operation where the (digest) data
@@ -48,11 +48,11 @@ A user must log into the token (to assume the NSS User role) before calling
 `FC_VerifyRecoverInit`.
 :::
 
-## [Return value](#return_value)
+## Return value
 
-## [Examples](#examples)
+## Examples
 
-## [See also](#see_also)
+## See also
 
 :::{container}
 

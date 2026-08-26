@@ -614,7 +614,7 @@ Server socket closed.
 
 (usage-tips)=
 
-## [Usage Tips](#usage_tips)
+## Usage Tips
 
 :::{container}
 

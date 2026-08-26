@@ -2,13 +2,13 @@
 
 # FC_Verify
 
-## [Name](#name)
+## Name
 
 :::{container}
 FC_Verify - sign a block of data.
 :::
 
-## [Syntax](#syntax)
+## Syntax
 
 :::{container}
 
@@ -24,7 +24,7 @@ CK_RV FC_Verify(
 
 :::
 
-## [Parameters](#parameters)
+## Parameters
 
 :::{container}
 `hSession`
@@ -48,7 +48,7 @@ CK_RV FC_Verify(
 : [in] length of the signature in bytes.
 :::
 
-## [Description](#description)
+## Description
 
 :::{container}
 `FC_Verify` verifies a signature in a single-part operation, where the signature is an appendix
@@ -57,15 +57,15 @@ to the data.
 A user must log into the token (to assume the NSS User role) before calling `FC_Verify`.
 :::
 
-## [Return value](#return_value)
+## Return value
 
 :::{container}
 `CKR_OK` is returned on success. `CKR_SIGNATURE_INVALID` is returned for signature mismatch.
 :::
 
-## [Examples](#examples)
+## Examples
 
-## [See also](#see_also)
+## See also
 
 :::{container}
 

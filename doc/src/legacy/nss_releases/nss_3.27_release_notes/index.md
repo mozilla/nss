@@ -2,13 +2,13 @@
 
 # NSS 3.27 release notes
 
-## [Introduction](#introduction)
+## Introduction
 
 :::{container}
 The Network Security Services (NSS) team has released NSS 3.27, which is a minor release.
 :::
 
-## [Distribution information](#distribution_information)
+## Distribution information
 
 :::{container}
 The hg tag is NSS_3_27_RTM. NSS 3.27 requires Netscape Portable Runtime(NSPR) 4.13 or newer.
@@ -21,9 +21,9 @@ NSS 3.27 source distributions are available on ftp.mozilla.org for secure HTTPS 
 
 (new-in-nss-3-27)=
 
-## [New in NSS 3.27](#new_in_nss_3.27)
+## New in NSS 3.27
 
-### [New Functionality](#new_functionality)
+### New Functionality
 
 :::{container}
 
@@ -40,7 +40,7 @@ NSS 3.27 source distributions are available on ftp.mozilla.org for secure HTTPS 
 
 (notable-changes-in-nss-3-27)=
 
-## [Notable Changes in NSS 3.27](#notable_changes_in_nss_3.27)
+## Notable Changes in NSS 3.27
 
 :::{container}
 
@@ -115,7 +115,7 @@ NSS 3.27 source distributions are available on ftp.mozilla.org for secure HTTPS 
 
 (bugs-fixed-in-nss-3-27)=
 
-## [Bugs fixed in NSS 3.27](#bugs_fixed_in_nss_3.27)
+## Bugs fixed in NSS 3.27
 
 :::{container}
 This Bugzilla query returns all the bugs fixed in NSS 3.27:
@@ -123,7 +123,7 @@ This Bugzilla query returns all the bugs fixed in NSS 3.27:
 <https://bugzilla.mozilla.org/buglist.cgi?resolution=FIXED&classification=Components&query_format=advanced&product=NSS&target_milestone=3.27>
 :::
 
-## [Compatibility](#compatibility)
+## Compatibility
 
 :::{container}
 NSS 3.27 shared libraries are backwards compatible with all older NSS 3.x shared libraries. A
@@ -133,7 +133,7 @@ functions listed in NSS Public Functions will remain compatible with future vers
 shared libraries.
 :::
 
-## [Feedback](#feedback)
+## Feedback
 
 :::{container}
 Bugs discovered should be reported by filing a bug report with

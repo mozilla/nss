@@ -4,38 +4,38 @@
 
 (nss-3-12-1-release-notes)=
 
-## [NSS 3.12.1 Release Notes](#nss_3.12.1_release_notes)
+## NSS 3.12.1 Release Notes
 
 (nss-3-12-1-release-date)=
 
-### [2008-09-05](#2008-09-05)
+### 2008-09-05
 
 :::{container}
 Newsgroup: [mozilla.dev.tech.crypto](news://news.mozilla.org/mozilla.dev.tech.crypto)
 :::
 
-### [Contents](#contents)
+### Contents
 
 :::{container}
 
 - [Introduction](#introduction)
-- [Distribution Information](#distribution_information)
-- [New in NSS 3.12.1](#new_in_nss_3.12.1)
-- [Bugs Fixed](#bugs_fixed)
+- [Distribution Information](#distribution-information)
+- [New in NSS 3.12.1](#new-in-nss-3121)
+- [Bugs Fixed](#bugs-fixed)
 - [Documentation](#documentation)
 - [Compatibility](#compatibility)
 - [Feedback](#feedback)
 :::
 
-### [Introduction](#introduction)
+### Introduction
 
 :::{container}
 Network Security Services (NSS) 3.12.1 is a patch release for NSS 3.12. The bug fixes in NSS
-3.12.1 are described in the "[Bugs Fixed](#bugsfixed)" section below.
+3.12.1 are described in the "[Bugs Fixed](#bugs-fixed)" section below.
 NSS 3.12.1 is tri-licensed under the MPL 1.1/GPL 2.0/LGPL 2.1.
 :::
 
-### [Distribution Information](#distribution_information)
+### Distribution Information
 
 :::{container}
 The CVS tag for the NSS 3.12.1 release is NSS_3_12_1_RTM. NSS 3.12.1 requires [NSPR
@@ -65,7 +65,7 @@ and shared libraries, which NSS 3.12.1 requires. NSPR 4.7.1 binary distributions
 
 (new-in-nss-3-12-1)=
 
-### [New in NSS 3.12.1](#new_in_nss_3.12.1)
+### New in NSS 3.12.1
 
 :::{container}
 
@@ -102,7 +102,7 @@ and shared libraries, which NSS 3.12.1 requires. NSPR 4.7.1 binary distributions
   : (maximum invertibility)
 :::
 
-### [Bugs Fixed](#bugs_fixed)
+### Bugs Fixed
 
 :::{container}
 The following bugs have been fixed in NSS 3.12.1.
@@ -208,7 +208,7 @@ The following bugs have been fixed in NSS 3.12.1.
   PEM-encoded certificate without trailing newline fails
 :::
 
-### [Documentation](#documentation)
+### Documentation
 
 :::{container}
 For a list of the primary NSS documentation pages on mozilla.org, see [NSS
@@ -219,7 +219,7 @@ release of NSS 3.11 include the following:
 - [NSS Shared DB](http://wiki.mozilla.org/NSS_Shared_DB)
 :::
 
-### [Compatibility](#compatibility)
+### Compatibility
 
 :::{container}
 NSS 3.12.1 shared libraries are backward compatible with all older NSS 3.x shared libraries. A
@@ -229,7 +229,7 @@ to the functions listed in [NSS Public Functions](../ref/nssfunctions.html) will
 compatible with future versions of the NSS shared libraries.
 :::
 
-### [Feedback](#feedback)
+### Feedback
 
 :::{container}
 Bugs discovered should be reported by filing a bug report with [mozilla.org

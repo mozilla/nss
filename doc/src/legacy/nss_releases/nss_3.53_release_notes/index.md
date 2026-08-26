@@ -2,7 +2,7 @@
 
 # NSS 3.53 release notes
 
-## [Introduction](#introduction)
+## Introduction
 
 :::{container}
 The NSS team released Network Security Services (NSS) 3.53 on **29 May 2020**. NSS 3.53 will be a
@@ -14,7 +14,7 @@ The NSS team would like to recognize first-time contributors:
 - Jeff Walden
 :::
 
-## [Distribution Information](#distribution_information)
+## Distribution Information
 
 :::{container}
 The HG tag is NSS_3_53_RTM. NSS 3.53 requires NSPR 4.25 or newer.
@@ -29,7 +29,7 @@ Other releases are available {ref}`mozilla-projects-nss-nss-releases`.
 
 (notable-changes-in-nss-3-53)=
 
-## [Notable Changes in NSS 3.53](#notable_changes_in_nss_3.53)
+## Notable Changes in NSS 3.53
 
 :::{container}
 
@@ -59,7 +59,7 @@ Other releases are available {ref}`mozilla-projects-nss-nss-releases`.
 
 (bugs-fixed-in-nss-3-53)=
 
-## [Bugs fixed in NSS 3.53](#bugs_fixed_in_nss_3.53)
+## Bugs fixed in NSS 3.53
 
 :::{container}
 
@@ -104,7 +104,7 @@ This Bugzilla query returns all the bugs fixed in NSS 3.53:
 <https://bugzilla.mozilla.org/buglist.cgi?resolution=FIXED&classification=Components&query_format=advanced&product=NSS&target_milestone=3.53>
 :::
 
-## [Compatibility](#compatibility)
+## Compatibility
 
 :::{container}
 NSS 3.53 shared libraries are backward compatible with all older NSS 3.x shared libraries. A
@@ -114,7 +114,7 @@ to the functions listed in NSS Public Functions will remain compatible with futu
 the NSS shared libraries.
 :::
 
-## [Feedback](#feedback)
+## Feedback
 
 :::{container}
 Bugs discovered should be reported by filing a bug report with

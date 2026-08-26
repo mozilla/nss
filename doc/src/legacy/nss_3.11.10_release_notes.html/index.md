@@ -4,37 +4,37 @@
 
 (nss-3-11-10-release-notes)=
 
-## [NSS 3.11.10 Release Notes](#nss_3.11.10_release_notes)
+## NSS 3.11.10 Release Notes
 
 (nss-3-11-10-release-date)=
 
-### [2008-12-10](#2008-12-10)
+### 2008-12-10
 
 :::{container}
 Newsgroup: \<ahref="news: mozilla.dev.tech.crypto"=""
 news.mozilla.org="">mozilla.dev.tech.crypto\</ahref="news:>
 :::
 
-### [Contents](#contents)
+### Contents
 
 :::{container}
 
 - [Introduction](#introduction)
 - [Distribution Information](#distribution)
-- [Bugs Fixed](#bugsfixed)
+- [Bugs Fixed](#bugs-fixed)
 - [Documentation](#docs)
 - [Compatibility](#compatibility)
 - [Feedback](#feedback)
 :::
 
-### [Introduction](#introduction)
+### Introduction
 
 :::{container}
 Network Security Services (NSS) 3.11.10 is a patch release for NSS 3.11. The bug fixes in NSS
-3.11.10 are described in the "[Bugs Fixed](#bugsfixed)" section below.
+3.11.10 are described in the "[Bugs Fixed](#bugs-fixed)" section below.
 :::
 
-### [Distribution Information](#distribution_information)
+### Distribution Information
 
 :::{container}
 The CVS tag for the NSS 3.11.10 release is NSS_3_11_10_RTM. NSS 3.11.10 requires [NSPR
@@ -62,7 +62,7 @@ and shared libraries, which NSS 3.11.10 requires. NSPR 4.7.1 binary distribution
 <https://ftp.mozilla.org/pub/mozilla.org/nspr/releases/v4.7.1/>.
 :::
 
-### [Bugs Fixed](#bugs_fixed)
+### Bugs Fixed
 
 :::{container}
 The following bugs have been fixed in NSS 3.11.10.
@@ -120,7 +120,7 @@ The following bugs have been fixed in NSS 3.11.10.
   files that include keythi.h
 :::
 
-### [Documentation](#documentation)
+### Documentation
 
 :::{container}
 For a list of the primary NSS documentation pages on mozilla.org, see [NSS
@@ -130,7 +130,7 @@ release of NSS 3.9 include the following:
 - [Build Instructions for NSS 3.11.4 and above](../nss-3.11.4/nss-3.11.4-build.html)
 :::
 
-### [Compatibility](#compatibility)
+### Compatibility
 
 :::{container}
 NSS 3.11.10 shared libraries are backward compatible with all older NSS 3.x shared libraries. A
@@ -140,7 +140,7 @@ to the functions listed in [NSS Public Functions](../ref/nssfunctions.html) will
 compatible with future versions of the NSS shared libraries.
 :::
 
-### [Feedback](#feedback)
+### Feedback
 
 :::{container}
 Bugs discovered should be reported by filing a bug report with [mozilla.org

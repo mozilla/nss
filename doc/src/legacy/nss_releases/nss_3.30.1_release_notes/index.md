@@ -2,14 +2,14 @@
 
 # NSS 3.30.1 release notes
 
-## [Introduction](#introduction)
+## Introduction
 
 :::{container}
 Network Security Services (NSS) 3.30.1 is a security patch release for NSS 3.30. The bug fixes in
 NSS 3.30.1 are described in the "Bugs Fixed" section below.
 :::
 
-## [Distribution Information](#distribution_information)
+## Distribution Information
 
 :::{container}
 The HG tag is NSS_3_30_1_RTM. NSS 3.30.1 requires NSPR 4.14 or newer.
@@ -22,7 +22,7 @@ NSS 3.30.1 source distributions are available on ftp.mozilla.org for secure HTTP
 
 (new-in-nss-3-30-1)=
 
-## [New in NSS 3.30.1](#new_in_nss_3.30.1)
+## New in NSS 3.30.1
 
 :::{container}
 No new functionality is introduced in this release.
@@ -30,7 +30,7 @@ No new functionality is introduced in this release.
 
 (bugs-fixed-in-nss-3-30-1)=
 
-## [Bugs fixed in NSS 3.30.1](#bugs_fixed_in_nss_3.30.1)
+## Bugs fixed in NSS 3.30.1
 
 :::{container}
 
@@ -39,14 +39,14 @@ No new functionality is introduced in this release.
   ([CVE-2017-5461](https://www.mozilla.org/en-US/security/advisories/mfsa2017-10/#CVE-2017-5461))
 :::
 
-## [Acknowledgements](#acknowledgements)
+## Acknowledgements
 
 :::{container}
 The NSS development team would like to thank Ronald Crane for responsibly disclosing the issue by
 providing advance copies of their research.
 :::
 
-## [Compatibility](#compatibility)
+## Compatibility
 
 :::{container}
 NSS 3.30.1 shared libraries are backward compatible with all older NSS 3.x shared libraries. A
@@ -56,7 +56,7 @@ to the functions listed in NSS Public Functions will remain compatible with futu
 the NSS shared libraries.
 :::
 
-## [Feedback](#feedback)
+## Feedback
 
 :::{container}
 Bugs discovered should be reported by filing a bug report with

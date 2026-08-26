@@ -4,7 +4,7 @@
 
 (nss-sample-code-common-utilities)=
 
-## [NSS Sample Code Common: Utilities](#nss_sample_code_common_utilities)
+## NSS Sample Code Common: Utilities
 
 :::{container}
 This is a library of utilities used by many of the samples. This code shows the following:
@@ -16,7 +16,7 @@ This is a library of utilities used by many of the samples. This code shows the 
 - Print as ascii or hexadecimal
 :::
 
-### [Sample Code](#sample_code)
+### Sample Code
 
 :::{container}
 

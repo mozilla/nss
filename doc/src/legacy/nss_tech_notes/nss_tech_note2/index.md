@@ -10,7 +10,7 @@
 
 (nss-technical-note-2)=
 
-## [NSS Technical Note: 2](#nss_technical_note_2)
+## NSS Technical Note: 2
 
 :::{container}
 
@@ -40,7 +40,7 @@ the variable DEBUG_PKCS11 set.
 
 (modes-of-operation)=
 
-### [Modes of Operation](#modes_of_operation)
+### Modes of Operation
 
 :::{container}
 The logger has several modes of operation:

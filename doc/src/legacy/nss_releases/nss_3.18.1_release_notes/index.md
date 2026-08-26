@@ -2,14 +2,14 @@
 
 # NSS 3.18.1 release notes
 
-## [Introduction](#introduction)
+## Introduction
 
 :::{container}
 Network Security Services (NSS) 3.18.1 is a patch release for NSS 3.18. The bug fixes in NSS
 3.18.1 are described in the "Bugs Fixed" section below.
 :::
 
-## [Distribution Information](#distribution_information)
+## Distribution Information
 
 :::{container}
 The HG tag is NSS_3_18_1_RTM. NSS 3.18.1 requires NSPR 4.10.8 or newer.
@@ -22,7 +22,7 @@ NSS 3.18.1 source distributions are available on ftp.mozilla.org for secure HTTP
 
 (new-in-nss-3-18-1)=
 
-## [New in NSS 3.18.1](#new_in_nss_3.18.1)
+## New in NSS 3.18.1
 
 :::{container}
 No new functionality is introduced in this release. This is a patch release to update the list of
@@ -31,7 +31,7 @@ root CA certificates.
 
 (notable-changes-in-nss-3-18-1)=
 
-## [Notable Changes in NSS 3.18.1](#notable_changes_in_nss_3.18.1)
+## Notable Changes in NSS 3.18.1
 
 :::{container}
 
@@ -70,7 +70,7 @@ root CA certificates.
 
 (bugs-fixed-in-nss-3-18-1)=
 
-## [Bugs fixed in NSS 3.18.1](#bugs_fixed_in_nss_3.18.1)
+## Bugs fixed in NSS 3.18.1
 
 :::{container}
 This Bugzilla query returns all the bugs fixed in NSS 3.18.1:
@@ -78,7 +78,7 @@ This Bugzilla query returns all the bugs fixed in NSS 3.18.1:
 <https://bugzilla.mozilla.org/buglist.cgi?resolution=FIXED&classification=Components&query_format=advanced&product=NSS&target_milestone=3.18.1>
 :::
 
-## [Compatibility](#compatibility)
+## Compatibility
 
 :::{container}
 NSS 3.18.1 shared libraries are backward compatible with all older NSS 3.18 shared libraries. A
@@ -88,7 +88,7 @@ to the functions listed in NSS Public Functions will remain compatible with futu
 the NSS shared libraries.
 :::
 
-## [Feedback](#feedback)
+## Feedback
 
 :::{container}
 Bugs discovered should be reported by filing a bug report with

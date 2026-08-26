@@ -6,6 +6,14 @@ project = "NSS"
 extensions = ["myst_parser"]
 root_doc = "index"
 
+# Give every heading an anchor, so the in-page links carried over from MDN
+# resolve.
+myst_heading_anchors = 6
+
+# The legacy pages link to the mozilla.dev.tech.crypto newsgroup; without
+# these schemes MyST reads those links as cross-references.
+myst_url_schemes = ("http", "https", "mailto", "ftp", "news", "nntp")
+
 # The documentation is authored in MyST-flavored Markdown.
 source_suffix = {
     ".md": "markdown",

@@ -2,16 +2,16 @@
 
 # NSS Tools sslstrength
 
-## [sslstrength](#sslstrength)
+## sslstrength
 
-### [Summary](#summary)
+### Summary
 
 :::{container}
 A simple command-line client which connects to an SSL-server, and reports back the encryption
 cipher and strength used.
 :::
 
-### [Synopsis](#synopsis)
+### Synopsis
 
 :::{container}
 
@@ -19,7 +19,7 @@ cipher and strength used.
 2. sslstrength hostname[:port] [ciphers=xyz] [debug] [verbose] [policy=export|domestic]
 :::
 
-### [Description](#description)
+### Description
 
 :::{container}
 The first form simple lists out the possible ciphers. The letter in the first column of the
@@ -54,13 +54,13 @@ mode', with servers with a special certificate. You can tell if you stepped-up, 
 output will says 'using export policy', and you'll find the secret key size was 128-bits.
 :::
 
-### [Prerequisites](#prerequisites)
+### Prerequisites
 
 :::{container}
 You should have a cert7.db in the directory in which you run sslstrength.
 :::
 
-### [Other](#other)
+### Other
 
 :::{container}
 For references, here is a table of well-known SSL port numbers:

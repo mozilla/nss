@@ -2,13 +2,13 @@
 
 # JSS 4.4.0 Release Notes
 
-## [Introduction](#introduction)
+## Introduction
 
 :::{container}
 The Java Security Services (JSS) team has released JSS 4.4.0, which is a minor release.
 :::
 
-## [Distribution information](#distribution_information)
+## Distribution information
 
 :::{container}
 The hg tag is JSS_4_4**\_20170313**. JSS 4.4.0 requires Netswork Security Services (NSS) 3.29.1
@@ -22,9 +22,9 @@ JSS 4.4.0 source distributions are available on ftp.mozilla.org for secure HTTPS
 
 (new-in-jss-4-40)=
 
-## [New in JSS 4.40](#new_in_jss_4.40)
+## New in JSS 4.40
 
-### [New Functionality](#new_functionality)
+### New Functionality
 
 :::{container}
 
@@ -36,7 +36,7 @@ New Macros
 
 (notable-changes-in-jss-4-40)=
 
-## [Notable Changes in JSS 4.40](#notable_changes_in_jss_4.40)
+## Notable Changes in JSS 4.40
 
 :::{container}
 
@@ -48,7 +48,7 @@ New Macros
 
 (bugs-fixed-in-jss-4-4-0)=
 
-## [Bugs fixed in JSS 4.4.0](#bugs_fixed_in_jss_4.4.0)
+## Bugs fixed in JSS 4.4.0
 
 :::{container}
 This Bugzilla query returns all the bugs fixed in NSS 4.4.0:
@@ -56,13 +56,13 @@ This Bugzilla query returns all the bugs fixed in NSS 4.4.0:
 <https://bugzilla.mozilla.org/buglist.cgi?product=JSS&target_milestone=4.4&target_milestone=4.4&bug_status=RESOLVED&resolution=FIXED>
 :::
 
-### [Documentation](#documentation)
+### Documentation
 
 :::{container}
 Build instructions for JSS at <https://hg.mozilla.org/projects/jss/file/tip/README>
 :::
 
-### [Platform Information](#platform_information)
+### Platform Information
 
 :::{container}
 
@@ -76,7 +76,7 @@ Build instructions for JSS at <https://hg.mozilla.org/projects/jss/file/tip/READ
 - JSS only supports the native threading model (no green threads).
 :::
 
-## [Compatibility](#compatibility)
+## Compatibility
 
 :::{container}
 JSS 3.30 shared libraries are not backward compatible with all older JSS 4.3.2 shared libraries.
@@ -86,7 +86,7 @@ jSS APIs to the functions listed in JSS Public Functions will remain compatible 
 versions of the JSS shared libraries.
 :::
 
-## [Feedback](#feedback)
+## Feedback
 
 :::{container}
 Bugs discovered should be reported by filing a bug report with

@@ -4,7 +4,7 @@
 
 (nss-sample-code-6-encryptiondecryption-and-mac-and-output-public-as-a-pkcs-11-csr)=
 
-## [NSS Sample Code 6: Encryption/Decryption and MAC and output Public as a PKCS 11 CSR.](#nss_sample_code_6_encryptiondecryption_and_mac_and_output_public_as_a_pkcs_11_csr.)
+## NSS Sample Code 6: Encryption/Decryption and MAC and output Public as a PKCS 11 CSR.
 
 :::{container}
 Generates encryption/mac keys and outputs public key as pkcs11 certificate signing request

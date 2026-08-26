@@ -4,7 +4,7 @@
 
 (nss-sample-code-6-persistent-symmetric-keys-in-nss-database)=
 
-## [NSS Sample Code 6: Persistent Symmetric Keys in NSS database](#nss_sample_code_6_persistent_symmetric_keys_in_nss_database)
+## NSS Sample Code 6: Persistent Symmetric Keys in NSS database
 
 :::{container}
 

@@ -4,7 +4,7 @@
 
 (jss-frequently-asked-questions)=
 
-## [JSS Frequently Asked Questions](#jss_frequently_asked_questions)
+## JSS Frequently Asked Questions
 
 :::{container}
 Newsgroup: [mozilla.dev.tech.crypto](news://news.mozilla.org:119/mozilla.dev.tech.crypto)

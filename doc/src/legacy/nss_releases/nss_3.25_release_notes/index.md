@@ -2,13 +2,13 @@
 
 # NSS 3.25 release notes
 
-## [Introduction](#introduction)
+## Introduction
 
 :::{container}
 The Network Security Services (NSS) team has released NSS 3.25, which is a minor release.
 :::
 
-## [Distribution information](#distribution_information)
+## Distribution information
 
 :::{container}
 The hg tag is NSS_3_25_RTM. NSS 3.25 requires Netscape Portable Runtime(NSPR) 4.12 or newer.
@@ -22,9 +22,9 @@ following location.
 
 (new-in-nss-3-25)=
 
-## [New in NSS 3.25](#new_in_nss_3.25)
+## New in NSS 3.25
 
-### [New Functionality](#new_functionality)
+### New Functionality
 
 :::{container}
 
@@ -48,7 +48,7 @@ following location.
 
 (notable-changes-in-nss-3-25)=
 
-## [Notable Changes in NSS 3.25](#notable_changes_in_nss_3.25)
+## Notable Changes in NSS 3.25
 
 :::{container}
 
@@ -106,7 +106,7 @@ following location.
 
 (bugs-fixed-in-nss-3-25)=
 
-## [Bugs fixed in NSS 3.25](#bugs_fixed_in_nss_3.25)
+## Bugs fixed in NSS 3.25
 
 :::{container}
 This Bugzilla query returns all the bugs fixed in NSS 3.25:
@@ -114,7 +114,7 @@ This Bugzilla query returns all the bugs fixed in NSS 3.25:
 <https://bugzilla.mozilla.org/buglist.cgi?resolution=FIXED&classification=Components&query_format=advanced&product=NSS&target_milestone=3.25>
 :::
 
-## [Compatibility](#compatibility)
+## Compatibility
 
 :::{container}
 NSS 3.25 shared libraries are backward compatible with all older NSS 3.x shared libraries. A
@@ -124,7 +124,7 @@ to the functions listed in NSS Public Functions will remain compatible with futu
 the NSS shared libraries.
 :::
 
-## [Feedback](#feedback)
+## Feedback
 
 :::{container}
 Bugs discovered should be reported by filing a bug report with

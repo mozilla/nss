@@ -12,7 +12,7 @@ is configurable at build time, with various trade-offs.
 
 (compiled-in)=
 
-## [Compiled In](#compiled_in)
+## Compiled In
 
 :::{container}
 
@@ -25,7 +25,7 @@ is configurable at build time, with various trade-offs.
 
 (used-for-tests)=
 
-## [Used for Tests](#used_for_tests)
+## Used for Tests
 
 :::{container}
 
@@ -34,7 +34,7 @@ is configurable at build time, with various trade-offs.
 
 (downloaded-by-certain-test-tooling)=
 
-### [Downloaded by certain test tooling](#downloaded_by_certain_test_tooling)
+### Downloaded by certain test tooling
 
 :::{container}
 

@@ -15,7 +15,7 @@ For the primary NSS documentation pages please visit {ref}`mozilla-projects-nss`
 
 (new-in-nss-3-14-2)=
 
-## [New in NSS 3.14.2](#new_in_nss_3.14.2)
+## New in NSS 3.14.2
 
 :::{container}
 
@@ -41,7 +41,7 @@ For the primary NSS documentation pages please visit {ref}`mozilla-projects-nss`
 
 (notable-changes-in-nss-3-14-2)=
 
-## [Notable Changes in NSS 3.14.2](#notable_changes_in_nss_3.14.2)
+## Notable Changes in NSS 3.14.2
 
 :::{container}
 
@@ -75,14 +75,14 @@ For the primary NSS documentation pages please visit {ref}`mozilla-projects-nss`
 
 (bugs-fixed-in-nss-3-14-2)=
 
-## [Bugs Fixed in NSS 3.14.2](#bugs_fixed_in_nss_3.14.2)
+## Bugs Fixed in NSS 3.14.2
 
 :::{container}
 
 - <https://bugzilla.mozilla.org/buglist.cgi?list_id=5502456;resolution=FIXED;classification=Components;query_format=advanced;target_milestone=3.14.2;product=NSS>
 :::
 
-## [Compatibility](#compatibility)
+## Compatibility
 
 :::{container}
 NSS 3.14.2 shared libraries are backward compatible with all older NSS 3.x shared libraries. A
@@ -92,7 +92,7 @@ to the functions listed in NSS Public Functions will remain compatible with futu
 the NSS shared libraries.
 :::
 
-## [Feedback](#feedback)
+## Feedback
 
 :::{container}
 Bugs discovered should be reported by filing a bug report with

@@ -2,13 +2,13 @@
 
 # FC_GetSlotInfo
 
-## [Name](#name)
+## Name
 
 :::{container}
 FC_GetSlotInfo - get information about a particular slot in the system.
 :::
 
-## [Syntax](#syntax)
+## Syntax
 
 :::{container}
 
@@ -21,7 +21,7 @@ CK_RV FC_GetSlotInfo(
 
 :::
 
-## [Parameters](#parameters)
+## Parameters
 
 :::{container}
 `FC_GetSlotInfo` takes two parameters:
@@ -35,7 +35,7 @@ CK_RV FC_GetSlotInfo(
 : [out] The address of a `CK_SLOT_INFO` structure.
 :::
 
-## [Description](#description)
+## Description
 
 :::{container}
 `FC_GetSlotInfo` stores the information about the slot in the `CK_SLOT_INFO` structure that
@@ -44,7 +44,7 @@ CK_RV FC_GetSlotInfo(
 A user may call `FC_GetSlotInfo` without logging into the token (to assume the NSS User role).
 :::
 
-## [Return value](#return_value)
+## Return value
 
 :::{container}
 `CKR_OK`
@@ -56,9 +56,9 @@ A user may call `FC_GetSlotInfo` without logging into the token (to assume the N
 : The specified slot number is out of the defined range of values.
 :::
 
-## [Examples](#examples)
+## Examples
 
-## [See also](#see_also)
+## See also
 
 :::{container}
 

@@ -2,13 +2,13 @@
 
 # FC_VerifyInit
 
-## [Name](#name)
+## Name
 
 :::{container}
 FC_VerifyInit - initialize a verification operation.
 :::
 
-## [Syntax](#syntax)
+## Syntax
 
 :::{container}
 
@@ -22,7 +22,7 @@ CK_RV FC_VerifyInit(
 
 :::
 
-## [Parameters](#parameters)
+## Parameters
 
 :::{container}
 `hSession`
@@ -38,7 +38,7 @@ CK_RV FC_VerifyInit(
 : [in] handle of the key to be used.
 :::
 
-## [Description](#description)
+## Description
 
 :::{container}
 `FC_VerifyInit` initializes a verification operation where the signature is an appendix to the
@@ -47,11 +47,11 @@ data.
 A user must log into the token (to assume the NSS User role) before calling `FC_VerifyInit`.
 :::
 
-## [Return value](#return_value)
+## Return value
 
-## [Examples](#examples)
+## Examples
 
-## [See also](#see_also)
+## See also
 
 :::{container}
 

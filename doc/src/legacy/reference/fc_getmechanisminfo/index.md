@@ -2,13 +2,13 @@
 
 # FC_GetMechanismInfo
 
-## [Name](#name)
+## Name
 
 :::{container}
 FC_GetMechanismInfo - get information on a particular mechanism.
 :::
 
-## [Syntax](#syntax)
+## Syntax
 
 :::{container}
 
@@ -22,7 +22,7 @@ CK_RV FC_GetMechanismInfo(
 
 :::
 
-## [Parameters](#parameters)
+## Parameters
 
 :::{container}
 `FC_GetMechanismInfo` takes three parameters:
@@ -40,7 +40,7 @@ CK_RV FC_GetMechanismInfo(
 : [Output] .
 :::
 
-## [Description](#description)
+## Description
 
 :::{container}
 `FC_GetMechanismInfo` obtains information about a particular mechanism possibly supported by a
@@ -50,15 +50,15 @@ A user may call `FC_GetMechanismInfo` without logging into the token (to assume 
 role).
 :::
 
-## [Return value](#return_value)
+## Return value
 
 :::{container}
 `CKR_OK`
 :::
 
-## [Examples](#examples)
+## Examples
 
-## [See also](#see_also)
+## See also
 
 :::{container}
 

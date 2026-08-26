@@ -2,7 +2,7 @@
 
 # NSS 3.46 release notes
 
-## [Introduction](#introduction)
+## Introduction
 
 :::{container}
 The NSS team has released Network Security Services (NSS) 3.46 on **30 August 2019**, which is a
@@ -16,7 +16,7 @@ The NSS team would like to recognize first-time contributors:
 - xhimanshuz
 :::
 
-## [Distribution Information](#distribution_information)
+## Distribution Information
 
 :::{container}
 The HG tag is NSS_3_46_RTM. NSS 3.46 requires NSPR 4.22 or newer.
@@ -31,7 +31,7 @@ Other releases are available {ref}`mozilla-projects-nss-nss-releases`.
 
 (new-in-nss-3-46)=
 
-## [New in NSS 3.46](#new_in_nss_3.46)
+## New in NSS 3.46
 
 :::{container}
 This release contains no significant new functionality, but concentrates on providing improved
@@ -41,9 +41,9 @@ performance on ARM.
 
 (notable-changes-in-nss-3-46)=
 
-## [Notable Changes in NSS 3.46](#notable_changes_in_nss_3.46)
+## Notable Changes in NSS 3.46
 
-### [Certificate Authority Changes](#certificate_authority_changes)
+### Certificate Authority Changes
 
 :::{container}
 
@@ -70,7 +70,7 @@ performance on ARM.
     - SHA-256 Fingerprint: F09B122C7114F4A09BD4EA4F4A99D558B46E4C25CD81140D29C05613914C3841
 :::
 
-## [Upcoming changes to default TLS configuration](#upcoming_changes_to_default_tls_configuration)
+## Upcoming changes to default TLS configuration
 
 :::{container}
 The next NSS team plans to make two changes to the default TLS configuration in NSS 3.47, which
@@ -86,7 +86,7 @@ will be released in October:
 
 (bugs-fixed-in-nss-3-46)=
 
-## [Bugs fixed in NSS 3.46](#bugs_fixed_in_nss_3.46)
+## Bugs fixed in NSS 3.46
 
 :::{container}
 
@@ -185,7 +185,7 @@ This Bugzilla query returns all the bugs fixed in NSS 3.46:
 <https://bugzilla.mozilla.org/buglist.cgi?resolution=FIXED&classification=Components&query_format=advanced&product=NSS&target_milestone=3.46>
 :::
 
-## [Compatibility](#compatibility)
+## Compatibility
 
 :::{container}
 NSS 3.46 shared libraries are backward compatible with all older NSS 3.x shared libraries. A
@@ -195,7 +195,7 @@ to the functions listed in NSS Public Functions will remain compatible with futu
 the NSS shared libraries.
 :::
 
-## [Feedback](#feedback)
+## Feedback
 
 :::{container}
 Bugs discovered should be reported by filing a bug report with

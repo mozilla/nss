@@ -2,13 +2,13 @@
 
 # FC_OpenSession
 
-## [Name](#name)
+## Name
 
 :::{container}
 FC_OpenSession - open a session between an application and a token.
 :::
 
-## [Syntax](#syntax)
+## Syntax
 
 :::{container}
 
@@ -24,7 +24,7 @@ CK_RV FC_OpenSession(
 
 :::
 
-## [Parameters](#parameters)
+## Parameters
 
 :::{container}
 `FC_OpenSession` has the following parameters:
@@ -48,7 +48,7 @@ CK_RV FC_OpenSession(
 : [out] pointer to a session handle.
 :::
 
-## [Description](#description)
+## Description
 
 :::{container}
 `FC_OpenSession` opens a session between an application and the token in the slot with the ID
@@ -60,11 +60,11 @@ The NSS cryptographic module currently doesn't call the surrender callback funct
 A user may call `FC_OpenSession` without logging into the token (to assume the NSS User role).
 :::
 
-## [Return value](#return_value)
+## Return value
 
-## [Examples](#examples)
+## Examples
 
-## [See also](#see_also)
+## See also
 
 :::{container}
 

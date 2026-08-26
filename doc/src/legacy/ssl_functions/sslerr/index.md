@@ -37,7 +37,7 @@ retrieves the error codes described in this chapter.
 
 (ssl-error-codes)=
 
-## [SSL Error Codes](#ssl_error_codes)
+## SSL Error Codes
 
 :::{container}
 **Table 8.1 Error codes defined in sslerr.h**
@@ -863,7 +863,7 @@ retrieves the error codes described in this chapter.
 
 (sec-error-codes)=
 
-## [SEC Error Codes](#sec_error_codes)
+## SEC Error Codes
 
 :::{container}
 **Table 8.2 Security error codes defined in secerr.h**

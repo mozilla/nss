@@ -2,13 +2,13 @@
 
 # NSS 3.63.1 release notes
 
-## [Introduction](#introduction)
+## Introduction
 
 :::{container}
 Network Security Services (NSS) 3.63.1 was released on **6 April 2021**.
 :::
 
-## [Distribution Information](#distribution_information)
+## Distribution Information
 
 :::{container}
 The HG tag is NSS_3_63_1_RTM. NSS 3.63.1 requires NSPR 4.30 or newer.
@@ -23,7 +23,7 @@ Other releases are available {ref}`mozilla-projects-nss-nss-releases`.
 
 (bugs-fixed-in-nss-3-63-1)=
 
-## [Bugs fixed in NSS 3.63.1](#bugs_fixed_in_nss_3.63.1)
+## Bugs fixed in NSS 3.63.1
 
 :::{container}
 
@@ -31,7 +31,7 @@ Other releases are available {ref}`mozilla-projects-nss-nss-releases`.
   'Global Chambersign Root - 2008’.
 :::
 
-## [Compatibility](#compatibility)
+## Compatibility
 
 :::{container}
 NSS 3.63.1 shared libraries are backwards-compatible with all older NSS 3.x shared libraries. A
@@ -41,14 +41,14 @@ to the functions listed in NSS Public Functions will remain compatible with futu
 the NSS shared libraries.
 :::
 
-## [Feedback](#feedback)
+## Feedback
 
 :::{container}
 Bugs discovered should be reported by filing a bug report on
 [bugzilla.mozilla.org](https://bugzilla.mozilla.org/enter_bug.cgi?product=NSS) (product NSS).
 :::
 
-## [Notes](#notes)
+## Notes
 
 :::{container}
 This version of NSS contains a minor update to the root CAs due to a delay in deprecation.

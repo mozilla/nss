@@ -2,14 +2,14 @@
 
 # NSS 3.42.1 release notes
 
-## [Introduction](#introduction)
+## Introduction
 
 :::{container}
 The NSS team has released Network Security Services (NSS) 3.42.1 on 31 January 2019, which is a
 patch release.
 :::
 
-## [Distribution Information](#distribution_information)
+## Distribution Information
 
 :::{container}
 The HG tag is NSS_3_42_1_RTM. NSS 3.42.1 requires NSPR 4.20 or newer.
@@ -24,7 +24,7 @@ Other releases are available {ref}`mozilla-projects-nss-nss-releases`.
 
 (bugs-fixed-in-nss-3-42-1)=
 
-## [Bugs fixed in NSS 3.42.1](#bugs_fixed_in_nss_3.42.1)
+## Bugs fixed in NSS 3.42.1
 
 :::{container}
 
@@ -40,7 +40,7 @@ This Bugzilla query returns all the bugs fixed in NSS 3.42.1:
 <https://bugzilla.mozilla.org/buglist.cgi?resolution=FIXED&classification=Components&query_format=advanced&product=NSS&target_milestone=3.42.1>
 :::
 
-## [Compatibility](#compatibility)
+## Compatibility
 
 :::{container}
 NSS 3.42.1 shared libraries are backward compatible with all older NSS 3.x shared libraries. A
@@ -50,7 +50,7 @@ to the functions listed in NSS Public Functions will remain compatible with futu
 the NSS shared libraries.
 :::
 
-## [Feedback](#feedback)
+## Feedback
 
 :::{container}
 Bugs discovered should be reported by filing a bug report with

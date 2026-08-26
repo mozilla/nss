@@ -4,15 +4,15 @@
 
 (encdecmac-using-token-object)=
 
-## [EncDecMAC using token object](#encdecmac_using_token_object)
+## EncDecMAC using token object
 
 (example)=
 
-### [Example:](#example)
+### Example:
 
 (nss-sample-code-3-hashing)=
 
-## [NSS Sample Code 3: Enc/Dec/MAC Using Token Object ID.](#nss_sample_code_3:_enc/dec/mac_using_token_object_id.)
+## NSS Sample Code 3: Enc/Dec/MAC Using Token Object ID.
 
 :::{container}
 Computes the hash of a file and saves it to another file, illustrates the use of NSS message

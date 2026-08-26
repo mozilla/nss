@@ -2,7 +2,7 @@
 
 # NSS 3.19.2.4 release notes
 
-## [Introduction](#introduction)
+## Introduction
 
 :::{container}
 Network Security Services (NSS) 3.19.2.4 is a security patch release for NSS 3.19.2. The bug
@@ -13,7 +13,7 @@ fixed in NSS 3.19.2.4 have been described in the "Security Fixes" section below.
 {ref}`mozilla-projects-nss-nss-3-22-2-release-notes` or a later release.)
 :::
 
-## [Distribution Information](#distribution_information)
+## Distribution Information
 
 :::{container}
 The HG tag is NSS_3_19_2_4_RTM. NSS 3.19.2.4 requires NSPR 4.10.10 or newer.
@@ -26,9 +26,9 @@ NSS 3.19.2.4 source distributions are available on ftp.mozilla.org for secure HT
 
 (new-in-nss-3-19-2-4)=
 
-## [New in NSS 3.19.2.4](#new_in_nss_3.19.2.4)
+## New in NSS 3.19.2.4
 
-### [New Functionality](#new_functionality)
+### New Functionality
 
 :::{container}
 No new functionality has been introduced in this release.
@@ -36,7 +36,7 @@ No new functionality has been introduced in this release.
 
 (security-fixes-in-nss-3-19-2-4)=
 
-## [Security Fixes in NSS 3.19.2.4](#security_fixes_in_nss_3.19.2.4)
+## Security Fixes in NSS 3.19.2.4
 
 :::{container}
 The following security fixes from NSS 3.21 have been backported to NSS 3.19.2.4:
@@ -52,7 +52,7 @@ The following security fixes from NSS 3.21 have been backported to NSS 3.19.2.4:
   mp_div and mp_exptmod cryptographic functions in NSS
 :::
 
-## [Compatibility](#compatibility)
+## Compatibility
 
 :::{container}
 NSS 3.19.2.4 shared libraries are backward compatible with all older NSS 3.x shared libraries. A
@@ -62,7 +62,7 @@ the functions listed in NSS Public Functions will remain compatible with future 
 NSS shared libraries.
 :::
 
-## [Feedback](#feedback)
+## Feedback
 
 :::{container}
 Bugs discovered should be reported by filing a bug report with

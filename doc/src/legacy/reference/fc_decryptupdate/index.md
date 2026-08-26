@@ -2,13 +2,13 @@
 
 # FC_DecryptUpdate
 
-## [Name](#name)
+## Name
 
 :::{container}
 FC_DecryptUpdate - decrypt a block of a multi-part encryption operation.
 :::
 
-## [Syntax](#syntax)
+## Syntax
 
 :::{container}
 
@@ -24,7 +24,7 @@ CK_RV FC_DecryptUpdate(
 
 :::
 
-## [Parameters](#parameters)
+## Parameters
 
 :::{container}
 `hSession`
@@ -48,7 +48,7 @@ CK_RV FC_DecryptUpdate(
 : [in,out] pointer the location where the number of bytes of recovered data is to be stored.
 :::
 
-## [Description](#description)
+## Description
 
 :::{container}
 `FC_DecryptUpdate` decrypts a block of data according to the attributes of the previous call to
@@ -57,11 +57,11 @@ CK_RV FC_DecryptUpdate(
 A user must log into the token (to assume the NSS User role) before calling `FC_DecryptUpdate`.
 :::
 
-## [Return value](#return_value)
+## Return value
 
-## [Examples](#examples)
+## Examples
 
-## [See also](#see_also)
+## See also
 
 :::{container}
 

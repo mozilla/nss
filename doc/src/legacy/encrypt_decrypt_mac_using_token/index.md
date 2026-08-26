@@ -2,7 +2,7 @@
 
 # Encrypt and decrypt MAC using token
 
-## [NSS sample code 3: encryption/decryption and MAC using token object.](#nss_sample_code_3_encryptiondecryption_and_mac_using_token_object.)
+## NSS sample code 3: encryption/decryption and MAC using token object.
 
 :::{container}
 Generates encryption/mac keys and uses token for storing.

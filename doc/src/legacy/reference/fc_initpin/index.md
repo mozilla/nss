@@ -2,13 +2,13 @@
 
 # FC_InitPIN
 
-## [Name](#name)
+## Name
 
 :::{container}
 `FC_InitPIN()` - Initialize the user's PIN.
 :::
 
-## [Syntax](#syntax)
+## Syntax
 
 :::{container}
 
@@ -22,7 +22,7 @@ CK_RV FC_InitPIN(
 
 :::
 
-## [Parameters](#parameters)
+## Parameters
 
 :::{container}
 `FC_InitPIN()` takes three parameters:
@@ -40,7 +40,7 @@ CK_RV FC_InitPIN(
 : [Input] Length of the PIN.
 :::
 
-## [Description](#description)
+## Description
 
 :::{container}
 `FC_InitPIN()` initializes the normal user's PIN.
@@ -53,7 +53,7 @@ to log in as the PKCS #11 SO. The module only allows the PKCS #11 SO to log in i
 user's PIN has not yet been set or has been reset.
 :::
 
-## [Return value](#return_value)
+## Return value
 
 :::{container}
 `FC_InitPIN()` returns the following return codes.
@@ -67,7 +67,7 @@ user's PIN has not yet been set or has been reset.
 - `CKR_DEVICE_ERROR`: normal user's PIN is already initialized.
 :::
 
-## [See also](#see_also)
+## See also
 
 :::{container}
 

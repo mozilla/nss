@@ -4,9 +4,9 @@
 
 (release-date-01-april-2009)=
 
-## [Release Date: 01 April 2009](#release_date_01_april_2009)
+## Release Date: 01 April 2009
 
-### [Introduction](#introduction)
+### Introduction
 
 :::{container}
 Network Security Services for Java (JSS) 4.3 is a minor release with the following new features:
@@ -22,7 +22,7 @@ JSS 4.3 is [tri-licensed](https://www.mozilla.org/MPL) under MPL 1.1/GPL 2.0/LGP
 
 (new-in-jss-4-3)=
 
-### [New in JSS 4.3](#new_in_jss_4.3)
+### New in JSS 4.3
 
 :::{container}
 > A list of bug fixes and enhancement requests were implemented in this release can be obtained by
@@ -81,7 +81,7 @@ higher.**
     TLS_ECDH_anon_WITH_AES_256_CBC_SHA
 :::
 
-### [Distribution Information](#distribution_information)
+### Distribution Information
 
 :::{container}
 
@@ -96,7 +96,7 @@ higher.**
   <https://archive.mozilla.org/pub/security/jss/releases/JSS_4_3_RTM/>
 :::
 
-### [Documentation](#documentation)
+### Documentation
 
 :::{container}
 Documentation for JSS 4.3 is available as follows:
@@ -111,7 +111,7 @@ Documentation for JSS 4.3 is available as follows:
   {ref}`mozilla-projects-nss-reference-nss-environment-variables`.
 :::
 
-### [Platform Information](#platform_information)
+### Platform Information
 
 :::{container}
 
@@ -124,7 +124,7 @@ Documentation for JSS 4.3 is available as follows:
 - JSS only supports the native threading model (no green threads).
 :::
 
-### [Known Bugs and Issues](#known_bugs_and_issues)
+### Known Bugs and Issues
 
 :::{container}
 
@@ -133,7 +133,7 @@ Documentation for JSS 4.3 is available as follows:
   Note that some bugs may have been fixed since JSS 4.3 was released.
 :::
 
-### [Compatibility](#compatibility)
+### Compatibility
 
 :::{container}
 
@@ -146,7 +146,7 @@ Documentation for JSS 4.3 is available as follows:
   library: strings libjss4.so | grep -i header
 :::
 
-### [Feedback](#feedback)
+### Feedback
 
 :::{container}
 

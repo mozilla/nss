@@ -27,7 +27,7 @@ Matrix/Element: [https://app.element.io/#/room/#nss:mozilla.org](https://app.ele
 
 (how-to-contribute)=
 
-## [How to Contribute](#how_to_contribute)
+## How to Contribute
 
 :::{container}
 Start by opening a **Bugzilla** account at [bugzilla.mozilla.org](https://bugzilla.mozilla.org/) if you don't have one.
@@ -38,7 +38,7 @@ We maintain a list of [NSS bugs marked with a keyword "good-first-bug"](https://
 
 (creating-your-patch)=
 
-## [Creating your Patch](#creating_your_patch)
+## Creating your Patch
 
 :::{container}
 See our section on {ref}`mozilla-projects-nss-building` to get started
@@ -47,7 +47,7 @@ making your patch. When you're satisfied with it, you'll need code review.
 
 (code-review)=
 
-## [Code Review](#code_review)
+## Code Review
 
 :::{container}
 [http://phabricator.services.mozilla.com/](https://phabricator.services.mozilla.com) is our

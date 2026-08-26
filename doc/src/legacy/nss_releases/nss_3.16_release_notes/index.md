@@ -2,13 +2,13 @@
 
 # NSS 3.16 release notes
 
-## [Introduction](#introduction)
+## Introduction
 
 :::{container}
 The NSS team has released Network Security Services (NSS) 3.16, which is a minor release.
 :::
 
-## [Distribution Information](#distribution_information)
+## Distribution Information
 
 :::{container}
 The HG tag is NSS_3_16_RTM. NSS 3.16 requires NSPR 4.10.3 or newer.
@@ -21,9 +21,9 @@ NSS 3.16 source distributions are available on ftp.mozilla.org for secure HTTPS 
 
 (new-in-nss-3-16)=
 
-## [New in NSS 3.16](#new_in_nss_3.16)
+## New in NSS 3.16
 
-### [New Functionality](#new_functionality)
+### New Functionality
 
 :::{container}
 
@@ -51,7 +51,7 @@ NSS 3.16 source distributions are available on ftp.mozilla.org for secure HTTPS 
 
 (notable-changes-in-nss-3-16)=
 
-## [Notable Changes in NSS 3.16](#notable_changes_in_nss_3.16)
+## Notable Changes in NSS 3.16
 
 :::{container}
 
@@ -80,7 +80,7 @@ NSS 3.16 source distributions are available on ftp.mozilla.org for secure HTTPS 
 
 (bugs-fixed-in-nss-3-16)=
 
-## [Bugs fixed in NSS 3.16](#bugs_fixed_in_nss_3.16)
+## Bugs fixed in NSS 3.16
 
 :::{container}
 This Bugzilla query returns all the bugs fixed in NSS 3.16:

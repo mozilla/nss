@@ -4,11 +4,11 @@
 
 (all-about-certificate-extensions)=
 
-## [All About Certificate Extensions](#all_about_certificate_extensions)
+## All About Certificate Extensions
 
 (nss-technical-note-3)=
 
-### [NSS Technical Note: 3](#nss_technical_note_3)
+### NSS Technical Note: 3
 
 :::{container}
 

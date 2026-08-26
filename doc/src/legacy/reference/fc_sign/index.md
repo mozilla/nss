@@ -2,13 +2,13 @@
 
 # FC_Sign
 
-## [Name](#name)
+## Name
 
 :::{container}
 FC_Sign - sign a block of data.
 :::
 
-## [Syntax](#syntax)
+## Syntax
 
 :::{container}
 
@@ -24,7 +24,7 @@ CK_RV FC_Sign(
 
 :::
 
-## [Parameters](#parameters)
+## Parameters
 
 :::{container}
 `hSession`
@@ -49,7 +49,7 @@ CK_RV FC_Sign(
   signature if the operation is successful.
 :::
 
-## [Description](#description)
+## Description
 
 :::{container}
 `FC_Sign` signs a message in a single operation according to the attributes of the previous
@@ -58,11 +58,11 @@ call to `FC_SignInit`.
 A user must log into the token (to assume the NSS User role) before calling `FC_Sign`.
 :::
 
-## [Return value](#return_value)
+## Return value
 
-## [Examples](#examples)
+## Examples
 
-## [See also](#see_also)
+## See also
 
 :::{container}
 

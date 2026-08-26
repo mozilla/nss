@@ -2,13 +2,13 @@
 
 # FC_Decrypt
 
-## [Name](#name)
+## Name
 
 :::{container}
 FC_Decrypt - Decrypt a block of data.
 :::
 
-## [Syntax](#syntax)
+## Syntax
 
 :::{container}
 
@@ -24,7 +24,7 @@ CK_RV FC_Decrypt(
 
 :::
 
-## [Parameters](#parameters)
+## Parameters
 
 :::{container}
 `hSession`
@@ -48,7 +48,7 @@ CK_RV FC_Decrypt(
 : [in,out] pointer to location where the length of recovered data is to be stored.
 :::
 
-## [Description](#description)
+## Description
 
 :::{container}
 `FC_Decrypt` decrypts a block of data according to the attributes of the previous call to
@@ -57,11 +57,11 @@ CK_RV FC_Decrypt(
 A user must log into the token (to assume the NSS User role) before calling `FC_Decrypt`.
 :::
 
-## [Return value](#return_value)
+## Return value
 
-## [Examples](#examples)
+## Examples
 
-## [See also](#see_also)
+## See also
 
 :::{container}
 

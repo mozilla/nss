@@ -1,12 +1,12 @@
 # NSS 3.64 release notes
 
-## [Introduction](#introduction)
+## Introduction
 
 :::{container}
 Network Security Services (NSS) 3.64 was released on **15 April 2021**.
 :::
 
-## [Distribution Information](#distribution_information)
+## Distribution Information
 
 :::{container}
 The HG tag is NSS_3_64_RTM. NSS 3.64 requires NSPR 4.30 or newer.
@@ -19,7 +19,7 @@ NSS 3.64 source distributions are available on ftp.mozilla.org for secure HTTPS 
 Other releases are available {ref}`mozilla-projects-nss-nss-releases`.
 :::
 
-## [Bugs fixed in NSS 3.64](#bugs_fixed_in_nss_3.64)
+## Bugs fixed in NSS 3.64
 
 :::{container}
 
@@ -29,7 +29,7 @@ Other releases are available {ref}`mozilla-projects-nss-nss-releases`.
 - Bug 1613235 - Add POWER ChaCha20 stream cipher vector acceleration.
 :::
 
-## [Compatibility](#compatibility)
+## Compatibility
 
 :::{container}
 NSS 3.64 shared libraries are backwards-compatible with all older NSS 3.x shared libraries. A
@@ -39,14 +39,14 @@ to the functions listed in NSS Public Functions will remain compatible with futu
 the NSS shared libraries.
 :::
 
-## [Feedback](#feedback)
+## Feedback
 
 :::{container}
 Bugs discovered should be reported by filing a bug report on
 [bugzilla.mozilla.org](https://bugzilla.mozilla.org/enter_bug.cgi?product=NSS) (product NSS).
 :::
 
-## [Notes](#notes)
+## Notes
 
 :::{container}
 This version of NSS contains a number of contributions for "unsupported platforms". We would like

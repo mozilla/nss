@@ -2,13 +2,13 @@
 
 # NSS 3.36.1 release notes
 
-## [Introduction](#introduction)
+## Introduction
 
 :::{container}
 Network Security Services (NSS) 3.36.1 is a patch release for NSS 3.36.
 :::
 
-## [Distribution Information](#distribution_information)
+## Distribution Information
 
 :::{container}
 The HG tag is NSS_3_36_1_RTM. NSS 3.36.1 requires NSPR 4.19 or newer.
@@ -19,9 +19,9 @@ NSS 3.36.1 source distributions are available on ftp.mozilla.org for secure HTTP
   <https://ftp.mozilla.org/pub/security/nss/releases/NSS_3_36_1_RTM/src/>
 :::
 
-## [New in NSS 3.XX](#new_in_nss_3.xx)
+## New in NSS 3.XX
 
-### [New Functionality](#new_functionality)
+### New Functionality
 
 :::{container}
 No new functionality is introduced in this release. This is a patch release to fix regression
@@ -30,7 +30,7 @@ bugs.
 
 (notable-changes-in-nss-3-36-1)=
 
-## [Notable Changes in NSS 3.36.1](#notable_changes_in_nss_3.36.1)
+## Notable Changes in NSS 3.36.1
 
 :::{container}
 
@@ -42,7 +42,7 @@ bugs.
 
 (bugs-fixed-in-nss-3-36-1)=
 
-## [Bugs fixed in NSS 3.36.1](#bugs_fixed_in_nss_3.36.1)
+## Bugs fixed in NSS 3.36.1
 
 :::{container}
 
@@ -53,7 +53,7 @@ This Bugzilla query returns all the bugs fixed in NSS 3.36.1:
 <https://bugzilla.mozilla.org/buglist.cgi?resolution=FIXED&classification=Components&query_format=advanced&product=NSS&target_milestone=3.36.1>
 :::
 
-## [Compatibility](#compatibility)
+## Compatibility
 
 :::{container}
 NSS 3.36.1 shared libraries are backward compatible with all older NSS 3.x shared libraries. A
@@ -63,7 +63,7 @@ to the functions listed in NSS Public Functions will remain compatible with futu
 the NSS shared libraries.
 :::
 
-## [Feedback](#feedback)
+## Feedback
 
 :::{container}
 Bugs discovered should be reported by filing a bug report with

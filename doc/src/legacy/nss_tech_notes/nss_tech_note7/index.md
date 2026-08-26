@@ -4,11 +4,11 @@
 
 (rsa-signing-and-encryption-with-nss)=
 
-## [RSA Signing and Encryption with NSS](#rsa_signing_and_encryption_with_nss)
+## RSA Signing and Encryption with NSS
 
 (nss-technical-note-7)=
 
-### [NSS Technical Note: 7](#nss_technical_note_7)
+### NSS Technical Note: 7
 
 :::{container}
 This technical note explains how to use NSS to perform RSA signing and encryption. The industry
@@ -18,7 +18,7 @@ doesn't yet support PKCS #1 v2.0 and v2.1, in particular OAEP, but OAEP support 
 list](https://bugzilla.mozilla.org/show_bug.cgi?id=158747). Your contribution is welcome.
 :::
 
-### [Data Types](#data_types)
+### Data Types
 
 :::{container}
 NSS uses the following data types to represent keys:
@@ -124,7 +124,7 @@ When the keys are no longer needed, they need to be destroyed.
   (`PK11SymKey *`); the symmetric key is destroyed when its reference count becomes zero.
 :::
 
-### [Functions](#functions)
+### Functions
 
 :::{container}
 RSA signing and encryption functions are provided by two layers of NSS function: the
@@ -200,7 +200,7 @@ include the SSL version number.
 
 (pkcs-1-v1-5-block-formatting)=
 
-### [PKCS #1 v1.5 Block Formatting](#pkcs_1_v1.5_block_formatting)
+### PKCS #1 v1.5 Block Formatting
 
 ::::{container}
 Question:
@@ -240,14 +240,14 @@ significant 0 bits. For example, 0x00123456 is equal to 0x123456.
 Perhaps this change made in PKCS #1 v2.0 confused many people, so it was reversed in v2.1.
 ::::
 
-### [Sample Code](#sample_code)
+### Sample Code
 
 :::{container}
 
 - {ref}`mozilla-projects-nss-nss-sample-code-nss-sample-code-sample4`
 :::
 
-### [References](#references)
+### References
 
 :::{container}
 

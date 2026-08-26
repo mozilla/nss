@@ -2,13 +2,13 @@
 
 # NSS 3.28.2 release notes
 
-## [Introduction](#introduction)
+## Introduction
 
 :::{container}
 Network Security Services (NSS) 3.28.2 is a patch release for NSS 3.28.
 :::
 
-## [Distribution Information](#distribution_information)
+## Distribution Information
 
 :::{container}
 The HG tag is NSS_3_28_2_RTM. NSS 3.28.2 requires NSPR 4.13.1 or newer.
@@ -21,7 +21,7 @@ NSS 3.28.2 source distributions are available on ftp.mozilla.org for secure HTTP
 
 (incorrect-version-number)=
 
-## [Incorrect version number](#incorrect_version_number)
+## Incorrect version number
 
 :::{container}
 
@@ -31,7 +31,7 @@ NSS 3.28.2 source distributions are available on ftp.mozilla.org for secure HTTP
 
 (new-in-nss-3-28-2)=
 
-## [New in NSS 3.28.2](#new_in_nss_3.28.2)
+## New in NSS 3.28.2
 
 :::{container}
 No new functionality is introduced in this release. This is a patch release includes bug fixes
@@ -40,7 +40,7 @@ and addresses some compatibility issues with TLS.
 
 (bugs-fixed-in-nss-3-28-2)=
 
-## [Bugs fixed in NSS 3.28.2](#bugs_fixed_in_nss_3.28.2)
+## Bugs fixed in NSS 3.28.2
 
 :::{container}
 
@@ -53,7 +53,7 @@ and addresses some compatibility issues with TLS.
   ]](https://bugzilla.mozilla.org/show_bug.cgi?id=1323150)
 :::
 
-## [Compatibility](#compatibility)
+## Compatibility
 
 :::{container}
 NSS 3.28.2 shared libraries are backward compatible with all older NSS 3.x shared libraries. A
@@ -63,7 +63,7 @@ to the functions listed in NSS Public Functions will remain compatible with futu
 the NSS shared libraries.
 :::
 
-## [Feedback](#feedback)
+## Feedback
 
 :::{container}
 Bugs discovered should be reported by filing a bug report with

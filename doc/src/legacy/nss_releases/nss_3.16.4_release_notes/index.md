@@ -2,14 +2,14 @@
 
 # NSS 3.16.4 release notes
 
-## [Introduction](#introduction)
+## Introduction
 
 :::{container}
 Network Security Services (NSS) 3.16.4 is a patch release for NSS 3.16. The bug fixes in NSS
 3.16.4 are described in the "Bugs Fixed" section below.
 :::
 
-## [Distribution Information](#distribution_information)
+## Distribution Information
 
 :::{container}
 The HG tag is NSS_3_16_4_RTM. NSS 3.16.4 requires NSPR 4.10.6 or newer.
@@ -22,7 +22,7 @@ NSS 3.16.4 source distributions are available on ftp.mozilla.org for secure HTTP
 
 (new-in-nss-3-16-4)=
 
-## [New in NSS 3.16.4](#new_in_nss_3.16.4)
+## New in NSS 3.16.4
 
 :::{container}
 This release consists primarily of CA certificate changes as listed below, and includes a small
@@ -31,7 +31,7 @@ number of bug fixes.
 
 (notable-changes-in-nss-3-16-4)=
 
-## [Notable Changes in NSS 3.16.4](#notable_changes_in_nss_3.16.4)
+## Notable Changes in NSS 3.16.4
 
 :::{container}
 
@@ -59,7 +59,7 @@ number of bug fixes.
 
 (bugs-fixed-in-nss-3-16-4)=
 
-## [Bugs fixed in NSS 3.16.4](#bugs_fixed_in_nss_3.16.4)
+## Bugs fixed in NSS 3.16.4
 
 :::{container}
 This Bugzilla query returns all the bugs fixed in NSS 3.16.4:

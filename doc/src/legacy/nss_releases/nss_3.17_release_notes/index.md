@@ -2,13 +2,13 @@
 
 # NSS 3.17 release notes
 
-## [Introduction](#introduction)
+## Introduction
 
 :::{container}
 The NSS team has released Network Security Services (NSS) 3.17, which is a minor release.
 :::
 
-## [Distribution Information](#distribution_information)
+## Distribution Information
 
 :::{container}
 The HG tag is NSS_3_17_RTM. NSS 3.17 requires NSPR 4.10.7 or newer.
@@ -21,9 +21,9 @@ NSS 3.17 source distributions are available on ftp.mozilla.org for secure HTTPS 
 
 (new-in-nss-3-17)=
 
-## [New in NSS 3.17](#new_in_nss_3.17)
+## New in NSS 3.17
 
-### [New Functionality](#new_functionality)
+### New Functionality
 
 :::{container}
 
@@ -42,7 +42,7 @@ New Macros
 
 (notable-changes-in-nss-3-17)=
 
-## [Notable Changes in NSS 3.17](#notable_changes_in_nss_3.17)
+## Notable Changes in NSS 3.17
 
 :::{container}
 
@@ -54,7 +54,7 @@ New Macros
 
 (bugs-fixed-in-nss-3-17)=
 
-## [Bugs fixed in NSS 3.17](#bugs_fixed_in_nss_3.17)
+## Bugs fixed in NSS 3.17
 
 :::{container}
 This Bugzilla query returns all the bugs fixed in NSS 3.17:

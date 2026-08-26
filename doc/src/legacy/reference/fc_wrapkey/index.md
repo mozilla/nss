@@ -2,13 +2,13 @@
 
 # FC_WrapKey
 
-## [Name](#name)
+## Name
 
 :::{container}
 FC_WrapKey - wrap a key
 :::
 
-## [Syntax](#syntax)
+## Syntax
 
 :::{container}
 
@@ -25,7 +25,7 @@ CK_RV FC_WrapKey(
 
 :::
 
-## [Parameters](#parameters)
+## Parameters
 
 :::{container}
 `hSession`
@@ -53,7 +53,7 @@ CK_RV FC_WrapKey(
 : [in, out] pointer to length of wrapped key buffer.
 :::
 
-## [Description](#description)
+## Description
 
 :::{container}
 `FC_WrapKey` wraps (encrypts) a key. If `pWrappedKey` is NULL the length of the wrapped key
@@ -63,11 +63,11 @@ to retrieve the wrapped key.
 A user must log into the token (to assume the NSS User role) before calling `FC_WrapKey`.
 :::
 
-## [Return value](#return_value)
+## Return value
 
-## [Examples](#examples)
+## Examples
 
-## [See also](#see_also)
+## See also
 
 :::{container}
 

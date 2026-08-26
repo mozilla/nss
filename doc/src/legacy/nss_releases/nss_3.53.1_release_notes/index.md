@@ -2,7 +2,7 @@
 
 # NSS 3.53.1 release notes
 
-## [Introduction](#introduction)
+## Introduction
 
 :::{container}
 The NSS team has released Network Security Services (NSS) 3.53.1 on **16 June 2020**. This is a
@@ -12,7 +12,7 @@ Thank you to Sohaib ul Hassan, Billy Bob Brumley, and the Network and Informatio
 (NISEC) at Tampere University for reporting this issue and providing a patch.
 :::
 
-## [Distribution Information](#distribution_information)
+## Distribution Information
 
 :::{container}
 The HG tag is NSS_3_53_1_RTM. NSS 3.53.1 requires NSPR 4.25 or newer.
@@ -27,7 +27,7 @@ Other releases are available {ref}`mozilla-projects-nss-nss-releases`.
 
 (new-in-nss-3-53-1)=
 
-## [New in NSS 3.53.1](#new_in_nss_3.53.1)
+## New in NSS 3.53.1
 
 :::{container}
 No new functionality is introduced in this release.
@@ -35,7 +35,7 @@ No new functionality is introduced in this release.
 
 (bugs-fixed-in-nss-3-53-1)=
 
-## [Bugs fixed in NSS 3.53.1](#bugs_fixed_in_nss_3.53.1)
+## Bugs fixed in NSS 3.53.1
 
 :::{container}
 
@@ -43,7 +43,7 @@ No new functionality is introduced in this release.
   constant-time GCD and modular inversion in MPI.
 :::
 
-## [Compatibility](#compatibility)
+## Compatibility
 
 :::{container}
 NSS 3.53.1 shared libraries are backward compatible with all older NSS 3.x shared libraries. A
@@ -53,7 +53,7 @@ to the functions listed in NSS Public Functions will remain compatible with futu
 the NSS shared libraries.
 :::
 
-## [Feedback](#feedback)
+## Feedback
 
 :::{container}
 Bugs discovered should be reported by filing a bug report with

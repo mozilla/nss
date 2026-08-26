@@ -2,13 +2,13 @@
 
 # FC_DigestInit
 
-## [Name](#name)
+## Name
 
 :::{container}
 FC_DigestInit - initialize a message-digest operation.
 :::
 
-## [Syntax](#syntax)
+## Syntax
 
 :::{container}
 
@@ -21,7 +21,7 @@ CK_RV FC_DigestInit(
 
 :::
 
-## [Parameters](#parameters)
+## Parameters
 
 :::{container}
 `hSession`
@@ -33,7 +33,7 @@ CK_RV FC_DigestInit(
 : [in] mechanism to be used for the subsequent digest operation.
 :::
 
-## [Description](#description)
+## Description
 
 :::{container}
 `FC_DigestInit` initializes a message-digest operation.
@@ -41,11 +41,11 @@ CK_RV FC_DigestInit(
 A user may call `FC_DigestInit` without logging into the token (to assume the NSS User role).
 :::
 
-## [Return value](#return_value)
+## Return value
 
-## [Examples](#examples)
+## Examples
 
-## [See also](#see_also)
+## See also
 
 :::{container}
 

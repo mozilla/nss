@@ -2,13 +2,13 @@
 
 # FC_SignUpdate
 
-## [Name](#name)
+## Name
 
 :::{container}
 FC_SignUpdate - process the next block of a multi-part signing operation.
 :::
 
-## [Syntax](#syntax)
+## Syntax
 
 :::{container}
 
@@ -22,7 +22,7 @@ CK_RV FC_SignUpdate(
 
 :::
 
-## [Parameters](#parameters)
+## Parameters
 
 :::{container}
 `hSession`
@@ -38,7 +38,7 @@ CK_RV FC_SignUpdate(
 : [in] length of data block in bytes.
 :::
 
-## [Description](#description)
+## Description
 
 :::{container}
 `FC_SignUpdate` starts or continues a multi-part signature operation. One or more blocks may be
@@ -48,11 +48,11 @@ part of the signature. The signature for the entire message is returned by a cal
 A user must log into the token (to assume the NSS User role) before calling `FC_SignUpdate`.
 :::
 
-## [Return value](#return_value)
+## Return value
 
-## [Examples](#examples)
+## Examples
 
-## [See also](#see_also)
+## See also
 
 :::{container}
 

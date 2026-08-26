@@ -2,13 +2,13 @@
 
 # NSS 3.27.1 release notes
 
-## [Introduction](#introduction)
+## Introduction
 
 :::{container}
 Network Security Services (NSS) 3.27.1 is a patch release for NSS 3.27.
 :::
 
-## [Distribution Information](#distribution_information)
+## Distribution Information
 
 :::{container}
 The HG tag is NSS_3_27_1_RTM. NSS 3.27.1 requires NSPR 4.13 or newer.
@@ -21,9 +21,9 @@ NSS 3.27.1 source distributions are available on ftp.mozilla.org for secure HTTP
 
 (new-in-nss-3-27-1)=
 
-## [New in NSS 3.27.1](#new_in_nss_3.27.1)
+## New in NSS 3.27.1
 
-### [New Functionality](#new_functionality)
+### New Functionality
 
 :::{container}
 No new functionality is introduced in this release. This is a patch release to address a TLS
@@ -32,7 +32,7 @@ compatibility issue which some applications experienced with NSS 3.27.
 
 (notable-changes-in-nss-3-27-1)=
 
-## [Notable Changes in NSS 3.27.1](#notable_changes_in_nss_3.27.1)
+## Notable Changes in NSS 3.27.1
 
 :::{container}
 Availability of the TLS 1.3 (draft) implementation has been re-disabled in the default build.
@@ -54,7 +54,7 @@ NSS 3.27.1 once again requires NSS_ENABLE_TLS_1_3 to be deliberately set to enab
 
 (bugs-fixed-in-nss-3-27-1)=
 
-## [Bugs fixed in NSS 3.27.1](#bugs_fixed_in_nss_3.27.1)
+## Bugs fixed in NSS 3.27.1
 
 :::{container}
 
@@ -62,7 +62,7 @@ NSS 3.27.1 once again requires NSS_ENABLE_TLS_1_3 to be deliberately set to enab
   default](https://bugzilla.mozilla.org/show_bug.cgi?id=1306985)
 :::
 
-## [Compatibility](#compatibility)
+## Compatibility
 
 :::{container}
 NSS 3.27.1 shared libraries are backwards compatible with all older NSS 3.x shared libraries. A
@@ -72,7 +72,7 @@ functions listed in NSS Public Functions will remain compatible with future vers
 shared libraries.
 :::
 
-## [Feedback](#feedback)
+## Feedback
 
 :::{container}
 Bugs discovered should be reported by filing a bug report with

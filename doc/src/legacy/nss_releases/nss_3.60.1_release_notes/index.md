@@ -2,14 +2,14 @@
 
 # NSS 3.60.1 release notes
 
-## [Introduction](#introduction)
+## Introduction
 
 :::{container}
 The NSS team released Network Security Services (NSS) 3.60.1 on **4 January 2021**, which is a
 patch release for NSS 3.60.
 :::
 
-## [Distribution information](#distribution_information)
+## Distribution information
 
 :::{container}
 The HG tag is NSS_3_60_1_RTM. NSS 3.60.1 requires NSPR 4.29 or newer.
@@ -24,7 +24,7 @@ Other releases are available at {ref}`mozilla_projects_nss_nss_releases#past_rel
 
 (bugs-fixed-in-nss-3-60-1)=
 
-## [Bugs fixed in NSS 3.60.1](#bugs_fixed_in_nss_3.60.1)
+## Bugs fixed in NSS 3.60.1
 
 :::{container}
 
@@ -32,7 +32,7 @@ Other releases are available at {ref}`mozilla_projects_nss_nss_releases#past_rel
   issues with slow third-party PKCS #11 tokens.
 :::
 
-## [Compatibility](#compatibility)
+## Compatibility
 
 :::{container}
 NSS 3.60.1 shared libraries are backwards-compatible with all older NSS 3.x shared libraries. A
@@ -42,7 +42,7 @@ to the functions listed in NSS Public Functions will remain compatible with futu
 the NSS shared libraries.
 :::
 
-## [Feedback](#feedback)
+## Feedback
 
 :::{container}
 Bugs discovered should be reported by filing a bug report at

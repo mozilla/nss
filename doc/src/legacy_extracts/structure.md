@@ -2,7 +2,7 @@
 
 # [NSS API Structure](#api_structure)
 
-## [Libraries](#libraries)
+## Libraries
 
 :::{container}
 NSS compiles into the libraries described below. The Layer indicates the main layer in which the library operates. The Directory is the location of the library
@@ -238,7 +238,7 @@ functions, that are publicly available to higer-level APIs.
 
 (naming-conventions)=
 
-## [Naming Conventions](#_naming_conventions)
+## Naming Conventions
 
 :::{container}
 This section describes the rules that (ideally) should be followed for naming and identifying new
@@ -247,7 +247,7 @@ files, functions, and data types.
 
 (header-files)=
 
-### [Header Files](#header_files)
+### Header Files
 
 ::::{container}
 We have a preferred naming system for include files. We had been moving towards one, for some
@@ -289,7 +289,7 @@ In short:
 
 (functions-and-types)=
 
-### [Functions and Types](#functions_and_types)
+### Functions and Types
 
 :::{container}
 There are a number of ways of doing things in our API, as well as naming decisions for functions
@@ -344,7 +344,7 @@ security library, since consistency is more important than debates about what mi
 
 (opaque-data-structures)=
 
-## [Opaque Data Structures](#_opaque_data_structures)
+## Opaque Data Structures
 
 :::{container}
 There are many data structures in the security library whose definition is effectively private,

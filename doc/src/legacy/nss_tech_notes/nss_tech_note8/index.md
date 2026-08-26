@@ -4,11 +4,11 @@
 
 (background-information-on-libssl-s-cache-functions-and-sids)=
 
-## [Background Information on libSSL's Cache Functions and SIDs](#background_information_on_libssl's_cache_functions_and_sids)
+## Background Information on libSSL's Cache Functions and SIDs
 
 (nss-technical-note-8)=
 
-### [NSS Technical Note: 8](#nss_technical_note_8)
+### NSS Technical Note: 8
 
 :::{container}
 

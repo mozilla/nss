@@ -4,7 +4,7 @@
 
 (nss-sample-code-1-key-generation-and-transport-between-servers)=
 
-## [NSS Sample Code 1: Key Generation and Transport Between Servers.](#nss_sample_code_1_key_generation_and_transport_between_servers.)
+## NSS Sample Code 1: Key Generation and Transport Between Servers.
 
 :::{container}
 This is an example program that demonstrates how to do key generation and transport between
@@ -34,7 +34,7 @@ to extablish a shared key pair.
 We will add message protection (encryption and MACing) examples to this program in the future.
 :::
 
-### [Sample Code](#sample_code)
+### Sample Code
 
 :::{container}
 

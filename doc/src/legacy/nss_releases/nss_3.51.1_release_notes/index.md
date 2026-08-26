@@ -2,14 +2,14 @@
 
 # NSS 3.51.1 release notes
 
-## [Introduction](#introduction)
+## Introduction
 
 :::{container}
 The NSS team has released Network Security Services (NSS) 3.51.1 on **3 April 2020**. This is a
 minor release focusing on functional bug fixes and low-risk patches only.
 :::
 
-## [Distribution Information](#distribution_information)
+## Distribution Information
 
 :::{container}
 The HG tag is NSS_3_51_1_RTM. NSS 3.51.1 requires NSPR 4.25 or newer.
@@ -24,7 +24,7 @@ Other releases are available {ref}`mozilla-projects-nss-nss-releases`.
 
 (notable-changes-in-nss-3-51-1)=
 
-## [Notable Changes in NSS 3.51.1](#notable_changes_in_nss_3.51.1)
+## Notable Changes in NSS 3.51.1
 
 :::{container}
 
@@ -34,7 +34,7 @@ Other releases are available {ref}`mozilla-projects-nss-nss-releases`.
 
 (bugs-fixed-in-nss-3-51-1)=
 
-## [Bugs fixed in NSS 3.51.1](#bugs_fixed_in_nss_3.51.1)
+## Bugs fixed in NSS 3.51.1
 
 :::{container}
 
@@ -54,7 +54,7 @@ Other releases are available {ref}`mozilla-projects-nss-nss-releases`.
   Credentials implementation to draft-07.
 :::
 
-## [Compatibility](#compatibility)
+## Compatibility
 
 :::{container}
 NSS 3.51.1 shared libraries are backward compatible with all older NSS 3.x shared libraries. A
@@ -64,7 +64,7 @@ to the functions listed in NSS Public Functions will remain compatible with futu
 the NSS shared libraries.
 :::
 
-## [Feedback](#feedback)
+## Feedback
 
 :::{container}
 Bugs discovered should be reported by filing a bug report with

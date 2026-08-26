@@ -9,7 +9,7 @@ suite.
 
 (getting-source-code-and-a-quick-overview)=
 
-## [Getting source code, and a quick overview](#getting_source_code_and_a_quick_overview)
+## Getting source code, and a quick overview
 
 :::{container}
 The easiest way is to download archives of NSS releases from [Mozilla's download
@@ -65,7 +65,7 @@ listed in the .def files, NSS promises that the binary function interface (ABI) 
 stable.
 :::
 
-## [Building NSS](#building_nss)
+## Building NSS
 
 :::{container}
 NSS is built using [gyp](https://gyp.gsrc.io/) and [ninja](https://ninja-build.org/), or
@@ -82,7 +82,7 @@ DYLD_LIBRARY_PATH environment variable.
 
 (running-the-nss-test-suite)=
 
-## [Running the NSS test suite](#running_the_nss_test_suite)
+## Running the NSS test suite
 
 :::{container}
 This is an important part of development work, in order to ensure your changes don't introduce

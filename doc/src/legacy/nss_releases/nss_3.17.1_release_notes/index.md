@@ -2,14 +2,14 @@
 
 # NSS 3.17.1 release notes
 
-## [Introduction](#introduction)
+## Introduction
 
 :::{container}
 Network Security Services (NSS) 3.17.1 is a patch release for NSS 3.17. The bug fixes in NSS
 3.17.1 are described in the "Bugs Fixed" section below.
 :::
 
-## [Distribution Information](#distribution_information)
+## Distribution Information
 
 :::{container}
 The HG tag is NSS_3_17_1_RTM. NSS 3.17.1 requires NSPR 4.10.7 or newer.
@@ -20,7 +20,7 @@ NSS 3.17.1 source distributions are available on ftp.mozilla.org for secure HTTP
   <https://ftp.mozilla.org/pub/mozilla.org/security/nss/releases/NSS_3_17_1_RTM/src/>
 :::
 
-## [Security Advisories](#security_advisories)
+## Security Advisories
 
 :::{container}
 The following security-relevant bugs have been resolved in NSS 3.17.1. Users are encouraged to
@@ -33,7 +33,7 @@ upgrade immediately.
 
 (new-in-nss-3-17-1)=
 
-## [New in NSS 3.17.1](#new_in_nss_3.17.1)
+## New in NSS 3.17.1
 
 :::{container}
 This patch release adds new functionality and fixes a bug that caused NSS to accept forged RSA
@@ -44,7 +44,7 @@ symbols that have a leading underscore '\_', this is an internal symbol for NSS 
 Applications that use or depend on these symbols can and will break in future NSS releases.
 :::
 
-### [New Functionality](#new_functionality)
+### New Functionality
 
 :::{container}
 
@@ -72,7 +72,7 @@ Applications that use or depend on these symbols can and will break in future NS
 
 (notable-changes-in-nss-3-17-1)=
 
-## [Notable Changes in NSS 3.17.1](#notable_changes_in_nss_3.17.1)
+## Notable Changes in NSS 3.17.1
 
 :::{container}
 
@@ -83,7 +83,7 @@ Applications that use or depend on these symbols can and will break in future NS
 
 (bugs-fixed-in-nss-3-17-1)=
 
-## [Bugs fixed in NSS 3.17.1](#bugs_fixed_in_nss_3.17.1)
+## Bugs fixed in NSS 3.17.1
 
 :::{container}
 This Bugzilla query returns all the bugs fixed in NSS 3.17.1:
@@ -91,7 +91,7 @@ This Bugzilla query returns all the bugs fixed in NSS 3.17.1:
 <https://bugzilla.mozilla.org/buglist.cgi?resolution=FIXED&classification=Components&query_format=advanced&product=NSS&target_milestone=3.17.1>
 :::
 
-## [Acknowledgements](#acknowledgements)
+## Acknowledgements
 
 :::{container}
 The NSS development team would like to thank Antoine Delignat-Lavaud, security researcher at
@@ -100,7 +100,7 @@ independently discovered and reported this issue, for responsibly disclosing the
 providing advance copies of their research.
 :::
 
-## [Compatibility](#compatibility)
+## Compatibility
 
 :::{container}
 NSS 3.17.1 shared libraries are backward compatible with all older NSS 3.x shared libraries. A
@@ -110,7 +110,7 @@ to the functions listed in NSS Public Functions will remain compatible with futu
 the NSS shared libraries.
 :::
 
-## [Feedback](#feedback)
+## Feedback
 
 :::{container}
 Bugs discovered should be reported by filing a bug report with

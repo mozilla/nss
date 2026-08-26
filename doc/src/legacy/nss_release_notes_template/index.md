@@ -6,7 +6,7 @@
 
 ## [DRAFT (remove line when document is finished)](<#draft_(remove_line_when_document_is_finished)>)
 
-## [Introduction](#introduction)
+## Introduction
 
 :::{container}
 The NSS team has released Network Security Services (NSS) 3.XX, which is a minor release.
@@ -17,7 +17,7 @@ Network Security Services (NSS) 3.XX.y is a patch release for NSS 3.XX. The bug 
 3.XX.y are described in the "Bugs Fixed" section below.
 :::
 
-## [Distribution Information](#distribution_information)
+## Distribution Information
 
 :::{container}
 The HG tag is NSS_3_XX_RTM. NSS 3.XX requires NSPR 4.XX or newer.
@@ -28,9 +28,9 @@ NSS 3.XX source distributions are available on ftp.mozilla.org for secure HTTPS 
   <https://ftp.mozilla.org/pub/mozilla.org/security/nss/releases/NSS_3_XX_RTM/src/> (make a link)
 :::
 
-## [New in NSS 3.XX](#new_in_nss_3.xx)
+## New in NSS 3.XX
 
-### [New Functionality](#new_functionality)
+### New Functionality
 
 :::{container}
 either:
@@ -65,7 +65,7 @@ or:
 
 (notable-changes-in-nss-3-xx)=
 
-## [Notable Changes in NSS 3.XX](#notable_changes_in_nss_3.xx)
+## Notable Changes in NSS 3.XX
 
 :::{container}
 
@@ -74,7 +74,7 @@ or:
 
 (bugs-fixed-in-nss-3-xx)=
 
-## [Bugs fixed in NSS 3.XX](#bugs_fixed_in_nss_3.xx)
+## Bugs fixed in NSS 3.XX
 
 :::{container}
 This Bugzilla query returns all the bugs fixed in NSS 3.XX:
@@ -83,14 +83,14 @@ This Bugzilla query returns all the bugs fixed in NSS 3.XX:
 (make a link)
 :::
 
-## [Acknowledgements](#acknowledgements)
+## Acknowledgements
 
 :::{container}
 The NSS development team would like to thank ... for responsibly disclosing the issue by
 providing advance copies of their research.
 :::
 
-## [Compatibility](#compatibility)
+## Compatibility
 
 :::{container}
 NSS 3.XX.y shared libraries are backward compatible with all older NSS 3.x shared libraries. A
@@ -100,7 +100,7 @@ to the functions listed in NSS Public Functions will remain compatible with futu
 the NSS shared libraries.
 :::
 
-## [Feedback](#feedback)
+## Feedback
 
 :::{container}
 Bugs discovered should be reported by filing a bug report with

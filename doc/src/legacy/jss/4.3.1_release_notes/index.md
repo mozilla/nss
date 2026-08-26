@@ -4,9 +4,9 @@
 
 (release-date-2009-12-02)=
 
-## [Release Date: 2009-12-02](#release_date_2009-12-02)
+## Release Date: 2009-12-02
 
-### [Introduction](#introduction)
+### Introduction
 
 :::{container}
 Network Security Services for Java (JSS) 4.3.1 is a minor release with the following new
@@ -20,7 +20,7 @@ JSS 4.3.1 is [tri-licensed](https://www.mozilla.org/MPL) under MPL 1.1/GPL 2.0/L
 
 (new-in-jss-4-3-1)=
 
-### [New in JSS 4.3.1](#new_in_jss_4.3.1)
+### New in JSS 4.3.1
 
 :::{container}
 > A list of bug fixes and enhancement requests were implemented in this release can be obtained by
@@ -81,7 +81,7 @@ flags and a corresponding mask for these flags.
 - see generateDSAKeyPairWithOpFlags
 :::
 
-### [Distribution Information](#distribution_information)
+### Distribution Information
 
 :::{container}
 
@@ -96,7 +96,7 @@ flags and a corresponding mask for these flags.
   [ftp://ftp.mozilla.org/pub/mozilla.org/security/jss/releases/JSS_4_3_1_RTM](ftp://ftp.mozilla.org/pub/mozilla.org/security/jss/releases/JSS_4_3_1_RTM/).
 :::
 
-### [Documentation](#documentation)
+### Documentation
 
 :::{container}
 Documentation for JSS 4.3.1 is available as follows:
@@ -111,7 +111,7 @@ Documentation for JSS 4.3.1 is available as follows:
   {ref}`mozilla-projects-nss-reference-nss-environment-variables`.
 :::
 
-### [Platform Information](#platform_information)
+### Platform Information
 
 ::::{container}
 
@@ -131,7 +131,7 @@ Documentation for JSS 4.3.1 is available as follows:
 - JSS only supports the native threading model (no green threads).
 ::::
 
-### [Known Bugs and Issues](#known_bugs_and_issues)
+### Known Bugs and Issues
 
 :::{container}
 
@@ -140,7 +140,7 @@ Documentation for JSS 4.3.1 is available as follows:
   Note that some bugs may have been fixed since JSS 4.3.1 was released.
 :::
 
-### [Compatibility](#compatibility)
+### Compatibility
 
 :::{container}
 
@@ -153,7 +153,7 @@ Documentation for JSS 4.3.1 is available as follows:
   library: strings libjss4.so | grep -i header
 :::
 
-### [Feedback](#feedback)
+### Feedback
 
 :::{container}
 

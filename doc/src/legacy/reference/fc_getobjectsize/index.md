@@ -2,13 +2,13 @@
 
 # FC_GetObjectSize
 
-## [Name](#name)
+## Name
 
 :::{container}
 FC_GetObjectSize - create a copy of an object.
 :::
 
-## [Syntax](#syntax)
+## Syntax
 
 :::{container}
 
@@ -22,7 +22,7 @@ CK_RV FC_GetObjectSize(
 
 :::
 
-## [Parameters](#parameters)
+## Parameters
 
 :::{container}
 `hSession`
@@ -38,7 +38,7 @@ CK_RV FC_GetObjectSize(
 : [out] pointer to location to receive the object's size.
 :::
 
-## [Description](#description)
+## Description
 
 :::{container}
 `FC_GetObjectSize` gets the size of an object in bytes.
@@ -47,11 +47,11 @@ A user must log into the token (to assume the NSS User role) before getting the 
 or private key object.
 :::
 
-## [Return value](#return_value)
+## Return value
 
-## [Examples](#examples)
+## Examples
 
-## [See also](#see_also)
+## See also
 
 :::{container}
 

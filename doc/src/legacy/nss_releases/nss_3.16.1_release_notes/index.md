@@ -2,14 +2,14 @@
 
 # NSS 3.16.1 release notes
 
-## [Introduction](#introduction)
+## Introduction
 
 :::{container}
 Network Security Services (NSS) 3.16.1 is a patch release for NSS 3.16. The bug fixes in NSS
 3.16.1 are described in the "Bugs Fixed" section below.
 :::
 
-## [Distribution Information](#distribution_information)
+## Distribution Information
 
 :::{container}
 The HG tag is NSS_3_16_1_RTM. NSS 3.16.1 requires NSPR 4.10.5 or newer.
@@ -22,9 +22,9 @@ NSS 3.16.1 source distributions are available on ftp.mozilla.org for secure HTTP
 
 (new-in-nss-3-16-1)=
 
-## [New in NSS 3.16.1](#new_in_nss_3.16.1)
+## New in NSS 3.16.1
 
-### [New Functionality](#new_functionality)
+### New Functionality
 
 :::{container}
 
@@ -69,7 +69,7 @@ NSS 3.16.1 source distributions are available on ftp.mozilla.org for secure HTTP
 
 (notable-changes-in-nss-3-16-1)=
 
-## [Notable Changes in NSS 3.16.1](#notable_changes_in_nss_3.16.1)
+## Notable Changes in NSS 3.16.1
 
 :::{container}
 
@@ -79,7 +79,7 @@ NSS 3.16.1 source distributions are available on ftp.mozilla.org for secure HTTP
 
 (bugs-fixed-in-nss-3-16-1)=
 
-## [Bugs fixed in NSS 3.16.1](#bugs_fixed_in_nss_3.16.1)
+## Bugs fixed in NSS 3.16.1
 
 :::{container}
 This Bugzilla query returns all the bugs fixed in NSS 3.16.1:

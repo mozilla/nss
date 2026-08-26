@@ -4,7 +4,7 @@
 
 (pkcs11-faq-1)=
 
-## [PKCS11 FAQ](#pkcs11_faq)
+## PKCS11 FAQ
 
 :::{container}
 

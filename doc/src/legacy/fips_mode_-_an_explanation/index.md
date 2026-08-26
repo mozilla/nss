@@ -10,7 +10,7 @@ informal explanation of what it is, who would use it, and why.
 
 (what-s-a-fips)=
 
-## [What's a FIPS?](#what's_a_fips)
+## What's a FIPS?
 
 :::{container}
 The United States government defines many (several hundred) "Federal Information Processing
@@ -27,7 +27,7 @@ regulations, so their applicability is somewhat wider than just the US governmen
 
 (what-is-fips-mode)=
 
-## [What is "FIPS Mode"?](#what_is_fips_mode)
+## What is "FIPS Mode"?
 
 :::{container}
 One of the FIPS regulations, FIPS 140, governs the use of encryption and cryptographic services.
@@ -47,7 +47,7 @@ conformant. Instructions for how to configure Firefox into FIPS mode may be foun
 
 (is-nss-fips-140-compliant)=
 
-## [Is NSS FIPS-140 compliant?](#is_nss_fips-140_compliant)
+## Is NSS FIPS-140 compliant?
 
 :::{container}
 Mozilla's NSS cryptographic software has been tested by government-approved independent testing
@@ -58,7 +58,7 @@ NSS was the first open source cryptographic library to be FIPS certified.
 
 (what-is-fips-mode-all-about)=
 
-## [What is FIPS Mode all about?](#what_is_fips_mode_all_about)
+## What is FIPS Mode all about?
 
 :::{container}
 A FIPS-140 compliant application must do ALL of its cryptography in a FIPS-140 certified
@@ -80,7 +80,7 @@ device rather than being split up into several devices.
 
 (how-does-this-affect-firefox-users)=
 
-## [How does this affect Firefox users?](#how_does_this_affect_firefox_users)
+## How does this affect Firefox users?
 
 :::{container}
 These requirements have several implications for users. In FIPS Mode, every user must have a
@@ -94,7 +94,7 @@ in FIPS mode.
 
 (how-is-fips-mode-different-from-normal-non-fips-mode)=
 
-## [How is FIPS Mode different from normal non-FIPS Mode?](#how_is_fips_mode_different_from_normal_non-fips_mode)
+## How is FIPS Mode different from normal non-FIPS Mode?
 
 :::{container}
 In normal non-FIPS Mode, the "master password" is optional and is allowed to be a weak short
@@ -110,7 +110,7 @@ and private keys and performs operations that use those private keys.
 
 (how-do-i-put-firefox-into-fips-mode)=
 
-## [How do I put Firefox into FIPS Mode?](#how_do_i_put_firefox_into_fips_mode)
+## How do I put Firefox into FIPS Mode?
 
 :::{container}
 Instructions for how to configure Firefox into FIPS mode may be found on

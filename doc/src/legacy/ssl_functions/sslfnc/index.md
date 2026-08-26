@@ -19,24 +19,24 @@
 
 ::::
 
-## [Chapter 4 SSL Functions](#chapter_4_ssl_functions)
+## Chapter 4 SSL Functions
 
 :::{container}
 This chapter describes the core SSL functions.
 
-- [SSL Initialization Functions](#ssl_initialization_functions)
-- [SSL Export Policy Functions](#ssl_export_policy_functions)
-- [SSL Configuration Functions](#ssl_configuration_functions)
-- [SSL Communication Functions](#ssl_communication_functions)
-- [SSL Functions Used by Callbacks](#ssl_functions_used_by_callbacks)
-- [SSL Handshake Functions](#ssl_handshake_functions)
-- [NSS Shutdown Function](#nss_shutdown_function)
-- [Deprecated Functions](#deprecated_functions)
+- [SSL Initialization Functions](#ssl-initialization-functions)
+- [SSL Export Policy Functions](#ssl-export-policy-functions)
+- [SSL Configuration Functions](#ssl-configuration-functions)
+- [SSL Communication Functions](#ssl-communication-functions)
+- [SSL Functions Used by Callbacks](#ssl-functions-used-by-callbacks)
+- [SSL Handshake Functions](#ssl-handshake-functions)
+- [NSS Shutdown Function](#nss-shutdown-function)
+- [Deprecated Functions](#deprecated-functions)
 :::
 
 (ssl-initialization-functions)=
 
-## [SSL Initialization Functions](#ssl_initialization_functions)
+## SSL Initialization Functions
 
 :::{container}
 This section describes the initialization functions that are specific to SSL. For a complete list
@@ -845,7 +845,7 @@ server cache, not the client cache.
 
 (initializing-multi-processing-with-a-shared-ssl-server-cache)=
 
-### [Initializing Multi-Processing with a Shared SSL Server Cache](#initializing_multi-processing_with_a_shared_ssl_server_cache)
+### Initializing Multi-Processing with a Shared SSL Server Cache
 
 :::{container}
 To start a multi-processing application, the initial parent process calls
@@ -1030,7 +1030,7 @@ When this function returns `SECSuccess`, the server cache is ready to be used by
 
 (ssl-export-policy-functions)=
 
-## [SSL Export Policy Functions](#ssl_export_policy_functions)
+## SSL Export Policy Functions
 
 :::{container}
 The SSL export policy functions determine which cipher suites are*permitted* for use in an SSL
@@ -1486,7 +1486,7 @@ See the description above for `` `SSL_CipherPolicySet `` \<#1104647>\`\_\_.
 
 (ssl-configuration-functions)=
 
-## [SSL Configuration Functions](#ssl_configuration_functions)
+## SSL Configuration Functions
 
 :::{container}
 SSL configuration involves several NSPR functions in addition to the SSL functions listed here.
@@ -1499,7 +1499,7 @@ For a complete list of configuration functions, see [Configuration](sslintro.htm
 
 (ssl-configuration)=
 
-### [SSL Configuration](#ssl_configuration)
+### SSL Configuration
 
 :::{container}
 `` `SSL_ImportFD ``
@@ -2260,7 +2260,7 @@ You can obtain the PIN argument by calling `` `SSL_RevealPinArg `` \<#1123385>\`
 
 (callback-configuration)=
 
-### [Callback Configuration](#callback_configuration)
+### Callback Configuration
 
 :::{container}
 At the beginning of an SSL application, it is often necessary to set up callback functions for
@@ -2852,7 +2852,7 @@ This callback function has the following parameters:
 
 (ssl-communication-functions)=
 
-## [SSL Communication Functions](#ssl_communication_functions)
+## SSL Communication Functions
 
 :::{container}
 Most communication functions are described in the [NSPR
@@ -3240,7 +3240,7 @@ For information about configuring the session cache for a server, see
 
 (ssl-functions-used-by-callbacks)=
 
-## [SSL Functions Used by Callbacks](#ssl_functions_used_by_callbacks)
+## SSL Functions Used by Callbacks
 
 :::{container}
 `` `SSL_PeerCertificate ``
@@ -3411,7 +3411,7 @@ information about this argument, see `` `SSL_SetPKCS11PinArg `` \<#1088040>\`\_\
 
 (ssl-handshake-functions)=
 
-## [SSL Handshake Functions](#ssl_handshake_functions)
+## SSL Handshake Functions
 
 :::{container}
 `` `SSL_ForceHandshake ``
@@ -3641,7 +3641,7 @@ If the socket is already connected before SSL gets involved, you must provide th
 
 (nss-shutdown-function)=
 
-## [NSS Shutdown Function](#nss_shutdown_function)
+## NSS Shutdown Function
 
 :::{container}
 
@@ -3674,7 +3674,7 @@ error code `SEC_ERROR_BUSY`.
 
 (deprecated-functions)=
 
-## [Deprecated Functions](#deprecated_functions)
+## Deprecated Functions
 
 :::{container}
 The following functions have been replaced with newer versions but are still supported:

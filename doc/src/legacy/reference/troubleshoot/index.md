@@ -4,7 +4,7 @@
 
 (troubleshooting-nss-and-jss-builds)=
 
-## [Troubleshooting NSS and JSS Builds](#troubleshooting_nss_and_jss_builds)
+## Troubleshooting NSS and JSS Builds
 
 :::{container}
 Newsgroup: [mozilla.dev.tech.crypto](nntp://news.mozilla.org/mozilla.dev.tech.crypto)
@@ -16,7 +16,7 @@ If you have suggestions for this page, please post them to
 [mozilla.dev.tech.crypto](nntp://news.mozilla.org/mozilla.dev.tech.crypto).
 :::
 
-### [Building NSS](#building_nss)
+### Building NSS
 
 :::{container}
 
@@ -41,7 +41,7 @@ If you have suggestions for this page, please post them to
 
 (testing-nss)=
 
-### [Testing NSS](#testing_nss)
+### Testing NSS
 
 :::{container}
 The SSL stress test opens 2,048 TCP connections in quick succession. Kernel data structures may
@@ -52,7 +52,7 @@ the number of simultaneous sockets supported.
 
 (building-jss)=
 
-### [Building JSS](#building_jss)
+### Building JSS
 
 :::{container}
 

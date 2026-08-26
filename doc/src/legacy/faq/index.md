@@ -2,11 +2,11 @@
 
 # NSS FAQ
 
-## [General Questions](#general_questions)
+## General Questions
 
 (what-is-network-security-services-28nss-29)=
 
-### [What is Network Security Services (NSS)](#what_is_network_security_services_.28nss.29)
+### What is Network Security Services (NSS)
 
 :::{container}
 NSS is set of libraries, APIs, utilities, and documentation designed to support cross-platform
@@ -20,7 +20,7 @@ open-source NSS project, see [NSS Project Page](https://wiki.mozilla.org/NSS).
 
 (what-can-i-do-with-nss-3f-is-nss-appropriate-for-my-application-3f)=
 
-### [What can I do with NSS? Is NSS appropriate for my application?](#what_can_i_do_with_nss.3f_is_nss_appropriate_for_my_application.3f)
+### What can I do with NSS? Is NSS appropriate for my application?
 
 :::{container}
 If you want add support for SSL, S/MIME, or other Internet security standards to your
@@ -36,7 +36,7 @@ for two-factor authentication.
 
 (how-does-nss-compare-to-openssl-3f)=
 
-### [How does NSS compare to OpenSSL?](#how_does_nss_compare_to_openssl.3f)
+### How does NSS compare to OpenSSL?
 
 :::{container}
 [OpenSSL](https://www.openssl.org/) is an open source project that implements server-side SSL,
@@ -52,7 +52,7 @@ version 2.
 
 (how-does-nss-compare-to-sslref-3f)=
 
-### [How does NSS compare to SSLRef?](#how_does_nss_compare_to_sslref.3f)
+### How does NSS compare to SSLRef?
 
 :::{container}
 SSLRef was an early reference implementation of the SSL protocol. It contains bugs that were
@@ -69,7 +69,7 @@ many client and server products from Netscape and other companies.
 
 (what-platforms-and-development-environments-are-supported-3f)=
 
-### [What platforms and development environments are supported?](#what_platforms_and_development_environments_are_supported.3f)
+### What platforms and development environments are supported?
 
 ::::{container}
 
@@ -88,7 +88,7 @@ Information](https://wiki.mozilla.org/NSS).
 
 (what-cryptography-standards-are-supported-3f)=
 
-### [What cryptography standards are supported?](#what_cryptography_standards_are_supported.3f)
+### What cryptography standards are supported?
 
 :::{container}
 NSS supports [SSL v2 and v3](https://developer.mozilla.org/en-US/docs/Glossary/SSL),
@@ -105,7 +105,7 @@ certificates. For complete details, see [Encryption Technologies Available in NS
 
 (what-is-the-relationship-between-nss-and-psm-3f)=
 
-### [What is the relationship between NSS and PSM?](#what_is_the_relationship_between_nss_and_psm.3f)
+### What is the relationship between NSS and PSM?
 
 :::{container}
 Personal Security Manager (PSM) is built on top of NSS. It consists of libraries and a daemon
@@ -117,7 +117,7 @@ Instant AOL, and is also available for use with Communicator 4.7x.
 
 (where-can-i-get-the-source-3f)=
 
-### [Where can I get the source?](#where_can_i_get_the_source.3f)
+### Where can I get the source?
 
 :::{container}
 For instructions on how to check out and build the NSS source code, see
@@ -126,7 +126,7 @@ For instructions on how to check out and build the NSS source code, see
 
 (how-much-does-it-cost-3f)=
 
-### [How much does it cost?](#how_much_does_it_cost.3f)
+### How much does it cost?
 
 :::{container}
 NSS source code and binaries (when they become available) are completely free. No license fees,
@@ -135,11 +135,11 @@ no royalty fees, no subscription fees.
 
 (developer-questions)=
 
-## [Developer Questions](#developer_questions)
+## Developer Questions
 
 (what-hardware-accelerators-are-supported-3f)=
 
-### [What hardware accelerators are supported?](#what_hardware_accelerators_are_supported.3f)
+### What hardware accelerators are supported?
 
 :::{container}
 NSS supports the PKCS #11 interface for hardware acceleration. Since leading accelerator vendors
@@ -149,7 +149,7 @@ applications can support a wide variety of hardware accelerators.
 
 (how-do-i-integrate-smart-cards-into-my-application-using-nss-3f)=
 
-### [How do I integrate smart cards into my application using NSS?](#how_do_i_integrate_smart_cards_into_my_application_using_nss.3f)
+### How do I integrate smart cards into my application using NSS?
 
 :::{container}
 NSS supports the PKCS #11 interface for smart card integration. Applications that use the PKCS
@@ -160,7 +160,7 @@ interface.
 
 (does-nss-require-netscape-portable-runtime-28nspr-29-3f)=
 
-### [Does NSS require Netscape Portable Runtime (NSPR)?](#does_nss_require_netscape_portable_runtime_.28nspr.29.3f)
+### Does NSS require Netscape Portable Runtime (NSPR)?
 
 :::{container}
 
@@ -172,7 +172,7 @@ interface.
 
 (can-i-use-nss-even-if-my-application-protocol-isn-27t-http-3f)=
 
-### [Can I use NSS even if my application protocol isn't HTTP?](#can_i_use_nss_even_if_my_application_protocol_isn.27t_http.3f)
+### Can I use NSS even if my application protocol isn't HTTP?
 
 :::{container}
 Yes, TLS is independent of application protocols. It works with common Internet standard
@@ -182,7 +182,7 @@ TCP/IP.
 
 (how-long-does-it-take-to-integrate-nss-into-my-application-3f)=
 
-### [How long does it take to integrate NSS into my application?](#how_long_does_it_take_to_integrate_nss_into_my_application.3f)
+### How long does it take to integrate NSS into my application?
 
 :::{container}
 The integration effort depends on an number of factors, such as developer skill set, application
@@ -196,7 +196,7 @@ card support, or hardware acceleration, your integration effort will be more ext
 
 (where-can-i-download-the-nss-tools-3f)=
 
-### [Where can I download the NSS tools?](#where_can_i_download_the_nss_tools.3f)
+### Where can I download the NSS tools?
 
 :::{container}
 Binary builds of NSS for several platforms including the command-line tools can be downloaded
@@ -216,11 +216,11 @@ See <https://developer.mozilla.org/en-US/docs/Glossary/TLS>.
 
 (licensing-questions)=
 
-## [Licensing Questions](#licensing_questions)
+## Licensing Questions
 
 (how-is-nss-licensed-3f)=
 
-### [How is NSS licensed?](#how_is_nss_licensed.3f)
+### How is NSS licensed?
 
 :::{container}
 NSS is available under the [Mozilla Public License](https://www.mozilla.org/MPL/), version 2.
@@ -228,7 +228,7 @@ NSS is available under the [Mozilla Public License](https://www.mozilla.org/MPL/
 
 (is-nss-available-outside-the-united-states-3f)=
 
-### [Is NSS available outside the United States?](#is_nss_available_outside_the_united_states.3f)
+### Is NSS available outside the United States?
 
 ::::{container}
 

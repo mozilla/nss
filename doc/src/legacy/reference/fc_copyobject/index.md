@@ -2,13 +2,13 @@
 
 # FC_CopyObject
 
-## [Name](#name)
+## Name
 
 :::{container}
 FC_CopyObject - create a copy of an object.
 :::
 
-## [Syntax](#syntax)
+## Syntax
 
 :::{container}
 
@@ -24,7 +24,7 @@ CK_RV FC_CopyObject(
 
 :::
 
-## [Parameters](#parameters)
+## Parameters
 
 :::{container}
 `hSession`
@@ -48,7 +48,7 @@ CK_RV FC_CopyObject(
 : [out] pointer to location to receive the new object's handle.
 :::
 
-## [Description](#description)
+## Description
 
 :::{container}
 `FC_CopyObject` creates a copy of an object using the attributes specified in the template.
@@ -57,11 +57,11 @@ A user must log into the token (to assume the NSS User role) before copying a se
 key object.
 :::
 
-## [Return value](#return_value)
+## Return value
 
-## [Examples](#examples)
+## Examples
 
-## [See also](#see_also)
+## See also
 
 :::{container}
 

@@ -2,7 +2,7 @@
 
 # NSS CERTVerify Log
 
-## [CERTVerifyLog](#certverifylog)
+## CERTVerifyLog
 
 :::{container}
 All the NSS verify functions except, the \*VerifyNow() functions, take a parameter called

@@ -2,13 +2,13 @@
 
 # Mozilla-JSS JCA Provider notes
 
-## [The Mozilla-JSS JCA Provider](#the_mozilla-jss_jca_provider)
+## The Mozilla-JSS JCA Provider
 
 :::{container}
 *Newsgroup:*[mozilla.dev.tech.crypto](news://news.mozilla.org/mozilla.dev.tech.crypto)
 :::
 
-### [Overview](#overview)
+### Overview
 
 :::{container}
 This document describes the JCA Provider shipped with JSS. The provider's name is "Mozilla-JSS".
@@ -16,7 +16,7 @@ It implements cryptographic operations in native code using the
 [NSS](https://www.mozilla.org/projects/security/pki/nss) libraries.
 :::
 
-### [Contents](#contents)
+### Contents
 
 :::{container}
 
@@ -32,7 +32,7 @@ It implements cryptographic operations in native code using the
   Supported](https://www.mozilla.org/projects/security/pki/jss/provider_notes.html#not-supported)
 :::
 
-### [Signed JAR file](#signed_jar_file)
+### Signed JAR file
 
 :::{container}
 JSS implements several JCE (Java Cryptography Extension) algorithms. These algorithms have at
@@ -55,7 +55,7 @@ for JCE algorithms. You have two choices.
    Then you can sign your own JSS JAR file.
 :::
 
-### [Installing the Provider](#installing_the_provider)
+### Installing the Provider
 
 :::{container}
 In order to use any part of JSS, including the JCA provider, you must first call
@@ -67,7 +67,7 @@ object, set its `installJSSProvider` field to `false`, and pass the `Initializat
 object to `CryptoManager.initialize()`.
 :::
 
-### [Specifying the CryptoToken](#specifying_the_cryptotoken)
+### Specifying the CryptoToken
 
 :::{container}
 All cryptographic operations in JSS and NSS occur on a particular PKCS #11 token, implemented in
@@ -118,7 +118,7 @@ KeyPair dsaPair = dsaKpg.generateKeyPair();
 
 :::
 
-### [Supported Classes](#supported_classes)
+### Supported Classes
 
 :::{container}
 
@@ -138,7 +138,7 @@ KeyPair dsaPair = dsaKpg.generateKeyPair();
 - [Signature](https://www.mozilla.org/projects/security/pki/jss/provider_notes.html#Signature)
 :::
 
-### [Cipher](#cipher)
+### Cipher
 
 :::{container}
 
@@ -197,14 +197,14 @@ KeyPair dsaPair = dsaKpg.generateKeyPair();
     NSS does not support specifying an external source of randomness.
 :::
 
-### [DSAPrivateKey](#dsaprivatekey)
+### DSAPrivateKey
 
 :::{container}
 
 - `getX()` is not supported because NSS does not support extracting data from private keys.
 :::
 
-### [KeyFactory](#keyfactory)
+### KeyFactory
 
 :::{container}
 
@@ -249,7 +249,7 @@ KeyPair dsaPair = dsaKpg.generateKeyPair();
   supported for public keys, and only `PKCS8EncodedKeySpec` is supported for private keys.
 :::
 
-### [KeyGenerator](#keygenerator)
+### KeyGenerator
 
 :::{container}
 
@@ -268,7 +268,7 @@ KeyPair dsaPair = dsaKpg.generateKeyPair();
 - None of the key generation algorithms accepts an `AlgorithmParameterSpec`.
 :::
 
-### [KeyPairGenerator](#keypairgenerator)
+### KeyPairGenerator
 
 :::{container}
 
@@ -284,7 +284,7 @@ KeyPair dsaPair = dsaKpg.generateKeyPair();
   specifying an external source of randomness.
 :::
 
-### [Mac](#mac)
+### Mac
 
 :::{container}
 
@@ -300,7 +300,7 @@ KeyPair dsaPair = dsaKpg.generateKeyPair();
 - The params passed to `init()` are ignored.
 :::
 
-### [MessageDigest](#messagedigest)
+### MessageDigest
 
 :::{container}
 
@@ -312,7 +312,7 @@ KeyPair dsaPair = dsaKpg.generateKeyPair();
 - SHA-1 (*SHA1, SHA*)
 :::
 
-### [RSAPrivateKey](#rsaprivatekey)
+### RSAPrivateKey
 
 :::{container}
 
@@ -325,7 +325,7 @@ KeyPair dsaPair = dsaKpg.generateKeyPair();
   private keys.
 :::
 
-### [SecretKeyFactory](#secretkeyfactory)
+### SecretKeyFactory
 
 :::{container}
 
@@ -409,7 +409,7 @@ KeyPair dsaPair = dsaKpg.generateKeyPair();
   can use `java.security.spec.PBEKeySpec` or `org.mozilla.jss.crypto.PBEKeyGenParams`.
 :::
 
-### [SecretKey](#secretkey)
+### SecretKey
 
 :::{container}
 
@@ -430,7 +430,7 @@ KeyPair dsaPair = dsaKpg.generateKeyPair();
   will actually be `SecretKeyFacades`. This should usually be transparent.
 :::
 
-### [SecureRandom](#securerandom)
+### SecureRandom
 
 :::{container}
 
@@ -444,7 +444,7 @@ KeyPair dsaPair = dsaKpg.generateKeyPair();
 - This invokes the NSS internal pseudorandom number generator.
 :::
 
-### [Signature](#signature)
+### Signature
 
 :::{container}
 
@@ -462,7 +462,7 @@ KeyPair dsaPair = dsaKpg.generateKeyPair();
   NSS does not support specifying an external source of randomness.
 :::
 
-### [What's Not Supported](#what's_not_supported)
+### What's Not Supported
 
 :::{container}
 The following classes don't work very well:

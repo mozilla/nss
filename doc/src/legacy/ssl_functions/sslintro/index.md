@@ -92,7 +92,7 @@ following:
 
 (initializing-caches)=
 
-### [Initializing Caches](#initializing_caches)
+### Initializing Caches
 
 :::{container}
 SSL peers frequently reconnect after a relatively short time has passed. To avoid the overhead of
@@ -305,7 +305,7 @@ then call `SSL_ForceHandshake` to drive the handshake to completion.
 
 (functions-used-by-callbacks)=
 
-## [Functions Used by Callbacks](#functions_used_by_callbacks)
+## Functions Used by Callbacks
 
 :::{container}
 An SSL application typically provides one or more callback functions that are called by the SSL

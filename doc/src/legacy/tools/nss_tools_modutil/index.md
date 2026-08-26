@@ -39,7 +39,7 @@ of the options and arguments listed in the following section. Each command takes
 option may take zero or more arguments. To see a usage string, issue the command without options.
 :::
 
-### [Options and Arguments](#options_and_arguments)
+### Options and Arguments
 
 :::{container}
 Options specify an action. Option arguments modify an action. The options and arguments for the
@@ -291,7 +291,7 @@ without square brackets are required.
 
 (jar-installation-file)=
 
-## [JAR Installation File](#jar_installation_file)
+## JAR Installation File
 
 :::{container}
 When a JAR file is run by a server, by the Security Module Database Tool, or by any program that
@@ -305,7 +305,7 @@ Tool](http://developer.netscape.com/docs/manuals/signedobj/signtool/index.htm).
 
 (sample-script)=
 
-### [Sample Script](#sample_script)
+### Sample Script
 
 :::{container}
 For example, the PKCS #11 installer script could be in the file `pk11install.` If so, the
@@ -373,7 +373,7 @@ Platforms {
 
 (script-grammar)=
 
-### [Script Grammar](#script_grammar)
+### Script Grammar
 
 :::{container}
 The script file grammar is as follows:
@@ -421,7 +421,7 @@ Outside of complex strings, all white space (for example, spaces, tabs, and carr
 considered equal and is used only to delimit tokens.
 :::
 
-### [Keys](#keys)
+### Keys
 
 :::{container}
 Keys are case-insensitive. This section discusses the following keys: [Global
@@ -581,7 +581,7 @@ sense for the current platform. If this attribute is omitted, a default of 777 i
 
 (creating-database-files)=
 
-### [Creating Database Files](#creating_database_files)
+### Creating Database Files
 
 :::{container}
 This example creates a set of security management database files in the specified directory:
@@ -614,7 +614,7 @@ Creating "c:\databases\secmod.db"...done.
 
 (displaying-module-information)=
 
-### [Displaying Module Information](#displaying_module_information)
+### Displaying Module Information
 
 :::{container}
 This example gives detailed information about the specified module:
@@ -680,7 +680,7 @@ User Pin: NOT Initialized
 
 (setting-a-default-provider)=
 
-### [Setting a Default Provider](#setting_a_default_provider)
+### Setting a Default Provider
 
 :::{container}
 This example makes the specified module a default provider for the RSA, DSA, and RC2 security
@@ -717,7 +717,7 @@ Successfully changed defaults.
 
 (enabling-a-slot)=
 
-### [Enabling a Slot](#enabling_a_slot)
+### Enabling a Slot
 
 :::{container}
 This example enables a particular slot in the specified module:
@@ -753,7 +753,7 @@ Slot "Cryptographic Reader" enabled.
 
 (enabling-fips-compliance)=
 
-### [Enabling FIPS Compliance](#enabling_fips_compliance)
+### Enabling FIPS Compliance
 
 :::{container}
 This example enables FIPS 140-2 compliance in Communicator's internal module:
@@ -784,7 +784,7 @@ FIPS mode enabled.
 
 (adding-a-cryptographic-module)=
 
-### [Adding a Cryptographic Module](#adding_a_cryptographic_module)
+### Adding a Cryptographic Module
 
 :::{container}
 This example adds a new cryptographic module to the database:
@@ -818,7 +818,7 @@ C:\modutil>
 
 (installing-a-cryptographic-module-from-a-jar-file)=
 
-### [Installing a Cryptographic Module from a JAR File](#installing_a_cryptographic_module_from_a_jar_file)
+### Installing a Cryptographic Module from a JAR File
 
 :::{container}
 This example installs a cryptographic module from the following sample installation script.
@@ -916,7 +916,7 @@ C:\modutil>
 
 (changing-the-password-on-a-token)=
 
-### [Changing the Password on a Token](#changing_the_password_on_a_token)
+### Changing the Password on a Token
 
 :::{container}
 This example changes the password for a token on an existing module.

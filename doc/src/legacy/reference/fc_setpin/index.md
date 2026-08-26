@@ -2,13 +2,13 @@
 
 # FC_SetPIN
 
-## [Name](#name)
+## Name
 
 :::{container}
 FC_SetPIN - Modify the user's PIN.
 :::
 
-## [Syntax](#syntax)
+## Syntax
 
 :::{container}
 
@@ -24,7 +24,7 @@ CK_RV FC_SetPIN(
 
 :::
 
-## [Parameters](#parameters)
+## Parameters
 
 :::{container}
 `FC_SetPIN` takes five parameters:
@@ -50,22 +50,22 @@ CK_RV FC_SetPIN(
 : [Input] the length in bytes of the new PIN.
 :::
 
-## [Description](#description)
+## Description
 
 :::{container}
 `FC_SetPIN` modifies the PIN of the user. The user must log into the token (to assume the NSS
 User role) before calling `FC_SetPIN`.
 :::
 
-## [Return value](#return_value)
+## Return value
 
 :::{container}
 `CKR_OK`
 :::
 
-## [Examples](#examples)
+## Examples
 
-## [See also](#see_also)
+## See also
 
 :::{container}
 

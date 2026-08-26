@@ -4,7 +4,7 @@
 
 (nss-sample-code-3-basic-encryption-and-macing)=
 
-## [NSS Sample Code 3: Basic Encryption and MACing](#nss_sample_code_3_basic_encryption_and_macing)
+## NSS Sample Code 3: Basic Encryption and MACing
 
 :::{container}
 This example program demonstrates how to encrypt and MAC a file.
@@ -12,7 +12,7 @@ This example program demonstrates how to encrypt and MAC a file.
 
 (sample-code-3)=
 
-### [Sample Code 3](#sample_code_3)
+### Sample Code 3
 
 :::{container}
 

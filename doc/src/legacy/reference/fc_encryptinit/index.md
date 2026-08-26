@@ -2,13 +2,13 @@
 
 # FC_EncryptInit
 
-## [Name](#name)
+## Name
 
 :::{container}
 FC_EncryptInit - initialize an encryption operation.
 :::
 
-## [Syntax](#syntax)
+## Syntax
 
 :::{container}
 
@@ -22,7 +22,7 @@ CK_RV FC_EncryptInit(
 
 :::
 
-## [Parameters](#parameters)
+## Parameters
 
 :::{container}
 `hSession`
@@ -38,7 +38,7 @@ CK_RV FC_EncryptInit(
 : [in] handle of the encryption key.
 :::
 
-## [Description](#description)
+## Description
 
 :::{container}
 `FC_EncryptInit` initializes an encryption operation with the mechanism and key to be used.
@@ -46,7 +46,7 @@ CK_RV FC_EncryptInit(
 A user must log into the token (to assume the NSS User role) before calling `FC_EncryptInit`.
 :::
 
-## [Return value](#return_value)
+## Return value
 
 :::{container}
 `CKR_OK`
@@ -58,9 +58,9 @@ A user must log into the token (to assume the NSS User role) before calling `FC_
 : The specified slot number is out of the defined range of values.
 :::
 
-## [Examples](#examples)
+## Examples
 
-## [See also](#see_also)
+## See also
 
 :::{container}
 
