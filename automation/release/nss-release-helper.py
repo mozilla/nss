@@ -12,6 +12,8 @@ from optparse import OptionParser
 from subprocess import check_call
 from subprocess import check_output
 
+nss_root = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
 nssutil_h = "lib/util/nssutil.h"
 softkver_h = "lib/softoken/softkver.h"
 nss_h = "lib/nss/nss.h"
@@ -675,8 +677,10 @@ def generate_release_notes_index(args):
     latest_version = args[0].strip()  # e.g. 3.116
     esr_version = args[1].strip()  # e.g. 3.112.1
 
-    latest_underscore = version_string_to_underscore(latest_version)
-    esr_underscore = version_string_to_underscore(esr_version)
+    # The release notes define their anchor with dashes, so the references to
+    # them have to use dashes too.
+    latest_dash = latest_version.replace(".", "-")
+    esr_dash = esr_version.replace(".", "-")
 
     # Read all release note files from doc/src/releases/
     release_dir = "doc/src/releases"
@@ -722,10 +726,10 @@ def generate_release_notes_index(args):
 
 :::{{note}}
 **NSS {latest_version}** is the latest version of NSS.
-Complete release notes are available here: {{ref}}`mozilla_projects_nss_nss_{latest_underscore}_release_notes`
+Complete release notes are available here: {{ref}}`mozilla-projects-nss-nss-{latest_dash}-release-notes`
 
 **NSS {esr_version} (ESR)** is the latest ESR version of NSS.
-Complete release notes are available here: {{ref}}`mozilla_projects_nss_nss_{esr_underscore}_release_notes`
+Complete release notes are available here: {{ref}}`mozilla-projects-nss-nss-{esr_dash}-release-notes`
 :::
 """
 
@@ -864,8 +868,13 @@ def release_nss(args):
         "Are you making an ESR release? If so, please manually edit doc/src/releases/index.md to adjust the ESR / main version note. Press enter when done."
     )
 
-    # Step 9: Commit the release notes
-    print("Step 9: Committing release notes...")
+    # Step 9: Check the documentation still builds cleanly
+    print("Step 9: Running doc-lint...")
+    check_call_noisy([os.path.join(nss_root, "mach"), "doc-lint"])
+    print_separator()
+
+    # Step 10: Commit the release notes
+    print("Step 10: Committing release notes...")
     check_call_noisy(["hg", "add", release_note_file])
     check_call_noisy(["hg", "commit", "-m", release_notes_commit_message])
 
@@ -878,13 +887,13 @@ def release_nss(args):
     print(f"Release notes committed. Commit hash: {docs_commit}")
     print_separator()
 
-    # Step 10: Tag the release version
-    print(f"Step 10: Tagging release version {rtm_tag}...")
+    # Step 11: Tag the release version
+    print(f"Step 11: Tagging release version {rtm_tag}...")
     check_call_noisy(["hg", "tag", rtm_tag])
     print_separator()
 
-    # Step 11: Switch to default branch and graft the release notes
-    print("Step 11: Switching to default branch and grafting release notes...")
+    # Step 12: Switch to default branch and graft the release notes
+    print("Step 12: Switching to default branch and grafting release notes...")
     check_call_noisy(["hg", "checkout", "default"])
     check_call_noisy(["hg", "graft", "-r", docs_commit])
     print_separator()
@@ -896,8 +905,8 @@ def release_nss(args):
         )
     print_separator()
 
-    # Step 12: Check cf_status_nss on Bugzilla
-    print("Step 12: Checking cf_status_nss on Bugzilla...")
+    # Step 13: Check cf_status_nss on Bugzilla
+    print("Step 13: Checking cf_status_nss on Bugzilla...")
     cf_status_script = os.path.join(
         os.path.dirname(__file__), "bugzilla_cf_status_nss.py"
     )
@@ -905,7 +914,7 @@ def release_nss(args):
     input("Review the cf_status_nss report above. Press Enter to continue.")
     print_separator()
 
-    # Step 13: Push changes
+    # Step 14: Push changes
     response = input("Push these changes to the NSS repository? [yN]: ")
     if "y" in response.lower():
         print("Pushing changes to default branch...")

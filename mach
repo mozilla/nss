@@ -1034,13 +1034,11 @@ class clangTidyAction(argparse.Action):
 class docLintAction(argparse.Action):
 
     def __call__(self, parser, args, values, option_string=None):
-        env = os.environ.copy()
-        env["VCS_PATH"] = os.path.dirname(cwd)
         script = os.path.join(
             cwd, "automation", "taskcluster", "scripts", "check_doc_lint.sh"
         )
         try:
-            subprocess.check_call([script], env=env)
+            subprocess.check_call([script])
         except subprocess.CalledProcessError as e:
             print(
                 "doc-lint failed with exit status {}".format(e.returncode),

@@ -5,9 +5,11 @@
 
 set -e
 
+nss_root=$(cd "$(dirname "$0")/../../.." && pwd)
+
 warn_file=$(mktemp)
-sphinx-build --keep-going -b html -w "${warn_file}" "${VCS_PATH}/nss/doc/src" /tmp/sphinx-doc-out
-sphinx_status=$?
+sphinx_status=0
+sphinx-build --keep-going -b html -w "${warn_file}" "${nss_root}/doc/src" /tmp/sphinx-doc-out || sphinx_status=$?
 
 failures=0
 while IFS= read -r line; do

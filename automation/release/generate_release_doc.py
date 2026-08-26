@@ -16,11 +16,9 @@ Example:
 import os
 import sys
 from datetime import datetime
-from subprocess import call, check_call
 
 sys.path.insert(0, os.path.dirname(__file__))
 from release_utils import (
-    exit_with_failure,
     get_nspr_version,
     get_bug_list_for_version,
     version_string_to_underscore,
@@ -39,13 +37,13 @@ def generate_md_content(version, nspr_version, bug_lines, release_date):
 
 # NSS {version} release notes
 
-## [Introduction](#introduction)
+## Introduction
 
 :::{{container}}
 Network Security Services (NSS) {version} was released on *{release_date}*.
 :::
 
-## [Distribution Information](#distribution_information)
+## Distribution Information
 
 :::{{container}}
 The HG tag is NSS_{version_underscore}_RTM. NSS {version} requires NSPR {nspr_version} or newer.
@@ -55,12 +53,12 @@ NSS {version} source distributions are available on ftp.mozilla.org for secure H
 - Source tarballs:
   <https://ftp.mozilla.org/pub/mozilla.org/security/nss/releases/NSS_{version_underscore}_RTM/src/>
 
-Other releases are available {{ref}}`mozilla_projects_nss_releases`.
+Other releases are available {{ref}}`mozilla-projects-nss-releases`.
 :::
 
 (changes-in-nss-{version_dash})=
 
-## [Changes in NSS {version}](#changes_in_nss_{version})
+## Changes in NSS {version}
 
 :::{{container}}
 {changes_text}
@@ -105,16 +103,18 @@ def main():
     md_content = generate_md_content(version, nspr_version, bug_lines, current_date)
 
     # Write to file
-    os.makedirs(os.path.dirname(output_file), exist_ok=True)
+    output_dir = os.path.dirname(output_file)
+    if output_dir:
+        os.makedirs(output_dir, exist_ok=True)
     with open(output_file, "w") as f:
         f.write(md_content)
 
     print(f"Release documentation written to: {output_file}")
     print()
-    print("Running doc-lint...")
-    rc = call(["./mach", "doc-lint"])
-    if rc != 0:
-        exit_with_failure(f"doc-lint failed with exit status {rc}")
+    print(
+        "Add it to the toctree in doc/src/releases/index.md, then run "
+        "`./mach doc-lint`."
+    )
     print()
     print("=" * 70)
     print("Preview:")
