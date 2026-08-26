@@ -25,14 +25,14 @@ CERTCertificate *CERT_FindCertByIssuerAndSN (
 :::{container}
 
 ```{eval-rst}
-+-----------------+-------------------------------------------------------------------------------+
-| ``handle``      | *in* pointer to a `CERTCertDBHandle </en-US/NSS/CERTCertDBHandle>`__          |
-|                 | representing the certificate database to look in                              |
-+-----------------+-------------------------------------------------------------------------------+
-| ``issuerAndSN`` | *in* pointer to a `CERTIssuerAndSN </en-US/NSS/CERTIssuerAndSN>`__ that must  |
-|                 | be properly formed to contain the issuer name and the serial number (see      |
-|                 | [Example])                                                                    |
-+-----------------+-------------------------------------------------------------------------------+
++-----------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| ``handle``      | *in* pointer to a `CERTCertDBHandle </en-US/NSS/CERTCertDBHandle>`__ representing the certificate database to look in                                            |
+|                 |                                                                                                                                                                  |
++-----------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| ``issuerAndSN`` | *in* pointer to a `CERTIssuerAndSN </en-US/NSS/CERTIssuerAndSN>`__ that must be properly formed to contain the issuer name and the serial number (see [Example]) |
+|                 |                                                                                                                                                                  |
+|                 |                                                                                                                                                                  |
++-----------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 ```
 
 :::

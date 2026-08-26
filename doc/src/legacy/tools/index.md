@@ -49,77 +49,77 @@ the preferred forum for all questions about NSS and NSS tools.
 :::{container}
 
 ```{eval-rst}
-+--------------+-----------------------------------------+-----------------------------------------+
-| **Tool**     | **Description**                         | **Links**                               |
-+--------------+-----------------------------------------+-----------------------------------------+
-| certutil 2.0 | Manage certificate and key databases    | `                                       |
-|              | (cert7.db and key3.db).                 | Source <https://dxr.mozilla.org/mozilla |
-|              |                                         | /source/security/nss/cmd/certutil/>`__, |
-|              |                                         | :ref                                    |
-|              |                                         | :`mozilla_projects_nss_tools_certutil`, |
-|              |                                         | :ref:`moz                               |
-|              |                                         | illa_projects_nss_tools_certutil-tasks` |
-+--------------+-----------------------------------------+-----------------------------------------+
-| cmsutil 1.0  | Performs basic CMS operations such as   | `So                                     |
-|              | encrypting, decrypting, and signing     | urce <https://dxr.mozilla.org/mozilla/s |
-|              | messages.                               | ource/security/nss/cmd/smimetools/>`__, |
-|              |                                         | :r                                      |
-|              |                                         | ef:`mozilla_projects_nss_tools_cmsutil` |
-+--------------+-----------------------------------------+-----------------------------------------+
-| crlutil      | Manage certificate revocation lists     | `Source <https://dxr.mozilla.org/mozill |
-|              | (CRLs).                                 | a/source/security/nss/cmd/crlutil/>`__, |
-|              |                                         | :re                                     |
-|              |                                         | f:`mozilla_projects_nss_tools_crlutil`, |
-+--------------+-----------------------------------------+-----------------------------------------+
-| dbck 1.0     | Analyze and repair certificate          | `Source <https://dxr.mozilla.org/moz    |
-|              | databases (not working in NSS 3.2)      | illa/source/security/nss/cmd/dbck/>`__, |
-|              |                                         | :ref:                                   |
-|              |                                         | `mozilla_projects_nss_tools_dbck-tasks` |
-+--------------+-----------------------------------------+-----------------------------------------+
-| modutil 1.1  | Manage the database of PKCS11 modules   | `Source <https://dxr.mozilla.org/mozill |
-|              | (secmod.db). Add modules and modify the | a/source/security/nss/cmd/modutil/>`__, |
-|              | properties of existing modules (such as | :re                                     |
-|              | whether a module is the default         | f:`mozilla_projects_nss_tools_modutil`, |
-|              | provider of some crypto service).       | :ref:`mo                                |
-|              |                                         | zilla_projects_nss_tools_modutil-tasks` |
-+--------------+-----------------------------------------+-----------------------------------------+
-| pk12util 1.0 | Import and export keys and certificates | `                                       |
-|              | between the cert/key databases and      | Source <https://dxr.mozilla.org/mozilla |
-|              | files in PKCS12 format.                 | /source/security/nss/cmd/pk12util/>`__, |
-|              |                                         | :ref                                    |
-|              |                                         | :`mozilla_projects_nss_tools_pk12util`, |
-|              |                                         | :ref:`moz                               |
-|              |                                         | illa_projects_nss_tools_pk12util-tasks` |
-+--------------+-----------------------------------------+-----------------------------------------+
-| signtool 1.3 | Create digitally-signed jar archives    | `                                       |
-|              | containing files and/or code.           | Source <https://dxr.mozilla.org/mozilla |
-|              |                                         | /source/security/nss/cmd/signtool/>`__, |
-|              |                                         | `Do                                     |
-|              |                                         | cumentation <https://docs.oracle.com/ja |
-|              |                                         | vase/8/docs/technotes/guides/security/S |
-|              |                                         | ecurityToolsSummary.html#jarsigner>`__, |
-+--------------+-----------------------------------------+-----------------------------------------+
-| signver 1.1  | Verify signatures on digitally-signed   | `Source <https://dxr.mozilla.org/mozill |
-|              | objects.                                | a/source/security/nss/cmd/signver/>`__, |
-|              |                                         | `Document                               |
-|              |                                         | ation <https://docs.oracle.com/javase/t |
-|              |                                         | utorial/deployment/jar/verify.html>`__, |
-|              |                                         | :ref:`mo                                |
-|              |                                         | zilla_projects_nss_tools_signver-tasks` |
-+--------------+-----------------------------------------+-----------------------------------------+
-| sslstrength  | SSL Strength                            | :ref:`                                  |
-|              |                                         | mozilla_projects_nss_tools_sslstrength` |
-+--------------+-----------------------------------------+-----------------------------------------+
-| ssltap 3.2   | Proxy requests for an SSL server and    | `Source <https://dxr.mozilla.org/mozil  |
-|              | display the contents of the messages    | la/source/security/nss/cmd/ssltap/>`__, |
-|              | exchanged between the client and        | :                                       |
-|              | server. The ssltap tool does not        | ref:`mozilla_projects_nss_tools_ssltap` |
-|              | decrypt data, but it shows things like  |                                         |
-|              | the type of SSL message (clientHello,   |                                         |
-|              | serverHello, etc) and connection data   |                                         |
-|              | (protocol version, cipher suite, etc).  |                                         |
-|              | This tool is very useful for debugging. |                                         |
-+--------------+-----------------------------------------+-----------------------------------------+
++--------------+-----------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| **Tool**     | **Description**                         | **Links**                                                                                                                                                                                                                        |
++--------------+-----------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| certutil 2.0 | Manage certificate and key databases    | `Source <https://dxr.mozilla.org/mozilla/source/security/nss/cmd/certutil/>`__, :ref:`mozilla-projects-nss-tools-certutil`, :ref:`mozilla-projects-nss-tools-nss-tools-certutil-tasks`                                           |
+|              | (cert7.db and key3.db).                 |                                                                                                                                                                                                                                  |
+|              |                                         |                                                                                                                                                                                                                                  |
+|              |                                         |                                                                                                                                                                                                                                  |
+|              |                                         |                                                                                                                                                                                                                                  |
+|              |                                         |                                                                                                                                                                                                                                  |
+|              |                                         |                                                                                                                                                                                                                                  |
++--------------+-----------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| cmsutil 1.0  | Performs basic CMS operations such as   | `Source <https://dxr.mozilla.org/mozilla/source/security/nss/cmd/smimetools/>`__, :ref:`mozilla-projects-nss-tools-cmsutil`                                                                                                      |
+|              | encrypting, decrypting, and signing     |                                                                                                                                                                                                                                  |
+|              | messages.                               |                                                                                                                                                                                                                                  |
+|              |                                         |                                                                                                                                                                                                                                  |
+|              |                                         |                                                                                                                                                                                                                                  |
++--------------+-----------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| crlutil      | Manage certificate revocation lists     | `Source <https://dxr.mozilla.org/mozilla/source/security/nss/cmd/crlutil/>`__, :ref:`mozilla-projects-nss-tools-crlutil`,                                                                                                        |
+|              | (CRLs).                                 |                                                                                                                                                                                                                                  |
+|              |                                         |                                                                                                                                                                                                                                  |
+|              |                                         |                                                                                                                                                                                                                                  |
++--------------+-----------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| dbck 1.0     | Analyze and repair certificate          | `Source <https://dxr.mozilla.org/mozilla/source/security/nss/cmd/dbck/>`__, :ref:`mozilla-projects-nss-tools-nss-tools-dbck-tasks`                                                                                               |
+|              | databases (not working in NSS 3.2)      |                                                                                                                                                                                                                                  |
+|              |                                         |                                                                                                                                                                                                                                  |
+|              |                                         |                                                                                                                                                                                                                                  |
++--------------+-----------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| modutil 1.1  | Manage the database of PKCS11 modules   | `Source <https://dxr.mozilla.org/mozilla/source/security/nss/cmd/modutil/>`__, :ref:`mozilla-projects-nss-tools-modutil`, :ref:`mozilla-projects-nss-tools-nss-tools-modutil-tasks`                                              |
+|              | (secmod.db). Add modules and modify the |                                                                                                                                                                                                                                  |
+|              | properties of existing modules (such as |                                                                                                                                                                                                                                  |
+|              | whether a module is the default         |                                                                                                                                                                                                                                  |
+|              | provider of some crypto service).       |                                                                                                                                                                                                                                  |
+|              |                                         |                                                                                                                                                                                                                                  |
++--------------+-----------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| pk12util 1.0 | Import and export keys and certificates | `Source <https://dxr.mozilla.org/mozilla/source/security/nss/cmd/pk12util/>`__, :ref:`mozilla-projects-nss-tools-pk12util`, :ref:`mozilla-projects-nss-tools-nss-tools-pk12util-tasks`                                           |
+|              | between the cert/key databases and      |                                                                                                                                                                                                                                  |
+|              | files in PKCS12 format.                 |                                                                                                                                                                                                                                  |
+|              |                                         |                                                                                                                                                                                                                                  |
+|              |                                         |                                                                                                                                                                                                                                  |
+|              |                                         |                                                                                                                                                                                                                                  |
+|              |                                         |                                                                                                                                                                                                                                  |
++--------------+-----------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| signtool 1.3 | Create digitally-signed jar archives    | `Source <https://dxr.mozilla.org/mozilla/source/security/nss/cmd/signtool/>`__, `Documentation <https://docs.oracle.com/javase/8/docs/technotes/guides/security/SecurityToolsSummary.html#jarsigner>`__,                         |
+|              | containing files and/or code.           |                                                                                                                                                                                                                                  |
+|              |                                         |                                                                                                                                                                                                                                  |
+|              |                                         |                                                                                                                                                                                                                                  |
+|              |                                         |                                                                                                                                                                                                                                  |
+|              |                                         |                                                                                                                                                                                                                                  |
+|              |                                         |                                                                                                                                                                                                                                  |
++--------------+-----------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| signver 1.1  | Verify signatures on digitally-signed   | `Source <https://dxr.mozilla.org/mozilla/source/security/nss/cmd/signver/>`__, `Documentation <https://docs.oracle.com/javase/tutorial/deployment/jar/verify.html>`__, :ref:`mozilla-projects-nss-tools-nss-tools-signver-tasks` |
+|              | objects.                                |                                                                                                                                                                                                                                  |
+|              |                                         |                                                                                                                                                                                                                                  |
+|              |                                         |                                                                                                                                                                                                                                  |
+|              |                                         |                                                                                                                                                                                                                                  |
+|              |                                         |                                                                                                                                                                                                                                  |
+|              |                                         |                                                                                                                                                                                                                                  |
++--------------+-----------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| sslstrength  | SSL Strength                            | :ref:`mozilla-projects-nss-nss-tools-sslstrength`                                                                                                                                                                                |
+|              |                                         |                                                                                                                                                                                                                                  |
++--------------+-----------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| ssltap 3.2   | Proxy requests for an SSL server and    | `Source <https://dxr.mozilla.org/mozilla/source/security/nss/cmd/ssltap/>`__, :ref:`mozilla-projects-nss-tools-ssltap`                                                                                                           |
+|              | display the contents of the messages    |                                                                                                                                                                                                                                  |
+|              | exchanged between the client and        |                                                                                                                                                                                                                                  |
+|              | server. The ssltap tool does not        |                                                                                                                                                                                                                                  |
+|              | decrypt data, but it shows things like  |                                                                                                                                                                                                                                  |
+|              | the type of SSL message (clientHello,   |                                                                                                                                                                                                                                  |
+|              | serverHello, etc) and connection data   |                                                                                                                                                                                                                                  |
+|              | (protocol version, cipher suite, etc).  |                                                                                                                                                                                                                                  |
+|              | This tool is very useful for debugging. |                                                                                                                                                                                                                                  |
++--------------+-----------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 ```
 
 :::

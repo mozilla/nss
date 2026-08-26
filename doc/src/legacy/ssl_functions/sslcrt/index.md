@@ -83,38 +83,38 @@ SECStatus CERT_VerifyCertNow(
 This function has the following parameters:
 
 ```{eval-rst}
-+-------------------------------------------------+-------------------------------------------------+
-| .. code::                                       | A pointer to the certificate database handle.   |
-|                                                 |                                                 |
-|    handle                                       |                                                 |
-+-------------------------------------------------+-------------------------------------------------+
-| .. code::                                       | A pointer to the certificate to be checked.     |
-|                                                 |                                                 |
-|    cert                                         |                                                 |
-+-------------------------------------------------+-------------------------------------------------+
-| .. code::                                       | Indicates whether certificate signatures are to |
-|                                                 | be checked. ``PR_TRUE`` means certificate       |
-|    checkSig                                     | signatures are to be checked. ``PR_FALSE``      |
-|                                                 | means certificate signatures will not be        |
-|                                                 | checked.                                        |
-+-------------------------------------------------+-------------------------------------------------+
-| .. code::                                       | One of these values:                            |
-|                                                 |                                                 |
-|    certUsage                                    | -  ``certUsageSSLClient``                       |
-|                                                 | -  ``certUsageSSLServer``                       |
-|                                                 | -  ``certUsageSSLServerWithStepUp``             |
-|                                                 | -  ``certUsageSSLCA``                           |
-|                                                 | -  ``certUsageEmailSigner``                     |
-|                                                 | -  ``certUsageEmailRecipient``                  |
-|                                                 | -  ``certUsageObjectSigner``                    |
-|                                                 | -  ``certUsageUserCertImport``                  |
-|                                                 | -  ``certUsageVerifyCA``                        |
-|                                                 | -  ``certUsageProtectedObjectSigner``           |
-+-------------------------------------------------+-------------------------------------------------+
-| .. code::                                       | The PIN argument value to pass to PK11          |
-|                                                 | functions. See description below for more       |
-|    wincx                                        | information.                                    |
-+-------------------------------------------------+-------------------------------------------------+
++--------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| .. code::    | A pointer to the certificate database handle.                                                                                                                                          |
+|              |                                                                                                                                                                                        |
+|    handle    |                                                                                                                                                                                        |
++--------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| .. code::    | A pointer to the certificate to be checked.                                                                                                                                            |
+|              |                                                                                                                                                                                        |
+|    cert      |                                                                                                                                                                                        |
++--------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| .. code::    | Indicates whether certificate signatures are to be checked. ``PR_TRUE`` means certificate signatures are to be checked. ``PR_FALSE`` means certificate signatures will not be checked. |
+|              |                                                                                                                                                                                        |
+|    checkSig  |                                                                                                                                                                                        |
+|              |                                                                                                                                                                                        |
+|              |                                                                                                                                                                                        |
++--------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| .. code::    | One of these values:                                                                                                                                                                   |
+|              |                                                                                                                                                                                        |
+|    certUsage | -  ``certUsageSSLClient``                                                                                                                                                              |
+|              | -  ``certUsageSSLServer``                                                                                                                                                              |
+|              | -  ``certUsageSSLServerWithStepUp``                                                                                                                                                    |
+|              | -  ``certUsageSSLCA``                                                                                                                                                                  |
+|              | -  ``certUsageEmailSigner``                                                                                                                                                            |
+|              | -  ``certUsageEmailRecipient``                                                                                                                                                         |
+|              | -  ``certUsageObjectSigner``                                                                                                                                                           |
+|              | -  ``certUsageUserCertImport``                                                                                                                                                         |
+|              | -  ``certUsageVerifyCA``                                                                                                                                                               |
+|              | -  ``certUsageProtectedObjectSigner``                                                                                                                                                  |
++--------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| .. code::    | The PIN argument value to pass to PK11                                                                                                                                                 |
+|              | functions. See description below for more                                                                                                                                              |
+|    wincx     | information.                                                                                                                                                                           |
++--------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 ```
 
 ```{rubric} Returns
@@ -160,15 +160,15 @@ SECStatus CERT_VerifyCertName(
 This function has the following parameters:
 
 ```{eval-rst}
-+-------------------------------------------------+-------------------------------------------------+
-| .. code::                                       | A pointer to the certificate against which to   |
-|                                                 | check the hostname referenced by ``hostname``.  |
-|    cert                                         |                                                 |
-+-------------------------------------------------+-------------------------------------------------+
-| .. code::                                       | The hostname to be checked.                     |
-|                                                 |                                                 |
-|    hostname                                     |                                                 |
-+-------------------------------------------------+-------------------------------------------------+
++-------------+----------------------------------------------------------------------------------------------+
+| .. code::   | A pointer to the certificate against which to check the hostname referenced by ``hostname``. |
+|             |                                                                                              |
+|    cert     |                                                                                              |
++-------------+----------------------------------------------------------------------------------------------+
+| .. code::   | The hostname to be checked.                                                                  |
+|             |                                                                                              |
+|    hostname |                                                                                              |
++-------------+----------------------------------------------------------------------------------------------+
 ```
 
 ```{rubric} Returns
@@ -228,15 +228,15 @@ SECCertTimeValidity CERT_CheckCertValidTimes(
 This function has the following parameters:
 
 ```{eval-rst}
-+-------------------------------------------------+-------------------------------------------------+
-| .. code::                                       | A pointer to the certificate whose validity     |
-|                                                 | period you want to check against.               |
-|    cert                                         |                                                 |
-+-------------------------------------------------+-------------------------------------------------+
-| .. code::                                       | The time to check against the certificate's     |
-|                                                 | validity period. For more information, see the  |
-|    t                                            | NSPR header ``pr_time.h``.                      |
-+-------------------------------------------------+-------------------------------------------------+
++-----------+-----------------------------------------------------------------------------------------------------------------------+
+| .. code:: | A pointer to the certificate whose validity                                                                           |
+|           | period you want to check against.                                                                                     |
+|    cert   |                                                                                                                       |
++-----------+-----------------------------------------------------------------------------------------------------------------------+
+| .. code:: | The time to check against the certificate's validity period. For more information, see the NSPR header ``pr_time.h``. |
+|           |                                                                                                                       |
+|    t      |                                                                                                                       |
++-----------+-----------------------------------------------------------------------------------------------------------------------+
 ```
 
 ```{rubric} Returns
@@ -543,11 +543,11 @@ void CERT_FreeNicknames(CERTCertNicknames *nicknames);
 This function has the following parameter:
 
 ```{eval-rst}
-+-------------------------------------------------+-------------------------------------------------+
-| .. code::                                       | A pointer to the ``CERTCertNicknames``          |
-|                                                 | structure to be freed.                          |
-|    nicknames                                    |                                                 |
-+-------------------------------------------------+-------------------------------------------------+
++--------------+---------------------------------------------------------------+
+| .. code::    | A pointer to the ``CERTCertNicknames`` structure to be freed. |
+|              |                                                               |
+|    nicknames |                                                               |
++--------------+---------------------------------------------------------------+
 ```
 
 ```{rubric} CERT_GetDefaultCertDB

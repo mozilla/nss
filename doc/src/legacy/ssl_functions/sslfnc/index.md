@@ -113,10 +113,10 @@ SECStatus NSS_Init(char *configdir);
 This function has the following parameter:
 
 ```{eval-rst}
-+---------------+---------------------------------------------------------------------------------+
-| ``configdir`` | A pointer to a string containing the pathname of the directory where the        |
-|               | certificate, key, and security module databases reside.                         |
-+---------------+---------------------------------------------------------------------------------+
++---------------+--------------------------------------------------------------------------+
+| ``configdir`` | A pointer to a string containing the pathname of the directory where the |
+|               | certificate, key, and security module databases reside.                  |
++---------------+--------------------------------------------------------------------------+
 ```
 
 ```{rubric} Returns
@@ -180,10 +180,10 @@ SECStatus NSS_InitReadWrite(char *configdir);
 This function has the following parameter:
 
 ```{eval-rst}
-+---------------+---------------------------------------------------------------------------------+
-| ``configdir`` | A pointer to a string containing the pathname of the directory where the        |
-|               | certificate, key, and security module databases reside.                         |
-+---------------+---------------------------------------------------------------------------------+
++---------------+--------------------------------------------------------------------------+
+| ``configdir`` | A pointer to a string containing the pathname of the directory where the |
+|               | certificate, key, and security module databases reside.                  |
++---------------+--------------------------------------------------------------------------+
 ```
 
 ```{rubric} Returns
@@ -292,112 +292,112 @@ SECStatus SSL_OptionSetDefault(PRInt32 option, PRBool on);
 This function has the following parameters:
 
 ```{eval-rst}
-+-------------------------------------------------+-------------------------------------------------+
-| ``option``                                      | One of the following values (except as noted,   |
-|                                                 | the factory setting is "off"):                  |
-|                                                 |                                                 |
-|                                                 | -  ``SSL_SECURITY`` enables use of security     |
-|                                                 |    protocol. Factory setting is on. WARNING: If |
-|                                                 |    you turn this option off, the session will   |
-|                                                 |    not be an SSL session and will not have      |
-|                                                 |    certificate-based authentication, tamper     |
-|                                                 |    detection, or encryption.                    |
-|                                                 | -  ``SSL_REQUEST_CERTIFICATE`` is a server      |
-|                                                 |    option that requests a client to             |
-|                                                 |    authenticate itself.                         |
-|                                                 | -  ``SSL_REQUIRE_CERTIFICATE`` is a server      |
-|                                                 |    option that requires a client to             |
-|                                                 |    authenticate itself (only if                 |
-|                                                 |    ``SSL_REQUEST_CERTIFICATE`` is also on). If  |
-|                                                 |    client does not provide certificate, the     |
-|                                                 |    connection terminates. Default state is a    |
-|                                                 |    third state similar to on, that provides     |
-|                                                 |    backward compatibility with older Netscape   |
-|                                                 |    server products.                             |
-|                                                 | -  ``SSL_HANDSHAKE_AS_CLIENT`` controls the     |
-|                                                 |    behavior of ``PR_Accept``,. If this option   |
-|                                                 |    is off, the ``PR_Accept`` configures the SSL |
-|                                                 |    socket to handshake as a server. If it is    |
-|                                                 |    on, then ``PR_Accept`` configures the SSL    |
-|                                                 |    socket to handshake as a client, even though |
-|                                                 |    it accepted the connection as a TCP server.  |
-|                                                 | -  ``SSL_HANDSHAKE_AS_SERVER`` controls the     |
-|                                                 |    behavior of ``PR_Connect``. If this option   |
-|                                                 |    is off, then ``PR_Connect`` configures the   |
-|                                                 |    SSL socket to handshake as a client. If it   |
-|                                                 |    is on, then ``PR_Connect`` configures the    |
-|                                                 |    SSL socket to handshake as a server, even    |
-|                                                 |    though it connected as a TCP client.         |
-|                                                 | -  ``SSL_ENABLE_FDX`` tells the SSL library     |
-|                                                 |    whether the application will have two        |
-|                                                 |    threads, one reading and one writing, or     |
-|                                                 |    just one thread doing reads and writes       |
-|                                                 |    alternately. The factory setting for this    |
-|                                                 |    option (which is the default, unless the     |
-|                                                 |    application changes the default) is off      |
-|                                                 |    (``PR_FALSE``), which means that the         |
-|                                                 |    application will not do simultaneous reads   |
-|                                                 |    and writes. An application that wishes to do |
-|                                                 |    sumultaneous reads and writes should set     |
-|                                                 |    this to ``PR_TRUE``.                         |
-|                                                 |                                                 |
-|                                                 | In NSS 2.8, the ``SSL_ENABLE_FDX`` option only  |
-|                                                 | affects the behavior of non-blocking SSL        |
-|                                                 | sockets. See the description below for more     |
-|                                                 | information on this option.                     |
-+-------------------------------------------------+-------------------------------------------------+
-|                                                 | -  ``SSL_ENABLE_SSL3`` enables the application  |
-|                                                 |    to communicate with SSL v3. Factory setting  |
-|                                                 |    is on. If you turn this option off, an       |
-|                                                 |    attempt to establish a connection with a     |
-|                                                 |    peer that only understands SSL v3 will fail. |
-|                                                 | -  ``SSL_ENABLE_SSL2`` enables the application  |
-|                                                 |    to communicate with SSL v2. Factory setting  |
-|                                                 |    is on. If you turn this option off, an       |
-|                                                 |    attempt to establish a connection with a     |
-|                                                 |    peer that only understands SSL v2 will fail. |
-|                                                 | -  ``SSL_ENABLE_TLS`` is a peer of the          |
-|                                                 |    ``SSL_ENABLE_SSL2`` and ``SSL_ENABLE_SSL3``  |
-|                                                 |    options. The IETF standard Transport Layer   |
-|                                                 |    Security (TLS) protocol, RFC 2246, is a      |
-|                                                 |    modified version of SSL3. It uses the SSL    |
-|                                                 |    version number 3.1, appearing to be a        |
-|                                                 |    "minor" revision of SSL 3.0. NSS 2.8         |
-|                                                 |    supports TLS in addition to SSL2 and SSL3.   |
-|                                                 |    You can think of it as                       |
-|                                                 |    "``SSL_ENABLE_SSL3.1``". See the description |
-|                                                 |    below for more information about this        |
-|                                                 |    option.                                      |
-|                                                 | -  ``SSL_V2_COMPATIBLE_HELLO`` tells the SSL    |
-|                                                 |    library whether or not to send SSL3 client   |
-|                                                 |    hello messages in SSL2-compatible format. If |
-|                                                 |    set to ``PR_TRUE``, it will; otherwise, it   |
-|                                                 |    will not. Factory setting is on              |
-|                                                 |    (``PR_TRUE``). See the description below for |
-|                                                 |    more information on this option.             |
-|                                                 | -  ``SSL_NO_CACHE`` disallows use of the        |
-|                                                 |    session cache. Factory setting is off. If    |
-|                                                 |    you turn this option on, this socket will be |
-|                                                 |    unable to resume a session begun by another  |
-|                                                 |    socket. When this socket's session is        |
-|                                                 |    finished, no other socket will be able to    |
-|                                                 |    resume the session begun by this socket.     |
-|                                                 | -  ``SSL_ROLLBACK_DETECTION`` disables          |
-|                                                 |    detection of a rollback attack. Factory      |
-|                                                 |    setting is on. You must turn this option off |
-|                                                 |    to interoperate with TLS clients ( such as   |
-|                                                 |    certain versions of Microsoft Internet       |
-|                                                 |    Explorer) that do not conform to the TLS     |
-|                                                 |    specification regarding rollback attacks.    |
-|                                                 |    Important: turning this option off means     |
-|                                                 |    that your code will not comply with the TLS  |
-|                                                 |    3.1 and SSL 3.0 specifications regarding     |
-|                                                 |    rollback attack and will therefore be        |
-|                                                 |    vulnerable to this form of attack.           |
-+-------------------------------------------------+-------------------------------------------------+
-| ``on``                                          | ``PR_TRUE`` turns option on; ``PR_FALSE`` turns |
-|                                                 | option off.                                     |
-+-------------------------------------------------+-------------------------------------------------+
++------------+-------------------------------------------------------------+
+| ``option`` | One of the following values (except as noted,               |
+|            | the factory setting is "off"):                              |
+|            |                                                             |
+|            | -  ``SSL_SECURITY`` enables use of security                 |
+|            |    protocol. Factory setting is on. WARNING: If             |
+|            |    you turn this option off, the session will               |
+|            |    not be an SSL session and will not have                  |
+|            |    certificate-based authentication, tamper                 |
+|            |    detection, or encryption.                                |
+|            | -  ``SSL_REQUEST_CERTIFICATE`` is a server                  |
+|            |    option that requests a client to                         |
+|            |    authenticate itself.                                     |
+|            | -  ``SSL_REQUIRE_CERTIFICATE`` is a server                  |
+|            |    option that requires a client to                         |
+|            |    authenticate itself (only if                             |
+|            |    ``SSL_REQUEST_CERTIFICATE`` is also on). If              |
+|            |    client does not provide certificate, the                 |
+|            |    connection terminates. Default state is a                |
+|            |    third state similar to on, that provides                 |
+|            |    backward compatibility with older Netscape               |
+|            |    server products.                                         |
+|            | -  ``SSL_HANDSHAKE_AS_CLIENT`` controls the                 |
+|            |    behavior of ``PR_Accept``,. If this option               |
+|            |    is off, the ``PR_Accept`` configures the SSL             |
+|            |    socket to handshake as a server. If it is                |
+|            |    on, then ``PR_Accept`` configures the SSL                |
+|            |    socket to handshake as a client, even though             |
+|            |    it accepted the connection as a TCP server.              |
+|            | -  ``SSL_HANDSHAKE_AS_SERVER`` controls the                 |
+|            |    behavior of ``PR_Connect``. If this option               |
+|            |    is off, then ``PR_Connect`` configures the               |
+|            |    SSL socket to handshake as a client. If it               |
+|            |    is on, then ``PR_Connect`` configures the                |
+|            |    SSL socket to handshake as a server, even                |
+|            |    though it connected as a TCP client.                     |
+|            | -  ``SSL_ENABLE_FDX`` tells the SSL library                 |
+|            |    whether the application will have two                    |
+|            |    threads, one reading and one writing, or                 |
+|            |    just one thread doing reads and writes                   |
+|            |    alternately. The factory setting for this                |
+|            |    option (which is the default, unless the                 |
+|            |    application changes the default) is off                  |
+|            |    (``PR_FALSE``), which means that the                     |
+|            |    application will not do simultaneous reads               |
+|            |    and writes. An application that wishes to do             |
+|            |    sumultaneous reads and writes should set                 |
+|            |    this to ``PR_TRUE``.                                     |
+|            |                                                             |
+|            | In NSS 2.8, the ``SSL_ENABLE_FDX`` option only              |
+|            | affects the behavior of non-blocking SSL                    |
+|            | sockets. See the description below for more                 |
+|            | information on this option.                                 |
++------------+-------------------------------------------------------------+
+|            | -  ``SSL_ENABLE_SSL3`` enables the application              |
+|            |    to communicate with SSL v3. Factory setting              |
+|            |    is on. If you turn this option off, an                   |
+|            |    attempt to establish a connection with a                 |
+|            |    peer that only understands SSL v3 will fail.             |
+|            | -  ``SSL_ENABLE_SSL2`` enables the application              |
+|            |    to communicate with SSL v2. Factory setting              |
+|            |    is on. If you turn this option off, an                   |
+|            |    attempt to establish a connection with a                 |
+|            |    peer that only understands SSL v2 will fail.             |
+|            | -  ``SSL_ENABLE_TLS`` is a peer of the                      |
+|            |    ``SSL_ENABLE_SSL2`` and ``SSL_ENABLE_SSL3``              |
+|            |    options. The IETF standard Transport Layer               |
+|            |    Security (TLS) protocol, RFC 2246, is a                  |
+|            |    modified version of SSL3. It uses the SSL                |
+|            |    version number 3.1, appearing to be a                    |
+|            |    "minor" revision of SSL 3.0. NSS 2.8                     |
+|            |    supports TLS in addition to SSL2 and SSL3.               |
+|            |    You can think of it as                                   |
+|            |    "``SSL_ENABLE_SSL3.1``". See the description             |
+|            |    below for more information about this                    |
+|            |    option.                                                  |
+|            | -  ``SSL_V2_COMPATIBLE_HELLO`` tells the SSL                |
+|            |    library whether or not to send SSL3 client               |
+|            |    hello messages in SSL2-compatible format. If             |
+|            |    set to ``PR_TRUE``, it will; otherwise, it               |
+|            |    will not. Factory setting is on                          |
+|            |    (``PR_TRUE``). See the description below for             |
+|            |    more information on this option.                         |
+|            | -  ``SSL_NO_CACHE`` disallows use of the                    |
+|            |    session cache. Factory setting is off. If                |
+|            |    you turn this option on, this socket will be             |
+|            |    unable to resume a session begun by another              |
+|            |    socket. When this socket's session is                    |
+|            |    finished, no other socket will be able to                |
+|            |    resume the session begun by this socket.                 |
+|            | -  ``SSL_ROLLBACK_DETECTION`` disables                      |
+|            |    detection of a rollback attack. Factory                  |
+|            |    setting is on. You must turn this option off             |
+|            |    to interoperate with TLS clients ( such as               |
+|            |    certain versions of Microsoft Internet                   |
+|            |    Explorer) that do not conform to the TLS                 |
+|            |    specification regarding rollback attacks.                |
+|            |    Important: turning this option off means                 |
+|            |    that your code will not comply with the TLS              |
+|            |    3.1 and SSL 3.0 specifications regarding                 |
+|            |    rollback attack and will therefore be                    |
+|            |    vulnerable to this form of attack.                       |
++------------+-------------------------------------------------------------+
+| ``on``     | ``PR_TRUE`` turns option on; ``PR_FALSE`` turns option off. |
+|            |                                                             |
++------------+-------------------------------------------------------------+
 ```
 
 ```{rubric} Returns
@@ -508,16 +508,16 @@ SECStatus SSL_OptionGetDefault(PRInt32 option, PRBool *on)
 This function has the parameters listed below.
 
 ````{eval-rst}
-+------------+------------------------------------------------------------------------------------+
-| ``option`` | The value of the option whose default setting you wish to get. For information     |
-|            | about the options available and the possible values to pass in this parameter, see |
-|            | the description of the ``option`` parameter under                                  |
-|            | ```SSL_OptionSetDefault`` <#1068466>`__.                                           |
-+------------+------------------------------------------------------------------------------------+
-| ``on``     | A pointer to the value of the option specified in the option parameter.            |
-|            | ``PR_TRUE`` indicates that the option is on; ``PR_FALSE`` indicates that the       |
-|            | option is off.                                                                     |
-+------------+------------------------------------------------------------------------------------+
++------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| ``option`` | The value of the option whose default setting you wish to get. For information about the options available and the possible values to pass in this parameter, see the description of the ``option`` parameter under ```SSL_OptionSetDefault`` <#1068466>`__. |
+|            |                                                                                                                                                                                                                                                              |
+|            |                                                                                                                                                                                                                                                              |
+|            |                                                                                                                                                                                                                                                              |
++------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| ``on``     | A pointer to the value of the option specified in the option parameter. ``PR_TRUE`` indicates that the option is on; ``PR_FALSE`` indicates that the option is off.                                                                                          |
+|            |                                                                                                                                                                                                                                                              |
+|            |                                                                                                                                                                                                                                                              |
++------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 ````
 
 ```{rubric} Returns
@@ -562,64 +562,64 @@ SECStatus SSL_CipherPrefSetDefault(PRInt32 cipher, PRBool enabled);
 This function has the following parameters:
 
 ```{eval-rst}
-+-------------------------------------------------+-------------------------------------------------+
-| ``cipher``                                      | One of the following values for SSL2 (factory   |
-|                                                 | settings for all are enabled):                  |
-|                                                 |                                                 |
-|                                                 | ``SSL_EN_RC4_128_WITH_                          |
-|                                                 | MD5      SSL_EN_RC4_128_EXPORT40_WITH_MD5       |
-|                                                 | SSL_EN_RC2_128_CBC_WITH_MD5      SSL_EN_RC2_128 |
-|                                                 | _CBC_EXPORT40_WITH_MD5      SSL_EN_DES_64_CBC_W |
-|                                                 | ITH_MD5      SSL_EN_DES_192_EDE3_CBC_WITH_MD5`` |
-|                                                 |                                                 |
-|                                                 | Or one of the following values for SSL3/TLS     |
-|                                                 | (unless indicated otherwise, factory settings   |
-|                                                 | for all are enabled):                           |
-|                                                 |                                                 |
-|                                                 | ``TLS_DHE_RSA_WITH_AES_256_CBC_SHA`` (not       |
-|                                                 | enabled by default; client side only)           |
-|                                                 | ``TLS_DHE_DSS_WITH_AES_256_CBC_SHA`` (not       |
-|                                                 | enabled by default; client side only)           |
-|                                                 | ``TLS_RSA_WITH_AES_256_CBC_SHA`` (not enabled   |
-|                                                 | by default)                                     |
-|                                                 | ``SSL_FORTEZZA_DMS_WITH_RC4_128_SHA``           |
-|                                                 | ``TLS_DHE_DSS_WITH_RC4_128_SHA`` (not enabled   |
-|                                                 | by default; client side only)                   |
-|                                                 | ``TLS_DHE_RSA_WITH_AES_128_CBC_SHA`` (not       |
-|                                                 | enabled by default; client side only)           |
-|                                                 | ``TLS_DHE_DSS_WITH_AES_128_CBC_SHA`` (not       |
-|                                                 | enabled by default; client side only)           |
-|                                                 | ``SSL_RSA_WITH_RC4_128_MD5``                    |
-|                                                 | ``SSL_RSA_WITH_RC4_128_SHA`` (not enabled by    |
-|                                                 | default)                                        |
-|                                                 | ``TLS_RSA_WITH_AES_128_CBC_SHA`` (not enabled   |
-|                                                 | by default)                                     |
-|                                                 | ``SSL_DHE_RSA_WITH_3DES_EDE_CBC_SHA`` (not      |
-|                                                 | enabled by default; client side only)           |
-|                                                 | ``SSL_DHE_DSS_WITH_3DES_EDE_CBC_SHA`` (not      |
-|                                                 | enabled by default; client side only)           |
-|                                                 | ``SSL_RSA_FIPS_WITH_3DES_EDE_CBC_SHA``          |
-|                                                 | ``SSL_RSA_WITH_3DES_EDE_CBC_SHA``               |
-|                                                 | ``SSL_FORTEZZA_DMS_WITH_FORTEZZA_CBC_SHA``      |
-|                                                 | ``SSL_DHE_RSA_WITH_DES_CBC_SHA`` (not enabled   |
-|                                                 | by default; client side only)                   |
-|                                                 | ``SSL_DHE_DSS_WITH_DES_CBC_SHA`` (not enabled   |
-|                                                 | by default; client side only)                   |
-|                                                 | ``SSL_RSA_FIPS_WITH_DES_CBC_SHA``               |
-|                                                 | ``SSL_RSA_WITH_DES_CBC_SHA``                    |
-|                                                 | ``TLS_RSA_EXPORT1024_WITH_RC4_56_SHA``          |
-|                                                 | ``TLS_RSA_EXPORT1024_WITH_DES_CBC_SHA``         |
-|                                                 | ``SSL_RSA_EXPORT_WITH_RC4_40_MD5``              |
-|                                                 | ``SSL_RSA_EXPORT_WITH_RC2_CBC_40_MD5``          |
-|                                                 | ``SSL_FORTEZZA_DMS_WITH_NULL_SHA``              |
-|                                                 | ``SSL_RSA_WITH_NULL_SHA`` (not enabled by       |
-|                                                 | default)                                        |
-|                                                 | ``SSL_RSA_WITH_NULL_MD5`` (not enabled by       |
-|                                                 | default)                                        |
-+-------------------------------------------------+-------------------------------------------------+
-| ``enabled``                                     | If nonzero, the specified cipher is enabled. If |
-|                                                 | zero, the cipher is disabled.                   |
-+-------------------------------------------------+-------------------------------------------------+
++-------------+-------------------------------------------------+
+| ``cipher``  | One of the following values for SSL2 (factory   |
+|             | settings for all are enabled):                  |
+|             |                                                 |
+|             | ``SSL_EN_RC4_128_WITH_                          |
+|             | MD5      SSL_EN_RC4_128_EXPORT40_WITH_MD5       |
+|             | SSL_EN_RC2_128_CBC_WITH_MD5      SSL_EN_RC2_128 |
+|             | _CBC_EXPORT40_WITH_MD5      SSL_EN_DES_64_CBC_W |
+|             | ITH_MD5      SSL_EN_DES_192_EDE3_CBC_WITH_MD5`` |
+|             |                                                 |
+|             | Or one of the following values for SSL3/TLS     |
+|             | (unless indicated otherwise, factory settings   |
+|             | for all are enabled):                           |
+|             |                                                 |
+|             | ``TLS_DHE_RSA_WITH_AES_256_CBC_SHA`` (not       |
+|             | enabled by default; client side only)           |
+|             | ``TLS_DHE_DSS_WITH_AES_256_CBC_SHA`` (not       |
+|             | enabled by default; client side only)           |
+|             | ``TLS_RSA_WITH_AES_256_CBC_SHA`` (not enabled   |
+|             | by default)                                     |
+|             | ``SSL_FORTEZZA_DMS_WITH_RC4_128_SHA``           |
+|             | ``TLS_DHE_DSS_WITH_RC4_128_SHA`` (not enabled   |
+|             | by default; client side only)                   |
+|             | ``TLS_DHE_RSA_WITH_AES_128_CBC_SHA`` (not       |
+|             | enabled by default; client side only)           |
+|             | ``TLS_DHE_DSS_WITH_AES_128_CBC_SHA`` (not       |
+|             | enabled by default; client side only)           |
+|             | ``SSL_RSA_WITH_RC4_128_MD5``                    |
+|             | ``SSL_RSA_WITH_RC4_128_SHA`` (not enabled by    |
+|             | default)                                        |
+|             | ``TLS_RSA_WITH_AES_128_CBC_SHA`` (not enabled   |
+|             | by default)                                     |
+|             | ``SSL_DHE_RSA_WITH_3DES_EDE_CBC_SHA`` (not      |
+|             | enabled by default; client side only)           |
+|             | ``SSL_DHE_DSS_WITH_3DES_EDE_CBC_SHA`` (not      |
+|             | enabled by default; client side only)           |
+|             | ``SSL_RSA_FIPS_WITH_3DES_EDE_CBC_SHA``          |
+|             | ``SSL_RSA_WITH_3DES_EDE_CBC_SHA``               |
+|             | ``SSL_FORTEZZA_DMS_WITH_FORTEZZA_CBC_SHA``      |
+|             | ``SSL_DHE_RSA_WITH_DES_CBC_SHA`` (not enabled   |
+|             | by default; client side only)                   |
+|             | ``SSL_DHE_DSS_WITH_DES_CBC_SHA`` (not enabled   |
+|             | by default; client side only)                   |
+|             | ``SSL_RSA_FIPS_WITH_DES_CBC_SHA``               |
+|             | ``SSL_RSA_WITH_DES_CBC_SHA``                    |
+|             | ``TLS_RSA_EXPORT1024_WITH_RC4_56_SHA``          |
+|             | ``TLS_RSA_EXPORT1024_WITH_DES_CBC_SHA``         |
+|             | ``SSL_RSA_EXPORT_WITH_RC4_40_MD5``              |
+|             | ``SSL_RSA_EXPORT_WITH_RC2_CBC_40_MD5``          |
+|             | ``SSL_FORTEZZA_DMS_WITH_NULL_SHA``              |
+|             | ``SSL_RSA_WITH_NULL_SHA`` (not enabled by       |
+|             | default)                                        |
+|             | ``SSL_RSA_WITH_NULL_MD5`` (not enabled by       |
+|             | default)                                        |
++-------------+-------------------------------------------------+
+| ``enabled`` | If nonzero, the specified cipher is enabled. If |
+|             | zero, the cipher is disabled.                   |
++-------------+-------------------------------------------------+
 ```
 
 ```{rubric} Returns
@@ -703,14 +703,14 @@ SECStatus SSL_CipherPrefSetDefault(PRInt32 cipher, PRBool *enabled);
 This function has the parameters listed below.
 
 ````{eval-rst}
-+---------+---------------------------------------------------------------------------------------+
-| cipher  | The cipher suite whose default preference setting you want to get. For a list of the  |
-|         | cipher suites you can specify, see ```SSL_CipherPrefSetDefault`` <#1084747>`__.       |
-+---------+---------------------------------------------------------------------------------------+
-| enabled | A pointer to the default value associated with the cipher specified in the ``cipher`` |
-|         | parameter. If nonzero, the specified cipher is enabled. If zero, the cipher is        |
-|         | disabled.                                                                             |
-+---------+---------------------------------------------------------------------------------------+
++---------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| cipher  | The cipher suite whose default preference setting you want to get. For a list of the cipher suites you can specify, see ```SSL_CipherPrefSetDefault`` <#1084747>`__.           |
+|         |                                                                                                                                                                                |
++---------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| enabled | A pointer to the default value associated with the cipher specified in the ``cipher`` parameter. If nonzero, the specified cipher is enabled. If zero, the cipher is disabled. |
+|         |                                                                                                                                                                                |
+|         |                                                                                                                                                                                |
++---------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 ````
 
 ```{rubric} Returns
@@ -795,22 +795,22 @@ SECStatus SSL_ConfigServerSessionIDCache(
 This function has the parameters listed below.
 
 ```{eval-rst}
-+---------------------+---------------------------------------------------------------------------+
-| ``maxCacheEntries`` | The maximum number of entries in the cache. If a ``NULL`` value is        |
-|                     | passed, the server default value of 10,000 is used.                       |
-+---------------------+---------------------------------------------------------------------------+
-| ``timeout``         | The lifetime in seconds of an SSL2 session. The minimum timeout value is  |
-|                     | 5 seconds and the maximum is 24 hours. Values outside this range are      |
-|                     | replaced by the server default value of 100 seconds.                      |
-+---------------------+---------------------------------------------------------------------------+
-| ``ssl3_timeout``    | The lifetime in seconds of an SSL3 session. The minimum timeout value is  |
-|                     | 5 seconds and the maximum is 24 hours. Values outside this range are      |
-|                     | replaced by the server default value of 24 hours.                         |
-+---------------------+---------------------------------------------------------------------------+
-| ``directory``       | A pointer to a string specifying the pathname of the directory that will  |
-|                     | contain the session cache. If a ``NULL`` value is passed, the server      |
-|                     | default value is used: ``/tmp`` (Unix) or ``\\temp`` (NT).                |
-+---------------------+---------------------------------------------------------------------------+
++---------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| ``maxCacheEntries`` | The maximum number of entries in the cache. If a ``NULL`` value is passed, the server default value of 10,000 is used.                                                                                   |
+|                     |                                                                                                                                                                                                          |
++---------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| ``timeout``         | The lifetime in seconds of an SSL2 session. The minimum timeout value is                                                                                                                                 |
+|                     | 5 seconds and the maximum is 24 hours. Values outside this range are                                                                                                                                     |
+|                     | replaced by the server default value of 100 seconds.                                                                                                                                                     |
++---------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| ``ssl3_timeout``    | The lifetime in seconds of an SSL3 session. The minimum timeout value is                                                                                                                                 |
+|                     | 5 seconds and the maximum is 24 hours. Values outside this range are                                                                                                                                     |
+|                     | replaced by the server default value of 24 hours.                                                                                                                                                        |
++---------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| ``directory``       | A pointer to a string specifying the pathname of the directory that will contain the session cache. If a ``NULL`` value is passed, the server default value is used: ``/tmp`` (Unix) or ``\\temp`` (NT). |
+|                     |                                                                                                                                                                                                          |
+|                     |                                                                                                                                                                                                          |
++---------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 ```
 
 ```{rubric} Returns
@@ -905,22 +905,22 @@ SECStatus SSL_ConfigMPServerSIDCache(
 This function has the parameters listed below.
 
 ```{eval-rst}
-+---------------------+---------------------------------------------------------------------------+
-| ``maxCacheEntries`` | The maximum number of entries in the cache. If a ``NULL`` value is        |
-|                     | passed, the server default value of 10,000 is used.                       |
-+---------------------+---------------------------------------------------------------------------+
-| ``timeout``         | The lifetime in seconds of an SSL2 session. The minimum timeout value is  |
-|                     | 5 seconds and the maximum is 24 hours. Values outside this range are      |
-|                     | replaced by the server default value of 100 seconds.                      |
-+---------------------+---------------------------------------------------------------------------+
-| ``ssl3_timeout``    | The lifetime in seconds of an SSL3 session. The minimum timeout value is  |
-|                     | 5 seconds and the maximum is 24 hours. Values outside this range are      |
-|                     | replaced by the server default value of 24 hours.                         |
-+---------------------+---------------------------------------------------------------------------+
-| ``directory``       | A pointer to a string specifying the pathname of the directory that will  |
-|                     | contain the session cache. If a ``NULL`` value is passed, the server      |
-|                     | default value is used: ``/tmp`` (Unix) or ``\\temp`` (NT).                |
-+---------------------+---------------------------------------------------------------------------+
++---------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| ``maxCacheEntries`` | The maximum number of entries in the cache. If a ``NULL`` value is passed, the server default value of 10,000 is used.                                                                                   |
+|                     |                                                                                                                                                                                                          |
++---------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| ``timeout``         | The lifetime in seconds of an SSL2 session. The minimum timeout value is                                                                                                                                 |
+|                     | 5 seconds and the maximum is 24 hours. Values outside this range are                                                                                                                                     |
+|                     | replaced by the server default value of 100 seconds.                                                                                                                                                     |
++---------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| ``ssl3_timeout``    | The lifetime in seconds of an SSL3 session. The minimum timeout value is                                                                                                                                 |
+|                     | 5 seconds and the maximum is 24 hours. Values outside this range are                                                                                                                                     |
+|                     | replaced by the server default value of 24 hours.                                                                                                                                                        |
++---------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| ``directory``       | A pointer to a string specifying the pathname of the directory that will contain the session cache. If a ``NULL`` value is passed, the server default value is used: ``/tmp`` (Unix) or ``\\temp`` (NT). |
+|                     |                                                                                                                                                                                                          |
+|                     |                                                                                                                                                                                                          |
++---------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 ```
 
 ```{rubric} Returns
@@ -986,16 +986,16 @@ SECStatus SSL_InheritMPServerSIDCache (const char *envString);
 This function has the following parameter:
 
 ```{eval-rst}
-+-------------------------------------------------+-------------------------------------------------+
-| ``envString``                                   | A pointer to the location of the inheritance    |
-|                                                 | information. The value depends on how you are   |
-|                                                 | passing the information.                        |
-|                                                 |                                                 |
-|                                                 | If a ``NULL`` value is passed, the function     |
-|                                                 | looks for the ``SSL_INHERITANCE`` variable that |
-|                                                 | has been inherited as part of the child's       |
-|                                                 | environment.                                    |
-+-------------------------------------------------+-------------------------------------------------+
++---------------+-------------------------------------------------+
+| ``envString`` | A pointer to the location of the inheritance    |
+|               | information. The value depends on how you are   |
+|               | passing the information.                        |
+|               |                                                 |
+|               | If a ``NULL`` value is passed, the function     |
+|               | looks for the ``SSL_INHERITANCE`` variable that |
+|               | has been inherited as part of the child's       |
+|               | environment.                                    |
++---------------+-------------------------------------------------+
 ```
 
 ```{rubric} Returns
@@ -1307,67 +1307,67 @@ SECStatus SSL_CipherPolicySet(PRInt32 cipher, PRInt32 policy);
 This function has the following parameters:
 
 ```{eval-rst}
-+-------------------------------------------------+-------------------------------------------------+
-| ``cipher``                                      | A value from one of the following lists.        |
-|                                                 |                                                 |
-|                                                 | Values for SSL2 (all are disallowed by          |
-|                                                 | default):                                       |
-|                                                 |                                                 |
-|                                                 | ``SSL_EN_RC4_128_WITH_                          |
-|                                                 | MD5      SSL_EN_RC4_128_EXPORT40_WITH_MD5       |
-|                                                 | SSL_EN_RC2_128_CBC_WITH_MD5      SSL_EN_RC2_128 |
-|                                                 | _CBC_EXPORT40_WITH_MD5      SSL_EN_DES_64_CBC_W |
-|                                                 | ITH_MD5      SSL_EN_DES_192_EDE3_CBC_WITH_MD5`` |
-|                                                 |                                                 |
-|                                                 | Values for SSL3/TLS (all are disallowed by      |
-|                                                 | default):                                       |
-|                                                 |                                                 |
-|                                                 | ``TLS_DHE_RSA_WITH_AES_256_CBC_SHA`` (client    |
-|                                                 | side only)                                      |
-|                                                 | ``TLS_DHE_DSS_WITH_AES_256_CBC_SHA`` (client    |
-|                                                 | side only)                                      |
-|                                                 | ``TLS_RSA_WITH_AES_256_CBC_SHA``                |
-|                                                 | ``SSL_FORTEZZA_DMS_WITH_RC4_128_SHA``           |
-|                                                 | ``TLS_DHE_DSS_WITH_RC4_128_SHA`` (client side   |
-|                                                 | only)                                           |
-|                                                 | ``TLS_DHE_RSA_WITH_AES_128_CBC_SHA`` (client    |
-|                                                 | side only)                                      |
-|                                                 | ``TLS_DHE_DSS_WITH_AES_128_CBC_SHA`` (client    |
-|                                                 | side only)                                      |
-|                                                 | ``SSL_RSA_WITH_RC4_128_MD5``                    |
-|                                                 | ``SSL_RSA_WITH_RC4_128_SHA``                    |
-|                                                 | ``TLS_RSA_WITH_AES_128_CBC_SHA``                |
-|                                                 | ``SSL_DHE_RSA_WITH_3DES_EDE_CBC_SHA`` (client   |
-|                                                 | side only)                                      |
-|                                                 | ``SSL_DHE_DSS_WITH_3DES_EDE_CBC_SHA`` (client   |
-|                                                 | side only)                                      |
-|                                                 | ``SSL_RSA_FIPS_WITH_3DES_EDE_CBC_SHA``          |
-|                                                 | ``SSL_RSA_WITH_3DES_EDE_CBC_SHA``               |
-|                                                 | ``SSL_FORTEZZA_DMS_WITH_FORTEZZA_CBC_SHA``      |
-|                                                 | ``SSL_DHE_RSA_WITH_DES_CBC_SHA`` (client side   |
-|                                                 | only)                                           |
-|                                                 | ``SSL_DHE_DSS_WITH_DES_CBC_SHA`` (client side   |
-|                                                 | only)                                           |
-|                                                 | ``SSL_RSA_FIPS_WITH_DES_CBC_SHA``               |
-|                                                 | ``SSL_RSA_WITH_DES_CBC_SHA``                    |
-|                                                 | ``TLS_RSA_EXPORT1024_WITH_RC4_56_SHA``          |
-|                                                 | ``TLS_RSA_EXPORT1024_WITH_DES_CBC_SHA``         |
-|                                                 | ``SSL_RSA_EXPORT_WITH_RC4_40_MD5``              |
-|                                                 | ``SSL_RSA_EXPORT_WITH_RC2_CBC_40_MD5``          |
-|                                                 | ``SSL_FORTEZZA_DMS_WITH_NULL_SHA``              |
-|                                                 | ``SSL_RSA_WITH_NULL_SHA``                       |
-|                                                 | ``SSL_RSA_WITH_NULL_MD5``                       |
-+-------------------------------------------------+-------------------------------------------------+
-| ``policy``                                      | One of the following values:                    |
-|                                                 |                                                 |
-|                                                 | -  ``SSL_ALLOWED``. Cipher is always allowed by |
-|                                                 |    U.S. government policy.                      |
-|                                                 | -  ``SSL_RESTRICTED``. Cipher is allowed by     |
-|                                                 |    U.S. government policy for servers with      |
-|                                                 |    Global ID certificates.                      |
-|                                                 | -  ``SSL_NOT_ALLOWED``. Cipher is never allowed |
-|                                                 |    by U.S. government policy.                   |
-+-------------------------------------------------+-------------------------------------------------+
++------------+-------------------------------------------------+
+| ``cipher`` | A value from one of the following lists.        |
+|            |                                                 |
+|            | Values for SSL2 (all are disallowed by          |
+|            | default):                                       |
+|            |                                                 |
+|            | ``SSL_EN_RC4_128_WITH_                          |
+|            | MD5      SSL_EN_RC4_128_EXPORT40_WITH_MD5       |
+|            | SSL_EN_RC2_128_CBC_WITH_MD5      SSL_EN_RC2_128 |
+|            | _CBC_EXPORT40_WITH_MD5      SSL_EN_DES_64_CBC_W |
+|            | ITH_MD5      SSL_EN_DES_192_EDE3_CBC_WITH_MD5`` |
+|            |                                                 |
+|            | Values for SSL3/TLS (all are disallowed by      |
+|            | default):                                       |
+|            |                                                 |
+|            | ``TLS_DHE_RSA_WITH_AES_256_CBC_SHA`` (client    |
+|            | side only)                                      |
+|            | ``TLS_DHE_DSS_WITH_AES_256_CBC_SHA`` (client    |
+|            | side only)                                      |
+|            | ``TLS_RSA_WITH_AES_256_CBC_SHA``                |
+|            | ``SSL_FORTEZZA_DMS_WITH_RC4_128_SHA``           |
+|            | ``TLS_DHE_DSS_WITH_RC4_128_SHA`` (client side   |
+|            | only)                                           |
+|            | ``TLS_DHE_RSA_WITH_AES_128_CBC_SHA`` (client    |
+|            | side only)                                      |
+|            | ``TLS_DHE_DSS_WITH_AES_128_CBC_SHA`` (client    |
+|            | side only)                                      |
+|            | ``SSL_RSA_WITH_RC4_128_MD5``                    |
+|            | ``SSL_RSA_WITH_RC4_128_SHA``                    |
+|            | ``TLS_RSA_WITH_AES_128_CBC_SHA``                |
+|            | ``SSL_DHE_RSA_WITH_3DES_EDE_CBC_SHA`` (client   |
+|            | side only)                                      |
+|            | ``SSL_DHE_DSS_WITH_3DES_EDE_CBC_SHA`` (client   |
+|            | side only)                                      |
+|            | ``SSL_RSA_FIPS_WITH_3DES_EDE_CBC_SHA``          |
+|            | ``SSL_RSA_WITH_3DES_EDE_CBC_SHA``               |
+|            | ``SSL_FORTEZZA_DMS_WITH_FORTEZZA_CBC_SHA``      |
+|            | ``SSL_DHE_RSA_WITH_DES_CBC_SHA`` (client side   |
+|            | only)                                           |
+|            | ``SSL_DHE_DSS_WITH_DES_CBC_SHA`` (client side   |
+|            | only)                                           |
+|            | ``SSL_RSA_FIPS_WITH_DES_CBC_SHA``               |
+|            | ``SSL_RSA_WITH_DES_CBC_SHA``                    |
+|            | ``TLS_RSA_EXPORT1024_WITH_RC4_56_SHA``          |
+|            | ``TLS_RSA_EXPORT1024_WITH_DES_CBC_SHA``         |
+|            | ``SSL_RSA_EXPORT_WITH_RC4_40_MD5``              |
+|            | ``SSL_RSA_EXPORT_WITH_RC2_CBC_40_MD5``          |
+|            | ``SSL_FORTEZZA_DMS_WITH_NULL_SHA``              |
+|            | ``SSL_RSA_WITH_NULL_SHA``                       |
+|            | ``SSL_RSA_WITH_NULL_MD5``                       |
++------------+-------------------------------------------------+
+| ``policy`` | One of the following values:                    |
+|            |                                                 |
+|            | -  ``SSL_ALLOWED``. Cipher is always allowed by |
+|            |    U.S. government policy.                      |
+|            | -  ``SSL_RESTRICTED``. Cipher is allowed by     |
+|            |    U.S. government policy for servers with      |
+|            |    Global ID certificates.                      |
+|            | -  ``SSL_NOT_ALLOWED``. Cipher is never allowed |
+|            |    by U.S. government policy.                   |
++------------+-------------------------------------------------+
 ```
 
 ```{rubric} Returns
@@ -1460,21 +1460,21 @@ SECStatus SSL_CipherPolicyGet(PRInt32 cipher, PRInt32 *policy);
 This function has the following parameters:
 
 ````{eval-rst}
-+-------------------------------------------------+-------------------------------------------------+
-| ``cipher``                                      | A value identifying a cipher suite. For a list  |
-|                                                 | of possible values, see                         |
-|                                                 | ```SSL_CipherPolicySet`` <#1104647>`__.         |
-+-------------------------------------------------+-------------------------------------------------+
-| policy                                          | A pointer to one of the following values:       |
-|                                                 |                                                 |
-|                                                 | -  ``SSL_ALLOWED``. Cipher is always allowed by |
-|                                                 |    U.S. government policy.                      |
-|                                                 | -  ``SSL_RESTRICTED``. Cipher is allowed by     |
-|                                                 |    U.S. government policy for servers with      |
-|                                                 |    Global ID certificates.                      |
-|                                                 | -  ``SSL_NOT_ALLOWED``. Cipher is never allowed |
-|                                                 |    by U.S. government policy.                   |
-+-------------------------------------------------+-------------------------------------------------+
++------------+----------------------------------------------------------------------------------------------------------------+
+| ``cipher`` | A value identifying a cipher suite. For a list of possible values, see ```SSL_CipherPolicySet`` <#1104647>`__. |
+|            |                                                                                                                |
+|            |                                                                                                                |
++------------+----------------------------------------------------------------------------------------------------------------+
+| policy     | A pointer to one of the following values:                                                                      |
+|            |                                                                                                                |
+|            | -  ``SSL_ALLOWED``. Cipher is always allowed by                                                                |
+|            |    U.S. government policy.                                                                                     |
+|            | -  ``SSL_RESTRICTED``. Cipher is allowed by                                                                    |
+|            |    U.S. government policy for servers with                                                                     |
+|            |    Global ID certificates.                                                                                     |
+|            | -  ``SSL_NOT_ALLOWED``. Cipher is never allowed                                                                |
+|            |    by U.S. government policy.                                                                                  |
++------------+----------------------------------------------------------------------------------------------------------------+
 ````
 
 ```{rubric} Description
@@ -1627,111 +1627,111 @@ SECStatus SSL_OptionSet(
 This function has the following parameters:
 
 ````{eval-rst}
-+-------------------------------------------------+-------------------------------------------------+
-| ``fd``                                          | Pointer to the NSPR file descriptor for the SSL |
-|                                                 | socket.                                         |
-+-------------------------------------------------+-------------------------------------------------+
-| ``option``                                      | One of the following values (default values are |
-|                                                 | determined by the use of                        |
-|                                                 | ```SSL_OptionSetDefault`` <#1068466>`__):       |
-|                                                 |                                                 |
-|                                                 | -  ``SSL_SECURITY`` enables use of security     |
-|                                                 |    protocol. WARNING: If you turn this option   |
-|                                                 |    off, the session will not be an SSL session  |
-|                                                 |    and will not have certificate-based          |
-|                                                 |    authentication, tamper detection, or         |
-|                                                 |    encryption.                                  |
-|                                                 | -  ``SSL_REQUEST_CERTIFICATE`` is a server      |
-|                                                 |    option that requests a client to             |
-|                                                 |    authenticate itself.                         |
-|                                                 | -  ``SSL_REQUIRE_CERTIFICATE`` is a server      |
-|                                                 |    option that requires a client to             |
-|                                                 |    authenticate itself (only if                 |
-|                                                 |    ``SSL_REQUEST_CERTIFICATE`` is also on). If  |
-|                                                 |    client does not provide certificate, the     |
-|                                                 |    connection terminates.                       |
-|                                                 | -  ``SSL_HANDSHAKE_AS_CLIENT`` controls the     |
-|                                                 |    behavior of ``PR_Accept``,. If this option   |
-|                                                 |    is off, the ``PR_Accept`` configures the SSL |
-|                                                 |    socket to handshake as a server. If it is    |
-|                                                 |    on, then ``PR_Accept`` configures the SSL    |
-|                                                 |    socket to handshake as a client, even though |
-|                                                 |    it accepted the connection as a TCP server.  |
-|                                                 | -  ``SSL_HANDSHAKE_AS_SERVER`` controls the     |
-|                                                 |    behavior of ``PR_Connect``. If this option   |
-|                                                 |    is off, then ``PR_Connect`` configures the   |
-|                                                 |    SSL socket to handshake as a client. If it   |
-|                                                 |    is on, then ``PR_Connect`` configures the    |
-|                                                 |    SSL socket to handshake as a server, even    |
-|                                                 |    though it connected as a TCP client.         |
-|                                                 | -  ``SSL_ENABLE_FDX`` tells the SSL library     |
-|                                                 |    whether the application will have two        |
-|                                                 |    threads, one reading and one writing, or     |
-|                                                 |    just one thread doing reads and writes       |
-|                                                 |    alternately. The factory setting for this    |
-|                                                 |    option (which is the default, unless the     |
-|                                                 |    application changes the default) is off      |
-|                                                 |    (``PR_FALSE``), which means that the         |
-|                                                 |    application will not do simultaneous reads   |
-|                                                 |    and writes. An application that needs to do  |
-|                                                 |    simultaneous reads and writes should set     |
-|                                                 |    this to ``PR_TRUE``.                         |
-|                                                 |                                                 |
-|                                                 | In NSS 2.8, the ``SSL_ENABLE_FDX`` option only  |
-|                                                 | affects the behavior of nonblocking SSL         |
-|                                                 | sockets. See the description below for more     |
-|                                                 | information on this option.                     |
-+-------------------------------------------------+-------------------------------------------------+
-|                                                 | -  ``SSL_ENABLE_SSL3`` enables the application  |
-|                                                 |    to communicate with SSL v3. If you turn this |
-|                                                 |    option off, an attempt to establish a        |
-|                                                 |    connection with a peer that understands only |
-|                                                 |    SSL v3 will fail.                            |
-|                                                 | -  ``SSL_ENABLE_SSL2`` enables the application  |
-|                                                 |    to communicate with SSL v2. If you turn this |
-|                                                 |    option off, an attempt to establish a        |
-|                                                 |    connection with a peer that understands only |
-|                                                 |    SSL v2 will fail.                            |
-|                                                 | -  ``SSL_ENABLE_TLS`` is a peer of the          |
-|                                                 |    ``SSL_ENABLE_SSL2`` and ``SSL_ENABLE_SSL3``  |
-|                                                 |    options. The IETF standard Transport Layer   |
-|                                                 |    Security (TLS) protocol, RFC 2246, is a      |
-|                                                 |    modified version of SSL3. It uses the SSL    |
-|                                                 |    version number 3.1, appearing to be a        |
-|                                                 |    "minor" revision of SSL3.0. NSS 2.8 supports |
-|                                                 |    TLS in addition to SSL2 and SSL3. You can    |
-|                                                 |    think of it as "``SSL_ENABLE_SSL3.1``." See  |
-|                                                 |    the description below for more information   |
-|                                                 |    about this option.                           |
-|                                                 | -  ``SSL_V2_COMPATIBLE_HELLO`` tells the SSL    |
-|                                                 |    library whether or not to send SSL3 client   |
-|                                                 |    hello messages in SSL2-compatible format. If |
-|                                                 |    set to ``PR_TRUE``, it will; otherwise, it   |
-|                                                 |    will not. See the description below for more |
-|                                                 |    information on this option.                  |
-|                                                 | -  ``SSL_NO_CACHE`` disallows use of the        |
-|                                                 |    session cache. Factory setting is off. If    |
-|                                                 |    you turn this option on, this socket will be |
-|                                                 |    unable to resume a session begun by another  |
-|                                                 |    socket. When this socket's session is        |
-|                                                 |    finished, no other socket will be able to    |
-|                                                 |    resume the session begun by this socket.     |
-|                                                 | -  ``SSL_ROLLBACK_DETECTION`` disables          |
-|                                                 |    detection of a rollback attack. Factory      |
-|                                                 |    setting is on. You must turn this option off |
-|                                                 |    to interoperate with TLS clients ( such as   |
-|                                                 |    certain versions of Microsoft Internet       |
-|                                                 |    Explorer) that do not conform to the TLS     |
-|                                                 |    specification regarding rollback attacks.    |
-|                                                 |    Important: turning this option off means     |
-|                                                 |    that your code will not comply with the TLS  |
-|                                                 |    3.1 and SSL 3.0 specifications regarding     |
-|                                                 |    rollback attack and will therefore be        |
-|                                                 |    vulnerable to this form of attack.           |
-+-------------------------------------------------+-------------------------------------------------+
-| ``on``                                          | ``PR_TRUE`` turns option on; ``PR_FALSE`` turns |
-|                                                 | option off.                                     |
-+-------------------------------------------------+-------------------------------------------------+
++------------+-------------------------------------------------------------+
+| ``fd``     | Pointer to the NSPR file descriptor for the SSL             |
+|            | socket.                                                     |
++------------+-------------------------------------------------------------+
+| ``option`` | One of the following values (default values are             |
+|            | determined by the use of                                    |
+|            | ```SSL_OptionSetDefault`` <#1068466>`__):                   |
+|            |                                                             |
+|            | -  ``SSL_SECURITY`` enables use of security                 |
+|            |    protocol. WARNING: If you turn this option               |
+|            |    off, the session will not be an SSL session              |
+|            |    and will not have certificate-based                      |
+|            |    authentication, tamper detection, or                     |
+|            |    encryption.                                              |
+|            | -  ``SSL_REQUEST_CERTIFICATE`` is a server                  |
+|            |    option that requests a client to                         |
+|            |    authenticate itself.                                     |
+|            | -  ``SSL_REQUIRE_CERTIFICATE`` is a server                  |
+|            |    option that requires a client to                         |
+|            |    authenticate itself (only if                             |
+|            |    ``SSL_REQUEST_CERTIFICATE`` is also on). If              |
+|            |    client does not provide certificate, the                 |
+|            |    connection terminates.                                   |
+|            | -  ``SSL_HANDSHAKE_AS_CLIENT`` controls the                 |
+|            |    behavior of ``PR_Accept``,. If this option               |
+|            |    is off, the ``PR_Accept`` configures the SSL             |
+|            |    socket to handshake as a server. If it is                |
+|            |    on, then ``PR_Accept`` configures the SSL                |
+|            |    socket to handshake as a client, even though             |
+|            |    it accepted the connection as a TCP server.              |
+|            | -  ``SSL_HANDSHAKE_AS_SERVER`` controls the                 |
+|            |    behavior of ``PR_Connect``. If this option               |
+|            |    is off, then ``PR_Connect`` configures the               |
+|            |    SSL socket to handshake as a client. If it               |
+|            |    is on, then ``PR_Connect`` configures the                |
+|            |    SSL socket to handshake as a server, even                |
+|            |    though it connected as a TCP client.                     |
+|            | -  ``SSL_ENABLE_FDX`` tells the SSL library                 |
+|            |    whether the application will have two                    |
+|            |    threads, one reading and one writing, or                 |
+|            |    just one thread doing reads and writes                   |
+|            |    alternately. The factory setting for this                |
+|            |    option (which is the default, unless the                 |
+|            |    application changes the default) is off                  |
+|            |    (``PR_FALSE``), which means that the                     |
+|            |    application will not do simultaneous reads               |
+|            |    and writes. An application that needs to do              |
+|            |    simultaneous reads and writes should set                 |
+|            |    this to ``PR_TRUE``.                                     |
+|            |                                                             |
+|            | In NSS 2.8, the ``SSL_ENABLE_FDX`` option only              |
+|            | affects the behavior of nonblocking SSL                     |
+|            | sockets. See the description below for more                 |
+|            | information on this option.                                 |
++------------+-------------------------------------------------------------+
+|            | -  ``SSL_ENABLE_SSL3`` enables the application              |
+|            |    to communicate with SSL v3. If you turn this             |
+|            |    option off, an attempt to establish a                    |
+|            |    connection with a peer that understands only             |
+|            |    SSL v3 will fail.                                        |
+|            | -  ``SSL_ENABLE_SSL2`` enables the application              |
+|            |    to communicate with SSL v2. If you turn this             |
+|            |    option off, an attempt to establish a                    |
+|            |    connection with a peer that understands only             |
+|            |    SSL v2 will fail.                                        |
+|            | -  ``SSL_ENABLE_TLS`` is a peer of the                      |
+|            |    ``SSL_ENABLE_SSL2`` and ``SSL_ENABLE_SSL3``              |
+|            |    options. The IETF standard Transport Layer               |
+|            |    Security (TLS) protocol, RFC 2246, is a                  |
+|            |    modified version of SSL3. It uses the SSL                |
+|            |    version number 3.1, appearing to be a                    |
+|            |    "minor" revision of SSL3.0. NSS 2.8 supports             |
+|            |    TLS in addition to SSL2 and SSL3. You can                |
+|            |    think of it as "``SSL_ENABLE_SSL3.1``." See              |
+|            |    the description below for more information               |
+|            |    about this option.                                       |
+|            | -  ``SSL_V2_COMPATIBLE_HELLO`` tells the SSL                |
+|            |    library whether or not to send SSL3 client               |
+|            |    hello messages in SSL2-compatible format. If             |
+|            |    set to ``PR_TRUE``, it will; otherwise, it               |
+|            |    will not. See the description below for more             |
+|            |    information on this option.                              |
+|            | -  ``SSL_NO_CACHE`` disallows use of the                    |
+|            |    session cache. Factory setting is off. If                |
+|            |    you turn this option on, this socket will be             |
+|            |    unable to resume a session begun by another              |
+|            |    socket. When this socket's session is                    |
+|            |    finished, no other socket will be able to                |
+|            |    resume the session begun by this socket.                 |
+|            | -  ``SSL_ROLLBACK_DETECTION`` disables                      |
+|            |    detection of a rollback attack. Factory                  |
+|            |    setting is on. You must turn this option off             |
+|            |    to interoperate with TLS clients ( such as               |
+|            |    certain versions of Microsoft Internet                   |
+|            |    Explorer) that do not conform to the TLS                 |
+|            |    specification regarding rollback attacks.                |
+|            |    Important: turning this option off means                 |
+|            |    that your code will not comply with the TLS              |
+|            |    3.1 and SSL 3.0 specifications regarding                 |
+|            |    rollback attack and will therefore be                    |
+|            |    vulnerable to this form of attack.                       |
++------------+-------------------------------------------------------------+
+| ``on``     | ``PR_TRUE`` turns option on; ``PR_FALSE`` turns option off. |
+|            |                                                             |
++------------+-------------------------------------------------------------+
 ````
 
 ```{rubric} Returns
@@ -1859,17 +1859,17 @@ SECStatus SSL_OptionGet(
 This function has the following parameters:
 
 ````{eval-rst}
-+------------+------------------------------------------------------------------------------------+
-| ``fd``     | Pointer to the file descriptor for the SSL socket.                                 |
-+------------+------------------------------------------------------------------------------------+
-| ``option`` | The value of the option whose default setting you wish to get. For information     |
-|            | about the options available and the possible values to pass in this parameter, see |
-|            | the description of the ``option`` parameter under                                  |
-|            | ```SSL_OptionSet`` <#1086543>`__.                                                  |
-+------------+------------------------------------------------------------------------------------+
-| ``on``     | ``PR_TRUE`` indicates the specified option is on; ``PR_FALSE`` indicates it is     |
-|            | off.                                                                               |
-+------------+------------------------------------------------------------------------------------+
++------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| ``fd``     | Pointer to the file descriptor for the SSL socket.                                                                                                                                                                                                    |
++------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| ``option`` | The value of the option whose default setting you wish to get. For information about the options available and the possible values to pass in this parameter, see the description of the ``option`` parameter under ```SSL_OptionSet`` <#1086543>`__. |
+|            |                                                                                                                                                                                                                                                       |
+|            |                                                                                                                                                                                                                                                       |
+|            |                                                                                                                                                                                                                                                       |
++------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| ``on``     | ``PR_TRUE`` indicates the specified option is on; ``PR_FALSE`` indicates it is off.                                                                                                                                                                   |
+|            |                                                                                                                                                                                                                                                       |
++------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 ````
 
 ```{rubric} Returns
@@ -1918,67 +1918,67 @@ SECStatus SSL_CipherPrefSet(
 This function has the following parameters:
 
 ```{eval-rst}
-+-------------------------------------------------+-------------------------------------------------+
-| ``fd``                                          | Pointer to the file descriptor for the SSL      |
-|                                                 | socket.                                         |
-+-------------------------------------------------+-------------------------------------------------+
-| ``cipher``                                      | One of the following values for SSL2 (all are   |
-|                                                 | enabled by default):                            |
-|                                                 |                                                 |
-|                                                 | ``SSL_EN_RC4_128_WITH_                          |
-|                                                 | MD5      SSL_EN_RC4_128_EXPORT40_WITH_MD5       |
-|                                                 | SSL_EN_RC2_128_CBC_WITH_MD5      SSL_EN_RC2_128 |
-|                                                 | _CBC_EXPORT40_WITH_MD5      SSL_EN_DES_64_CBC_W |
-|                                                 | ITH_MD5      SSL_EN_DES_192_EDE3_CBC_WITH_MD5`` |
-|                                                 |                                                 |
-|                                                 | Or one of the following values for SSL3/TLS     |
-|                                                 | (unless indicated otherwise, all are enabled by |
-|                                                 | default):                                       |
-|                                                 |                                                 |
-|                                                 | ``TLS_DHE_RSA_WITH_AES_256_CBC_SHA`` (not       |
-|                                                 | enabled by default; client side only)           |
-|                                                 | ``TLS_DHE_DSS_WITH_AES_256_CBC_SHA`` (not       |
-|                                                 | enabled by default; client side only)           |
-|                                                 | ``TLS_RSA_WITH_AES_256_CBC_SHA`` (not enabled   |
-|                                                 | by default)                                     |
-|                                                 | ``SSL_FORTEZZA_DMS_WITH_RC4_128_SHA``           |
-|                                                 | ``TLS_DHE_DSS_WITH_RC4_128_SHA`` (not enabled   |
-|                                                 | by default; client side only)                   |
-|                                                 | ``TLS_DHE_RSA_WITH_AES_128_CBC_SHA`` (not       |
-|                                                 | enabled by default; client side only)           |
-|                                                 | ``TLS_DHE_DSS_WITH_AES_128_CBC_SHA`` (not       |
-|                                                 | enabled by default; client side only)           |
-|                                                 | ``SSL_RSA_WITH_RC4_128_MD5``                    |
-|                                                 | ``SSL_RSA_WITH_RC4_128_SHA`` (not enabled by    |
-|                                                 | default)                                        |
-|                                                 | ``TLS_RSA_WITH_AES_128_CBC_SHA`` (not enabled   |
-|                                                 | by default)                                     |
-|                                                 | ``SSL_DHE_RSA_WITH_3DES_EDE_CBC_SHA`` (not      |
-|                                                 | enabled by default; client side only)           |
-|                                                 | ``SSL_DHE_DSS_WITH_3DES_EDE_CBC_SHA`` (not      |
-|                                                 | enabled by default; client side only)           |
-|                                                 | ``SSL_RSA_FIPS_WITH_3DES_EDE_CBC_SHA``          |
-|                                                 | ``SSL_RSA_WITH_3DES_EDE_CBC_SHA``               |
-|                                                 | ``SSL_FORTEZZA_DMS_WITH_FORTEZZA_CBC_SHA``      |
-|                                                 | ``SSL_DHE_RSA_WITH_DES_CBC_SHA`` (not enabled   |
-|                                                 | by default; client side only)                   |
-|                                                 | ``SSL_DHE_DSS_WITH_DES_CBC_SHA`` (not enabled   |
-|                                                 | by default; client side only)                   |
-|                                                 | ``SSL_RSA_FIPS_WITH_DES_CBC_SHA``               |
-|                                                 | ``SSL_RSA_WITH_DES_CBC_SHA``                    |
-|                                                 | ``TLS_RSA_EXPORT1024_WITH_RC4_56_SHA``          |
-|                                                 | ``TLS_RSA_EXPORT1024_WITH_DES_CBC_SHA``         |
-|                                                 | ``SSL_RSA_EXPORT_WITH_RC4_40_MD5``              |
-|                                                 | ``SSL_RSA_EXPORT_WITH_RC2_CBC_40_MD5``          |
-|                                                 | ``SSL_FORTEZZA_DMS_WITH_NULL_SHA``              |
-|                                                 | ``SSL_RSA_WITH_NULL_SHA`` (not enabled by       |
-|                                                 | default)                                        |
-|                                                 | ``SSL_RSA_WITH_NULL_MD5`` (not enabled by       |
-|                                                 | default)                                        |
-+-------------------------------------------------+-------------------------------------------------+
-| ``enabled``                                     | If nonzero, the specified cipher is enabled. If |
-|                                                 | zero, the cipher is disabled.                   |
-+-------------------------------------------------+-------------------------------------------------+
++-------------+-------------------------------------------------+
+| ``fd``      | Pointer to the file descriptor for the SSL      |
+|             | socket.                                         |
++-------------+-------------------------------------------------+
+| ``cipher``  | One of the following values for SSL2 (all are   |
+|             | enabled by default):                            |
+|             |                                                 |
+|             | ``SSL_EN_RC4_128_WITH_                          |
+|             | MD5      SSL_EN_RC4_128_EXPORT40_WITH_MD5       |
+|             | SSL_EN_RC2_128_CBC_WITH_MD5      SSL_EN_RC2_128 |
+|             | _CBC_EXPORT40_WITH_MD5      SSL_EN_DES_64_CBC_W |
+|             | ITH_MD5      SSL_EN_DES_192_EDE3_CBC_WITH_MD5`` |
+|             |                                                 |
+|             | Or one of the following values for SSL3/TLS     |
+|             | (unless indicated otherwise, all are enabled by |
+|             | default):                                       |
+|             |                                                 |
+|             | ``TLS_DHE_RSA_WITH_AES_256_CBC_SHA`` (not       |
+|             | enabled by default; client side only)           |
+|             | ``TLS_DHE_DSS_WITH_AES_256_CBC_SHA`` (not       |
+|             | enabled by default; client side only)           |
+|             | ``TLS_RSA_WITH_AES_256_CBC_SHA`` (not enabled   |
+|             | by default)                                     |
+|             | ``SSL_FORTEZZA_DMS_WITH_RC4_128_SHA``           |
+|             | ``TLS_DHE_DSS_WITH_RC4_128_SHA`` (not enabled   |
+|             | by default; client side only)                   |
+|             | ``TLS_DHE_RSA_WITH_AES_128_CBC_SHA`` (not       |
+|             | enabled by default; client side only)           |
+|             | ``TLS_DHE_DSS_WITH_AES_128_CBC_SHA`` (not       |
+|             | enabled by default; client side only)           |
+|             | ``SSL_RSA_WITH_RC4_128_MD5``                    |
+|             | ``SSL_RSA_WITH_RC4_128_SHA`` (not enabled by    |
+|             | default)                                        |
+|             | ``TLS_RSA_WITH_AES_128_CBC_SHA`` (not enabled   |
+|             | by default)                                     |
+|             | ``SSL_DHE_RSA_WITH_3DES_EDE_CBC_SHA`` (not      |
+|             | enabled by default; client side only)           |
+|             | ``SSL_DHE_DSS_WITH_3DES_EDE_CBC_SHA`` (not      |
+|             | enabled by default; client side only)           |
+|             | ``SSL_RSA_FIPS_WITH_3DES_EDE_CBC_SHA``          |
+|             | ``SSL_RSA_WITH_3DES_EDE_CBC_SHA``               |
+|             | ``SSL_FORTEZZA_DMS_WITH_FORTEZZA_CBC_SHA``      |
+|             | ``SSL_DHE_RSA_WITH_DES_CBC_SHA`` (not enabled   |
+|             | by default; client side only)                   |
+|             | ``SSL_DHE_DSS_WITH_DES_CBC_SHA`` (not enabled   |
+|             | by default; client side only)                   |
+|             | ``SSL_RSA_FIPS_WITH_DES_CBC_SHA``               |
+|             | ``SSL_RSA_WITH_DES_CBC_SHA``                    |
+|             | ``TLS_RSA_EXPORT1024_WITH_RC4_56_SHA``          |
+|             | ``TLS_RSA_EXPORT1024_WITH_DES_CBC_SHA``         |
+|             | ``SSL_RSA_EXPORT_WITH_RC4_40_MD5``              |
+|             | ``SSL_RSA_EXPORT_WITH_RC2_CBC_40_MD5``          |
+|             | ``SSL_FORTEZZA_DMS_WITH_NULL_SHA``              |
+|             | ``SSL_RSA_WITH_NULL_SHA`` (not enabled by       |
+|             | default)                                        |
+|             | ``SSL_RSA_WITH_NULL_MD5`` (not enabled by       |
+|             | default)                                        |
++-------------+-------------------------------------------------+
+| ``enabled`` | If nonzero, the specified cipher is enabled. If |
+|             | zero, the cipher is disabled.                   |
++-------------+-------------------------------------------------+
 ```
 
 ```{rubric} Description
@@ -2023,16 +2023,16 @@ SECStatus SSL_CipherPrefGet(
 This function has the parameters listed below.
 
 ````{eval-rst}
-+---------+---------------------------------------------------------------------------------------+
-| ``fd``  | Pointer to the file descriptor for the SSL socket.                                    |
-+---------+---------------------------------------------------------------------------------------+
-| cipher  | The cipher suite whose default preference setting you want to get. For a list of the  |
-|         | cipher suites you can specify, see ```SSL_CipherPrefSet`` <#1214758>`__.              |
-+---------+---------------------------------------------------------------------------------------+
-| enabled | A pointer to the default value associated with the cipher specified in the ``cipher`` |
-|         | parameter. If nonzero, the specified cipher is enabled. If zero, the cipher is        |
-|         | disabled.                                                                             |
-+---------+---------------------------------------------------------------------------------------+
++---------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| ``fd``  | Pointer to the file descriptor for the SSL socket.                                                                                                                             |
++---------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| cipher  | The cipher suite whose default preference setting you want to get. For a list of the cipher suites you can specify, see ```SSL_CipherPrefSet`` <#1214758>`__.                  |
+|         |                                                                                                                                                                                |
++---------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| enabled | A pointer to the default value associated with the cipher specified in the ``cipher`` parameter. If nonzero, the specified cipher is enabled. If zero, the cipher is disabled. |
+|         |                                                                                                                                                                                |
+|         |                                                                                                                                                                                |
++---------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 ````
 
 ```{rubric} Description
@@ -2075,24 +2075,24 @@ SECStatus SSL_ConfigSecureServer(
 This function has the following parameters:
 
 ```{eval-rst}
-+-------------------------------------------------+-------------------------------------------------+
-| ``fd``                                          | A pointer to the file descriptor for the SSL    |
-|                                                 | listen socket.                                  |
-+-------------------------------------------------+-------------------------------------------------+
-| ``cert``                                        | A pointer to the server's certificate           |
-|                                                 | structure.                                      |
-+-------------------------------------------------+-------------------------------------------------+
-| ``key``                                         | A pointer to the server's private key           |
-|                                                 | structure.                                      |
-+-------------------------------------------------+-------------------------------------------------+
-| ``keaType``                                     | Key exchange type for use with specified        |
-|                                                 | certificate and key. These values are currently |
-|                                                 | valid:                                          |
-|                                                 |                                                 |
-|                                                 | -  ``kt_rsa``                                   |
-|                                                 | -  ``kt_dh``                                    |
-|                                                 | -  ``kt_fortezza``                              |
-+-------------------------------------------------+-------------------------------------------------+
++-------------+-------------------------------------------------+
+| ``fd``      | A pointer to the file descriptor for the SSL    |
+|             | listen socket.                                  |
++-------------+-------------------------------------------------+
+| ``cert``    | A pointer to the server's certificate           |
+|             | structure.                                      |
++-------------+-------------------------------------------------+
+| ``key``     | A pointer to the server's private key           |
+|             | structure.                                      |
++-------------+-------------------------------------------------+
+| ``keaType`` | Key exchange type for use with specified        |
+|             | certificate and key. These values are currently |
+|             | valid:                                          |
+|             |                                                 |
+|             | -  ``kt_rsa``                                   |
+|             | -  ``kt_dh``                                    |
+|             | -  ``kt_fortezza``                              |
++-------------+-------------------------------------------------+
 ```
 
 ```{rubric} Returns
@@ -2329,15 +2329,15 @@ SECStatus SSL_AuthCertificateHook(
 This function has the following parameters:
 
 ````{eval-rst}
-+---------+---------------------------------------------------------------------------------------+
-| ``fd``  | A pointer to the file descriptor for the SSL socket.                                  |
-+---------+---------------------------------------------------------------------------------------+
-| ``f``   | A pointer to the callback function. If ``NULL``, the default callback function,       |
-|         | ```SSL_AuthCertificate`` <#1088888>`__, will be used.                                 |
-+---------+---------------------------------------------------------------------------------------+
-| ``arg`` | A pointer supplied by the application that can be used to pass state information. Can |
-|         | be ``NULL``.                                                                          |
-+---------+---------------------------------------------------------------------------------------+
++---------+---------------------------------------------------------------------------------------------------------------------------------------+
+| ``fd``  | A pointer to the file descriptor for the SSL socket.                                                                                  |
++---------+---------------------------------------------------------------------------------------------------------------------------------------+
+| ``f``   | A pointer to the callback function. If ``NULL``, the default callback function, ```SSL_AuthCertificate`` <#1088888>`__, will be used. |
+|         |                                                                                                                                       |
++---------+---------------------------------------------------------------------------------------------------------------------------------------+
+| ``arg`` | A pointer supplied by the application that can be used to pass state information. Can be ``NULL``.                                    |
+|         |                                                                                                                                       |
++---------+---------------------------------------------------------------------------------------------------------------------------------------+
 ````
 
 ```{rubric} Returns
@@ -2376,22 +2376,22 @@ typedef SECStatus (*SSLAuthCertificate) (
 This callback function has the following parameters:
 
 ```{eval-rst}
-+--------------+----------------------------------------------------------------------------------+
-| ``arg``      | A pointer supplied by the application (in the call to                            |
-|              | ``SSL_AuthCertificateHook``) that can be used to pass state information. Can be  |
-|              | ``NULL``.                                                                        |
-+--------------+----------------------------------------------------------------------------------+
-| ``fd``       | A pointer to the file descriptor for the SSL socket.                             |
-+--------------+----------------------------------------------------------------------------------+
-| ``checksig`` | ``PR_TRUE``\ means signatures are to be checked and the certificate chain is to  |
-|              | be validated. ``PR_FALSE`` means they are not to be checked. (The value is       |
-|              | normally ``PR_TRUE``.)                                                           |
-+--------------+----------------------------------------------------------------------------------+
-| ``isServer`` | ``PR_TRUE`` means the callback function should evaluate the certificate as a     |
-|              | server does, treating the remote end as a client. ``PR_FALSE`` means the         |
-|              | callback function should evaluate the certificate as a client does, treating the |
-|              | remote end as a server.                                                          |
-+--------------+----------------------------------------------------------------------------------+
++--------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| ``arg``      | A pointer supplied by the application (in the call to ``SSL_AuthCertificateHook``) that can be used to pass state information. Can be ``NULL``.                                                                                                                |
+|              |                                                                                                                                                                                                                                                                |
+|              |                                                                                                                                                                                                                                                                |
++--------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| ``fd``       | A pointer to the file descriptor for the SSL socket.                                                                                                                                                                                                           |
++--------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| ``checksig`` | ``PR_TRUE``\ means signatures are to be checked and the certificate chain is to be validated. ``PR_FALSE`` means they are not to be checked. (The value is normally ``PR_TRUE``.)                                                                              |
+|              |                                                                                                                                                                                                                                                                |
+|              |                                                                                                                                                                                                                                                                |
++--------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| ``isServer`` | ``PR_TRUE`` means the callback function should evaluate the certificate as a server does, treating the remote end as a client. ``PR_FALSE`` means the callback function should evaluate the certificate as a client does, treating the remote end as a server. |
+|              |                                                                                                                                                                                                                                                                |
+|              |                                                                                                                                                                                                                                                                |
+|              |                                                                                                                                                                                                                                                                |
++--------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 ```
 
 The callback function returns one of these values:
@@ -2460,23 +2460,23 @@ SECStatus SSL_AuthCertificate(
 This function has the following parameters:
 
 ```{eval-rst}
-+--------------+----------------------------------------------------------------------------------+
-| ``arg``      | A pointer to the handle of the certificate database to be used in validating the |
-|              | certificate's signature. (This use of the ``arg`` parameter is required for      |
-|              | ``SSL_AuthCertificate``, but not for all implementations of a certificate        |
-|              | authentication callback function.)                                               |
-+--------------+----------------------------------------------------------------------------------+
-| ``fd``       | A pointer to the file descriptor for the SSL socket.                             |
-+--------------+----------------------------------------------------------------------------------+
-| ``checksig`` | ``PR_TRUE``\ means signatures are to be checked and the certificate chain is to  |
-|              | be validated. ``PR_FALSE`` means they are not to be checked. (The value is       |
-|              | normally ``PR_TRUE``.)                                                           |
-+--------------+----------------------------------------------------------------------------------+
-| ``isServer`` | ``PR_TRUE`` means the callback function should evaluate the certificate as a     |
-|              | server does, treating the remote end is a client. ``PR_FALSE`` means the         |
-|              | callback function should evaluate the certificate as a client does, treating the |
-|              | remote end as a server.                                                          |
-+--------------+----------------------------------------------------------------------------------+
++--------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| ``arg``      | A pointer to the handle of the certificate database to be used in validating the certificate's signature. (This use of the ``arg`` parameter is required for ``SSL_AuthCertificate``, but not for all implementations of a certificate authentication callback function.) |
+|              |                                                                                                                                                                                                                                                                           |
+|              |                                                                                                                                                                                                                                                                           |
+|              |                                                                                                                                                                                                                                                                           |
++--------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| ``fd``       | A pointer to the file descriptor for the SSL socket.                                                                                                                                                                                                                      |
++--------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| ``checksig`` | ``PR_TRUE``\ means signatures are to be checked and the certificate chain is to be validated. ``PR_FALSE`` means they are not to be checked. (The value is normally ``PR_TRUE``.)                                                                                         |
+|              |                                                                                                                                                                                                                                                                           |
+|              |                                                                                                                                                                                                                                                                           |
++--------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| ``isServer`` | ``PR_TRUE`` means the callback function should evaluate the certificate as a server does, treating the remote end is a client. ``PR_FALSE`` means the callback function should evaluate the certificate as a client does, treating the remote end as a server.            |
+|              |                                                                                                                                                                                                                                                                           |
+|              |                                                                                                                                                                                                                                                                           |
+|              |                                                                                                                                                                                                                                                                           |
++--------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 ```
 
 ```{rubric} Returns
@@ -2534,14 +2534,14 @@ SECStatus SSL_BadCertHook(
 This function has the following parameters:
 
 ```{eval-rst}
-+---------+---------------------------------------------------------------------------------------+
-| ``fd``  | A pointer to the file descriptor for the SSL socket.                                  |
-+---------+---------------------------------------------------------------------------------------+
-| ``f``   | A pointer to the application's callback function.                                     |
-+---------+---------------------------------------------------------------------------------------+
-| ``arg`` | A pointer supplied by the application that can be used to pass state information. Can |
-|         | be ``NULL``.                                                                          |
-+---------+---------------------------------------------------------------------------------------+
++---------+----------------------------------------------------------------------------------------------------+
+| ``fd``  | A pointer to the file descriptor for the SSL socket.                                               |
++---------+----------------------------------------------------------------------------------------------------+
+| ``f``   | A pointer to the application's callback function.                                                  |
++---------+----------------------------------------------------------------------------------------------------+
+| ``arg`` | A pointer supplied by the application that can be used to pass state information. Can be ``NULL``. |
+|         |                                                                                                    |
++---------+----------------------------------------------------------------------------------------------------+
 ```
 
 ```{rubric} Returns
@@ -2635,15 +2635,15 @@ SECStatus SSL_GetClientAuthDataHook(
 This function has the following parameters:
 
 ```{eval-rst}
-+---------+---------------------------------------------------------------------------------------+
-| ``fd``  | A pointer to the file descriptor for the SSL socket.                                  |
-+---------+---------------------------------------------------------------------------------------+
-| ``f``   | A pointer to the application's callback function that delivers the key and            |
-|         | certificate.                                                                          |
-+---------+---------------------------------------------------------------------------------------+
-| ``arg`` | A pointer supplied by the application that can be used to pass state information. Can |
-|         | be ``NULL``.                                                                          |
-+---------+---------------------------------------------------------------------------------------+
++---------+----------------------------------------------------------------------------------------------------+
+| ``fd``  | A pointer to the file descriptor for the SSL socket.                                               |
++---------+----------------------------------------------------------------------------------------------------+
+| ``f``   | A pointer to the application's callback function that delivers the key and                         |
+|         | certificate.                                                                                       |
++---------+----------------------------------------------------------------------------------------------------+
+| ``arg`` | A pointer supplied by the application that can be used to pass state information. Can be ``NULL``. |
+|         |                                                                                                    |
++---------+----------------------------------------------------------------------------------------------------+
 ```
 
 ```{rubric} Returns
@@ -2730,22 +2730,22 @@ SECStatus NSS_GetClientAuthData(
 This function has the following parameters:
 
 ```{eval-rst}
-+--------------+----------------------------------------------------------------------------------+
-| ``arg``      | The ``arg`` parameter passed to ``SSL_GetClientAuthDataHook``, which should be a |
-|              | pointer to a ``NULL``-terminated string containing the nickname of the           |
-|              | certificate and key pair to use. If ``arg`` is ``NULL``,                         |
-|              | ``NSS_GetClientAuthData`` searches the certificate and key databases for a       |
-|              | suitable match and uses the certificate and key pair it finds, if any.           |
-+--------------+----------------------------------------------------------------------------------+
-| ``socket``   | A pointer to the file descriptor for the SSL socket.                             |
-+--------------+----------------------------------------------------------------------------------+
-| ``caNames``  | A pointer to distinguished names of CAs that the server accepts.                 |
-+--------------+----------------------------------------------------------------------------------+
-| ``pRetCert`` | A pointer to a pointer to a certificate structure, for returning the             |
-|              | certificate.                                                                     |
-+--------------+----------------------------------------------------------------------------------+
-| ``pRetKey``  | A pointer to a pointer to a key structure, for returning the private key.        |
-+--------------+----------------------------------------------------------------------------------+
++--------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| ``arg``      | The ``arg`` parameter passed to ``SSL_GetClientAuthDataHook``, which should be a pointer to a ``NULL``-terminated string containing the nickname of the certificate and key pair to use. If ``arg`` is ``NULL``, ``NSS_GetClientAuthData`` searches the certificate and key databases for a suitable match and uses the certificate and key pair it finds, if any. |
+|              |                                                                                                                                                                                                                                                                                                                                                                    |
+|              |                                                                                                                                                                                                                                                                                                                                                                    |
+|              |                                                                                                                                                                                                                                                                                                                                                                    |
+|              |                                                                                                                                                                                                                                                                                                                                                                    |
++--------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| ``socket``   | A pointer to the file descriptor for the SSL socket.                                                                                                                                                                                                                                                                                                               |
++--------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| ``caNames``  | A pointer to distinguished names of CAs that the server accepts.                                                                                                                                                                                                                                                                                                   |
++--------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| ``pRetCert`` | A pointer to a pointer to a certificate structure, for returning the                                                                                                                                                                                                                                                                                               |
+|              | certificate.                                                                                                                                                                                                                                                                                                                                                       |
++--------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| ``pRetKey``  | A pointer to a pointer to a key structure, for returning the private key.                                                                                                                                                                                                                                                                                          |
++--------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 ```
 
 ```{rubric} Returns
@@ -2800,14 +2800,14 @@ SECStatus SSL_HandshakeCallback(
 This function has the following parameters:
 
 ```{eval-rst}
-+-----------------+-------------------------------------------------------------------------------+
-| ``fd``          | A pointer to the file descriptor for the SSL socket.                          |
-+-----------------+-------------------------------------------------------------------------------+
-| ``cb``          | A pointer to the application's callback function.                             |
-+-----------------+-------------------------------------------------------------------------------+
-| ``client_data`` | A pointer to the value of the ``client_data`` argument that was passed to     |
-|                 | ``SSL_HandshakeCallback``.                                                    |
-+-----------------+-------------------------------------------------------------------------------+
++-----------------+------------------------------------------------------------------------------------------------------+
+| ``fd``          | A pointer to the file descriptor for the SSL socket.                                                 |
++-----------------+------------------------------------------------------------------------------------------------------+
+| ``cb``          | A pointer to the application's callback function.                                                    |
++-----------------+------------------------------------------------------------------------------------------------------+
+| ``client_data`` | A pointer to the value of the ``client_data`` argument that was passed to ``SSL_HandshakeCallback``. |
+|                 |                                                                                                      |
++-----------------+------------------------------------------------------------------------------------------------------+
 ```
 
 ```{rubric} Returns
@@ -2836,12 +2836,12 @@ typedef void (*SSLHandshakeCallback)(
 This callback function has the following parameters:
 
 ```{eval-rst}
-+-----------------+-------------------------------------------------------------------------------+
-| ``fd``          | A pointer to the file descriptor for the SSL socket.                          |
-+-----------------+-------------------------------------------------------------------------------+
-| ``client_data`` | A pointer supplied by the application that can be used to pass state          |
-|                 | information. Can be ``NULL``.                                                 |
-+-----------------+-------------------------------------------------------------------------------+
++-----------------+----------------------------------------------------------------------------------------------------+
+| ``fd``          | A pointer to the file descriptor for the SSL socket.                                               |
++-----------------+----------------------------------------------------------------------------------------------------+
+| ``client_data`` | A pointer supplied by the application that can be used to pass state information. Can be ``NULL``. |
+|                 |                                                                                                    |
++-----------------+----------------------------------------------------------------------------------------------------+
 ```
 
 ```{rubric} See Also
@@ -3015,71 +3015,71 @@ SECStatus SSL_SecurityStatus(
 This function has the following parameters:
 
 ```{eval-rst}
-+-------------------------------------------------+-------------------------------------------------+
-| ``fd``                                          | The file descriptor for the SSL socket.         |
-+-------------------------------------------------+-------------------------------------------------+
-| ``on``                                          | A pointer to an integer. On output, the integer |
-|                                                 | will be one of these values:                    |
-|                                                 |                                                 |
-|                                                 | -  ``SSL_SECURITY_STATUS_ OFF (= 0)``           |
-|                                                 | -  ``SSL_SECURITY_STATUS_ ON_HIGH (= 1)``       |
-|                                                 | -  ``SSL_SECURITY_STATUS_ON_LOW (= 2)``         |
-+-------------------------------------------------+-------------------------------------------------+
-| ``cipher``                                      | A pointer to a string pointer. On output, the   |
-|                                                 | string pointer references a newly allocated     |
-|                                                 | string specifying the name of the cipher. For   |
-|                                                 | SSL v2, the string is one of the following:     |
-|                                                 |                                                 |
-|                                                 | ``RC4``                                         |
-|                                                 | ``RC4-Export``                                  |
-|                                                 |                                                 |
-|                                                 | ``RC2-CBC``                                     |
-|                                                 |                                                 |
-|                                                 | ``RC2-CBC-Export``                              |
-|                                                 |                                                 |
-|                                                 | ``DES-CBC``                                     |
-|                                                 |                                                 |
-|                                                 | ``DES-EDE3-CBC``                                |
-|                                                 |                                                 |
-|                                                 | For SSL v3, the string is one of the following: |
-|                                                 |                                                 |
-|                                                 | ``RC4``                                         |
-|                                                 | ``RC4-40``                                      |
-|                                                 |                                                 |
-|                                                 | ``RC2-CBC``                                     |
-|                                                 |                                                 |
-|                                                 | ``RC2-CBC-40``                                  |
-|                                                 |                                                 |
-|                                                 | ``DES-CBC``                                     |
-|                                                 |                                                 |
-|                                                 | ``3DES-EDE-CBC``                                |
-|                                                 |                                                 |
-|                                                 | ``DES-CBC-40``                                  |
-|                                                 |                                                 |
-|                                                 | ``FORTEZZA``                                    |
-+-------------------------------------------------+-------------------------------------------------+
-| ``keySize``                                     | A pointer to an integer. On output, the integer |
-|                                                 | is the session key size used, in bits.          |
-+-------------------------------------------------+-------------------------------------------------+
-| ``secretKeySize``                               | A pointer to an integer. On output, the integer |
-|                                                 | indicates the size, in bits, of the secret      |
-|                                                 | portion of the session key used (also known as  |
-|                                                 | the "effective key size"). The secret key size  |
-|                                                 | is never greater than the session key size.     |
-+-------------------------------------------------+-------------------------------------------------+
-| ``issuer``                                      | A pointer to a string pointer. On output, the   |
-|                                                 | string pointer references a newly allocated     |
-|                                                 | string specifying the DN of the issuer of the   |
-|                                                 | certificate at the other end of the connection, |
-|                                                 | in RFC1485 format. If no certificate is         |
-|                                                 | supplied, the string is "``no certificate``."   |
-+-------------------------------------------------+-------------------------------------------------+
-| ``subject``                                     | A pointer to a string pointer specifying the    |
-|                                                 | distinguished name of the certificate at the    |
-|                                                 | other end of the connection, in RFC1485 format. |
-|                                                 | If no certificate is supplied, the string is    |
-|                                                 | "``no certificate``."                           |
-+-------------------------------------------------+-------------------------------------------------+
++-------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| ``fd``            | The file descriptor for the SSL socket.                                                                                                                                                                                                                                       |
++-------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| ``on``            | A pointer to an integer. On output, the integer                                                                                                                                                                                                                               |
+|                   | will be one of these values:                                                                                                                                                                                                                                                  |
+|                   |                                                                                                                                                                                                                                                                               |
+|                   | -  ``SSL_SECURITY_STATUS_ OFF (= 0)``                                                                                                                                                                                                                                         |
+|                   | -  ``SSL_SECURITY_STATUS_ ON_HIGH (= 1)``                                                                                                                                                                                                                                     |
+|                   | -  ``SSL_SECURITY_STATUS_ON_LOW (= 2)``                                                                                                                                                                                                                                       |
++-------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| ``cipher``        | A pointer to a string pointer. On output, the                                                                                                                                                                                                                                 |
+|                   | string pointer references a newly allocated                                                                                                                                                                                                                                   |
+|                   | string specifying the name of the cipher. For                                                                                                                                                                                                                                 |
+|                   | SSL v2, the string is one of the following:                                                                                                                                                                                                                                   |
+|                   |                                                                                                                                                                                                                                                                               |
+|                   | ``RC4``                                                                                                                                                                                                                                                                       |
+|                   | ``RC4-Export``                                                                                                                                                                                                                                                                |
+|                   |                                                                                                                                                                                                                                                                               |
+|                   | ``RC2-CBC``                                                                                                                                                                                                                                                                   |
+|                   |                                                                                                                                                                                                                                                                               |
+|                   | ``RC2-CBC-Export``                                                                                                                                                                                                                                                            |
+|                   |                                                                                                                                                                                                                                                                               |
+|                   | ``DES-CBC``                                                                                                                                                                                                                                                                   |
+|                   |                                                                                                                                                                                                                                                                               |
+|                   | ``DES-EDE3-CBC``                                                                                                                                                                                                                                                              |
+|                   |                                                                                                                                                                                                                                                                               |
+|                   | For SSL v3, the string is one of the following:                                                                                                                                                                                                                               |
+|                   |                                                                                                                                                                                                                                                                               |
+|                   | ``RC4``                                                                                                                                                                                                                                                                       |
+|                   | ``RC4-40``                                                                                                                                                                                                                                                                    |
+|                   |                                                                                                                                                                                                                                                                               |
+|                   | ``RC2-CBC``                                                                                                                                                                                                                                                                   |
+|                   |                                                                                                                                                                                                                                                                               |
+|                   | ``RC2-CBC-40``                                                                                                                                                                                                                                                                |
+|                   |                                                                                                                                                                                                                                                                               |
+|                   | ``DES-CBC``                                                                                                                                                                                                                                                                   |
+|                   |                                                                                                                                                                                                                                                                               |
+|                   | ``3DES-EDE-CBC``                                                                                                                                                                                                                                                              |
+|                   |                                                                                                                                                                                                                                                                               |
+|                   | ``DES-CBC-40``                                                                                                                                                                                                                                                                |
+|                   |                                                                                                                                                                                                                                                                               |
+|                   | ``FORTEZZA``                                                                                                                                                                                                                                                                  |
++-------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| ``keySize``       | A pointer to an integer. On output, the integer                                                                                                                                                                                                                               |
+|                   | is the session key size used, in bits.                                                                                                                                                                                                                                        |
++-------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| ``secretKeySize`` | A pointer to an integer. On output, the integer                                                                                                                                                                                                                               |
+|                   | indicates the size, in bits, of the secret                                                                                                                                                                                                                                    |
+|                   | portion of the session key used (also known as                                                                                                                                                                                                                                |
+|                   | the "effective key size"). The secret key size                                                                                                                                                                                                                                |
+|                   | is never greater than the session key size.                                                                                                                                                                                                                                   |
++-------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| ``issuer``        | A pointer to a string pointer. On output, the string pointer references a newly allocated string specifying the DN of the issuer of the certificate at the other end of the connection, in RFC1485 format. If no certificate is supplied, the string is "``no certificate``." |
+|                   |                                                                                                                                                                                                                                                                               |
+|                   |                                                                                                                                                                                                                                                                               |
+|                   |                                                                                                                                                                                                                                                                               |
+|                   |                                                                                                                                                                                                                                                                               |
+|                   |                                                                                                                                                                                                                                                                               |
++-------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| ``subject``       | A pointer to a string pointer specifying the distinguished name of the certificate at the other end of the connection, in RFC1485 format. If no certificate is supplied, the string is "``no certificate``."                                                                  |
+|                   |                                                                                                                                                                                                                                                                               |
+|                   |                                                                                                                                                                                                                                                                               |
+|                   |                                                                                                                                                                                                                                                                               |
+|                   |                                                                                                                                                                                                                                                                               |
++-------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 ```
 
 ```{rubric} Returns
@@ -3176,12 +3176,12 @@ int SSL_SetSockPeerID(PRFileDesc *fd, char *peerID);
 This function has the following parameters:
 
 ```{eval-rst}
-+------------+------------------------------------------------------------------------------------+
-| ``fd``     | A pointer to the file descriptor for the SSL socket.                               |
-+------------+------------------------------------------------------------------------------------+
-| ``peerID`` | An ID number assigned by the application to keep track of the SSL session          |
-|            | associated with the peer.                                                          |
-+------------+------------------------------------------------------------------------------------+
++------------+---------------------------------------------------------------------------+
+| ``fd``     | A pointer to the file descriptor for the SSL socket.                      |
++------------+---------------------------------------------------------------------------+
+| ``peerID`` | An ID number assigned by the application to keep track of the SSL session |
+|            | associated with the peer.                                                 |
++------------+---------------------------------------------------------------------------+
 ```
 
 ```{rubric} Returns
@@ -3528,20 +3528,20 @@ SECStatus SSL_RedoHandshake(PRFileDesc *fd, PRBool flushCache);
 This function has the following parameters:
 
 ```{eval-rst}
-+-------------------------------------------------+-------------------------------------------------+
-| ``fd``                                          | A pointer to the file descriptor for the SSL    |
-|                                                 | socket.                                         |
-+-------------------------------------------------+-------------------------------------------------+
-| ``flushCache``                                  | If ``flushCache`` is non-zero, the SSL3 cache   |
-|                                                 | entry will be flushed first, ensuring that a    |
-|                                                 | full SSL handshake from scratch will occur.     |
-|                                                 |                                                 |
-|                                                 | If ``flushCache`` is zero, and an SSL           |
-|                                                 | connection is established, it will do the much  |
-|                                                 | faster session restart handshake. This will     |
-|                                                 | regenerate the symmetric session keys without   |
-|                                                 | doing another private key operation.            |
-+-------------------------------------------------+-------------------------------------------------+
++----------------+------------------------------------------------+
+| ``fd``         | A pointer to the file descriptor for the SSL   |
+|                | socket.                                        |
++----------------+------------------------------------------------+
+| ``flushCache`` | If ``flushCache`` is non-zero, the SSL3 cache  |
+|                | entry will be flushed first, ensuring that a   |
+|                | full SSL handshake from scratch will occur.    |
+|                |                                                |
+|                | If ``flushCache`` is zero, and an SSL          |
+|                | connection is established, it will do the much |
+|                | faster session restart handshake. This will    |
+|                | regenerate the symmetric session keys without  |
+|                | doing another private key operation.           |
++----------------+------------------------------------------------+
 ```
 
 ```{rubric} Returns
@@ -3600,13 +3600,13 @@ SECStatus SSL_ResetHandshake(
 This function has the following parameters:
 
 ```{eval-rst}
-+--------------+----------------------------------------------------------------------------------+
-| ``fd``       | A pointer to the file descriptor for the SSL socket.                             |
-+--------------+----------------------------------------------------------------------------------+
-| ``asServer`` | A Boolean value. ``PR_TRUE`` means the socket will attempt to handshake as a     |
-|              | server the next time it tries, and ``PR_FALSE`` means the socket will attempt to |
-|              | handshake as a client the next time it tries.                                    |
-+--------------+----------------------------------------------------------------------------------+
++--------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| ``fd``       | A pointer to the file descriptor for the SSL socket.                                                                                                                                                        |
++--------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| ``asServer`` | A Boolean value. ``PR_TRUE`` means the socket will attempt to handshake as a server the next time it tries, and ``PR_FALSE`` means the socket will attempt to handshake as a client the next time it tries. |
+|              |                                                                                                                                                                                                             |
+|              |                                                                                                                                                                                                             |
++--------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 ```
 
 ```{rubric} Returns
@@ -3724,12 +3724,12 @@ SECStatus SSL_EnableDefault(int which, PRBool on);
 This function has the following parameters:
 
 ````{eval-rst}
-+-----------+-------------------------------------------------------------------------------------+
-| ``which`` | For information about the values that can be passed in the ``which`` parameter, see |
-|           | ```SSL_OptionSetDefault`` <#1068466>`__.                                            |
-+-----------+-------------------------------------------------------------------------------------+
-| ``on``    | ``PR_TRUE`` turns option on; ``PR_FALSE`` turns option off.                         |
-+-----------+-------------------------------------------------------------------------------------+
++-----------+------------------------------------------------------------------------------------------------------------------------------+
+| ``which`` | For information about the values that can be passed in the ``which`` parameter, see ```SSL_OptionSetDefault`` <#1068466>`__. |
+|           |                                                                                                                              |
++-----------+------------------------------------------------------------------------------------------------------------------------------+
+| ``on``    | ``PR_TRUE`` turns option on; ``PR_FALSE`` turns option off.                                                                  |
++-----------+------------------------------------------------------------------------------------------------------------------------------+
 ````
 
 ```{rubric} Returns
@@ -3781,14 +3781,14 @@ SECStatus SSL_Enable(
 This function has the following parameters:
 
 ````{eval-rst}
-+-----------+-------------------------------------------------------------------------------------+
-| ``fd``    | Pointer to the file descriptor for the SSL socket.                                  |
-+-----------+-------------------------------------------------------------------------------------+
-| ``which`` | For information about the values that can be passed in the ``which`` parameter, see |
-|           | the description of the ``option`` parameter under ```SSL_OptionSet`` <#1086543>`__. |
-+-----------+-------------------------------------------------------------------------------------+
-| ``on``    | ``PR_TRUE`` turns option on; ``PR_FALSE`` turns option off.                         |
-+-----------+-------------------------------------------------------------------------------------+
++-----------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| ``fd``    | Pointer to the file descriptor for the SSL socket.                                                                                                                      |
++-----------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| ``which`` | For information about the values that can be passed in the ``which`` parameter, see the description of the ``option`` parameter under ```SSL_OptionSet`` <#1086543>`__. |
+|           |                                                                                                                                                                         |
++-----------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| ``on``    | ``PR_TRUE`` turns option on; ``PR_FALSE`` turns option off.                                                                                                             |
++-----------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 ````
 
 ```{rubric} Returns
@@ -3840,13 +3840,13 @@ SECStatus SSL_EnableCipher(long which, PRBool enabled);
 This function has the following parameters:
 
 ````{eval-rst}
-+-------------+-----------------------------------------------------------------------------------+
-| ``which``   | The cipher suite whose default preference setting you want to set. For a list of  |
-|             | the cipher suites you can specify, see                                            |
-|             | ```SSL_CipherPrefSetDefault`` <#1084747>`__.                                      |
-+-------------+-----------------------------------------------------------------------------------+
-| ``enabled`` | If nonzero, the specified cipher is enabled. If zero, the cipher is disabled.     |
-+-------------+-----------------------------------------------------------------------------------+
++-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| ``which``   | The cipher suite whose default preference setting you want to set. For a list of the cipher suites you can specify, see ```SSL_CipherPrefSetDefault`` <#1084747>`__. |
+|             |                                                                                                                                                                      |
+|             |                                                                                                                                                                      |
++-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| ``enabled`` | If nonzero, the specified cipher is enabled. If zero, the cipher is disabled.                                                                                        |
++-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 ````
 
 ```{rubric} Returns
@@ -3896,21 +3896,21 @@ SECStatus SSL_SetPolicy(long which, int policy);
 This function has the following parameters:
 
 ````{eval-rst}
-+-------------------------------------------------+-------------------------------------------------+
-| ``which``                                       | The cipher suite for which you want to set      |
-|                                                 | policy. For a list of possible values, see      |
-|                                                 | ```SSL_CipherPolicySet`` <#1104647>`__.         |
-+-------------------------------------------------+-------------------------------------------------+
-| ``policy``                                      | One of the following values:                    |
-|                                                 |                                                 |
-|                                                 | -  ``SSL_ALLOWED``. Cipher is always allowed by |
-|                                                 |    U.S. government policy.                      |
-|                                                 | -  ``SSL_RESTRICTED``. Cipher is allowed by     |
-|                                                 |    U.S. government policy for servers with      |
-|                                                 |    Global ID certificates.                      |
-|                                                 | -  ``SSL_NOT_ALLOWED``. Cipher is never allowed |
-|                                                 |    by U.S. government policy.                   |
-+-------------------------------------------------+-------------------------------------------------+
++------------+-------------------------------------------------------------------------------------------------------------------------------+
+| ``which``  | The cipher suite for which you want to set policy. For a list of possible values, see ```SSL_CipherPolicySet`` <#1104647>`__. |
+|            |                                                                                                                               |
+|            |                                                                                                                               |
++------------+-------------------------------------------------------------------------------------------------------------------------------+
+| ``policy`` | One of the following values:                                                                                                  |
+|            |                                                                                                                               |
+|            | -  ``SSL_ALLOWED``. Cipher is always allowed by                                                                               |
+|            |    U.S. government policy.                                                                                                    |
+|            | -  ``SSL_RESTRICTED``. Cipher is allowed by                                                                                   |
+|            |    U.S. government policy for servers with                                                                                    |
+|            |    Global ID certificates.                                                                                                    |
+|            | -  ``SSL_NOT_ALLOWED``. Cipher is never allowed                                                                               |
+|            |    by U.S. government policy.                                                                                                 |
++------------+-------------------------------------------------------------------------------------------------------------------------------+
 ````
 
 ```{rubric} Returns

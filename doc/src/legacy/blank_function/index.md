@@ -25,13 +25,13 @@ ReturnType Function_Name(
 :::{container}
 
 ```{eval-rst}
-+---------------+---------------------------------------------------------------------------------+
-| ``ParamName`` | Sample: *in* pointer to a `CERTCertDBHandle </en-US/NSS/CERTCertDBHandle>`__    |
-|               | representing the certificate database to look in                                |
-+---------------+---------------------------------------------------------------------------------+
-| ``ParamName`` | Sample: *in* pointer to an `SECItem </en-US/NSS/SECItem>`__ whose ``type`` must |
-|               | be ``siDERCertBuffer`` and whose ``data`` contains a DER-encoded certificate    |
-+---------------+---------------------------------------------------------------------------------+
++---------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| ``ParamName`` | Sample: *in* pointer to a `CERTCertDBHandle </en-US/NSS/CERTCertDBHandle>`__ representing the certificate database to look in                                |
+|               |                                                                                                                                                              |
++---------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| ``ParamName`` | Sample: *in* pointer to an `SECItem </en-US/NSS/SECItem>`__ whose ``type`` must be ``siDERCertBuffer`` and whose ``data`` contains a DER-encoded certificate |
+|               |                                                                                                                                                              |
++---------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------+
 ```
 
 :::

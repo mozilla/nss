@@ -46,70 +46,70 @@ The command does not require any options other than *hostname:port*, but you nor
 control the connection interception and output. The options for the command are the following:
 
 ```{eval-rst}
-+-------------------------------------------------+-------------------------------------------------+
-| ``-v``                                          | Print a version string for the tool.            |
-+-------------------------------------------------+-------------------------------------------------+
-| ``-h``                                          | Turn on hex/ASCII printing. Instead of          |
-|                                                 | outputting raw data, the command interprets     |
-|                                                 | each record as a numbered line of hex values,   |
-|                                                 | followed by the same data as ASCII characters.  |
-|                                                 | The two parts are separated by a vertical bar.  |
-|                                                 | Nonprinting characters are replaced by dots.    |
-+-------------------------------------------------+-------------------------------------------------+
-| ``-f``                                          | Turn on fancy printing. Output is printed in    |
-|                                                 | colored HTML. Data sent from the client to the  |
-|                                                 | server is in blue; the server's reply is in     |
-|                                                 | red. When used with looping mode, the different |
-|                                                 | connections are separated with horizontal       |
-|                                                 | lines. You can use this option to upload the    |
-|                                                 | output into a browser.                          |
-+-------------------------------------------------+-------------------------------------------------+
-| ``-s``                                          | Turn on SSL parsing and decoding. The tool does |
-|                                                 | not automatically detect SSL sessions. If you   |
-|                                                 | are intercepting an SSL connection, use this    |
-|                                                 | option so that the tool can detect and decode   |
-|                                                 | SSL structures.                                 |
-|                                                 |                                                 |
-|                                                 | If the tool detects a certificate chain, it     |
-|                                                 | saves the DER-encoded certificates into files   |
-|                                                 | in the current directory. The files are named   |
-|                                                 | ``cert.0``\ *x*, where *x* is the sequence      |
-|                                                 | number of the certificate.                      |
-|                                                 |                                                 |
-|                                                 | If the ``-s`` option is used with ``-h``, two   |
-|                                                 | separate parts are printed for each record: the |
-|                                                 | plain hex/ASCII output, and the parsed SSL      |
-|                                                 | output.                                         |
-+-------------------------------------------------+-------------------------------------------------+
-| ``-x``                                          | Turn on hex/ASCII printing of undecoded data    |
-|                                                 | inside parsed SSL records. Used only with the   |
-|                                                 | ``-s`` option. This option uses the same output |
-|                                                 | format as the ``-h`` option.                    |
-+-------------------------------------------------+-------------------------------------------------+
-| ``-l``                                          | Turn on looping; that is, continue to accept    |
-|                                                 | connections rather than stopping after the      |
-|                                                 | first connection is complete.                   |
-+-------------------------------------------------+-------------------------------------------------+
-| ``-p``\ *port*                                  | Change the default rendezvous port (1924) to    |
-|                                                 | another port. The following are well-known port |
-|                                                 | numbers:                                        |
-|                                                 |                                                 |
-|                                                 | HTTP   80                                       |
-|                                                 |                                                 |
-|                                                 | HTTPS   443                                     |
-|                                                 |                                                 |
-|                                                 | SMTP   25                                       |
-|                                                 |                                                 |
-|                                                 | FTP   21                                        |
-|                                                 |                                                 |
-|                                                 | IMAP   143                                      |
-|                                                 |                                                 |
-|                                                 | IMAPS   993 (IMAP over SSL)                     |
-|                                                 |                                                 |
-|                                                 | NNTP   119                                      |
-|                                                 |                                                 |
-|                                                 | NNTPS   563 (NNTP over SSL)                     |
-+-------------------------------------------------+-------------------------------------------------+
++----------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| ``-v``         | Print a version string for the tool.                                                                                                                                    |
++----------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| ``-h``         | Turn on hex/ASCII printing. Instead of                                                                                                                                  |
+|                | outputting raw data, the command interprets                                                                                                                             |
+|                | each record as a numbered line of hex values,                                                                                                                           |
+|                | followed by the same data as ASCII characters.                                                                                                                          |
+|                | The two parts are separated by a vertical bar.                                                                                                                          |
+|                | Nonprinting characters are replaced by dots.                                                                                                                            |
++----------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| ``-f``         | Turn on fancy printing. Output is printed in                                                                                                                            |
+|                | colored HTML. Data sent from the client to the                                                                                                                          |
+|                | server is in blue; the server's reply is in                                                                                                                             |
+|                | red. When used with looping mode, the different                                                                                                                         |
+|                | connections are separated with horizontal                                                                                                                               |
+|                | lines. You can use this option to upload the                                                                                                                            |
+|                | output into a browser.                                                                                                                                                  |
++----------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| ``-s``         | Turn on SSL parsing and decoding. The tool does                                                                                                                         |
+|                | not automatically detect SSL sessions. If you                                                                                                                           |
+|                | are intercepting an SSL connection, use this                                                                                                                            |
+|                | option so that the tool can detect and decode                                                                                                                           |
+|                | SSL structures.                                                                                                                                                         |
+|                |                                                                                                                                                                         |
+|                | If the tool detects a certificate chain, it                                                                                                                             |
+|                | saves the DER-encoded certificates into files                                                                                                                           |
+|                | in the current directory. The files are named                                                                                                                           |
+|                | ``cert.0``\ *x*, where *x* is the sequence                                                                                                                              |
+|                | number of the certificate.                                                                                                                                              |
+|                |                                                                                                                                                                         |
+|                | If the ``-s`` option is used with ``-h``, two                                                                                                                           |
+|                | separate parts are printed for each record: the                                                                                                                         |
+|                | plain hex/ASCII output, and the parsed SSL                                                                                                                              |
+|                | output.                                                                                                                                                                 |
++----------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| ``-x``         | Turn on hex/ASCII printing of undecoded data inside parsed SSL records. Used only with the ``-s`` option. This option uses the same output format as the ``-h`` option. |
+|                |                                                                                                                                                                         |
+|                |                                                                                                                                                                         |
+|                |                                                                                                                                                                         |
++----------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| ``-l``         | Turn on looping; that is, continue to accept                                                                                                                            |
+|                | connections rather than stopping after the                                                                                                                              |
+|                | first connection is complete.                                                                                                                                           |
++----------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| ``-p``\ *port* | Change the default rendezvous port (1924) to                                                                                                                            |
+|                | another port. The following are well-known port                                                                                                                         |
+|                | numbers:                                                                                                                                                                |
+|                |                                                                                                                                                                         |
+|                | HTTP   80                                                                                                                                                               |
+|                |                                                                                                                                                                         |
+|                | HTTPS   443                                                                                                                                                             |
+|                |                                                                                                                                                                         |
+|                | SMTP   25                                                                                                                                                               |
+|                |                                                                                                                                                                         |
+|                | FTP   21                                                                                                                                                                |
+|                |                                                                                                                                                                         |
+|                | IMAP   143                                                                                                                                                              |
+|                |                                                                                                                                                                         |
+|                | IMAPS   993 (IMAP over SSL)                                                                                                                                             |
+|                |                                                                                                                                                                         |
+|                | NNTP   119                                                                                                                                                              |
+|                |                                                                                                                                                                         |
+|                | NNTPS   563 (NNTP over SSL)                                                                                                                                             |
++----------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 ```
 
 :::

@@ -25,13 +25,13 @@ CERTCertificate *CERT_FindCertByDERCert(
 :::{container}
 
 ```{eval-rst}
-+-------------+-----------------------------------------------------------------------------------+
-| ``handle``  | *in* pointer to a `CERTCertDBHandle </en-US/NSS/CERTCertDBHandle>`__ representing |
-|             | the certificate database to look in                                               |
-+-------------+-----------------------------------------------------------------------------------+
-| ``derCert`` | *in* pointer to an `SECItem </en-US/NSS/SECItem>`__ whose ``type`` must be        |
-|             | ``siDERCertBuffer`` and whose ``data`` contains a DER-encoded certificate         |
-+-------------+-----------------------------------------------------------------------------------+
++-------------+------------------------------------------------------------------------------------------------------------------------------------------------------+
+| ``handle``  | *in* pointer to a `CERTCertDBHandle </en-US/NSS/CERTCertDBHandle>`__ representing the certificate database to look in                                |
+|             |                                                                                                                                                      |
++-------------+------------------------------------------------------------------------------------------------------------------------------------------------------+
+| ``derCert`` | *in* pointer to an `SECItem </en-US/NSS/SECItem>`__ whose ``type`` must be ``siDERCertBuffer`` and whose ``data`` contains a DER-encoded certificate |
+|             |                                                                                                                                                      |
++-------------+------------------------------------------------------------------------------------------------------------------------------------------------------+
 ```
 
 :::
