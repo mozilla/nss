@@ -109,7 +109,7 @@ NSS 3.15 source distributions are available on ftp.mozilla.org for secure HTTPS 
 - NSS has migrated from CVS to the Mercurial source control management system.
 
   Updated build instructions are available at
-  {ref}`mozilla_projects_nss_reference_building_and_installing_nss_migration_to_hg`
+  {ref}`mozilla-projects-nss-reference-building-and-installing-nss-migration-to-hg`
 
   As part of this migration, the source code directory layout has been re-organized.
 

@@ -59,6 +59,6 @@ zero if there are none.
 
 :::{container}
 
-- {ref}`mozilla_projects_nss_reference_fc_findobjectsinit`,
+- {ref}`mozilla-projects-nss-reference-fc-findobjectsinit`,
   [NSC_FindObjects](/en-US/NSC_FindObjects)
 :::

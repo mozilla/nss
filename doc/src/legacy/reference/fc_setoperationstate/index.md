@@ -67,6 +67,6 @@ assume the NSS User role).
 
 :::{container}
 
-- {ref}`mozilla_projects_nss_reference_fc_getoperationstate`,
+- {ref}`mozilla-projects-nss-reference-fc-getoperationstate`,
   [NSC_SetOperationState](/en-US/NSC_SetOperationState)
 :::

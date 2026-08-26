@@ -27,7 +27,7 @@ NSS 3.28.5 source distributions are available on ftp.mozilla.org for secure HTTP
 :::{container}
 No new functionality is introduced in this release. This is a patch release to update the list of
 root CA certificates. It backports the changes that were initially released in
-{ref}`mozilla_projects_nss_nss_3_30_2_release_notes`.
+{ref}`mozilla-projects-nss-nss-3-30-2-release-notes`.
 :::
 
 (notable-changes-in-nss-3-28-5)=

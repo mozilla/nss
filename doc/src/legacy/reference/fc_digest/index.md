@@ -66,5 +66,5 @@ A user may call `FC_Digest` without logging into the token (to assume the NSS Us
 
 :::{container}
 
-- {ref}`mozilla_projects_nss_reference_fc_digestinit`, [NSC_Digest](/en-US/NSC_Digest)
+- {ref}`mozilla-projects-nss-reference-fc-digestinit`, [NSC_Digest](/en-US/NSC_Digest)
 :::

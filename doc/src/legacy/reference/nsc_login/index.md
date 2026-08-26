@@ -89,5 +89,5 @@ user's PIN is already initialized.
 
 :::{container}
 
-- {ref}`mozilla_projects_nss_reference_fc_login`
+- {ref}`mozilla-projects-nss-reference-fc-login`
 :::

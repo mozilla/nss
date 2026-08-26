@@ -46,5 +46,5 @@ This function is not supported by the NSS cryptographic module.
 
 :::{container}
 
-- {ref}`mozilla_projects_nss_reference_fc_waitforslotevent`
+- {ref}`mozilla-projects-nss-reference-fc-waitforslotevent`
 :::

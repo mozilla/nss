@@ -4,31 +4,31 @@
 
 :::{container}
 This page lists release notes for older versions of NSS.
-See {ref}`mozilla_projects_nss_nss_releases` {ref}`mozilla_projects_nss_nss_releases` for recent
+See {ref}`mozilla-projects-nss-nss-releases` {ref}`mozilla-projects-nss-nss-releases` for recent
 release notes. The links below are provided for historical information.
 
 - NSS 3.14
 
-  - {ref}`mozilla_projects_nss_nss_3_14_3_release_notes`
-  - {ref}`mozilla_projects_nss_nss_3_14_2_release_notes`
-  - {ref}`mozilla_projects_nss_nss_3_14_1_release_notes`
-  - {ref}`mozilla_projects_nss_nss_3_14_release_notes`
+  - {ref}`mozilla-projects-nss-nss-3-14-3-release-notes`
+  - {ref}`mozilla-projects-nss-nss-3-14-2-release-notes`
+  - {ref}`mozilla-projects-nss-nss-3-14-1-release-notes`
+  - {ref}`mozilla-projects-nss-nss-3-14-release-notes`
 
 - NSS 3.12
 
-  - {ref}`mozilla_projects_nss_nss_3_12_6_release_notes`
-  - {ref}`mozilla_projects_nss_nss_3_12_5_release_notes`
-  - {ref}`mozilla_projects_nss_nss_3_12_4_release_notes`
+  - {ref}`mozilla-projects-nss-nss-3-12-6-release-notes`
+  - {ref}`mozilla-projects-nss-nss-3-12-5-release-notes`
+  - {ref}`mozilla-projects-nss-nss-3-12-4-release-notes`
   - NSS 3.12.3.2 Release Notes
   - NSS 3.12.3.1 Release Notes
-  - {ref}`mozilla_projects_nss_nss_3_12_3_release_notes`
-  - {ref}`mozilla_projects_nss_nss_3_12_2_release_notes_html`
-  - {ref}`mozilla_projects_nss_nss_3_12_1_release_notes_html`
-  - {ref}`mozilla_projects_nss_nss_3_12_release_notes_html`
+  - {ref}`mozilla-projects-nss-nss-3-12-3-release-notes`
+  - {ref}`mozilla-projects-nss-nss-3-12-2-release-notes-html`
+  - {ref}`mozilla-projects-nss-nss-3-12-1-release-notes-html`
+  - {ref}`mozilla-projects-nss-nss-3-12-release-notes-html`
 
 - NSS 3.11
 
-  - {ref}`mozilla_projects_nss_nss_3_11_10_release_notes_html`
+  - {ref}`mozilla-projects-nss-nss-3-11-10-release-notes-html`
   - [NSS 3.11.9 Release
     Notes](http://www-archive.mozilla.org/projects/security/pki/nss/nss-3.11.9/nss-3.11.9-release-notes.html)
   - [NSS 3.11.8 Release

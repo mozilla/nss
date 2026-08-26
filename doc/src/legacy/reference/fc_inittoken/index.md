@@ -104,5 +104,5 @@ those keys.
 
 :::{container}
 
-- {ref}`mozilla_projects_nss_reference_fc_initpin`, [NSC_InitToken](/en-US/NSC_InitToken)
+- {ref}`mozilla-projects-nss-reference-fc-initpin`, [NSC_InitToken](/en-US/NSC_InitToken)
 :::

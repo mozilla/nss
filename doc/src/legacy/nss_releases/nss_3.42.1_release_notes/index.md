@@ -19,7 +19,7 @@ NSS 3.42.1 source distributions are available on ftp.mozilla.org for secure HTTP
 - Source tarballs:
   <https://ftp.mozilla.org/pub/mozilla.org/security/nss/releases/NSS_3_42_1_RTM/src/>
 
-Other releases are available {ref}`mozilla_projects_nss_nss_releases`.
+Other releases are available {ref}`mozilla-projects-nss-nss-releases`.
 :::
 
 (bugs-fixed-in-nss-3-42-1)=
@@ -32,7 +32,7 @@ Other releases are available {ref}`mozilla_projects_nss_nss_releases`.
   1507174](https://bugzilla.mozilla.org/show_bug.cgi?id=1507174) - Add additional null checks
   to several CMS functions to fix a rare CMS crash. Thanks to Hanno Böck and Damian Poddebniak
   for the discovery and fixes. This was originally announced in
-  {ref}`mozilla_projects_nss_nss_3_42_release_notes`, but was mistakenly not included in the
+  {ref}`mozilla-projects-nss-nss-3-42-release-notes`, but was mistakenly not included in the
   release. ([CVE-2018-18508](https://bugzilla.mozilla.org/show_bug.cgi?id=CVE-2018-18508))
 
 This Bugzilla query returns all the bugs fixed in NSS 3.42.1:

@@ -57,6 +57,6 @@ private key objects.
 
 :::{container}
 
-- {ref}`mozilla_projects_nss_reference_fc_findobjects`,
+- {ref}`mozilla-projects-nss-reference-fc-findobjects`,
   [NSC_FindObjectsInit](/en-US/NSC_FindObjectsInit)
 :::

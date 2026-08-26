@@ -9,7 +9,7 @@ This chapter describes the functions and related types used to work with a certi
 such as the cert8.db database provided with NSS. This was converted from ["Chapter 5: Certificate
 Functions"](https://www.mozilla.org/projects/security/pki/nss/ref/ssl/sslcrt.html).
 
-- {ref}`mozilla_projects_nss_reference`
+- {ref}`mozilla-projects-nss-reference`
 - [Validating Certificates](NSS_Certificate_Functions#Validating_Certificates)
 - [Manipulating Certificates](NSS_Certificate_Functions#Manipulating_Certificates)
 - [Getting Certificate
@@ -154,7 +154,7 @@ This function has the following parameters:
 information.
 
 *log*Optional certificate log which returns all the errors in processing a given certificate
-chain. See {ref}`mozilla_projects_nss_certverify_log` for more information.
+chain. See {ref}`mozilla-projects-nss-certverify-log` for more information.
 
 ```{rubric} Returns
 ```

@@ -344,5 +344,5 @@ to your private key, unless the attacker would also succeed in stealing the mast
 
 Now you might be interest in how to get the
 
-{ref}`mozilla_projects_nss_nss_sources_building_testing`
+{ref}`mozilla-projects-nss-nss-sources-building-testing`
 :::

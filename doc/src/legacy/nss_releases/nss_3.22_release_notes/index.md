@@ -45,7 +45,7 @@ NSS 3.22 source distributions are available on ftp.mozilla.org for secure HTTPS 
 
   - you can now add a config= line to pkcs11.txt (assuming you are using sql databases), which
     will force NSS to restrict the application to certain cryptographic algorithms and
-    protocols. A complete list can be found in {ref}`mozilla_projects_nss_nss_config_options`.
+    protocols. A complete list can be found in {ref}`mozilla-projects-nss-nss-config-options`.
 
 ```{rubric} New Functions
 ```

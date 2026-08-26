@@ -69,5 +69,5 @@ A user must log into the token (to assume the NSS User role) before calling `FC_
 
 :::{container}
 
-- {ref}`mozilla_projects_nss_reference_fc_verifyinit`, [NSC_Verify](/en-US/NSC_Verify)
+- {ref}`mozilla-projects-nss-reference-fc-verifyinit`, [NSC_Verify](/en-US/NSC_Verify)
 :::

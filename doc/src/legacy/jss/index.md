@@ -33,12 +33,12 @@ Legacy JSS information can still be found at:
 
 - SOURCE: <https://hg.mozilla.org/projects/jss>
 - ISSUES: <https://bugzilla.mozilla.org/buglist.cgi?product=JSS>
-- WIKI: {ref}`mozilla_projects_nss_jss`
+- WIKI: {ref}`mozilla-projects-nss-jss`
 :::
 
 Network Security Services for Java (JSS) is a Java interface to
 [NSS](https://developer.mozilla.org/en-US/docs/NSS). JSS supports most of the security
-standards and encryption technologies supported by {ref}`mozilla_projects_nss_reference`. JSS
+standards and encryption technologies supported by {ref}`mozilla-projects-nss-reference`. JSS
 also provides a pure Java interface for ASN.1 types and BER/DER encoding.
 
 JSS offers a implementation of Java SSL sockets that uses NSS's SSL/TLS implementation rather

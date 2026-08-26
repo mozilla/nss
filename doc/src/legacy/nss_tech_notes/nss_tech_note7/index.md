@@ -244,7 +244,7 @@ Perhaps this change made in PKCS #1 v2.0 confused many people, so it was reverse
 
 :::{container}
 
-- {ref}`mozilla_projects_nss_nss_sample_code_nss_sample_code_sample4`
+- {ref}`mozilla-projects-nss-nss-sample-code-nss-sample-code-sample4`
 :::
 
 ### [References](#references)

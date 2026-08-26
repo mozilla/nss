@@ -32,19 +32,19 @@ read the documents:
 :name: Getting_Started
 ```
 
-{ref}`mozilla_projects_nss_building`
+{ref}`mozilla-projects-nss-building`
 
 : How to download, build and test NSS.
 
-{ref}`mozilla_projects_nss_releases`
+{ref}`mozilla-projects-nss-releases`
 
 : Information about recent releases of NSS.
 
-{ref}`mozilla_projects_nss_community`
+{ref}`mozilla-projects-nss-community`
 
 : This page contains information about the community and how to reach out.
 
-{ref}`mozilla_projects_nss_legacy_docs`
+{ref}`mozilla-projects-nss-legacy-docs`
 
 : This page contains legacy documentation imported from MDN.
 :::

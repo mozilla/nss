@@ -21,7 +21,7 @@ information is available.
 
 Currently, you must download the NSS 3.1 source and build it to create binary files for the NSS
 tools. For information about downloading the NSS source, see
-{ref}`mozilla_projects_nss_building`.
+{ref}`mozilla-projects-nss-building`.
 
 If you have feedback or questions, please feel free to post to
 [mozilla.dev.tech.crypto](news://news.mozilla.org/mozilla.dev.tech.crypto). This newsgroup is

@@ -50,7 +50,7 @@ No new functionality is introduced in this release.
 :::{container}
 
 - [Bug 1247990](https://bugzilla.mozilla.org/show_bug.cgi?id=1247990) - The root CA changes
-  from {ref}`mozilla_projects_nss_nss_3_23_release_notes` have been backported.
+  from {ref}`mozilla-projects-nss-nss-3-23-release-notes` have been backported.
 :::
 
 ## [Acknowledgements](#acknowledgements)

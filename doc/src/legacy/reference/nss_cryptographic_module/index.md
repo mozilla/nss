@@ -22,7 +22,7 @@ The NSS cryptographic module also exports the function NSC_ModuleDBFunc for mana
 module database secmod.db. The following sections document the data types and functions.
 
 - {ref}`mozilla_projects_nss_reference_nss_cryptographic_module_data_types`
-- {ref}`mozilla_projects_nss_pkcs11_functions`
-- {ref}`mozilla_projects_nss_reference_nss_cryptographic_module_fips_mode_of_operation`
+- {ref}`mozilla-projects-nss-pkcs11-functions`
+- {ref}`mozilla-projects-nss-reference-nss-cryptographic-module-fips-mode-of-operation`
 - NSC_ModuleDBFunc
 :::

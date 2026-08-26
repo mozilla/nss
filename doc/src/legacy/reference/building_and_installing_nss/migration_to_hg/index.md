@@ -44,7 +44,7 @@ about setting environment variables.
 
 Updated instructions for building NSS with NSPR can be found at:
 
-{ref}`mozilla_projects_nss_reference_building_and_installing_nss_build_instructions`
+{ref}`mozilla-projects-nss-reference-building-and-installing-nss-build-instructions`
 
 It's best to refer to the above document to learn about the various
 

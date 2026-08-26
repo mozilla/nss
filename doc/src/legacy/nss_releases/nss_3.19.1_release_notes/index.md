@@ -89,7 +89,7 @@ to the functions listed in NSS Public Functions will remain compatible with futu
 the NSS shared libraries.
 
 **Note:** NSS 3.19.1 increases the minimum size of keys it is willing to use. This has been shown
-to break some applications. {ref}`mozilla_projects_nss_nss_3_19_2_release_notes` reverts the
+to break some applications. {ref}`mozilla-projects-nss-nss-3-19-2-release-notes` reverts the
 behaviour to the NSS 3.19 and earlier limits.
 :::
 

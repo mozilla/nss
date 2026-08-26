@@ -26,5 +26,5 @@ You are welcome to download the new samples via:
 hg clone https://hg.mozilla.org/projects/nss; cd nss; hg update SAMPLES_BRANCH
 ```
 
-The new samples: {ref}`mozilla_projects_nss_new_nss_samples`
+The new samples: {ref}`mozilla-projects-nss-new-nss-samples`
 :::

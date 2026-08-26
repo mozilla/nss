@@ -54,7 +54,7 @@ A user must log into the token (to assume the NSS User role) before calling `FC_
 
 :::{container}
 
-- [NSC_SignInit](/en-US/NSC_SignInit) {ref}`mozilla_projects_nss_reference_fc_sign`
-  {ref}`mozilla_projects_nss_reference_fc_signupdate`
-  {ref}`mozilla_projects_nss_reference_fc_signfinal`
+- [NSC_SignInit](/en-US/NSC_SignInit) {ref}`mozilla-projects-nss-reference-fc-sign`
+  {ref}`mozilla-projects-nss-reference-fc-signupdate`
+  {ref}`mozilla-projects-nss-reference-fc-signfinal`
 :::

@@ -8,7 +8,7 @@ Key logs can be written by NSS so that external programs can decrypt TLS connect
 the key file via *Edit→Preferences→Protocols→TLS→(Pre)-Master-Secret log filename*.
 
 Key logging is enabled by setting the environment variable `SSLKEYLOGFILE` to point to a file.
-Note: starting with {ref}`mozilla_projects_nss_nss_3_24_release_notes` (used by Firefox 48 and 49
+Note: starting with {ref}`mozilla-projects-nss-nss-3-24-release-notes` (used by Firefox 48 and 49
 only), the `SSLKEYLOGFILE` approach is disabled by default for optimized builds using the
 Makefile (those using gyp via `build.sh` are *not* affected). Distributors can re-enable it at
 compile time though (using the `NSS_ALLOW_SSLKEYLOGFILE=1` make variable) which is done for the

@@ -56,6 +56,6 @@ A user may call `FC_DigestFinal` without logging into the token (to assume the N
 
 :::{container}
 
-- {ref}`mozilla_projects_nss_reference_fc_digestinit`,
+- {ref}`mozilla-projects-nss-reference-fc-digestinit`,
   [NSC_DigestFinal](/en-US/NSC_DigestFinal)
 :::

@@ -93,7 +93,7 @@ and shared libraries, which NSS 3.12.3 requires. NSPR 4.7.4 binary distributions
   variables.
   Here is a table of the new environment variables introduced in NSS 3.12.3 and information
   about how they affect these new behaviors. The information in this table is excerpted from
-  {ref}`mozilla_projects_nss_reference_nss_environment_variables`
+  {ref}`mozilla-projects-nss-reference-nss-environment-variables`
 
   ```{eval-rst}
   +--------------------------------+--------------------------------+--------------------------------+

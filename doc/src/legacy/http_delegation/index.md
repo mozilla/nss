@@ -5,7 +5,7 @@
 ## [Background](#background)
 
 :::{container}
-Up to version 3.11, {ref}`mozilla_projects_nss` connects directly over
+Up to version 3.11, {ref}`mozilla-projects-nss` connects directly over
 [HTTP](https://developer.mozilla.org/en-US/docs/Web/HTTP) to an OCSP responder to make the
 request and fetch the response. It does so in a blocking fashion, and also directly to the
 responder, ignoring any proxy the application may wish to use. This causes OCSP requests to fail

@@ -314,7 +314,7 @@ The following bugs have been fixed in NSS 3.12.4.
 For a list of the primary NSS documentation pages on developer.mozilla.org, see NSS. New and
 revised documents available since the release of NSS 3.12 include the following:
 
-- {ref}`mozilla_projects_nss_reference_building_and_installing_nss_build_instructions`
+- {ref}`mozilla-projects-nss-reference-building-and-installing-nss-build-instructions`
 
 ```{rubric} Compatibility
 ```

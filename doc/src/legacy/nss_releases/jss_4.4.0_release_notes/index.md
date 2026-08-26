@@ -69,7 +69,7 @@ Build instructions for JSS at <https://hg.mozilla.org/projects/jss/file/tip/READ
 - You can check out the source from mercurial via hg clone -r 055aa3ce8a61
   <https://hg.mozilla.org/projects/jss>
 - JSS 4.4.0 works with OpenJDK versions 1.7 or higher we suggest the latest - OpenJDK 1.8.
-- JSS 4.4.0 requires {ref}`mozilla_projects_nss_nss_3_12_5_release_notes` or higher though NSS
+- JSS 4.4.0 requires {ref}`mozilla-projects-nss-nss-3-12-5-release-notes` or higher though NSS
   3.28.3 is recommended.
 - JSS 4.3.1 requires [NSPR 4.7.1](https://www.mozilla.org/projects/nspr/release-notes/) or
   higher though NSPR 3.13 is recommended.

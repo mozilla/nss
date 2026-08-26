@@ -44,7 +44,7 @@ CK_RV FC_VerifyUpdate(
 `FC_VerifyUpdate` starts or continues a multi-part signature verification operation where the
 signature is an appendix to the data. One or more blocks may be part of the signature. The result
 for the entire message is returned by a call to
-{ref}`mozilla_projects_nss_reference_fc_verifyfinal`.
+{ref}`mozilla-projects-nss-reference-fc-verifyfinal`.
 
 A user must log into the token (to assume the NSS User role) before calling `FC_VerifyUpdate`.
 :::
@@ -57,6 +57,6 @@ A user must log into the token (to assume the NSS User role) before calling `FC_
 
 :::{container}
 
-- {ref}`mozilla_projects_nss_reference_fc_verifyfinal`,
+- {ref}`mozilla-projects-nss-reference-fc-verifyfinal`,
   [NSC_VerifyUpdate](/en-US/NSC_VerifyUpdate)
 :::

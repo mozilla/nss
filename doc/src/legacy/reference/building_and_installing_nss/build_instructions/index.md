@@ -5,7 +5,7 @@
 ::::{container}
 
 :::{note}
-These instructions are outdated. Use the {ref}`mozilla_projects_nss_building` page for more
+These instructions are outdated. Use the {ref}`mozilla-projects-nss-building` page for more
 recent information.
 :::
 
@@ -120,7 +120,7 @@ The output of the build will be in the `dist` directory alongside the `nspr` and
 directories.
 
 For information on troubleshooting the build system, see
-{ref}`mozilla_projects_nss_reference_troubleshoot`.
+{ref}`mozilla-projects-nss-reference-troubleshoot`.
 :::
 
 (build-instructions-for-older-versions-cvs)=
@@ -150,5 +150,5 @@ For information on troubleshooting the build system, see
 The output of the build will be in `mozilla/dist` subdirectory.
 
 For information on troubleshooting the build system, see
-{ref}`mozilla_projects_nss_reference_troubleshoot`.
+{ref}`mozilla-projects-nss-reference-troubleshoot`.
 :::

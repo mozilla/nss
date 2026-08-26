@@ -107,6 +107,6 @@ of the `CK_TOKEN_INFO` structure.
 
 :::{container}
 
-- {ref}`mozilla_projects_nss_reference_fc_getslotinfo`,
+- {ref}`mozilla-projects-nss-reference-fc-getslotinfo`,
   [NSC_GetTokenInfo](/en-US/NSC_GetTokenInfo)
 :::

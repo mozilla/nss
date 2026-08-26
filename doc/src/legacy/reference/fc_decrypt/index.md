@@ -65,5 +65,5 @@ A user must log into the token (to assume the NSS User role) before calling `FC_
 
 :::{container}
 
-- {ref}`mozilla_projects_nss_reference_fc_decryptinit`, [NSC_Decrypt](/en-US/NSC_Decrypt)
+- {ref}`mozilla-projects-nss-reference-fc-decryptinit`, [NSC_Decrypt](/en-US/NSC_Decrypt)
 :::

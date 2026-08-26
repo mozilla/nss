@@ -869,9 +869,9 @@ For a list of the primary NSS documentation pages on mozilla.org, see [NSS
 Documentation](../index.html#Documentation). New and revised documents available since the
 release of NSS 3.11 include the following:
 
-- {ref}`mozilla_projects_nss_reference_building_and_installing_nss_build_instructions`
+- {ref}`mozilla-projects-nss-reference-building-and-installing-nss-build-instructions`
 - [NSS Shared DB](http://wiki.mozilla.org/NSS_Shared_DB)
-- {ref}`mozilla_projects_nss_reference_nss_environment_variables`
+- {ref}`mozilla-projects-nss-reference-nss-environment-variables`
 :::
 
 ### [Compatibility](#compatibility)

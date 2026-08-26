@@ -72,7 +72,7 @@ to NSS 3.28.3.
 
 Please note that NSS 3.29 also contained the incorrect change. You should avoid using NSS 3.29,
 and rather use NSS 3.29.1 or a newer version. See also the
-{ref}`mozilla_projects_nss_nss_3_29_1_release_notes`
+{ref}`mozilla-projects-nss-nss-3-29-1-release-notes`
 :::
 
 ## [Feedback](#feedback)

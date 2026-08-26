@@ -6,7 +6,7 @@
 **Network Security Services (NSS)** is a set of libraries designed to support cross-platform
 development of communications applications that support SSL, S/MIME, and other Internet security
 standards. For a general overview of NSS and the standards it supports, see
-{ref}`mozilla_projects_nss_overview`.
+{ref}`mozilla-projects-nss-overview`.
 :::
 
 ## [Shared libraries](#shared_libraries)
@@ -22,7 +22,7 @@ public functions:
 
 We guarantee that applications using the exported APIs will remain compatible with future
 versions of those libraries. For a complete list of public functions exported by these shared
-libraries in NSS 3.2, see {ref}`mozilla_projects_nss_reference_nss_functions`.
+libraries in NSS 3.2, see {ref}`mozilla-projects-nss-reference-nss-functions`.
 
 For information on which static libraries in NSS 3.1.1 are replaced by each of the above shared
 libraries in NSS 3.2 , see [Migration from NSS
@@ -142,7 +142,7 @@ For information about PKI and SSL that you should understand before using NSS, s
   SSL](https://developer.mozilla.org/en-US/docs/Archive/Security/Introduction_to_SSL)
 
 For links to API documentation, build instructions, and other useful information, see the
-{ref}`mozilla_projects_nss`.
+{ref}`mozilla-projects-nss`.
 
 As mentioned above, NSS is built on top of NSPR. The API documentation for NSPR is available at
 [NSPR API

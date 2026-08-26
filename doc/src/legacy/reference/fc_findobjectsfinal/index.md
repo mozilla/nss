@@ -42,6 +42,6 @@ Clears the object search criteria for a session.
 
 :::{container}
 
-- {ref}`mozilla_projects_nss_reference_fc_findobjects`,
+- {ref}`mozilla-projects-nss-reference-fc-findobjects`,
   [NSC_FindObjectsFinal](/en-US/NSC_FindObjectsFinal)
 :::

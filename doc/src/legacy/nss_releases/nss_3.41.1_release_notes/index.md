@@ -19,7 +19,7 @@ NSS 3.41.1 source distributions are available on ftp.mozilla.org for secure HTTP
 - Source tarballs:
   <https://ftp.mozilla.org/pub/mozilla.org/security/nss/releases/NSS_3_41_1_RTM/src/>
 
-Other releases are available {ref}`mozilla_projects_nss_nss_releases`.
+Other releases are available {ref}`mozilla-projects-nss-nss-releases`.
 :::
 
 (new-in-nss-3-41-1)=

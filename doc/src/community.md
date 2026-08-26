@@ -41,7 +41,7 @@ We maintain a list of [NSS bugs marked with a keyword "good-first-bug"](https://
 ## [Creating your Patch](#creating_your_patch)
 
 :::{container}
-See our section on {ref}`mozilla_projects_nss_building` to get started
+See our section on {ref}`mozilla-projects-nss-building` to get started
 making your patch. When you're satisfied with it, you'll need code review.
 :::
 

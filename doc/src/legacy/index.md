@@ -28,24 +28,24 @@ development of security-enabled client and server applications. Applications bui
 support SSL v3, TLS, PKCS #5, PKCS #7, PKCS #11, PKCS #12, S/MIME, X.509 v3 certificates, and
 other security standards.
 
-For detailed information on standards supported, see {ref}`mozilla_projects_nss_overview`. For a
-list of frequently asked questions, see the {ref}`mozilla_projects_nss_faq`.
+For detailed information on standards supported, see {ref}`mozilla-projects-nss-overview`. For a
+list of frequently asked questions, see the {ref}`mozilla-projects-nss-faq`.
 
 NSS is available under the Mozilla Public License. For information on downloading NSS releases as
-tar files, see {ref}`mozilla_projects_nss_nss_sources_building_testing`.
+tar files, see {ref}`mozilla-projects-nss-nss-sources-building-testing`.
 
 If you're a developer and would like to contribute to NSS, you might want to read the document
-{ref}`mozilla_projects_nss_an_overview_of_nss_internals`.
+{ref}`mozilla-projects-nss-an-overview-of-nss-internals`.
 
 ```{rubric} Background Information
 :name: Background_Information
 ```
 
-{ref}`mozilla_projects_nss_overview`
+{ref}`mozilla-projects-nss-overview`
 
 : Provides a brief summary of NSS and its capabilities.
 
-{ref}`mozilla_projects_nss_faq`
+{ref}`mozilla-projects-nss-faq`
 
 : Answers basic questions about NSS.
 
@@ -61,11 +61,11 @@ If you're a developer and would like to contribute to NSS, you might want to rea
 ```{rubric} Getting Started
 ```
 
-{ref}`mozilla_projects_nss_nss_releases`
+{ref}`mozilla-projects-nss-nss-releases`
 
 : This page contains information about the current and past releases of NSS.
 
-{ref}`mozilla_projects_nss_nss_sources_building_testing`
+{ref}`mozilla-projects-nss-nss-sources-building-testing`
 
 : Instructions on how to build NSS on the different supported platforms.
 
@@ -81,24 +81,24 @@ If you're a developer and would like to contribute to NSS, you might want to rea
 :name: NSS_APIs
 ```
 
-{ref}`mozilla_projects_nss_introduction_to_network_security_services`
+{ref}`mozilla-projects-nss-introduction-to-network-security-services`
 
 : Provides an overview of the NSS libraries and what you need to know to use them.
 
-{ref}`mozilla_projects_nss_ssl_functions`
+{ref}`mozilla-projects-nss-ssl-functions`
 
 : Summarizes the SSL APIs exported by the NSS shared libraries.
 
-{ref}`mozilla_projects_nss_reference`
+{ref}`mozilla-projects-nss-reference`
 
 : API used to invoke SSL operations.
 
-{ref}`mozilla_projects_nss_nss_api_guidelines`
+{ref}`mozilla-projects-nss-nss-api-guidelines`
 
 : Explains how the libraries and code are organized, and guidelines for developing code (naming
   conventions, error handling, thread safety, etc.)
 
-{ref}`mozilla_projects_nss_nss_tech_notes`
+{ref}`mozilla-projects-nss-nss-tech-notes`
 
 : Links to NSS technical notes, which provide latest information about new NSS features and
   supplementary documentation for advanced topics in programming with NSS.
@@ -107,23 +107,23 @@ If you're a developer and would like to contribute to NSS, you might want to rea
 :name: Tools_testing_and_other_technical_details
 ```
 
-{ref}`mozilla_projects_nss_building`
+{ref}`mozilla-projects-nss-building`
 
 : Describe how to check out and build NSS releases.
 
-{ref}`mozilla_projects_nss_nss_developer_tutorial`
+{ref}`mozilla-projects-nss-nss-developer-tutorial`
 
 : How to make changes in NSS. Coding style, maintaining ABI compatibility.
 
-{ref}`mozilla_projects_nss_tools`
+{ref}`mozilla-projects-nss-tools`
 
 : Tools for developing, debugging, and managing applications that use NSS.
 
-{ref}`mozilla_projects_nss_nss_sample_code`
+{ref}`mozilla-projects-nss-nss-sample-code`
 
 : Demonstrates how NSS can be used for cryptographic operations, certificate handling, SSL, etc.
 
-{ref}`mozilla_projects_nss_nss_third-party_code`
+{ref}`mozilla-projects-nss-nss-third-party-code`
 
 : A list of third-party code included in the NSS library.
 
@@ -151,10 +151,10 @@ If you're a developer and would like to contribute to NSS, you might want to rea
 :name: PKCS_11_information
 ```
 
-- {ref}`mozilla_projects_nss_pkcs11`
-- {ref}`mozilla_projects_nss_pkcs11_implement`
-- {ref}`mozilla_projects_nss_pkcs11_module_specs`
-- {ref}`mozilla_projects_nss_pkcs11_faq`
+- {ref}`mozilla-projects-nss-pkcs11`
+- {ref}`mozilla-projects-nss-pkcs11-implement`
+- {ref}`mozilla-projects-nss-pkcs11-module-specs`
+- {ref}`mozilla-projects-nss-pkcs11-faq`
 - [Using the JAR Installation Manager to Install a PKCS #11 Cryptographic
   Module](https://developer.mozilla.org/en-US/docs/PKCS11_Jar_Install)
 - [PKCS #11 Conformance Testing - Archived
@@ -191,11 +191,11 @@ If you're a developer and would like to contribute to NSS, you might want to rea
 
 - [Using the window.crypto object from
   JavaScript](https://developer.mozilla.org/en-US/docs/JavaScript_crypto)
-- {ref}`mozilla_projects_nss_http_delegation`
-- {ref}`mozilla_projects_nss_tls_cipher_suite_discovery`
-- {ref}`mozilla_projects_nss_certificate_download_specification`
+- {ref}`mozilla-projects-nss-http-delegation`
+- {ref}`mozilla-projects-nss-tls-cipher-suite-discovery`
+- {ref}`mozilla-projects-nss-certificate-download-specification`
 - {ref}`mozilla_projects_nss_fips_mode_-_an_explanation`
-- {ref}`mozilla_projects_nss_key_log_format`
+- {ref}`mozilla-projects-nss-key-log-format`
 
 ```{rubric} Planning
 :name: Planning

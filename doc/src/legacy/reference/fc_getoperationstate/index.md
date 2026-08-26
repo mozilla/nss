@@ -56,6 +56,6 @@ function only works for digest operations for now. Therefore, a user may call
 
 :::{container}
 
-- {ref}`mozilla_projects_nss_reference_fc_setoperationstate`,
+- {ref}`mozilla-projects-nss-reference-fc-setoperationstate`,
   [NSC_GetOperationState](/en-US/NSC_GetOperationState)
 :::

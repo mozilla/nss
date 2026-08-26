@@ -65,5 +65,5 @@ A user must log into the token (to assume the NSS User role) before calling `FC_
 
 :::{container}
 
-- {ref}`mozilla_projects_nss_reference_fc_encryptinit`, [NSC_Encrypt](/en-US/NSC_Encrypt)
+- {ref}`mozilla-projects-nss-reference-fc-encryptinit`, [NSC_Encrypt](/en-US/NSC_Encrypt)
 :::

@@ -71,5 +71,5 @@ user's PIN has not yet been set or has been reset.
 
 :::{container}
 
-- [NSC_InitPIN](/en-US/NSC_InitPIN), {ref}`mozilla_projects_nss_reference_fc_setpin`
+- [NSC_InitPIN](/en-US/NSC_InitPIN), {ref}`mozilla-projects-nss-reference-fc-setpin`
 :::

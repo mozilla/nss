@@ -140,13 +140,13 @@ million test cases of invalid input data).
 ## [Complete Software Development Kit](#complete_software_development_kit)
 
 :::{container}
-In addition to libraries and APIs, NSS provides {ref}`mozilla_projects_nss_tools` required for
+In addition to libraries and APIs, NSS provides {ref}`mozilla-projects-nss-tools` required for
 debugging, diagnostics, certificate and key management, cryptography module management, and other
 development tasks.
 
 NSS comes with an extensive and growing set of {ref}`mozilla_projects_nss#documentation`,
 including introductory material, API references, man pages for command-line tools, and
-{ref}`mozilla_projects_nss_nss_sample_code`.
+{ref}`mozilla-projects-nss-nss-sample-code`.
 
 NSS is available as source and shared (dynamic) libraries. Every NSS release is backward
 compatible with previous releases, allowing NSS users to upgrade to the new NSS shared libraries

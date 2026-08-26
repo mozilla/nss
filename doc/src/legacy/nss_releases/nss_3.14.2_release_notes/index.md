@@ -10,7 +10,7 @@ or newer.
 The release is available for download from
 <https://ftp.mozilla.org/pub/mozilla.org/security/nss/releases/NSS_3_14_2_RTM/src/>
 
-For the primary NSS documentation pages please visit {ref}`mozilla_projects_nss`
+For the primary NSS documentation pages please visit {ref}`mozilla-projects-nss`
 :::
 
 (new-in-nss-3-14-2)=

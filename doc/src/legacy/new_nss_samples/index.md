@@ -25,14 +25,14 @@ Samples list:
 
 1. {ref}`mozilla_projects_nss_nss_sample_code_sample1_-_hashing`
 2. {ref}`mozilla_projects_nss_nss_sample_code_sample2_-_initialize_nss_database`
-3. {ref}`mozilla_projects_nss_encrypt_decrypt_mac_using_token`
-4. {ref}`mozilla_projects_nss_encrypt_decrypt_mac_keys_as_session_objects`
-5. {ref}`mozilla_projects_nss_nss_sample_code_enc_dec_mac_output_plblic_key_as_csr`
-6. {ref}`mozilla_projects_nss_nss_sample_code_enc_dec_mac_using_key_wrap_certreq_pkcs10_csr`
+3. {ref}`mozilla-projects-nss-encrypt-decrypt-mac-using-token`
+4. {ref}`mozilla-projects-nss-encrypt-decrypt-mac-keys-as-session-objects`
+5. {ref}`mozilla-projects-nss-nss-sample-code-enc-dec-mac-output-plblic-key-as-csr`
+6. {ref}`mozilla-projects-nss-nss-sample-code-enc-dec-mac-using-key-wrap-certreq-pkcs10-csr`
 
 Common code used by these samples:
 
-1. {ref}`mozilla_projects_nss_nss_sample_code_utiltiies_for_nss_samples`
+1. {ref}`mozilla-projects-nss-nss-sample-code-utiltiies-for-nss-samples`
 
 Thanks are due to Shailendra Jain, Mozilla Community member, who is the principal author of these
 samples.

@@ -166,7 +166,7 @@ Newsgroup: [mozilla.dev.tech.crypto](news://news.mozilla.org:119/mozilla.dev.tec
 
 **How can I debug my SSL connection?**
 
-- By using the NSS tool {ref}`mozilla_projects_nss_tools_ssltap`
+- By using the NSS tool {ref}`mozilla-projects-nss-tools-ssltap`
 
 **Can you explain JSS SSL certificate approval callbacks?**
 

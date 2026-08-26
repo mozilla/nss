@@ -65,6 +65,6 @@ key object.
 
 :::{container}
 
-- {ref}`mozilla_projects_nss_reference_fc_destroyobject`,
+- {ref}`mozilla-projects-nss-reference-fc-destroyobject`,
   [NSC_CopyObject](/en-US/NSC_CopyObject)
 :::

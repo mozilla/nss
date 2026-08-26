@@ -46,7 +46,7 @@ PKCS #11 modules and make them accessible to the browser as sources of keys and 
 :::{container}
 
 - [Web security](https://developer.mozilla.org/en-US/docs/Web/Security)
-- {ref}`mozilla_projects_nss_pkcs11`
+- {ref}`mozilla-projects-nss-pkcs11`
 - `pkcs11.installModule()`
 - `pkcs11.isModuleInstalled()`
 :::

@@ -54,7 +54,7 @@ longer reads the attribute, and will always set it to ECPoint_Undefined. See [bu
 1340103](https://bugzilla.mozilla.org/show_bug.cgi?id=1340103).
 
 Note that NSS 3.28.3 from the older NSS 3.28.x branch
-{ref}`mozilla_projects_nss_nss_3_28_3_release_notes` with the identical fixes.
+{ref}`mozilla-projects-nss-nss-3-28-3-release-notes` with the identical fixes.
 :::
 
 ## [Compatibility](#compatibility)

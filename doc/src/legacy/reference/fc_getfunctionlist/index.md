@@ -34,8 +34,8 @@ CK_RV FC_GetFunctionList(CK_FUNCTION_LIST_PTR *ppFunctionList);
 
 :::{container}
 `FC_GetFunctionList` stores in `*ppFunctionList` a pointer to the
-{ref}`mozilla_projects_nss_reference_nss_cryptographic_module`'s list of function pointers in the
-{ref}`mozilla_projects_nss_reference_nss_cryptographic_module_fips_mode_of_operation`.
+{ref}`mozilla-projects-nss-reference-nss-cryptographic-module`'s list of function pointers in the
+{ref}`mozilla-projects-nss-reference-nss-cryptographic-module-fips-mode-of-operation`.
 
 A user may call `FC_GetFunctionList` without logging into the token (to assume the NSS User
 role).

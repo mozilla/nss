@@ -62,6 +62,6 @@ information:
 
 :::{container}
 
-- {ref}`mozilla_projects_nss_reference_fc_closesession`,
+- {ref}`mozilla-projects-nss-reference-fc-closesession`,
   [NSC_OpenSession](/en-US/NSC_OpenSession)
 :::

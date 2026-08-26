@@ -59,6 +59,6 @@ A user must log into the token (to assume the NSS User role) before calling `FC_
 
 :::{container}
 
-- {ref}`mozilla_projects_nss_reference_fc_destroyobject`,
+- {ref}`mozilla-projects-nss-reference-fc-destroyobject`,
   [NSC_CreateObject](/en-US/NSC_CreateObject)
 :::

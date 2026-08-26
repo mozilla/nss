@@ -43,7 +43,7 @@ CK_RV FC_SignUpdate(
 :::{container}
 `FC_SignUpdate` starts or continues a multi-part signature operation. One or more blocks may be
 part of the signature. The signature for the entire message is returned by a call to
-{ref}`mozilla_projects_nss_reference_fc_signfinal`.
+{ref}`mozilla-projects-nss-reference-fc-signfinal`.
 
 A user must log into the token (to assume the NSS User role) before calling `FC_SignUpdate`.
 :::
@@ -56,6 +56,6 @@ A user must log into the token (to assume the NSS User role) before calling `FC_
 
 :::{container}
 
-- {ref}`mozilla_projects_nss_reference_fc_signinit`,
-  {ref}`mozilla_projects_nss_reference_fc_signfinal`, [NSC_SignUpdate](/en-US/NSC_SignUpdate)
+- {ref}`mozilla-projects-nss-reference-fc-signinit`,
+  {ref}`mozilla-projects-nss-reference-fc-signfinal`, [NSC_SignUpdate](/en-US/NSC_SignUpdate)
 :::

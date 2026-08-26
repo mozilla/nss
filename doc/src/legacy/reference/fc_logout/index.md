@@ -42,5 +42,5 @@ Logs the current user out of a USER_FUNCTIONS session.
 
 :::{container}
 
-- {ref}`mozilla_projects_nss_reference_fc_closesession`, [NSC_Logout](/en-US/NSC_Logout)
+- {ref}`mozilla-projects-nss-reference-fc-closesession`, [NSC_Logout](/en-US/NSC_Logout)
 :::

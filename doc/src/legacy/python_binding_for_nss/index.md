@@ -19,7 +19,7 @@ python-nss exposes elements of NSPR.
 
 For information on NSS and NSPR, see the following:
 
-- {ref}`mozilla_projects_nss`. NSS project page.
+- {ref}`mozilla-projects-nss`. NSS project page.
 - [Netscape Portable Runtime](/docs/NSPR). NSPR project page.
 - [NSPR Reference](/docs/NSPR_API_Reference). NSPR API documentation.
 :::

@@ -22,7 +22,7 @@ NSS 3.44 source distributions are available on ftp.mozilla.org for secure HTTPS 
 - Source tarballs:
   <https://ftp.mozilla.org/pub/mozilla.org/security/nss/releases/NSS_3_44_RTM/src/>
 
-Other releases are available {ref}`mozilla_projects_nss_nss_releases`.
+Other releases are available {ref}`mozilla-projects-nss-nss-releases`.
 :::
 
 (new-in-nss-3-44)=

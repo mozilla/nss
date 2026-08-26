@@ -3,7 +3,7 @@
 # NSS sources building testing
 
 :::{container}
-Getting the source code of {ref}`mozilla_projects_nss`, how to build it, and how to run its test
+Getting the source code of {ref}`mozilla-projects-nss`, how to build it, and how to run its test
 suite.
 :::
 
@@ -70,7 +70,7 @@ stable.
 :::{container}
 NSS is built using [gyp](https://gyp.gsrc.io/) and [ninja](https://ninja-build.org/), or
 with [make](https://www.gnu.org/software/make/) on systems that don't have those tools. The
-{ref}`mozilla_projects_nss_building` include more information.
+{ref}`mozilla-projects-nss-building` include more information.
 
 Once the build is done, you can find the build output below directory dist/?, where ? will be a
 name dynamically derived from your system's architecture. Exported header files for NSS

@@ -31,8 +31,8 @@ CK_RV FC_Finalize (CK_VOID_PTR pReserved);
 ## [Description](#description)
 
 :::{container}
-`FC_Finalize` shuts down the {ref}`mozilla_projects_nss_reference_nss_cryptographic_module` in
-the {ref}`mozilla_projects_nss_reference_nss_cryptographic_module_fips_mode_of_operation`. If the
+`FC_Finalize` shuts down the {ref}`mozilla-projects-nss-reference-nss-cryptographic-module` in
+the {ref}`mozilla-projects-nss-reference-nss-cryptographic-module-fips-mode-of-operation`. If the
 library is not initialized, it does nothing.
 
 The `pReserved` argument is not used and must be `NULL`.
@@ -77,6 +77,6 @@ crv = pFunctionList->C_Finalize(NULL);
 
 :::{container}
 
-- {ref}`mozilla_projects_nss_reference_fc_initialize`,
+- {ref}`mozilla-projects-nss-reference-fc-initialize`,
   [NSC_Initialize](/en-US/NSC_Initialize), [NSC_Finalize](/en-US/NSC_Finalize)
 :::

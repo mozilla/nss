@@ -10,7 +10,7 @@ with cryptographic modules. In particular, these functions are used for obtainin
 keys, and passwords. This was converted from ["Chapter 7: PKCS #11
 Functions"](https://www.mozilla.org/projects/security/pki/nss/ref/ssl/pkfnc.html).
 
-- {ref}`mozilla_projects_nss_reference`
+- {ref}`mozilla-projects-nss-reference`
 - [SECMOD_LoadUserModule](#secmod_loadusermodule)
 - [SECMOD_UnloadUserModule](#secmod_unloadusermodule)
 - [SECMOD_OpenUserDB](#secmod_openuserdb)
@@ -48,7 +48,7 @@ This function has the following parameters:
 For applications this value should be NULL. *recurse* is a boolean indicates whether or not the
 module should also launch additional pkcs #11 modules. This is only applicable if the loaded
 module is actually a moduleDB rather than a PKCS #11 module (see
-{ref}`mozilla_projects_nss_pkcs11_module_specs`).
+{ref}`mozilla-projects-nss-pkcs11-module-specs`).
 
 ```{rubric} Returns
 ```
@@ -66,7 +66,7 @@ trust infrastructure. Once the module has been successfully loaded, other NSS ca
 in the normal course of searching.
 
 *modulespec* specifies how the module should be loaded. More information about module spec is
-available at {ref}`mozilla_projects_nss_pkcs11_module_specs`. NSS parameters may be specified in
+available at {ref}`mozilla-projects-nss-pkcs11-module-specs`. NSS parameters may be specified in
 module specs used by SECMOD_LoadUserModule.
 
 Module will continue to function in the NSS infrastructure until unloaded with
@@ -221,7 +221,7 @@ Valid flags are:
 - *optimizeSpace* - allocate smaller hash tables and lock tables.When this flag is not
   specified, Softoken will allocatelarge tables to prevent lock contention.
 
-For more info on module strings see {ref}`mozilla_projects_nss_pkcs11_module_specs`.
+For more info on module strings see {ref}`mozilla-projects-nss-pkcs11-module-specs`.
 
 This function will return a reference to a slot. The caller is responsible for freeing the slot
 reference when it is through. Freeing the slot reference will not unload the slot. That happens

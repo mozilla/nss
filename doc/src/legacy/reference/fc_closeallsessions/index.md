@@ -49,6 +49,6 @@ role).
 
 :::{container}
 
-- {ref}`mozilla_projects_nss_reference_fc_closesession`,
+- {ref}`mozilla-projects-nss-reference-fc-closesession`,
   [NSC_CloseAllSessions](/en-US/NSC_CloseAllSessions)
 :::

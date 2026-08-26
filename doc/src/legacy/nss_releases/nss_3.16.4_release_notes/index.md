@@ -37,7 +37,7 @@ number of bug fixes.
 
 - The following **1024-bit** root CA certificate was **restored** to allow more time to develop
   a better transition strategy for affected sites. It was removed in
-  {ref}`mozilla_projects_nss_nss_3_16_3_release_notes`, but discussion in the
+  {ref}`mozilla-projects-nss-nss-3-16-3-release-notes`, but discussion in the
   mozilla.dev.security.policy forum led to the decision to keep this root included longer in
   order to give website administrators more time to update their web servers.
 
@@ -45,7 +45,7 @@ number of bug fixes.
 
     - SHA1 Fingerprint: 97:81:79:50:D8:1C:96:70:CC:34:D8:09:CF:79:44:31:36:7E:F4:74
 
-- In {ref}`mozilla_projects_nss_nss_3_16_3_release_notes`, the **1024-bit** "Entrust.net Secure
+- In {ref}`mozilla-projects-nss-nss-3-16-3-release-notes`, the **1024-bit** "Entrust.net Secure
   Server Certification Authority" root CA certificate (SHA1 Fingerprint:
   99:A6:9B:E6:1A:FE:88:6B:4D:2B:82:00:7C:B8:54:FC:31:7E:15:39) was removed. In NSS 3.16.4, a
   **2048-bit** intermediate CA certificate has been included, without explicit trust. The

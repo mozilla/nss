@@ -9,8 +9,8 @@ Network Security Services (NSS) 3.19.2.3 is a security patch release for NSS 3.1
 fixes in NSS 3.19.2.3 are described in the "Security Fixes" section below.
 
 (Current users of NSS 3.19.3, NSS 3.19.4 or NSS 3.20.x are advised to update to
-{ref}`mozilla_projects_nss_nss_3_21_1_release_notes`,
-{ref}`mozilla_projects_nss_nss_3_22_2_release_notes`, or a later release.)
+{ref}`mozilla-projects-nss-nss-3-21-1-release-notes`,
+{ref}`mozilla-projects-nss-nss-3-22-2-release-notes`, or a later release.)
 :::
 
 ## [Distribution Information](#distribution_information)

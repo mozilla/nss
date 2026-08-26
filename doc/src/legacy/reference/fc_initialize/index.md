@@ -31,8 +31,8 @@ CK_RV FC_Initialize(CK_VOID_PTR pInitArgs);
 ## [Description](#description)
 
 :::{container}
-`FC_Initialize` initializes the {ref}`mozilla_projects_nss_reference_nss_cryptographic_module`
-for the {ref}`mozilla_projects_nss_reference_nss_cryptographic_module_fips_mode_of_operation`. In
+`FC_Initialize` initializes the {ref}`mozilla-projects-nss-reference-nss-cryptographic-module`
+for the {ref}`mozilla-projects-nss-reference-nss-cryptographic-module-fips-mode-of-operation`. In
 addition to creating the internal data structures, it performs the FIPS software integrity test
 and power-up self-tests.
 
@@ -68,7 +68,7 @@ Mozilla Firefox initializes NSS with this string (on Windows):
 "configdir='C:\\Documents and Settings\\wtc\\Application Data\\Mozilla\\Firefox\\Profiles\\default.7tt' certPrefix='' keyPrefix='' secmod='secmod.db' flags=optimizeSpace  manufacturerID='Mozilla.org' libraryDescription='PSM Internal Crypto Services' cryptoTokenDescription='Generic Crypto Services' dbTokenDescription='Software Security Device' cryptoSlotDescription='PSM Internal Cryptographic Services' dbSlotDescription='PSM Private Keys' FIPSSlotDescription='PSM Internal FIPS-140-1 Cryptographic Services' FIPSTokenDescription='PSM FIPS-140-1 User Private Key Services' minPS=0"
 ```
 
-See {ref}`mozilla_projects_nss_pkcs11_module_specs` for complete documentation of the library
+See {ref}`mozilla-projects-nss-pkcs11-module-specs` for complete documentation of the library
 parameters string.
 :::
 

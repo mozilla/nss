@@ -13,7 +13,7 @@
 - We are migrating this SSL Reference into the format described in the [MDN Style
   Guide](https://developer.mozilla.org/en-US/docs/Project:MDC_style_guide). If you are
   inclined to help with this migration, your help would be very much appreciated.
-- Upgraded documentation may be found in the {ref}`mozilla_projects_nss_reference`
+- Upgraded documentation may be found in the {ref}`mozilla-projects-nss-reference`
 :::
 ::::
 

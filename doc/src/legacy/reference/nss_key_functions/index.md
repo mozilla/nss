@@ -7,7 +7,7 @@ This chapter describes two functions used to manipulate private keys and key dat
 the key3.db database provided with NSS. This was converted from ["Chapter 6: Key
 Functions"](https://developer.mozilla.org/en-US/docs/NSS/SSL_functions/sslkey.html).
 
-- {ref}`mozilla_projects_nss_reference`
+- {ref}`mozilla-projects-nss-reference`
 - [SECKEY_GetDefaultKeyDB](#seckey_getdefaultkeydb)
 - [SECKEY_DestroyPrivateKey](#seckey_destroyprivatekey)
 

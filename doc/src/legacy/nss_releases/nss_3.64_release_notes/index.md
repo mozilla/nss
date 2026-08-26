@@ -16,7 +16,7 @@ NSS 3.64 source distributions are available on ftp.mozilla.org for secure HTTPS 
 - Source tarballs:
   <https://ftp.mozilla.org/pub/mozilla.org/security/nss/releases/NSS_3_64_RTM/src/>
 
-Other releases are available {ref}`mozilla_projects_nss_nss_releases`.
+Other releases are available {ref}`mozilla-projects-nss-nss-releases`.
 :::
 
 ## [Bugs fixed in NSS 3.64](#bugs_fixed_in_nss_3.64)

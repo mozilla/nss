@@ -38,7 +38,7 @@ root CA certificates.
 - The following CA certificate had the Websites and Code Signing trust **bits restored to their
   original state** to allow more time to develop a better transition strategy for affected
   sites. The Websites and Code Signing trust bits were turned off in
-  {ref}`mozilla_projects_nss_nss_3_18_release_notes`. But when Firefox 38 went into Beta, there
+  {ref}`mozilla-projects-nss-nss-3-18-release-notes`. But when Firefox 38 went into Beta, there
   was a huge spike in the number of certificate verification errors attributed to this change.
   So, to give website administrators more time to update their web servers, we reverted the
   trust bits back to being enabled.

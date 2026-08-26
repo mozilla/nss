@@ -14,7 +14,7 @@ development of security-enabled client and server applications. It provides a co
 open-source implementation of the crypto libraries used by Mozilla and other companies in the
 Firefox browser, AOL Instant Messenger (AIM), server products from Red Hat, and other products.
 
-For an overview of NSS, see {ref}`mozilla_projects_nss_overview`. For detailed information on the
+For an overview of NSS, see {ref}`mozilla-projects-nss-overview`. For detailed information on the
 open-source NSS project, see [NSS Project Page](https://wiki.mozilla.org/NSS).
 :::
 
@@ -45,7 +45,7 @@ SSLeay library developed by Eric A. Young and Tim J. Hudson. OpenSSL is widely u
 servers and is licensed under an Apache-style licence.
 
 NSS supports both server and client applications as well as
-{ref}`mozilla_projects_nss_pkcs11_faq` and S/MIME. To permit its use in as many contexts as
+{ref}`mozilla-projects-nss-pkcs11-faq` and S/MIME. To permit its use in as many contexts as
 possible, NSS is licensed under the [Mozilla Public License](https://www.mozilla.org/MPL/),
 version 2.
 :::
@@ -121,7 +121,7 @@ Instant AOL, and is also available for use with Communicator 4.7x.
 
 :::{container}
 For instructions on how to check out and build the NSS source code, see
-{ref}`mozilla_projects_nss_nss_sources_building_testing`.
+{ref}`mozilla-projects-nss-nss-sources-building-testing`.
 :::
 
 (how-much-does-it-cost-3f)=

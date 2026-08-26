@@ -19,7 +19,7 @@ NSS 3.42 source distributions are available on ftp.mozilla.org for secure HTTPS 
 - Source tarballs:
   <https://ftp.mozilla.org/pub/mozilla.org/security/nss/releases/NSS_3_42_RTM/src/>
 
-Other releases are available {ref}`mozilla_projects_nss_nss_releases`.
+Other releases are available {ref}`mozilla-projects-nss-nss-releases`.
 :::
 
 (new-in-nss-3-42)=
@@ -93,7 +93,7 @@ Other releases are available {ref}`mozilla_projects_nss_nss_releases`.
   1507174](https://bugzilla.mozilla.org/show_bug.cgi?id=1507174)[STRIKEOUT:- Add additional
   null checks to several CMS functions to fix a rare CMS crash. Thanks to Hanno Böck and Damian
   Poddebniak for the discovery and fixes.] Note: This was mistakenly not in release 3.42, and is
-  instead in {ref}`mozilla_projects_nss_nss_3_42_1_release_notes`.
+  instead in {ref}`mozilla-projects-nss-nss-3-42-1-release-notes`.
 - :::::{container} field indent
 
   ::::{container}

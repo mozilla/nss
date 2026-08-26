@@ -26,7 +26,7 @@ Tool](NSS_Tools_certutil).
 ## \` \<#availability_2>\`\_\_ Availability
 
 :::{container}
-See the {ref}`mozilla_projects_nss_releases` for the platforms this tool is available on.
+See the {ref}`mozilla-projects-nss-releases` for the platforms this tool is available on.
 :::
 
 ## \` \<#syntax_2>\`\_\_ Syntax

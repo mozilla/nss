@@ -44,5 +44,5 @@ A user may call `FC_CloseSession` without logging into the token (to assume the 
 
 :::{container}
 
-- {ref}`mozilla_projects_nss_reference_fc_opensession`
+- {ref}`mozilla-projects-nss-reference-fc-opensession`
 :::

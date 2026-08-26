@@ -108,7 +108,7 @@ Documentation for JSS 4.3.1 is available as follows:
 - Source may be viewed with a browser (via the MXR tool) at
   <http://mxr.mozilla.org/mozilla/source/security/jss/>
 - The RUN TIME behavior of JSS can be affected by the
-  {ref}`mozilla_projects_nss_reference_nss_environment_variables`.
+  {ref}`mozilla-projects-nss-reference-nss-environment-variables`.
 :::
 
 ### [Platform Information](#platform_information)

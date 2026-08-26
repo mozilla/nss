@@ -10,13 +10,13 @@ page.
 
 Other sources of information:
 
-- The {ref}`mozilla_projects_nss_reference` documents the functions most commonly used by
+- The {ref}`mozilla-projects-nss-reference` documents the functions most commonly used by
   applications to support SSL.
-- The {ref}`mozilla_projects_nss` home page links to additional SSL documentation.
+- The {ref}`mozilla-projects-nss` home page links to additional SSL documentation.
 
 If documentation is available for a function listed below, the function name is linked to either
 its MDC wiki page or its entry in the
-{ref}`mozilla_projects_nss_ssl_functions_old_ssl_reference`. The [Mozilla Cross
+{ref}`mozilla-projects-nss-ssl-functions-old-ssl-reference`. The [Mozilla Cross
 Reference](https://dxr.mozilla.org/) (DXR) link for each function provides access to the
 function definition, prototype definition, and source code references. The NSS version column
 indicates which versions of NSS support the function.
