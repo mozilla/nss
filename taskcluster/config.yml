@@ -69,6 +69,7 @@ treeherder:
         I: Docker image builds
         Builds: Builds with alternative compilers
         Cipher: Cipher tests
+        Cryptofuzz: Cryptofuzz
         DBM: Legacy (DBM) database
         Gtest: Gtests
         FIPS: FIPS

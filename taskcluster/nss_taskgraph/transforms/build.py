@@ -171,10 +171,6 @@ def set_gyp_command(config, jobs):
             })
             if attributes.get("tlsfuzz"):
                 command += "=tls"
-            else:
-                command += " && nss/automation/taskcluster/scripts/build_cryptofuzz.sh"
-                if "64" not in platform:
-                    command += " --i386"
         job["run"]["command"] = command
         yield job
 

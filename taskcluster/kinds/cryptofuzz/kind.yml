@@ -1,0 +1,47 @@
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+---
+
+transforms:
+    - taskgraph.transforms.from_deps
+    - nss_taskgraph.transforms.treeherder
+    - nss_taskgraph.transforms.platforms
+
+kind-dependencies:
+    - build
+
+tasks:
+    cryptofuzz:
+        description: Build Cryptofuzz
+        from-deps:
+            copy-attributes: true
+            with-attributes:
+                fuzz: [true]
+                tlsfuzz: [false]
+        run:
+            using: run-task
+            cwd: /builds/worker/workspace
+            checkout:
+                nss:
+                    path: nss
+            command:
+                by-platform:
+                    linux-x86: "${VCS_PATH}/nss/automation/taskcluster/scripts/build_cryptofuzz_task.sh --i386"
+                    default: "${VCS_PATH}/nss/automation/taskcluster/scripts/build_cryptofuzz_task.sh"
+        worker:
+            max-run-time: 3600
+            # generate_dict is ASan-instrumented.
+            allow-ptrace: true
+            env:
+                TC_PARENT_TASK_ID: {task-reference: '<build>'}
+                CC: "clang"
+                CCC: "clang++"
+            artifacts:
+                - type: directory
+                  path: /builds/worker/artifacts
+                  name: public
+            docker-image: {in-tree: fuzz}
+        worker-type: b-linux
+        treeherder:
+            symbol: Cryptofuzz(B)

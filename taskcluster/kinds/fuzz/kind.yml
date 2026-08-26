@@ -8,6 +8,7 @@ transforms:
 
 kind-dependencies:
     - build
+    - cryptofuzz
 
 task-defaults:
     run:
@@ -212,11 +213,11 @@ tasks:
     linux-x64-cryptofuzz:
         description: Cryptofuzz
         dependencies:
-            build: build-linux-x64/debug-fuzz
+            build: cryptofuzz-linux-x64/debug-fuzz
         run:
             command: "${{VCS_PATH}}/nss/automation/taskcluster/scripts/cryptofuzz.sh -max_total_time={MAX_FUZZ_TIME}"
         treeherder:
-            symbol: Cryptofuzz
+            symbol: Cryptofuzz(R)
             platform: linux-x64/debug-fuzz
 
     linux-x64-tlsfuzz-pkcs12:
@@ -450,11 +451,11 @@ tasks:
     linux-x86-cryptofuzz:
         description: Cryptofuzz
         dependencies:
-            build: build-linux-x86/debug-fuzz
+            build: cryptofuzz-linux-x86/debug-fuzz
         run:
             command: "${{VCS_PATH}}/nss/automation/taskcluster/scripts/cryptofuzz.sh -max_total_time={MAX_FUZZ_TIME}"
         treeherder:
-            symbol: Cryptofuzz
+            symbol: Cryptofuzz(R)
             platform: linux-x86/debug-fuzz
 
     linux-x86-tlsfuzz-pkcs12:
