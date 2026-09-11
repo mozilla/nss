@@ -1144,13 +1144,28 @@ SECItem *
 pk11_mkcertKeyID(CERTCertificate *cert)
 {
     SECItem *pubKeyData = PK11_GetPubIndexKeyID(cert);
-    SECItem *certCKA_ID;
-
-    if (pubKeyData == NULL)
+    if (pubKeyData == NULL) {
         return NULL;
-
-    certCKA_ID = PK11_MakeIDFromPubKey(pubKeyData);
+    }
+    SECItem *certCKA_ID = PK11_MakeIDFromPubKey(pubKeyData);
     SECITEM_FreeItem(pubKeyData, PR_TRUE);
+    return certCKA_ID;
+}
+
+/*
+ * generate a CKA_ID from an encoded certificate.
+ */
+SECItem *
+pk11_mkcertKeyIDFromDER(SECItem *certDER)
+{
+    // CERT_DecodeDERCertificate may be used internally to temporarily decode
+    // an encoded certificate. Its lifetime should be bounded by this function.
+    CERTCertificate *cert = CERT_DecodeDERCertificate(certDER, PR_FALSE, NULL);
+    if (!cert) {
+        return NULL;
+    }
+    SECItem *certCKA_ID = pk11_mkcertKeyID(cert);
+    CERT_DestroyCertificate(cert);
     return certCKA_ID;
 }
 
@@ -1169,10 +1184,7 @@ PK11_ImportCert(PK11SlotInfo *slot, CERTCertificate *cert,
     char *emailAddr = NULL;
     nssCertificateStoreTrace lockTrace = { NULL, NULL, PR_FALSE, PR_FALSE };
     nssCertificateStoreTrace unlockTrace = { NULL, NULL, PR_FALSE, PR_FALSE };
-    SECItem *keyID = pk11_mkcertKeyID(cert);
-    if (keyID == NULL) {
-        goto loser; /* error code should be set already */
-    }
+
     token = PK11Slot_GetNSSToken(slot);
     if (!token) {
         PORT_SetError(SEC_ERROR_NO_TOKEN);
@@ -1194,12 +1206,6 @@ PK11_ImportCert(PK11SlotInfo *slot, CERTCertificate *cert,
         if (c == NULL) {
             goto loser;
         }
-    }
-
-    /* set the id for the cert */
-    nssItem_Create(c->object.arena, &c->id, keyID->len, keyID->data);
-    if (!c->id.data) {
-        goto loser;
     }
 
     if (key != CK_INVALID_HANDLE) {
@@ -1235,7 +1241,6 @@ PK11_ImportCert(PK11SlotInfo *slot, CERTCertificate *cert,
     if (!certobj) {
         if (NSS_GetError() == NSS_ERROR_INVALID_CERTIFICATE) {
             PORT_SetError(SEC_ERROR_REUSED_ISSUER_AND_SERIAL);
-            SECITEM_FreeItem(keyID, PR_TRUE);
             return SECFailure;
         }
         goto loser;
@@ -1279,7 +1284,6 @@ PK11_ImportCert(PK11SlotInfo *slot, CERTCertificate *cert,
         (void)STAN_ForceCERTCertificateUpdate(c);
         // nssTrustDomain_AddCertToCache already called nssCertificate_Destroy(c).
     }
-    SECITEM_FreeItem(keyID, PR_TRUE);
     (void)nssToken_Destroy(token);
     return SECSuccess;
 loser:
@@ -1287,7 +1291,6 @@ loser:
         (void)nssToken_Destroy(token);
     }
     CERT_MapStanError();
-    SECITEM_FreeItem(keyID, PR_TRUE);
     if (PORT_GetError() != SEC_ERROR_TOKEN_NOT_LOGGED_IN) {
         PORT_SetError(SEC_ERROR_ADDING_CERT);
     }

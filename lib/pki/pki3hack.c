@@ -30,15 +30,16 @@
 #include "pki3hack.h"
 #endif /* PKINSS3HACK_H */
 
-#include "secitem.h"
-#include "certdb.h"
-#include "certt.h"
 #include "cert.h"
+#include "certdb.h"
 #include "certi.h"
+#include "certt.h"
+#include "nssrwlk.h"
 #include "pk11func.h"
 #include "pkistore.h"
+#include "secitem.h"
 #include "secmod.h"
-#include "nssrwlk.h"
+#include "secmodi.h"
 
 NSSTrustDomain *g_default_trust_domain = NULL;
 
@@ -1083,6 +1084,19 @@ stan_CreateNSSCertificateLocked(CERTCertificate *cc)
         nssArena_Destroy(arena);
         return NULL;
     }
+
+    SECItem *keyID = pk11_mkcertKeyID(cc);
+    if (!keyID) {
+        nssArena_Destroy(arena);
+        return NULL;
+    }
+    nssItem_Create(arena, &c->id, keyID->len, keyID->data);
+    SECITEM_FreeItem(keyID, PR_TRUE);
+    if (!c->id.data || !c->id.size) {
+        nssArena_Destroy(arena);
+        return NULL;
+    }
+
     NSSITEM_FROM_SECITEM(&c->encoding, &cc->derCert);
     c->type = NSSCertificateType_PKIX;
     pkiob = nssPKIObject_Create(arena, NULL, cc->dbhandle, NULL, nssPKIMonitor);

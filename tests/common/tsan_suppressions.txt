@@ -15,7 +15,6 @@ race:cert_TestHostName.useShellExp
 race:failed_already
 race:fill_CERTCertificateFields
 race:mp_exptmod.max_window_bits
-race:nssItem_Create
 race:pk11_IsLoggedIn.login_delay_time
 race:pkix_CacheCertChain_Add
 race:pkix_CacheCertChain_Lookup
