@@ -179,10 +179,11 @@ class TlsConnectStreamTls13Ech : public TlsConnectTestBase {
     SECOidData* oidData = SECOID_FindOIDByTag(oid);
     ASSERT_TRUE(!!oidData);
 
-    uint8_t buf[static_cast<size_t>(2 + oidData->oid.len)];
-    SECItem ecp = {siDEROID, buf, 2 + oidData->oid.len };
+    ASSERT_LT(oidData->oid.len, 128U);  // one-byte DER length limit
+    std::vector<uint8_t> buf(2 + oidData->oid.len);
+    SECItem ecp = {siDEROID, buf.data(), static_cast<unsigned int>(buf.size())};
     buf[0] = SEC_ASN1_OBJECT_ID;
-    buf[1] = oidData->oid.len;
+    buf[1] = static_cast<uint8_t>(oidData->oid.len);
     PORT_Memcpy(&buf[2], oidData->oid.data, oidData->oid.len);
 
     ScopedPK11SlotInfo slot(PK11_GetInternalSlot());

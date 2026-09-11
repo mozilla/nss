@@ -14462,7 +14462,7 @@ ssl3_RedoHandshake(sslSocket *ss, PRBool flushCache)
     }
 
     if (sid && flushCache) {
-        ssl_UncacheSessionID(ss); /* remove it from whichever cache it's in. */
+        ssl_UncacheSessionID(ss);   /* remove it from whichever cache it's in. */
         ssl_SetSocketSID(ss, NULL); /* dec ref count and free if zero. */
     }
 
