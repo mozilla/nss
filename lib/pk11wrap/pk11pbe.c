@@ -1374,6 +1374,28 @@ PK11_CreatePBEV2AlgorithmID(SECOidTag pbeAlgTag, SECOidTag cipherAlgTag,
     return algid;
 }
 
+/* Softoken has reported cryptokiVersion 3.0 since long before it learned to
+ * accept CK_PKCS5_PBKD2_PARAMS2 in 3.114, so check its library version. */
+static PRBool
+pk11_UseLegacyPBKD2Params(PK11SlotInfo *slot)
+{
+    CK_INFO info;
+
+    if (slot->module->internal) {
+        if (PK11_GetModInfo(slot->module, &info) != SECSuccess) {
+            return PR_FALSE;
+        }
+        return info.libraryVersion.major < 3 ||
+               (info.libraryVersion.major == 3 &&
+                info.libraryVersion.minor < 114);
+    }
+#ifdef NSS_USE_PKCS5_PBKD2_PARAMS2_ONLY
+    return PR_FALSE;
+#else
+    return PK11_CheckPKCS11Version(slot, 2, 40, PR_FALSE) < 0;
+#endif
+}
+
 /*
  * private.
  */
@@ -1382,11 +1404,9 @@ pk11_RawPBEKeyGenWithKeyType(PK11SlotInfo *slot, CK_MECHANISM_TYPE type,
                              SECItem *params, CK_KEY_TYPE keyType, int keyLen,
                              SECItem *pwitem, void *wincx)
 {
-#ifndef NSS_USE_PKCS5_PBKD2_PARAMS2_ONLY
     SECItem _params = { 0, NULL, 0 };
     CK_PKCS5_PBKD2_PARAMS pbev2_1_params;
     CK_ULONG pwLen;
-#endif
 #ifdef UNSAFE_FUZZER_MODE
     PK11SymKey *zeroKey = NULL;
     unsigned char zeroBuff[32] = { 0 };
@@ -1398,7 +1418,7 @@ pk11_RawPBEKeyGenWithKeyType(PK11SlotInfo *slot, CK_MECHANISM_TYPE type,
                                              CKF_UNWRAP | CKF_WRAP,
                                          PR_FALSE, wincx);
     return zeroKey;
-#else /* UNSAFE_FUZZER_MODE */
+#else  /* UNSAFE_FUZZER_MODE */
 
     /* do some sanity checks */
     if ((params == NULL) || (params->data == NULL)) {
@@ -1424,8 +1444,7 @@ pk11_RawPBEKeyGenWithKeyType(PK11SlotInfo *slot, CK_MECHANISM_TYPE type,
         pbev2_params->ulPasswordLen = pwitem->len;
         params->len = sizeof(CK_PKCS5_PBKD2_PARAMS2);
 
-#ifndef NSS_USE_PKCS5_PBKD2_PARAMS2_ONLY
-        if (PK11_CheckPKCS11Version(slot, 2, 40, PR_FALSE) < 0) {
+        if (pk11_UseLegacyPBKD2Params(slot)) {
             /* CK_PKCS5_PBKD2_PARAMS */
             _params.type = params->type;
             _params.data = (CK_CHAR_PTR)&pbev2_1_params;
@@ -1438,7 +1457,6 @@ pk11_RawPBEKeyGenWithKeyType(PK11SlotInfo *slot, CK_MECHANISM_TYPE type,
             pbev2_1_params.ulPasswordLen = &pwLen;
             params = &_params;
         }
-#endif
 
     } else {
         CK_PBE_PARAMS *pbe_params;
