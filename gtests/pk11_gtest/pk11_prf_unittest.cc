@@ -67,9 +67,11 @@ class TlsPrfTest : public ::testing::Test {
   void ClearTempVars() {
     if (pms_) {
       PK11_FreeSymKey(pms_);
+      pms_ = nullptr;
     }
     if (ms_) {
       PK11_FreeSymKey(ms_);
+      ms_ = nullptr;
     }
   }
 
