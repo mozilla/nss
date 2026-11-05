@@ -35,6 +35,7 @@ def set_build_attributes(config, jobs):
 EXTRA_COMPILERS = {
     "clang": {"CC": "clang", "CCC": "clang++"},
     "clang-10": {"CC": "clang-10", "CCC": "clang++-10"},
+    "clang-23": {"CC": "clang-23", "CCC": "clang++-23"},
     # gcc-8 is the RHEL 8 system compiler (our floor); gcc-11 is RHEL 9.
     "gcc-8": {"CC": "gcc-8", "CCC": "g++-8"},
     "gcc-11": {"CC": "gcc-11", "CCC": "g++-11"},
