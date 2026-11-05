@@ -1284,6 +1284,44 @@ TEST_P(TlsConnectResumptionTokenShape, ConnectResumeGetInfo) {
   SendReceive();
 }
 
+TEST_P(TlsConnectGenericResumptionToken, GetInfoWithFlags) {
+  ConfigureSessionCache(RESUME_BOTH, RESUME_BOTH);
+  Connect();
+  SendReceive();
+
+  const std::vector<uint8_t>& data = client_->GetResumptionToken();
+  ASSERT_FALSE(data.empty());
+  ScopedCERTCertificate cert(
+      PK11_FindCertFromNickname(server_->name().c_str(), nullptr));
+  ASSERT_NE(nullptr, cert.get());
+
+  SSLResumptionTokenInfo tokenInfo = {0};
+  ScopedSSLResumptionTokenInfo token(&tokenInfo);
+  ASSERT_EQ(SECSuccess, SSL_GetResumptionTokenInfoWithFlags(
+                            data.data(), static_cast<unsigned int>(data.size()),
+                            token.get(), sizeof(SSLResumptionTokenInfo), 0));
+  CheckGetInfoResult(now(), 0, 0, cert, token);
+
+  SSLResumptionTokenInfo noCertInfo = {0};
+  ScopedSSLResumptionTokenInfo noCert(&noCertInfo);
+  ASSERT_EQ(SECSuccess, SSL_GetResumptionTokenInfoWithFlags(
+                            data.data(), static_cast<unsigned int>(data.size()),
+                            noCert.get(), sizeof(SSLResumptionTokenInfo),
+                            SSL_RESUMPTION_TOKEN_INFO_NO_PEER_CERT));
+  EXPECT_EQ(nullptr, noCert->peerCert);
+  EXPECT_EQ(0U, noCert->alpnSelectionLen);
+  EXPECT_EQ(0U, noCert->maxEarlyDataSize);
+  EXPECT_EQ(token->expirationTime, noCert->expirationTime);
+
+  SSLResumptionTokenInfo badInfo = {0};
+  EXPECT_EQ(SECFailure,
+            SSL_GetResumptionTokenInfoWithFlags(
+                data.data(), static_cast<unsigned int>(data.size()), &badInfo,
+                sizeof(SSLResumptionTokenInfo), 0x80000000U));
+  EXPECT_EQ(SEC_ERROR_INVALID_ARGS, PORT_GetError());
+  EXPECT_EQ(nullptr, badInfo.peerCert);
+}
+
 TEST_P(TlsConnectGenericResumptionToken, RefuseLongWrappedMasterSecret) {
   ConfigureSessionCache(RESUME_BOTH, RESUME_BOTH);
   client_->SetResumptionTokenCallback();

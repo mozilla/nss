@@ -1939,6 +1939,11 @@ SECStatus SSLExp_EnablePlaintextResumptionExport(PRFileDesc *fd, PRBool enabled)
 
 SECStatus SSLExp_GetResumptionTokenInfo(const PRUint8 *tokenData, unsigned int tokenLen,
                                         SSLResumptionTokenInfo *token, unsigned int version);
+SECStatus SSLExp_GetResumptionTokenInfoWithFlags(const PRUint8 *tokenData,
+                                                 unsigned int tokenLen,
+                                                 SSLResumptionTokenInfo *token,
+                                                 unsigned int version,
+                                                 PRUint32 flags);
 
 SECStatus SSLExp_DestroyResumptionTokenInfo(SSLResumptionTokenInfo *token);
 
