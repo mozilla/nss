@@ -418,6 +418,9 @@ typedef struct SSLResumptionTokenInfoStr {
     PRUint32 alpnSelectionLen;
     PRUint32 maxEarlyDataSize;
     PRTime expirationTime; /* added in NSS 3.41 */
+    /* PR_TRUE if the token carries the resumption secret in cleartext. See
+     * SSL_EnablePlaintextResumptionExport. Added in NSS 3.134. */
+    PRBool plaintextSecret;
 } SSLResumptionTokenInfo;
 
 /*

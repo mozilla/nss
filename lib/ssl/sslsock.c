@@ -4781,6 +4781,9 @@ SSLExp_GetResumptionTokenInfoWithFlags(const PRUint8 *tokenData,
         token.maxEarlyDataSize = 0;
     }
     token.expirationTime = sid.expirationTime;
+    /* A successful decode guarantees the version and features bytes. */
+    token.plaintextSecret =
+        (tokenData[1] & SSLResumptionTokenFeatureRawMS) ? PR_TRUE : PR_FALSE;
 
     token.length = PR_MIN(sizeof(SSLResumptionTokenInfo), len);
     PORT_Memcpy(tokenOut, &token, token.length);

@@ -1463,21 +1463,38 @@ TEST_P(TlsConnectResumptionTokenShape, ConnectResumeTokenFormat) {
   ASSERT_GE(token.size(), 2U);
   EXPECT_EQ(static_cast<uint8_t>(SSLResumptionTokenVersion), token[0]);
 
-  if (shape() == TokenShape::kWrapped) {
-    EXPECT_EQ(0, token[1]);
-    return;
+  SSLResumptionTokenInfo info = {0};
+  ASSERT_EQ(SECSuccess,
+            SSL_GetResumptionTokenInfo(token.data(),
+                                       static_cast<unsigned int>(token.size()),
+                                       &info, sizeof(info)));
+  ScopedSSLResumptionTokenInfo infoHolder(&info);
+
+  // A caller built against the struct before plaintextSecret existed must not
+  // have it written.
+  SSLResumptionTokenInfo oldInfo;
+  memset(&oldInfo, 0xa5, sizeof(oldInfo));
+  ASSERT_EQ(SECSuccess,
+            SSL_GetResumptionTokenInfo(
+                token.data(), static_cast<unsigned int>(token.size()), &oldInfo,
+                offsetof(SSLResumptionTokenInfo, plaintextSecret)));
+  ScopedSSLResumptionTokenInfo oldInfoHolder(&oldInfo);
+  const uint8_t* tail = reinterpret_cast<const uint8_t*>(&oldInfo) +
+                        offsetof(SSLResumptionTokenInfo, plaintextSecret);
+  for (size_t i = 0; i < sizeof(oldInfo.plaintextSecret); ++i) {
+    EXPECT_EQ(0xa5, tail[i]);
   }
 
   // FIPS does not allow raw key export, so the token falls back to the
   // wrapped form.
-  if (PK11_IsFIPS()) {
+  if (shape() == TokenShape::kWrapped || PK11_IsFIPS()) {
     EXPECT_EQ(0, token[1]);
+    EXPECT_EQ(PR_FALSE, info.plaintextSecret);
     return;
   }
 
-  ASSERT_GE(token.size(), 2U);
-  EXPECT_EQ(static_cast<uint8_t>(SSLResumptionTokenVersion), token[0]);
   EXPECT_EQ(SSLResumptionTokenFeatureRawMS, token[1]);
+  EXPECT_EQ(PR_TRUE, info.plaintextSecret);
 }
 
 TEST_P(TlsConnectTls13ResumptionToken, ConnectResumeGetInfoZeroRtt) {
@@ -1852,6 +1869,15 @@ TEST_F(TlsConnectStreamTls13, ResumptionTokenRawMasterSecretFips) {
   crafted.insert(crafted.end(),
                  token.begin() + static_cast<ptrdiff_t>(off + wrappedFieldsLen),
                  token.end());
+
+  // The info reports what the token carries, even where it can't be imported.
+  SSLResumptionTokenInfo info = {0};
+  ASSERT_EQ(SECSuccess,
+            SSL_GetResumptionTokenInfo(
+                crafted.data(), static_cast<unsigned int>(crafted.size()),
+                &info, sizeof(info)));
+  ScopedSSLResumptionTokenInfo infoHolder(&info);
+  EXPECT_EQ(PR_TRUE, info.plaintextSecret);
 
   Reset();
   StartConnect();
