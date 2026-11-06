@@ -88,7 +88,7 @@ else
 
   ifndef NSS_BUILD_SOFTOKEN_ONLY
     NSS_SRCDIRS = \
-	base certdb certhigh ckfw cryptohi dev jar $(LIBPKIX_SRCDIR) mozpkix \
+	base certdb certhigh ckfw cryptohi dev $(LIBPKIX_SRCDIR) mozpkix \
 	nss pk11wrap pkcs12 pkcs7 pki smime ssl $(SYSINIT_SRCDIR) $(ZLIB_SRCDIR)
 
     ifneq (,$(SYSINIT_SRCDIR))
