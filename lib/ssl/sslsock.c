@@ -3096,12 +3096,11 @@ ssl_Accept(PRFileDesc *fd, PRNetAddr *sockaddr, PRIntervalTime timeout)
     ** Don't need locks here because nobody else has a reference to ns yet.
     */
     if (ns->opt.useSecurity) {
+        ns->sec.isServer = !ns->opt.handshakeAsClient;
         if (ns->opt.handshakeAsClient) {
             ns->handshake = ssl_BeginClientHandshake;
-            ss->handshaking = sslHandshakingAsClient;
         } else {
             ns->handshake = ssl_BeginServerHandshake;
-            ss->handshaking = sslHandshakingAsServer;
         }
     }
     ns->TCPconnected = 1;
@@ -3412,7 +3411,7 @@ ssl_Poll(PRFileDesc *fd, PRInt16 how_flags, PRInt16 *p_out_flags)
     }
 
     if (ss->opt.useSecurity &&
-        ss->handshaking != sslHandshakingUndetermined &&
+        (ss->handshake || ss->handshakeBegun) &&
         !ss->firstHsDone &&
         (how_flags & PR_POLL_RW)) {
         if (!ss->TCPconnected) {
@@ -3428,7 +3427,7 @@ ssl_Poll(PRFileDesc *fd, PRInt16 how_flags, PRInt16 *p_out_flags)
                 ** not based on what the application requested.
                 */
                 new_flags &= ~PR_POLL_RW;
-                if (ss->handshaking == sslHandshakingAsClient) {
+                if (!ss->sec.isServer) {
                     new_flags |= PR_POLL_WRITE;
                 } else { /* handshaking as server */
                     new_flags |= PR_POLL_READ;
