@@ -4736,7 +4736,7 @@ SSLExp_GetResumptionTokenInfoWithFlags(const PRUint8 *tokenData,
         return SECFailure;
     }
     sslSessionID sid = { 0 };
-    SSLResumptionTokenInfo token;
+    SSLResumptionTokenInfo token = { 0 };
 
     /* Populate sid values */
     if (ssl_DecodeResumptionToken(NULL, &sid, tokenData, tokenLen) != SECSuccess) {
@@ -4758,13 +4758,13 @@ SSLExp_GetResumptionTokenInfoWithFlags(const PRUint8 *tokenData,
             ssl_DestroySID(&sid, PR_FALSE);
             return SECFailure;
         }
-    } else {
-        token.peerCert = NULL;
     }
 
     token.alpnSelectionLen = sid.u.ssl3.alpnSelection.len;
     token.alpnSelection = PORT_ZAlloc(token.alpnSelectionLen);
     if (!token.alpnSelection) {
+        CERT_DestroyCertificate(token.peerCert);
+        ssl_DestroySID(&sid, PR_FALSE);
         return SECFailure;
     }
     if (token.alpnSelectionLen > 0) {
