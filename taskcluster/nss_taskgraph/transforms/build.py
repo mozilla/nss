@@ -76,9 +76,9 @@ def add_variants(config, jobs):
 
         # Windows gyp builds use clang-cl, as Firefox does (see
         # uses_clang_cl). MSVC is kept as a build-only extra, like the extra
-        # Linux compilers below.
+        # Linux compilers below. Sanitizer builds are clang-only.
         if (attributes["build_platform"].startswith("win")
-                and not attributes.get("make") and not attributes.get("static")):
+                and not any(attributes.get(attr) for attr in ("make", "static", "asan"))):
             msvc_job = deepcopy(job)
             msvc_job["name"] += "-msvc"
             msvc_job["description"] += " w/ MSVC"
