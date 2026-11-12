@@ -37,6 +37,8 @@
 // they are able to do so; otherwise they fail with the input mark in an
 // undefined state.
 
+#include <optional>
+
 #include "mozpkix/Input.h"
 #include "mozpkix/pkixtypes.h"
 
@@ -488,12 +490,21 @@ inline Result OptionalExtensions(Reader& input, uint8_t tag,
 Result DigestAlgorithmIdentifier(Reader& input,
                                  /*out*/ DigestAlgorithm& algorithm);
 
-enum class PublicKeyAlgorithm { RSA_PKCS1, RSA_PSS, ECDSA };
+enum class PublicKeyAlgorithm { RSA_PKCS1, RSA_PSS, ECDSA, MLDSA };
+
+// Returns true if digestAlgorithm is present exactly when publicKeyAlgorithm
+// requires one, i.e. when it is not pure ML-DSA.
+inline bool HasConsistentDigest(
+    PublicKeyAlgorithm publicKeyAlgorithm,
+    const std::optional<DigestAlgorithm>& digestAlgorithm) {
+  return digestAlgorithm.has_value() !=
+         (publicKeyAlgorithm == PublicKeyAlgorithm::MLDSA);
+}
 
 Result SignatureAlgorithmIdentifierValue(
     Reader& input,
     /*out*/ PublicKeyAlgorithm& publicKeyAlgorithm,
-    /*out*/ DigestAlgorithm& digestAlgorithm);
+    /*out*/ std::optional<DigestAlgorithm>& digestAlgorithm);
 
 struct SignedDataWithSignature final {
  public:

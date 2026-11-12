@@ -22,6 +22,8 @@
  * limitations under the License.
  */
 
+#include <optional>
+
 #include "mozpkix/pkixutil.h"
 
 namespace mozilla { namespace pkix {
@@ -32,7 +34,7 @@ VerifySignedData(TrustDomain& trustDomain,
                  Input signerSubjectPublicKeyInfo)
 {
   der::PublicKeyAlgorithm publicKeyAlg;
-  DigestAlgorithm digestAlgorithm;
+  std::optional<DigestAlgorithm> digestAlgorithm = std::nullopt;
   Reader signatureAlg(signedData.algorithm);
   Result rv = der::SignatureAlgorithmIdentifierValue(
                 signatureAlg, publicKeyAlg, digestAlgorithm);
@@ -43,16 +45,23 @@ VerifySignedData(TrustDomain& trustDomain,
     return Result::ERROR_BAD_DER;
   }
 
+  if (!der::HasConsistentDigest(publicKeyAlg, digestAlgorithm)) {
+    return Result::ERROR_INVALID_ALGORITHM;
+  }
+
   switch (publicKeyAlg) {
     case der::PublicKeyAlgorithm::ECDSA:
       return trustDomain.VerifyECDSASignedData(signedData.data,
-          digestAlgorithm, signedData.signature, signerSubjectPublicKeyInfo);
+          digestAlgorithm.value(), signedData.signature, signerSubjectPublicKeyInfo);
     case der::PublicKeyAlgorithm::RSA_PKCS1:
       return trustDomain.VerifyRSAPKCS1SignedData(signedData.data,
-          digestAlgorithm, signedData.signature, signerSubjectPublicKeyInfo);
+          digestAlgorithm.value(), signedData.signature, signerSubjectPublicKeyInfo);
     case der::PublicKeyAlgorithm::RSA_PSS:
       return trustDomain.VerifyRSAPSSSignedData(signedData.data,
-          digestAlgorithm, signedData.signature, signerSubjectPublicKeyInfo);
+          digestAlgorithm.value(), signedData.signature, signerSubjectPublicKeyInfo);
+    case der::PublicKeyAlgorithm::MLDSA:
+      return trustDomain.VerifyMLDSASignedData(signedData.data,
+          signedData.signature, signerSubjectPublicKeyInfo);
     MOZILLA_PKIX_UNREACHABLE_DEFAULT_ENUM
   }
 }

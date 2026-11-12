@@ -304,6 +304,41 @@ DigestBufNSS(Input item,
 }
 
 Result
+VerifyMLDSASignedDataNSS(Input data,
+                         Input signature,
+                         Input subjectPublicKeyInfo,
+                         void* pkcs11PinArg)
+{
+  ScopedSECKEYPublicKey publicKey;
+  Result rv = SubjectPublicKeyInfoToSECKEYPublicKey(subjectPublicKeyInfo,
+                                                    publicKey);
+  if (rv != Success) {
+    return rv;
+  }
+  // The signature algorithm, not the issuer's key, determines which verifier
+  // is called, so check that the key is of the correct type.
+  if (SECKEY_GetPublicKeyType(publicKey.get()) != mldsaKey) {
+    return Result::ERROR_UNSUPPORTED_KEYALG;
+  }
+  SECOidTag paramSet = publicKey->u.mldsa.paramSet;
+  switch (paramSet) {
+    case SEC_OID_ML_DSA_44:
+    case SEC_OID_ML_DSA_65:
+    case SEC_OID_ML_DSA_87:
+      break;
+    default:
+      return Result::ERROR_UNSUPPORTED_KEYALG;
+  }
+
+  SECItem signatureItem(UnsafeMapInputToSECItem(signature));
+  SECItem dataItem(UnsafeMapInputToSECItem(data));
+  SECOidTag policyTags[1] = {paramSet};
+  // No mechanism parameter means an empty context string.
+  return VerifySignedData(publicKey.get(), CKM_ML_DSA, nullptr, &signatureItem,
+                          &dataItem, policyTags, pkcs11PinArg);
+}
+
+Result
 MapPRErrorCodeToResult(PRErrorCode error)
 {
   switch (error)

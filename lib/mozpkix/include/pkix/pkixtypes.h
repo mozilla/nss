@@ -339,6 +339,10 @@ class TrustDomain {
                                        Input signature,
                                        Input subjectPublicKeyInfo) = 0;
 
+  virtual Result VerifyMLDSASignedData(Input data,
+                                       Input signature,
+                                       Input subjectPublicKeyInfo) = 0;
+
   // Check that the validity duration is acceptable.
   //
   // Return Success if the validity duration is acceptable,
