@@ -305,6 +305,7 @@ DigestBufNSS(Input item,
 
 Result
 VerifyMLDSASignedDataNSS(Input data,
+                         MLDSAParameterSet parameterSet,
                          Input signature,
                          Input subjectPublicKeyInfo,
                          void* pkcs11PinArg)
@@ -320,19 +321,29 @@ VerifyMLDSASignedDataNSS(Input data,
   if (SECKEY_GetPublicKeyType(publicKey.get()) != mldsaKey) {
     return Result::ERROR_UNSUPPORTED_KEYALG;
   }
-  SECOidTag paramSet = publicKey->u.mldsa.paramSet;
-  switch (paramSet) {
-    case SEC_OID_ML_DSA_44:
-    case SEC_OID_ML_DSA_65:
-    case SEC_OID_ML_DSA_87:
+
+  // Likewise, ensure the key's parameter set is correct, i.e. that it is the
+  // one that the signature algorithm names.
+  SECOidTag expectedParamSet;
+  switch (parameterSet) {
+    case MLDSAParameterSet::ml_dsa_44:
+      expectedParamSet = SEC_OID_ML_DSA_44;
       break;
-    default:
-      return Result::ERROR_UNSUPPORTED_KEYALG;
+    case MLDSAParameterSet::ml_dsa_65:
+      expectedParamSet = SEC_OID_ML_DSA_65;
+      break;
+    case MLDSAParameterSet::ml_dsa_87:
+      expectedParamSet = SEC_OID_ML_DSA_87;
+      break;
+    MOZILLA_PKIX_UNREACHABLE_DEFAULT_ENUM
+  }
+  if (publicKey->u.mldsa.paramSet != expectedParamSet) {
+    return Result::ERROR_SIGNATURE_ALGORITHM_MISMATCH;
   }
 
   SECItem signatureItem(UnsafeMapInputToSECItem(signature));
   SECItem dataItem(UnsafeMapInputToSECItem(data));
-  SECOidTag policyTags[1] = {paramSet};
+  SECOidTag policyTags[1] = {expectedParamSet};
   // No mechanism parameter means an empty context string.
   return VerifySignedData(publicKey.get(), CKM_ML_DSA, nullptr, &signatureItem,
                           &dataItem, policyTags, pkcs11PinArg);

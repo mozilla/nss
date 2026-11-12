@@ -129,7 +129,9 @@ CheckSignatureAlgorithm(TrustDomain& trustDomain,
       // during path building is too low to be worth bothering with.
       break;
 
-    case der::PublicKeyAlgorithm::MLDSA:
+    case der::PublicKeyAlgorithm::MLDSA_44:  // fall through
+    case der::PublicKeyAlgorithm::MLDSA_65:  // fall through
+    case der::PublicKeyAlgorithm::MLDSA_87:
       break;
     MOZILLA_PKIX_UNREACHABLE_DEFAULT_ENUM
   }
@@ -210,6 +212,59 @@ CheckValidity(Time time, Time notBefore, Time notAfter)
 
 // 4.1.2.7 Subject Public Key Info
 
+namespace {
+
+// Returns true, and sets parameterSet, if algorithmOID is one of the ML-DSA
+// public key algorithm OIDs.
+bool
+IsMLDSA(Reader& algorithmOID, /*out*/ MLDSAParameterSet& parameterSet)
+{
+  // RFC 9881 Section 2
+  // python DottedOIDToCode.py id-ml-dsa-44 2.16.840.1.101.3.4.3.17
+  static const uint8_t id_ml_dsa_44[] = {
+    0x60, 0x86, 0x48, 0x01, 0x65, 0x03, 0x04, 0x03, 0x11
+  };
+  // python DottedOIDToCode.py id-ml-dsa-65 2.16.840.1.101.3.4.3.18
+  static const uint8_t id_ml_dsa_65[] = {
+    0x60, 0x86, 0x48, 0x01, 0x65, 0x03, 0x04, 0x03, 0x12
+  };
+  // python DottedOIDToCode.py id-ml-dsa-87 2.16.840.1.101.3.4.3.19
+  static const uint8_t id_ml_dsa_87[] = {
+    0x60, 0x86, 0x48, 0x01, 0x65, 0x03, 0x04, 0x03, 0x13
+  };
+
+  if (algorithmOID.MatchRest(id_ml_dsa_44)) {
+    parameterSet = MLDSAParameterSet::ml_dsa_44;
+    return true;
+  }
+  if (algorithmOID.MatchRest(id_ml_dsa_65)) {
+    parameterSet = MLDSAParameterSet::ml_dsa_65;
+    return true;
+  }
+  if (algorithmOID.MatchRest(id_ml_dsa_87)) {
+    parameterSet = MLDSAParameterSet::ml_dsa_87;
+    return true;
+  }
+  return false;
+}
+
+// FIPS 204 Table 2
+Input::size_type
+MLDSAPublicKeyLength(MLDSAParameterSet parameterSet)
+{
+  switch (parameterSet) {
+    case MLDSAParameterSet::ml_dsa_44:
+      return 1312;
+    case MLDSAParameterSet::ml_dsa_65:
+      return 1952;
+    case MLDSAParameterSet::ml_dsa_87:
+      return 2592;
+    MOZILLA_PKIX_UNREACHABLE_DEFAULT_ENUM
+  }
+}
+
+} // namespace
+
 Result
 CheckSubjectPublicKeyInfoContents(Reader& input, TrustDomain& trustDomain,
                                   EndEntityOrCA endEntityOrCA)
@@ -261,24 +316,7 @@ CheckSubjectPublicKeyInfoContents(Reader& input, TrustDomain& trustDomain,
     0x2a, 0x86, 0x48, 0xce, 0x3d, 0x02, 0x01
   };
 
-  // Params for pure ML-DSA-44 signature
-  // python DottedOIDToCode.py id-ml-dsa-44 2.16.840.1.101.3.4.3.17
-  static const uint8_t id_ml_dsa_44[] = {
-      0x60, 0x86, 0x48, 0x01, 0x65, 0x03, 0x04, 0x03, 0x11
-  };
-
-  // Params for pure ML-DSA-65 signature
-  // python DottedOIDToCode.py id-ml-dsa-65 2.16.840.1.101.3.4.3.18
-  static const uint8_t id_ml_dsa_65[] = {
-      0x60, 0x86, 0x48, 0x01, 0x65, 0x03, 0x04, 0x03, 0x12
-  };
-
-  // Params for pure ML-DSA-87 signature
-  // python DottedOIDToCode.py id-ml-dsa-87 2.16.840.1.101.3.4.3.19
-  static const uint8_t id_ml_dsa_87[] = {
-      0x60, 0x86, 0x48, 0x01, 0x65, 0x03, 0x04, 0x03, 0x13
-  };
-
+  MLDSAParameterSet mldsaParameterSet = MLDSAParameterSet::ml_dsa_44;
   if (algorithmOID.MatchRest(id_ecPublicKey)) {
     // An id-ecPublicKey AlgorithmIdentifier has a parameter that identifes
     // the curve being used. Although RFC 5480 specifies multiple forms, we
@@ -392,9 +430,7 @@ CheckSubjectPublicKeyInfoContents(Reader& input, TrustDomain& trustDomain,
     if (rv != Success) {
       return rv;
     }
-  } else if (algorithmOID.MatchRest(id_ml_dsa_44) ||
-             algorithmOID.MatchRest(id_ml_dsa_65) ||
-             algorithmOID.MatchRest(id_ml_dsa_87)) {
+  } else if (IsMLDSA(algorithmOID, mldsaParameterSet)) {
     // RFC 9881 Section 2 says "The contents of the parameters component for
     // each algorithm MUST be absent."
     rv = der::End(algorithm);
@@ -402,10 +438,21 @@ CheckSubjectPublicKeyInfoContents(Reader& input, TrustDomain& trustDomain,
       return rv;
     }
 
-    Input rawPublicKey;
-    rv = subjectPublicKeyReader.SkipToEnd(rawPublicKey);
+    rv = trustDomain.CheckMLDSAParameterSetIsAcceptable(endEntityOrCA,
+                                                        mldsaParameterSet);
     if (rv != Success) {
       return rv;
+    }
+
+    // The public key is the raw output of ML-DSA.KeyGen (FIPS 204 Algorithm
+    // 22, pkEncode), not wrapped in any further encoding.
+    Input publicKey;
+    rv = subjectPublicKeyReader.SkipToEnd(publicKey);
+    if (rv != Success) {
+      return rv;
+    }
+    if (publicKey.GetLength() != MLDSAPublicKeyLength(mldsaParameterSet)) {
+      return Result::ERROR_BAD_DER;
     }
   } else {
     return Result::ERROR_UNSUPPORTED_KEYALG;

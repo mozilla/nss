@@ -51,10 +51,10 @@ Result VerifyECDSASignedDataNSS(Input data, DigestAlgorithm digestAlgorithm,
                                 void* pkcs11PinArg);
 
 // Verifies the ML-DSA signature on the given data using the given ML-DSA
-// public key
-Result VerifyMLDSASignedDataNSS(Input data,
-                                Input signature,
-                                Input subjectPublicKeyInfo,
+// public key, which must be for the given parameter set. Returns
+// Result::ERROR_SIGNATURE_ALGORITHM_MISMATCH if it is not.
+Result VerifyMLDSASignedDataNSS(Input data, MLDSAParameterSet parameterSet,
+                                Input signature, Input subjectPublicKeyInfo,
                                 void* pkcs11PinArg);
 
 // Computes the digest of the given data using the given digest algorithm.

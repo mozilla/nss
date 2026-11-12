@@ -96,6 +96,10 @@ SignatureAlgorithmIdentifierValue(Reader& input,
   // RSA must be encoded as NULL; we relax that requirement by allowing the
   // NULL to be omitted.
   //
+  // RFC 9881 Section 2 (ML-DSA) says that parameters must be absent. Unlike
+  // for ECDSA and RSA, there are no legacy encoders to accommodate, so an
+  // explicitly encoded NULL is not accepted either.
+  //
   // RFC 8017 Appendix A.2.3 specifies the format of the parameters for
   // RSA-PSS. The CA/Browser Forum Baseline Requirements (as of 1.8.1)
   // specify three specific parameters that may be used with RSA-PSS:
@@ -271,18 +275,23 @@ SignatureAlgorithmIdentifierValue(Reader& input,
     } else {
       return Result::ERROR_CERT_SIGNATURE_ALGORITHM_DISABLED;
     }
-  } else if (algorithmID.MatchRest(id_ml_dsa_44) ||
-             algorithmID.MatchRest(id_ml_dsa_65) ||
-             algorithmID.MatchRest(id_ml_dsa_87)) {
-    publicKeyAlgorithm = PublicKeyAlgorithm::MLDSA;
+  } else if (algorithmID.MatchRest(id_ml_dsa_44)) {
+    publicKeyAlgorithm = PublicKeyAlgorithm::MLDSA_44;
+    digestAlgorithm = std::nullopt;
+  } else if (algorithmID.MatchRest(id_ml_dsa_65)) {
+    publicKeyAlgorithm = PublicKeyAlgorithm::MLDSA_65;
+    digestAlgorithm = std::nullopt;
+  } else if (algorithmID.MatchRest(id_ml_dsa_87)) {
+    publicKeyAlgorithm = PublicKeyAlgorithm::MLDSA_87;
     digestAlgorithm = std::nullopt;
   } else {
     return Result::ERROR_CERT_SIGNATURE_ALGORITHM_DISABLED;
   }
 
-  // Ensure that for non-RSA-PSS algorithms, the params are NULL or omitted.
+  // Ensure that for non-RSA-PSS algorithms, the params are NULL or omitted,
+  // and that for ML-DSA they are omitted.
   if (publicKeyAlgorithm != PublicKeyAlgorithm::RSA_PSS) {
-    if (algorithmParams.Peek(NULLTag)) {
+    if (!IsMLDSA(publicKeyAlgorithm) && algorithmParams.Peek(NULLTag)) {
       rv = Null(algorithmParams);
       if (rv != Success) {
         return rv;
