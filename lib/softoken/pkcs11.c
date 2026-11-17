@@ -1099,6 +1099,26 @@ sftk_handleCrlObject(SFTKSession *session, SFTKObject *object)
     return CKR_OK;
 }
 
+/* Edwards keys require Ed25519; Montgomery keys require either X25519 OID. */
+static CK_RV
+sftk_verifyECParams(SFTKObject *object, CK_KEY_TYPE key_type)
+{
+    SECOidTag tag;
+
+    switch (key_type) {
+        case CKK_EC_EDWARDS:
+            tag = sftk_quickGetECCCurveOid(object);
+            return tag == SEC_OID_ED25519_PUBLIC_KEY ? CKR_OK : CKR_DOMAIN_PARAMS_INVALID;
+        case CKK_EC_MONTGOMERY:
+            tag = sftk_quickGetECCCurveOid(object);
+            return (tag == SEC_OID_X25519 || tag == SEC_OID_CURVE25519)
+                       ? CKR_OK
+                       : CKR_DOMAIN_PARAMS_INVALID;
+        default:
+            return CKR_OK;
+    }
+}
+
 /*
  * check the consistancy and initialize a Public Key Object
  */
@@ -1176,6 +1196,10 @@ sftk_handlePublicKeyObject(SFTKSession *session, SFTKObject *object,
             }
             if (!sftk_hasAttribute(object, CKA_EC_POINT)) {
                 return CKR_TEMPLATE_INCOMPLETE;
+            }
+            crv = sftk_verifyECParams(object, key_type);
+            if (crv != CKR_OK) {
+                return crv;
             }
             /* for ECDSA and EDDSA. Change if the structure of any of them is modified. */
             derive = (key_type == CKK_EC_EDWARDS) ? CK_FALSE : CK_TRUE;    /* CK_TRUE for ECDH */
@@ -1397,6 +1421,10 @@ sftk_handlePrivateKeyObject(SFTKSession *session, SFTKObject *object, CK_KEY_TYP
             }
             if (!sftk_hasAttribute(object, CKA_VALUE)) {
                 return CKR_TEMPLATE_INCOMPLETE;
+            }
+            crv = sftk_verifyECParams(object, key_type);
+            if (crv != CKR_OK) {
+                return crv;
             }
             if (key_type != CKK_EC) {
                 /* it has to be Ed25519 or X25519. */

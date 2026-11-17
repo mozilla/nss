@@ -418,8 +418,7 @@ nsslowkey_ConvertToPublicKey(NSSLOWKEYPrivateKey *privk)
                 if (privk->u.ec.publicValue.len == 0) {
                     /* Checking if it's an ed25519 or x25519 key.
                        If it's the case, we derive the public key using the private key. */
-                    SECOidTag privKeyOIDTag = SECOID_FindOIDTag(&privk->u.ec.ecParams.curveOID);
-                    if (privKeyOIDTag == SEC_OID_ED25519_PUBLIC_KEY) {
+                    if (privk->u.ec.ecParams.name == ECCurve_Ed25519) {
                         if (SECITEM_AllocItem(arena, &publicValue, Ed25519_PUBLIC_KEYLEN) == NULL) {
                             break;
                         }
@@ -432,7 +431,7 @@ nsslowkey_ConvertToPublicKey(NSSLOWKEYPrivateKey *privk)
                         if (rv != SECSuccess) {
                             break;
                         }
-                    } else if (privKeyOIDTag == SEC_OID_X25519) {
+                    } else if (privk->u.ec.ecParams.name == ECCurve25519) {
                         if (SECITEM_AllocItem(arena, &publicValue, X25519_PUBLIC_KEYLEN) == NULL) {
                             break;
                         }
