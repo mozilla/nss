@@ -1398,6 +1398,18 @@ sftk_handlePrivateKeyObject(SFTKSession *session, SFTKObject *object, CK_KEY_TYP
             if (!sftk_hasAttribute(object, CKA_VALUE)) {
                 return CKR_TEMPLATE_INCOMPLETE;
             }
+            if (key_type != CKK_EC) {
+                /* it has to be Ed25519 or X25519. */
+                CK_ULONG expectedLen = (key_type == CKK_EC_EDWARDS)
+                                           ? Ed25519_PRIVATE_KEYLEN
+                                           : X25519_PUBLIC_KEYLEN;
+                SFTKAttribute *value = sftk_FindAttribute(object, CKA_VALUE);
+                CK_ULONG valueLen = value ? value->attrib.ulValueLen : 0;
+                sftk_FreeAttribute(value);
+                if (valueLen != expectedLen) {
+                    return CKR_ATTRIBUTE_VALUE_INVALID;
+                }
+            }
             /* for ECDSA and EDDSA. Change if the structure of any of them is modified. */
             derive = (key_type == CKK_EC_EDWARDS) ? CK_FALSE : CK_TRUE;  /* CK_TRUE for ECDH */
             sign = (key_type == CKK_EC_MONTGOMERY) ? CK_FALSE : CK_TRUE; /* for ECDSA and EDDSA */
