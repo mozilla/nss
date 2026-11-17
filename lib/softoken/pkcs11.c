@@ -4511,6 +4511,9 @@ NSC_GetTokenInfo(CK_SLOT_ID slotID, CK_TOKEN_INFO_PTR pInfo)
                 }
             }
         }
+        if (slot->readOnly) {
+            pInfo->flags |= CKF_WRITE_PROTECTED;
+        }
         pInfo->ulMaxPinLen = SFTK_MAX_PIN;
         pInfo->ulMinPinLen = (CK_ULONG)slot->minimumPinLen;
         pInfo->ulTotalPublicMemory = 1;
@@ -4945,16 +4948,16 @@ NSC_OpenSession(CK_SLOT_ID slotID, CK_FLAGS flags,
     if (slot == NULL)
         return CKR_SLOT_ID_INVALID;
 
+    if (slot->readOnly && (flags & CKF_RW_SESSION)) {
+        return CKR_TOKEN_WRITE_PROTECTED;
+    }
+
     /* new session (we only have serial sessions) */
     session = sftk_NewSession(slotID, Notify, pApplication,
                               flags | CKF_SERIAL_SESSION);
     if (session == NULL)
         return CKR_HOST_MEMORY;
 
-    if (slot->readOnly && (flags & CKF_RW_SESSION)) {
-        /* NETSCAPE_SLOT_ID is Read ONLY */
-        session->info.flags &= ~CKF_RW_SESSION;
-    }
     PR_Lock(slot->slotLock);
     ++slot->sessionCount;
     if (session->info.flags & CKF_RW_SESSION) {

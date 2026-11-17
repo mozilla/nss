@@ -98,6 +98,12 @@ class SoftokenTest : public ::testing::Test {
   ScopedUniqueDirectory mNSSDBDir;
 };
 
+TEST_F(SoftokenTest, CheckKeySlotIsReadWrite) {
+  ScopedPK11SlotInfo keySlot(PK11_GetInternalKeySlot());
+  ASSERT_TRUE(keySlot);
+  ASSERT_FALSE(PK11_IsReadOnly(keySlot.get()));
+}
+
 TEST_F(SoftokenTest, CheckDefaultPbkdf2Iterations) {
   ScopedPK11SlotInfo slot(PK11_GetInternalKeySlot());
   ASSERT_TRUE(slot);
@@ -1216,6 +1222,46 @@ TEST_P(SoftokenDhValidate, DhVectors) {
 
 INSTANTIATE_TEST_SUITE_P(DhValidateCases, SoftokenDhValidate,
                          ::testing::ValuesIn(DH_TEST_VECTORS));
+
+class SoftokenReadOnlyTest : public ::testing::Test {
+ protected:
+  SoftokenReadOnlyTest() : mNSSDBDir("SoftokenReadOnlyTest.d-") {}
+  SoftokenReadOnlyTest(const std::string& prefix) : mNSSDBDir(prefix) {}
+
+  virtual void SetUp() {
+    std::string nssInitArg("sql:");
+    nssInitArg.append(mNSSDBDir.GetUTF8Path());
+    // First initialize in read-write mode to create the databases.
+    ASSERT_EQ(SECSuccess, NSS_Initialize(nssInitArg.c_str(), "", "", SECMOD_DB,
+                                         NSS_INIT_NOROOTINIT));
+    // Shut down and re-initialize in read-only mode.
+    ASSERT_EQ(SECSuccess, NSS_Shutdown());
+    ASSERT_EQ(SECSuccess,
+              NSS_Initialize(nssInitArg.c_str(), "", "", SECMOD_DB,
+                             NSS_INIT_NOROOTINIT | NSS_INIT_READONLY));
+  }
+
+  virtual void TearDown() {
+    ASSERT_EQ(SECSuccess, NSS_Shutdown());
+    const std::string& nssDBDirPath = mNSSDBDir.GetPath();
+    ASSERT_EQ(0, unlink((nssDBDirPath + "/cert9.db").c_str()));
+    ASSERT_EQ(0, unlink((nssDBDirPath + "/key4.db").c_str()));
+    ASSERT_EQ(0, unlink((nssDBDirPath + "/pkcs11.txt").c_str()));
+  }
+
+  ScopedUniqueDirectory mNSSDBDir;
+};
+
+TEST_F(SoftokenReadOnlyTest, CheckKeySlotIsReadOnly) {
+  ScopedPK11SlotInfo keySlot(PK11_GetInternalKeySlot());
+  ASSERT_TRUE(keySlot);
+  ASSERT_TRUE(PK11_IsReadOnly(keySlot.get()));
+
+  // PK11_InitPin needs a read-write session, so it attempts to open one. This
+  // should fail with an error indicating the token is read-only.
+  EXPECT_EQ(SECFailure, PK11_InitPin(keySlot.get(), nullptr, kPassword));
+  EXPECT_EQ(SEC_ERROR_READ_ONLY, PORT_GetError());
+}
 
 #ifndef NSS_FIPS_DISABLED
 
