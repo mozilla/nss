@@ -1649,9 +1649,6 @@ PK11_InitSlot(SECMODModule *mod, CK_SLOT_ID slotID, PK11SlotInfo *slot)
             slot->hasRootCerts = PR_TRUE;
         }
     }
-    if ((slotInfo.flags & CKF_USER_PIN_INITIALIZED) != 0) {
-        slot->flags |= CKF_USER_PIN_INITIALIZED;
-    }
 }
 
 /*********************************************************************

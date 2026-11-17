@@ -1003,6 +1003,16 @@ TEST_F(SoftokenNoDBTest, NeedUserInitNoDB) {
   ASSERT_EQ(SECSuccess, NSS_Shutdown());
 }
 
+TEST_F(SoftokenNoDBTest, NeedUserInitNoDBAfterRestart) {
+  ASSERT_EQ(SECSuccess, NSS_NoDB_Init("."));
+  ScopedPK11SlotInfo slot(PK11_GetInternalKeySlot());
+  ASSERT_TRUE(slot);
+  ASSERT_EQ(SECSuccess, SECMOD_RestartModules(PR_TRUE));
+  EXPECT_EQ(PR_FALSE, PK11_NeedUserInit(slot.get()));
+  slot = nullptr;
+  ASSERT_EQ(SECSuccess, NSS_Shutdown());
+}
+
 SECStatus test_dh_value(const PQGParams* params, const SECItem* pub_key_value,
                         PRBool genFailOK, time_t* time) {
   SECKEYDHParams dh_params;
