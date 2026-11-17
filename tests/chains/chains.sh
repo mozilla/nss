@@ -1304,6 +1304,12 @@ chains_ipsec()
     process_scenario "ipsec.cfg"
 }
 
+# process mlkem_leaf.cfg separately
+chains_mlkem_leaf()
+{
+    process_scenario "mlkem_leaf.cfg"
+}
+
 # process ocspd.cfg separately
 chains_ocspd()
 {
@@ -1341,6 +1347,7 @@ VERIFY_CLASSIC_ENGINE_TOO=
 chains_ocspd
 VERIFY_CLASSIC_ENGINE_TOO=1
 chains_ipsec
+chains_mlkem_leaf
 chains_run_httpserv get
 chains_method
 chains_stop_httpserv
