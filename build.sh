@@ -120,6 +120,8 @@ while [ $# -gt 0 ]; do
         --android-api=*) android_api="${1#*=}" ;;
         --ios-sdk=*) ios_sdk="${1#*=}" ;;
         --ios-version-min=*) ios_version_min="${1#*=}" ;;
+        --macos-sdk=*) macos_sdk="${1#*=}" ;;
+        --macos-version-min=*) macos_version_min="${1#*=}" ;;
         --clang) export CC=clang; export CCC=clang++; export CXX=clang++; msvc=0 ;;
         --gcc) export CC=gcc; export CCC=g++; export CXX=g++; msvc=0 ;;
         --msvc) msvc=1 ;;
@@ -190,8 +192,9 @@ case "$target_os" in
     "") ;;
     android) source "$cwd/coreconf/android.sh" ;;
     ios) source "$cwd/coreconf/ios.sh" ;;
+    macos) source "$cwd/coreconf/macos.sh" ;;
     *)
-        echo "Unknown --target-os: $target_os; use android or ios." 1>&2
+        echo "Unknown --target-os: $target_os; use android, ios or macos." 1>&2
         exit 2
         ;;
 esac
@@ -312,7 +315,9 @@ if check_config "$nspr_config" \
     rebuild_nspr=1
 fi
 
-if check_config "$gyp_config" "$(Q "${gyp_params[@]}")" gyp_format="$gyp_format"; then
+if check_config "$gyp_config" "$(Q "${gyp_params[@]}")" gyp_format="$gyp_format" \
+                 CPPFLAGS="$(Q "$CPPFLAGS")" CFLAGS="$(Q "$CFLAGS")" \
+                 CXXFLAGS="$(Q "$CXXFLAGS")" LDFLAGS="$(Q "$LDFLAGS")"; then
     rebuild_gyp=1
 fi
 

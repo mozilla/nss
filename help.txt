@@ -1,8 +1,9 @@
 Usage: build.sh [-h] [-c|-cc] [-v] [-j <n>] [--gyp|-g] [--opt|-o]
                 [-t <x64|ia32|...>|--target=<x64|ia32|...>]
-                [--target-os=<android|ios>] [--android-ndk=<dir>]
+                [--target-os=<android|ios|macos>] [--android-ndk=<dir>]
                 [--android-api=<level>] [--ios-sdk=<iphoneos|iphonesimulator>]
-                [--ios-version-min=<version>]
+                [--ios-version-min=<version>] [--macos-sdk=<dir>]
+                [--macos-version-min=<version>]
                 [--clang|--gcc|--msvc|--clang-cl] [--scan-build[=dir]]
                 [--disable-tests]
                 [--pprof] [--asan] [--msan] [--ubsan[=bool,shift,...]
@@ -32,6 +33,9 @@ NSS build tool options:
                      x64 or ia32 (default arm64)
                      --target-os=ios builds with Xcode on macOS, for arm64
                      or x64 (default arm64)
+                     --target-os=macos builds with clang, the LLVM tools
+                     and lld from a non-macOS host, for arm64 or x64
+                     (default arm64)
                      use a separate --dist for each target
     --android-ndk    the NDK to build with, defaults to $ANDROID_NDK_ROOT,
                      $ANDROID_NDK_HOME or $ANDROID_NDK
@@ -40,6 +44,8 @@ NSS build tool options:
     --ios-sdk        iphoneos (the default) for devices, or iphonesimulator
                      for the simulator, which is the only choice for x64
     --ios-version-min the minimum iOS version to build for, defaults to 12.0
+    --macos-sdk      the unpacked MacOSX.sdk to build against (required)
+    --macos-version-min the minimum macOS version to build for, defaults to 11.0
     --clang          build with clang and clang++
     --gcc            build with gcc and g++
     --msvc           build with MSVC

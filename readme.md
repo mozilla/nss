@@ -43,10 +43,10 @@ directory, e.g., using the `LD_LIBRARY_PATH` or `DYLD_LIBRARY_PATH`.
 See [help.txt](https://hg.mozilla.org/projects/nss/raw-file/tip/help.txt) for
 more information on using build.sh.
 
-### Building for Android and iOS
+### Building for Android, iOS and macOS
 
-`--target-os` cross-compiles NSPR and NSS with the platform's own toolchain.
-Use a separate `--dist` directory for each target:
+`--target-os` cross-compiles NSPR and NSS for another platform. Use a separate
+`--dist` directory for each target:
 
     # Android: an NDK (r19 or later), on Linux or macOS
     ./build.sh --target-os=android --android-ndk=$ANDROID_NDK_ROOT \
@@ -56,8 +56,14 @@ Use a separate `--dist` directory for each target:
     ./build.sh --target-os=ios --ios-sdk=iphonesimulator -t arm64 \
         --opt --static --dist=../dist-ios-sim-arm64
 
+    # macOS: clang, lld and the LLVM tools with an unpacked macOS SDK, on a
+    # non-macOS host
+    ./build.sh --target-os=macos --macos-sdk=$HOME/MacOSX.sdk -t arm64 \
+        --opt --static --dist=../dist-macos-arm64
+
 Android supports `-t arm`, `arm64`, `x64` and `ia32`; iOS supports `-t arm64`
-and `x64` (simulator only). Both default to `arm64`.
+and `x64` (simulator only); macOS supports `-t arm64` and `x64`. All three
+default to `arm64`.
 
 ## Building NSS (legacy build system)
 

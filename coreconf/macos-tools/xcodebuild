@@ -1,0 +1,2 @@
+#!/bin/sh
+printf "Xcode 16.0\nBuild version 16A242d\n"

@@ -89,7 +89,7 @@ nspr_build()
     extra_params+=($nspr_opt)
 
     if [ -n "$nspr_target" ]; then
-        # Set by coreconf/android.sh and coreconf/ios.sh. NSPR builds tools
+        # Set by coreconf/android.sh, ios.sh and macos.sh. NSPR builds tools
         # such as nsinstall with HOST_CC and runs them during the build, so
         # that has to be a compiler for this machine. config.guess also runs
         # CC_FOR_BUILD to identify this machine: with CC, which is the target
