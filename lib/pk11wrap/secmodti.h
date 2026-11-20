@@ -37,17 +37,10 @@ struct PK11SlotInfoStr {
     PRBool isInternal;         /* is this slot one of our internal PKCS #11 devices */
     PRBool disabled;           /* is this slot disabled... */
     PK11DisableReasons reason; /* Why this slot is disabled */
-    PRBool readOnly;           /* is the token in this slot read-only */
-    PRBool needLogin;          /* does the token of the type that needs
-                                * authentication (still true even if token is logged
-                                * in) */
-    PRBool hasRandom;          /* can this token generated random numbers */
     PRBool defRWSession;       /* is the default session RW (we open our default
                                 * session rw if the token can only handle one session
                                 * at a time. */
     PRBool isThreadSafe;       /* copied from the module */
-    /* The actual flags (many of which are distilled into the above PRBools) */
-    CK_FLAGS flags; /* flags from PKCS #11 token Info */
     /* a default session handle to do quick and dirty functions */
     CK_SESSION_HANDLE session;
     PRLock *sessionLock; /* lock for this session */
@@ -102,17 +95,15 @@ struct PK11SlotInfoStr {
     PRBool hasRootTrust;
     PRBool hasRSAInfo;
     CK_FLAGS RSAInfoFlags;
-    PRBool protectedAuthPath;
     PRBool isActiveCard;
     unsigned int lastState;
 
-    /* nssTokenLock protects nssToken and lastLoginCheck */
+    /* nssTokenLock protects nssToken, lastLoginCheck, and tokenInfo */
     PRLock *nssTokenLock;
     NSSToken *nssToken;
     PRIntervalTime lastLoginCheck;
-
-    /* the tokeninfo struct */
     CK_TOKEN_INFO tokenInfo;
+
     /* fast mechanism lookup */
     char mechanismBits[256];
     CK_PROFILE_ID *profileList;

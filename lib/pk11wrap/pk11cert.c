@@ -14,6 +14,7 @@
 #include "secmodti.h"
 #include "pkcs11.h"
 #include "pk11func.h"
+#include "pk11priv.h"
 #include "cert.h"
 #include "certi.h"
 #include "secitem.h"
@@ -668,36 +669,38 @@ transfer_uri_certs_to_collection(nssList *certList, PK11URI *uri,
             for (tp = tokens; *tp; tp++) {
                 const char *value;
                 slot = (*tp)->pk11slot;
+                CK_TOKEN_INFO tokenInfo = { 0 };
+                pk11_CopyTokenInfo(slot, &tokenInfo);
 
                 value = PK11URI_GetPathAttribute(uri, PK11URI_PATTR_TOKEN);
                 if (value &&
                     !pk11_MatchString(value,
-                                      (char *)slot->tokenInfo.label,
-                                      sizeof(slot->tokenInfo.label))) {
+                                      (char *)tokenInfo.label,
+                                      sizeof(tokenInfo.label))) {
                     continue;
                 }
 
                 value = PK11URI_GetPathAttribute(uri, PK11URI_PATTR_MANUFACTURER);
                 if (value &&
                     !pk11_MatchString(value,
-                                      (char *)slot->tokenInfo.manufacturerID,
-                                      sizeof(slot->tokenInfo.manufacturerID))) {
+                                      (char *)tokenInfo.manufacturerID,
+                                      sizeof(tokenInfo.manufacturerID))) {
                     continue;
                 }
 
                 value = PK11URI_GetPathAttribute(uri, PK11URI_PATTR_MODEL);
                 if (value &&
                     !pk11_MatchString(value,
-                                      (char *)slot->tokenInfo.model,
-                                      sizeof(slot->tokenInfo.model))) {
+                                      (char *)tokenInfo.model,
+                                      sizeof(tokenInfo.model))) {
                     continue;
                 }
 
                 value = PK11URI_GetPathAttribute(uri, PK11URI_PATTR_SERIAL);
                 if (value &&
                     !pk11_MatchString(value,
-                                      (char *)slot->tokenInfo.serialNumber,
-                                      sizeof(slot->tokenInfo.serialNumber))) {
+                                      (char *)tokenInfo.serialNumber,
+                                      sizeof(tokenInfo.serialNumber))) {
                     continue;
                 }
 

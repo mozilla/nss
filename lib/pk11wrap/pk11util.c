@@ -1688,7 +1688,7 @@ SECMOD_RestartModules(PRBool force)
                 /* get new token sessions, bump the series up so that
                  * we refresh other old sessions. This will tell much of
                  * NSS to flush cached handles it may hold as well */
-                rv = PK11_InitToken(mod->slots[i], PR_TRUE);
+                rv = PK11_InitToken(mod->slots[i]);
                 /* PK11_InitToken could fail if the slot isn't present.
                  * If it is present, though, something is wrong and we should
                  * disable the slot and let the caller know. */

@@ -401,12 +401,7 @@ PK11_NewSlotInfo(SECMODModule *mod)
     slot->wrapMechanism = CKM_INVALID_MECHANISM;
     slot->refKeys[0] = CK_INVALID_HANDLE;
     slot->reason = PK11_DIS_NONE;
-    slot->readOnly = PR_TRUE;
-    slot->needLogin = PR_FALSE;
-    slot->hasRandom = PR_FALSE;
     slot->defRWSession = PR_FALSE;
-    slot->protectedAuthPath = PR_FALSE;
-    slot->flags = 0;
     slot->session = CK_INVALID_HANDLE;
     slot->slotID = 0;
     slot->defaultFlags = 0;
@@ -1321,6 +1316,47 @@ pk11_GetValidationFlags(PK11SlotInfo *slot, CK_VALIDATION_AUTHORITY_TYPE auth)
     return validation_flags;
 }
 
+PRBool
+pk11_HasRandom(PK11SlotInfo *slot)
+{
+    PR_Lock(slot->nssTokenLock);
+    PRBool hasRandom = (slot->tokenInfo.flags & CKF_RNG) ? PR_TRUE : PR_FALSE;
+    PR_Unlock(slot->nssTokenLock);
+    return hasRandom;
+}
+
+// Returns the value of an unsigned long if it fits in a 32-bit int, and
+// PR_INT32_MAX otherwise.
+static int
+UnsignedLongToIntOrMaxInt(unsigned long value)
+{
+    if (value <= (unsigned long)PR_INT32_MAX) {
+        return (int)value;
+    }
+    return PR_INT32_MAX;
+}
+
+// Obtains a copy of the cached CK_TOKEN_INFO on the given slot, without
+// touching the token.
+void
+pk11_CopyTokenInfo(PK11SlotInfo *slot, CK_TOKEN_INFO *info)
+{
+    PR_Lock(slot->nssTokenLock);
+    PORT_Memcpy(info, &slot->tokenInfo, sizeof(CK_TOKEN_INFO));
+    PR_Unlock(slot->nssTokenLock);
+}
+
+// Sets the cached CK_TOKEN_INFO on the given slot.
+static void
+pk11_SetTokenInfo(PK11SlotInfo *slot, CK_TOKEN_INFO *info)
+{
+    PR_Lock(slot->nssTokenLock);
+    PORT_Memcpy(&slot->tokenInfo, info, sizeof(CK_TOKEN_INFO));
+    PR_Unlock(slot->nssTokenLock);
+}
+
+#define PK11_MAX_FREE_KEYS 800
+
 /*
  * initialize a new token
  * unlike initialize slot, this can be called multiple times in the lifetime
@@ -1328,55 +1364,43 @@ pk11_GetValidationFlags(PK11SlotInfo *slot, CK_VALIDATION_AUTHORITY_TYPE auth)
  * that is not going to change unless the card or token changes.
  */
 SECStatus
-PK11_InitToken(PK11SlotInfo *slot, PRBool loadCerts)
+PK11_InitToken(PK11SlotInfo *slot)
 {
     CK_RV crv;
     SECStatus rv;
     PRStatus status;
     NSSToken *nssToken;
+    CK_TOKEN_INFO tokenInfo = {};
 
     /* set the slot flags to the current token values */
     if (!slot->isThreadSafe)
         PK11_EnterSlotMonitor(slot);
-    crv = PK11_GETTAB(slot)->C_GetTokenInfo(slot->slotID, &slot->tokenInfo);
+    crv = PK11_GETTAB(slot)->C_GetTokenInfo(slot->slotID, &tokenInfo);
     if (!slot->isThreadSafe)
         PK11_ExitSlotMonitor(slot);
     if (crv != CKR_OK) {
         PORT_SetError(PK11_MapError(crv));
         return SECFailure;
     }
+    pk11_SetTokenInfo(slot, &tokenInfo);
 
     /* set the slot flags to the current token values */
     slot->series++; /* allow other objects to detect that the
                      * slot is different */
-    slot->flags = slot->tokenInfo.flags;
-    slot->needLogin = ((slot->tokenInfo.flags & CKF_LOGIN_REQUIRED) ? PR_TRUE : PR_FALSE);
-    slot->readOnly = ((slot->tokenInfo.flags & CKF_WRITE_PROTECTED) ? PR_TRUE : PR_FALSE);
-
-    slot->hasRandom = ((slot->tokenInfo.flags & CKF_RNG) ? PR_TRUE : PR_FALSE);
-    slot->protectedAuthPath =
-        ((slot->tokenInfo.flags & CKF_PROTECTED_AUTHENTICATION_PATH)
-             ? PR_TRUE
-             : PR_FALSE);
     pk11_SetLastLoginCheck(slot, 0);
     slot->lastState = 0;
-    /* on some platforms Active Card incorrectly sets the
-     * CKF_PROTECTED_AUTHENTICATION_PATH bit when it doesn't mean to. */
-    if (slot->isActiveCard) {
-        slot->protectedAuthPath = PR_FALSE;
-    }
     (void)PK11_MakeString(NULL, slot->token_name,
-                          (char *)slot->tokenInfo.label, sizeof(slot->tokenInfo.label));
-    slot->minPassword = slot->tokenInfo.ulMinPinLen;
-    slot->maxPassword = slot->tokenInfo.ulMaxPinLen;
-    PORT_Memcpy(slot->serial, slot->tokenInfo.serialNumber, sizeof(slot->serial));
+                          (char *)tokenInfo.label, sizeof(tokenInfo.label));
+    slot->minPassword = UnsignedLongToIntOrMaxInt(tokenInfo.ulMinPinLen);
+    slot->maxPassword = UnsignedLongToIntOrMaxInt(tokenInfo.ulMaxPinLen);
+    PORT_Memcpy(slot->serial, tokenInfo.serialNumber, sizeof(slot->serial));
 
     nssToken = PK11Slot_GetNSSToken(slot);
     nssToken_UpdateName(nssToken); /* null token is OK */
     (void)nssToken_Destroy(nssToken);
 
-    slot->defRWSession = (PRBool)((!slot->readOnly) &&
-                                  (slot->tokenInfo.ulMaxSessionCount == 1));
+    slot->defRWSession = (PRBool)(!(tokenInfo.flags & CKF_WRITE_PROTECTED) &&
+                                  tokenInfo.ulMaxSessionCount == 1);
     rv = PK11_ReadMechanismList(slot);
     if (rv != SECSuccess)
         return rv;
@@ -1386,13 +1410,16 @@ PK11_InitToken(PK11SlotInfo *slot, PRBool loadCerts)
 
     /* initialize the maxKeyCount value */
     PR_Lock(slot->freeListLock);
-    if (slot->tokenInfo.ulMaxSessionCount == 0) {
-        slot->maxKeyCount = 800; /* should be #define or a config param */
-    } else if (slot->tokenInfo.ulMaxSessionCount < 20) {
+    if (tokenInfo.ulMaxSessionCount == 0 ||
+        tokenInfo.ulMaxSessionCount == CK_UNAVAILABLE_INFORMATION) {
+        slot->maxKeyCount = PK11_MAX_FREE_KEYS;
+    } else if (tokenInfo.ulMaxSessionCount < 20) {
         /* don't have enough sessions to keep that many keys around */
         slot->maxKeyCount = 0;
     } else {
-        slot->maxKeyCount = slot->tokenInfo.ulMaxSessionCount / 2;
+        int halfMaxSessionCount =
+            UnsignedLongToIntOrMaxInt(tokenInfo.ulMaxSessionCount / 2);
+        slot->maxKeyCount = PR_MIN(halfMaxSessionCount, PK11_MAX_FREE_KEYS);
     }
     PR_Unlock(slot->freeListLock);
 
@@ -1455,7 +1482,7 @@ PK11_InitToken(PK11SlotInfo *slot, PRBool loadCerts)
     slot->validationFIPSFlags =
         pk11_GetValidationFlags(slot, CKV_AUTHORITY_TYPE_NIST_CMVP);
 
-    if (!(slot->isInternal) && (slot->hasRandom)) {
+    if (!slot->isInternal && pk11_HasRandom(slot)) {
         /* if this slot has a random number generater, use it to add entropy
          * to the internal slot. */
         PK11SlotInfo *int_slot = PK11_GetInternalSlot();
@@ -1510,7 +1537,9 @@ PK11_TokenRefresh(PK11SlotInfo *slot)
     /* set the slot flags to the current token values */
     if (!slot->isThreadSafe)
         PK11_EnterSlotMonitor(slot);
+    PR_Lock(slot->nssTokenLock);
     crv = PK11_GETTAB(slot)->C_GetTokenInfo(slot->slotID, &slot->tokenInfo);
+    PR_Unlock(slot->nssTokenLock);
     if (!slot->isThreadSafe)
         PK11_ExitSlotMonitor(slot);
     if (crv != CKR_OK) {
@@ -1518,19 +1547,6 @@ PK11_TokenRefresh(PK11SlotInfo *slot)
         return SECFailure;
     }
 
-    slot->flags = slot->tokenInfo.flags;
-    slot->needLogin = ((slot->tokenInfo.flags & CKF_LOGIN_REQUIRED) ? PR_TRUE : PR_FALSE);
-    slot->readOnly = ((slot->tokenInfo.flags & CKF_WRITE_PROTECTED) ? PR_TRUE : PR_FALSE);
-    slot->hasRandom = ((slot->tokenInfo.flags & CKF_RNG) ? PR_TRUE : PR_FALSE);
-    slot->protectedAuthPath =
-        ((slot->tokenInfo.flags & CKF_PROTECTED_AUTHENTICATION_PATH)
-             ? PR_TRUE
-             : PR_FALSE);
-    /* on some platforms Active Card incorrectly sets the
-     * CKF_PROTECTED_AUTHENTICATION_PATH bit when it doesn't mean to. */
-    if (slot->isActiveCard) {
-        slot->protectedAuthPath = PR_FALSE;
-    }
     return SECSuccess;
 }
 
@@ -1606,7 +1622,7 @@ PK11_InitSlot(SECMODModule *mod, CK_SLOT_ID slotID, PK11SlotInfo *slot)
     }
     /* if the token is present, initialize it */
     if ((slotInfo.flags & CKF_TOKEN_PRESENT) != 0) {
-        rv = PK11_InitToken(slot, PR_TRUE);
+        rv = PK11_InitToken(slot);
         /* the only hard failures are on permanent devices, or function
          * verify failures... function verify failures are already handled
          * by tokenInit */
@@ -1629,11 +1645,10 @@ PK11_InitSlot(SECMODModule *mod, CK_SLOT_ID slotID, PK11SlotInfo *slot)
 
 /*
  * determine if the token is present. If the token is present, make sure
- * we have a valid session handle. Also set the value of needLogin
- * appropriately.
+ * we have a valid session handle.
  */
 static PRBool
-pk11_IsPresentCertLoad(PK11SlotInfo *slot, PRBool loadCerts)
+pk11_IsPresentCertLoad(PK11SlotInfo *slot)
 {
     CK_SLOT_INFO slotInfo;
     CK_SESSION_INFO sessionInfo;
@@ -1699,7 +1714,7 @@ pk11_IsPresentCertLoad(PK11SlotInfo *slot, PRBool loadCerts)
         return PR_TRUE;
 
     /* initialize the token info state */
-    if (PK11_InitToken(slot, loadCerts) != SECSuccess) {
+    if (PK11_InitToken(slot) != SECSuccess) {
         return PR_FALSE;
     }
 
@@ -1712,7 +1727,7 @@ pk11_IsPresentCertLoad(PK11SlotInfo *slot, PRBool loadCerts)
 PRBool
 PK11_IsPresent(PK11SlotInfo *slot)
 {
-    return pk11_IsPresentCertLoad(slot, PR_TRUE);
+    return pk11_IsPresentCertLoad(slot);
 }
 
 /* is the slot disabled? */
@@ -1784,7 +1799,11 @@ PK11_GetDefaultFlags(PK11SlotInfo *slot)
 PRBool
 PK11_IsReadOnly(PK11SlotInfo *slot)
 {
-    return slot->readOnly;
+    PR_Lock(slot->nssTokenLock);
+    PRBool readOnly =
+        (slot->tokenInfo.flags & CKF_WRITE_PROTECTED) ? PR_TRUE : PR_FALSE;
+    PR_Unlock(slot->nssTokenLock);
+    return readOnly;
 }
 
 PRBool
@@ -1824,7 +1843,11 @@ PK11_IsInternalKeySlot(PK11SlotInfo *slot)
 PRBool
 PK11_NeedLogin(PK11SlotInfo *slot)
 {
-    return slot->needLogin;
+    PR_Lock(slot->nssTokenLock);
+    PRBool needLogin =
+        (slot->tokenInfo.flags & CKF_LOGIN_REQUIRED) ? PR_TRUE : PR_FALSE;
+    PR_Unlock(slot->nssTokenLock);
+    return needLogin;
 }
 
 PRBool
@@ -1851,33 +1874,36 @@ PK11_GetTokenURI(PK11SlotInfo *slot)
     char label[32 + 1], manufacturer[32 + 1], serial[16 + 1], model[16 + 1];
     PK11URIAttribute attrs[4];
     size_t nattrs = 0;
+    CK_TOKEN_INFO tokenInfo = { 0 };
 
-    PK11_MakeString(NULL, label, (char *)slot->tokenInfo.label,
-                    sizeof(slot->tokenInfo.label));
+    pk11_CopyTokenInfo(slot, &tokenInfo);
+
+    PK11_MakeString(NULL, label, (char *)tokenInfo.label,
+                    sizeof(tokenInfo.label));
     if (*label != '\0') {
         attrs[nattrs].name = PK11URI_PATTR_TOKEN;
         attrs[nattrs].value = label;
         nattrs++;
     }
 
-    PK11_MakeString(NULL, manufacturer, (char *)slot->tokenInfo.manufacturerID,
-                    sizeof(slot->tokenInfo.manufacturerID));
+    PK11_MakeString(NULL, manufacturer, (char *)tokenInfo.manufacturerID,
+                    sizeof(tokenInfo.manufacturerID));
     if (*manufacturer != '\0') {
         attrs[nattrs].name = PK11URI_PATTR_MANUFACTURER;
         attrs[nattrs].value = manufacturer;
         nattrs++;
     }
 
-    PK11_MakeString(NULL, serial, (char *)slot->tokenInfo.serialNumber,
-                    sizeof(slot->tokenInfo.serialNumber));
+    PK11_MakeString(NULL, serial, (char *)tokenInfo.serialNumber,
+                    sizeof(tokenInfo.serialNumber));
     if (*serial != '\0') {
         attrs[nattrs].name = PK11URI_PATTR_SERIAL;
         attrs[nattrs].value = serial;
         nattrs++;
     }
 
-    PK11_MakeString(NULL, model, (char *)slot->tokenInfo.model,
-                    sizeof(slot->tokenInfo.model));
+    PK11_MakeString(NULL, model, (char *)tokenInfo.model,
+                    sizeof(tokenInfo.model));
     if (*model != '\0') {
         attrs[nattrs].name = PK11URI_PATTR_MODEL;
         attrs[nattrs].value = model;
@@ -1975,7 +2001,7 @@ PK11_GetSlotInfo(PK11SlotInfo *slot, CK_SLOT_INFO *info)
     return SECSuccess;
 }
 
-/*  return the token info structure */
+// Obtains the CK_TOKEN_INFO from the token itself.
 SECStatus
 PK11_GetTokenInfo(PK11SlotInfo *slot, CK_TOKEN_INFO *info)
 {
@@ -2010,35 +2036,38 @@ PRBool
 pk11_MatchUriTokenInfo(PK11SlotInfo *slot, PK11URI *uri)
 {
     const char *value;
+    CK_TOKEN_INFO tokenInfo = { 0 };
+
+    pk11_CopyTokenInfo(slot, &tokenInfo);
 
     value = PK11URI_GetPathAttribute(uri, PK11URI_PATTR_TOKEN);
     if (value) {
-        if (!pk11_MatchString(value, (char *)slot->tokenInfo.label,
-                              sizeof(slot->tokenInfo.label))) {
+        if (!pk11_MatchString(value, (char *)tokenInfo.label,
+                              sizeof(tokenInfo.label))) {
             return PR_FALSE;
         }
     }
 
     value = PK11URI_GetPathAttribute(uri, PK11URI_PATTR_MANUFACTURER);
     if (value) {
-        if (!pk11_MatchString(value, (char *)slot->tokenInfo.manufacturerID,
-                              sizeof(slot->tokenInfo.manufacturerID))) {
+        if (!pk11_MatchString(value, (char *)tokenInfo.manufacturerID,
+                              sizeof(tokenInfo.manufacturerID))) {
             return PR_FALSE;
         }
     }
 
     value = PK11URI_GetPathAttribute(uri, PK11URI_PATTR_SERIAL);
     if (value) {
-        if (!pk11_MatchString(value, (char *)slot->tokenInfo.serialNumber,
-                              sizeof(slot->tokenInfo.serialNumber))) {
+        if (!pk11_MatchString(value, (char *)tokenInfo.serialNumber,
+                              sizeof(tokenInfo.serialNumber))) {
             return PR_FALSE;
         }
     }
 
     value = PK11URI_GetPathAttribute(uri, PK11URI_PATTR_MODEL);
     if (value) {
-        if (!pk11_MatchString(value, (char *)slot->tokenInfo.model,
-                              sizeof(slot->tokenInfo.model))) {
+        if (!pk11_MatchString(value, (char *)tokenInfo.model,
+                              sizeof(tokenInfo.model))) {
             return PR_FALSE;
         }
     }
@@ -2050,19 +2079,25 @@ pk11_MatchUriTokenInfo(PK11SlotInfo *slot, PK11URI *uri)
 PRBool
 PK11_NeedUserInit(PK11SlotInfo *slot)
 {
-    PRBool needUserInit = (PRBool)((slot->flags & CKF_USER_PIN_INITIALIZED) == 0);
+    PR_Lock(slot->nssTokenLock);
+    // NB: Unlike e.g. PK11_NeedLogin, which returns true when the flag
+    // (CKF_LOGIN_REQUIRED) is set, this returns true when the flag
+    // (CKF_USER_PIN_INITIALIZED) is false.
+    PRBool needUserInit =
+        (slot->tokenInfo.flags & CKF_USER_PIN_INITIALIZED) ? PR_FALSE : PR_TRUE;
+    PR_Unlock(slot->nssTokenLock);
 
+    // Tokens (notably including softoken) may be shared by multiple processes.
+    // See if another process has initialized this token since its information
+    // was cached.
     if (needUserInit) {
-        CK_TOKEN_INFO info;
-        SECStatus rv;
-
-        /* see if token has been initialized off line */
-        rv = PK11_GetTokenInfo(slot, &info);
-        if (rv == SECSuccess) {
-            slot->flags = info.flags;
+        CK_TOKEN_INFO tokenInfo = {};
+        if (PK11_GetTokenInfo(slot, &tokenInfo) == SECSuccess) {
+            pk11_SetTokenInfo(slot, &tokenInfo);
+            return (slot->tokenInfo.flags & CKF_USER_PIN_INITIALIZED) ? PR_FALSE : PR_TRUE;
         }
     }
-    return (PRBool)((slot->flags & CKF_USER_PIN_INITIALIZED) == 0);
+    return needUserInit;
 }
 
 static PK11SlotInfo *pk11InternalKeySlot = NULL;
@@ -2155,7 +2190,7 @@ PK11_DoesMechanism(PK11SlotInfo *slot, CK_MECHANISM_TYPE type)
      * tell us we're looking form someone that has implemented get
      * random bits */
     if (type == CKM_FAKE_RANDOM) {
-        return slot->hasRandom;
+        return pk11_HasRandom(slot);
     }
 
     /* for most mechanism, bypass the linear lookup */
@@ -2274,8 +2309,8 @@ PK11_GetAllTokens(CK_MECHANISM_TYPE type, PRBool needRW, PRBool loadCerts,
         for (i = 0; i < mlp->module->slotCount; i++) {
             PK11SlotInfo *slot = mlp->module->slots[i];
 
-            if (pk11_IsPresentCertLoad(slot, loadCerts)) {
-                if (needRW && slot->readOnly)
+            if (pk11_IsPresentCertLoad(slot)) {
+                if (needRW && PK11_IsReadOnly(slot))
                     continue;
                 if ((type == CKM_INVALID_MECHANISM) || PK11_DoesMechanism(slot, type)) {
                     if (pk11_LoginStillRequired(slot, wincx)) {
@@ -2420,7 +2455,7 @@ PK11_GetBestSlotMultipleWithAttributes(CK_MECHANISM_TYPE *type,
             if (doExit)
                 continue;
 
-            if (listNeedLogin && le->slot->needLogin) {
+            if (listNeedLogin && PK11_NeedLogin(le->slot)) {
                 rv = PK11_Authenticate(le->slot, PR_TRUE, wincx);
                 if (rv != SECSuccess)
                     continue;
@@ -2674,7 +2709,7 @@ PK11_ResetToken(PK11SlotInfo *slot, char *sso_pwd)
 
     /* finally bring the token back up. PK11_InitToken takes the slot monitor
      * itself, so it must be called without the monitor held. */
-    PK11_InitToken(slot, PR_TRUE);
+    PK11_InitToken(slot);
     if (crv != CKR_OK) {
         PORT_SetError(PK11_MapError(crv));
         return SECFailure;

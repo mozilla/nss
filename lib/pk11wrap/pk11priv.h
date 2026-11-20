@@ -57,6 +57,7 @@ PK11SlotInfo *PK11_NewSlotInfo(SECMODModule *mod);
 void PK11_EnterSlotMonitor(PK11SlotInfo *);
 void PK11_ExitSlotMonitor(PK11SlotInfo *);
 void PK11_CleanKeyList(PK11SlotInfo *slot);
+void pk11_CopyTokenInfo(PK11SlotInfo *slot, CK_TOKEN_INFO *info);
 
 /************************************************************
  *  Slot Password Management
@@ -78,7 +79,7 @@ void PK11_ClearSlotList(PK11SlotInfo *slot);
 /******************************************************************
  *           Slot initialization
  ******************************************************************/
-SECStatus PK11_InitToken(PK11SlotInfo *slot, PRBool loadCerts);
+SECStatus PK11_InitToken(PK11SlotInfo *slot);
 void PK11_InitSlot(SECMODModule *mod, CK_SLOT_ID slotID, PK11SlotInfo *slot);
 PRBool PK11_NeedPWInitForSlot(PK11SlotInfo *slot);
 SECStatus PK11_ReadSlotCerts(PK11SlotInfo *slot);

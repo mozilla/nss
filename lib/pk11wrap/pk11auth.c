@@ -67,7 +67,7 @@ pk11_CheckPassword(PK11SlotInfo *slot, CK_SESSION_HANDLE session,
     PRBool mustRetry;
     int retry = 0;
 
-    if (slot->protectedAuthPath) {
+    if (PK11_ProtectedAuthenticationPath(slot)) {
         len = 0;
         pw = NULL;
     } else if (pw == NULL) {
@@ -110,7 +110,7 @@ pk11_CheckPassword(PK11SlotInfo *slot, CK_SESSION_HANDLE session,
                     break;
                 }
                 if (retry++ == 0) {
-                    rv = PK11_InitToken(slot, PR_FALSE);
+                    rv = PK11_InitToken(slot);
                     if (rv == SECSuccess) {
                         if (slot->session != CK_INVALID_HANDLE) {
                             session = slot->session; /* we should have
@@ -144,7 +144,7 @@ PK11_CheckUserPassword(PK11SlotInfo *slot, const char *pw)
     SECStatus rv;
     PRTime currtime = PR_Now();
 
-    if (slot->protectedAuthPath) {
+    if (PK11_ProtectedAuthenticationPath(slot)) {
         len = 0;
         pw = NULL;
     } else if (pw == NULL) {
@@ -159,7 +159,7 @@ PK11_CheckUserPassword(PK11SlotInfo *slot, const char *pw)
      * effect is undefined. It's not clear what it means to check a non-empty
      * password with such a token, so treat that as an error.
      */
-    if (!slot->needLogin) {
+    if (!PK11_NeedLogin(slot)) {
         if (len == 0) {
             rv = SECSuccess;
         } else {
@@ -221,7 +221,7 @@ PK11_HandlePasswordCheck(PK11SlotInfo *slot, void *wincx)
     int askpw = slot->askpw;
     PRBool NeedAuth = PR_FALSE;
 
-    if (!slot->needLogin)
+    if (!PK11_NeedLogin(slot))
         return;
 
     if ((slot->defaultFlags & PK11_OWN_PW_DEFAULTS) == 0) {
@@ -287,14 +287,14 @@ PK11_GetSlotPWValues(PK11SlotInfo *slot, int *askpw, int *timeout)
 }
 
 /*
- * Returns true if the token is needLogin and isn't logged in.
+ * Returns true if the token needs login and isn't logged in.
  * This function is used to determine if authentication is needed
  * before attempting a potentially privelleged operation.
  */
 PRBool
 pk11_LoginStillRequired(PK11SlotInfo *slot, void *wincx)
 {
-    return slot->needLogin && !PK11_IsLoggedIn(slot, wincx);
+    return PK11_NeedLogin(slot) && !PK11_IsLoggedIn(slot, wincx);
 }
 
 /*
@@ -348,7 +348,7 @@ PK11_CheckSSOPassword(PK11SlotInfo *slot, char *ssopw)
     }
     haveMonitor = PK11_RWSessionHasLock(slot, rwsession);
 
-    if (slot->protectedAuthPath) {
+    if (PK11_ProtectedAuthenticationPath(slot)) {
         len = 0;
         ssopw = NULL;
     } else if (ssopw == NULL) {
@@ -425,7 +425,7 @@ PK11_InitPin(PK11SlotInfo *slot, const char *ssopw, const char *userpw)
     }
     haveMonitor = PK11_RWSessionHasLock(slot, rwsession);
 
-    if (slot->protectedAuthPath) {
+    if (PK11_ProtectedAuthenticationPath(slot)) {
         len = 0;
         ssolen = 0;
         ssopw = NULL;
@@ -466,8 +466,8 @@ done:
     PK11_RestoreROSession(slot, rwsession);
     if (rv == SECSuccess) {
         /* update our view of the world */
-        PK11_InitToken(slot, PR_TRUE);
-        if (slot->needLogin) {
+        PK11_InitToken(slot);
+        if (PK11_NeedLogin(slot)) {
             if (!haveMonitor) {
                 PK11_EnterSlotMonitor(slot);
             }
@@ -495,7 +495,7 @@ PK11_ChangePW(PK11SlotInfo *slot, const char *oldpw, const char *newpw)
     CK_SESSION_HANDLE rwsession;
 
     /* use NULL values to trigger the protected authentication path */
-    if (!slot->protectedAuthPath) {
+    if (!PK11_ProtectedAuthenticationPath(slot)) {
         if (newpw == NULL)
             newpw = "";
         if (oldpw == NULL)
@@ -519,7 +519,7 @@ PK11_ChangePW(PK11SlotInfo *slot, const char *oldpw, const char *newpw)
     PK11_RestoreROSession(slot, rwsession);
 
     /* update our view of the world */
-    PK11_InitToken(slot, PR_TRUE);
+    PK11_InitToken(slot);
 
     if (crv == CKR_OK) {
         rv = SECSuccess;
@@ -591,7 +591,7 @@ PK11_DoPassword(PK11SlotInfo *slot, CK_SESSION_HANDLE session,
          * the reader, or the flashing light under the thumbprint reader will
          * attract the user's attention */
         attempt = PR_TRUE;
-        if (slot->protectedAuthPath) {
+        if (PK11_ProtectedAuthenticationPath(slot)) {
             /* application tried to authenticate and failed. it wants to try
              * again, continue looping */
             if (strcmp(password, PK11_PW_RETRY) == 0) {
@@ -661,24 +661,27 @@ PK11_GetMinimumPwdLength(PK11SlotInfo *slot)
 PRBool
 PK11_ProtectedAuthenticationPath(PK11SlotInfo *slot)
 {
-    return slot->protectedAuthPath;
+    PR_Lock(slot->nssTokenLock);
+    /* On some platforms Active Card incorrectly sets the
+     * CKF_PROTECTED_AUTHENTICATION_PATH bit when it doesn't mean to. */
+    PRBool protectedAuthPath =
+        (slot->tokenInfo.flags & CKF_PROTECTED_AUTHENTICATION_PATH) &&
+                !slot->isActiveCard
+            ? PR_TRUE
+            : PR_FALSE;
+    PR_Unlock(slot->nssTokenLock);
+    return protectedAuthPath;
 }
 
 /*
- * we can initialize the password if 1) The toke is not inited
- * (need login == true and see need UserInit) or 2) the token has
- * a NULL password. (slot->needLogin = false & need user Init = false).
+ * A token's password can be initialized if either it needs login and needs
+ * user init or it has a null password (i.e. it does not need login and it does
+ * not need user init).
  */
 PRBool
 PK11_NeedPWInitForSlot(PK11SlotInfo *slot)
 {
-    if (slot->needLogin && PK11_NeedUserInit(slot)) {
-        return PR_TRUE;
-    }
-    if (!slot->needLogin && !PK11_NeedUserInit(slot)) {
-        return PR_TRUE;
-    }
-    return PR_FALSE;
+    return PK11_NeedLogin(slot) == PK11_NeedUserInit(slot);
 }
 
 PRBool

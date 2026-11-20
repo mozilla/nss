@@ -239,7 +239,7 @@ nssToken_GetTrustOrder(NSSToken *tok)
 NSS_IMPLEMENT PRBool
 nssSlot_IsLoggedIn(NSSSlot *slot)
 {
-    if (!slot->pk11slot->needLogin) {
+    if (!PK11_NeedLogin(slot->pk11slot)) {
         return PR_TRUE;
     }
     return PK11_IsLoggedIn(slot->pk11slot, NULL);

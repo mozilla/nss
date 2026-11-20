@@ -210,7 +210,7 @@ nssSlot_IsTokenPresent(
     if (nssToken->base.name[0] == 0) {
         doUpdateCachedCerts = PR_TRUE;
     }
-    if (PK11_InitToken(slot->pk11slot, PR_FALSE) != SECSuccess) {
+    if (PK11_InitToken(slot->pk11slot) != SECSuccess) {
         isPresent = PR_FALSE;
         goto done;
     }
