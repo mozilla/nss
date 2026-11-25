@@ -115,6 +115,14 @@
             'cmd/pk12util/pk12util.gyp:pk12util',
           ],
           'conditions': [
+            # Diagnostic shim for the ASan test suites only. Not built for fuzz
+            # builds (also ASan), where it is unused and would only bloat the
+            # fuzz artifacts.
+            [ 'sanitizer_flags!=0 and fuzz==0', {
+              'dependencies': [
+                'cmd/dangling/dangling.gyp:dangling',
+              ],
+            }],
             [ 'comm_client==1', {
               'dependencies': [
                 'cmd/smimetools/smimetools.gyp:cmsutil',

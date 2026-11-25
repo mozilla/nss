@@ -553,6 +553,24 @@ NSS=trustOrder=100
         DYLD_LIBRARY_PATH=${DIST}/${OBJDIR}/lib:$DYLD_LIBRARY_PATH
     fi
 
+    # Dangling-pointer detector (sanitizer builds only). When NSS_DANGLING is
+    # set and the shim was built, preload it into every test binary. It is
+    # inert in non-ASan processes, so preloading unconditionally is harmless.
+    if [ -n "${NSS_DANGLING}" -a -f "${DIST}/${OBJDIR}/lib/libdangling.so" ]; then
+        LD_PRELOAD="${DIST}/${OBJDIR}/lib/libdangling.so${LD_PRELOAD:+:$LD_PRELOAD}"
+        export LD_PRELOAD
+        if [ -f "${QADIR}/common/dangling_suppressions.txt" ]; then
+            NSS_DANGLING_SUPPRESSIONS="${QADIR}/common/dangling_suppressions.txt"
+            export NSS_DANGLING_SUPPRESSIONS
+        fi
+        # ASan only overwrites the first 4 KB of a fresh allocation, so the
+        # tail of a large buffer keeps whatever the recycled memory held
+        # before, pointers included, and the detector would report those.
+        # Fill allocations completely instead.
+        ASAN_OPTIONS="max_malloc_fill_size=1073741824${ASAN_OPTIONS:+:$ASAN_OPTIONS}"
+        export ASAN_OPTIONS
+    fi
+
     if [ ! -d "${TESTDIR}" ]; then
         echo "$SCRIPTNAME init: Creating ${TESTDIR}"
         mkdir -p ${TESTDIR}
@@ -816,6 +834,7 @@ NSS=trustOrder=100
     export KILL PS
     export MOZILLA_ROOT DIST TESTDIR OBJDIR QADIR
     export LOGFILE SCRIPTNAME
+    export NSS_DANGLING LD_PRELOAD NSS_DANGLING_SUPPRESSIONS
 
 #used for the distributed stress test, the server generates certificates
 #from GLOB_MIN_CERT to GLOB_MAX_CERT

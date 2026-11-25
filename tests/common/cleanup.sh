@@ -57,6 +57,8 @@ if [ -z "${CLEANUP}" -o "${CLEANUP}" = "${SCRIPTNAME}" ]; then
     echo "ASan failures:      ${ASAN_CNT}"
     UBSAN_CNT=$(grep -c "runtime error:" $LOGFILE 2>/dev/null | sed s/\ *//)
     echo "UBSan failures:     ${UBSAN_CNT}"
+    DANGLING_CNT=$(grep -c "WARNING: DanglingPointer" $LOGFILE 2>/dev/null | sed s/\ *//)
+    echo "Dangling pointers:  ${DANGLING_CNT}"
     UNKNOWN_CNT=$(grep -c ">Unknown<" ${RESULTS} 2>/dev/null | sed s/\ *//)
     echo "Unknown status:     ${UNKNOWN_CNT}"
     if [ ${UNKNOWN_CNT} -gt 0 ]; then
@@ -78,7 +80,8 @@ if [ -z "${CLEANUP}" -o "${CLEANUP}" = "${SCRIPTNAME}" ]; then
     rm -f ${TEMPFILES} 2>/dev/null
 
     if [ ${FAILED_CNT} -gt 0 ] || [ ${ASAN_CNT} -gt 0 ] ||
-       [ ${UBSAN_CNT} -gt 0 ] || [ ${CORE_CNT} -gt 0 ]; then
+       [ ${UBSAN_CNT} -gt 0 ] || [ ${CORE_CNT} -gt 0 ] ||
+       [ ${DANGLING_CNT} -gt 0 ]; then
         RUN_STATUS=fail
     else
         RUN_STATUS=pass
@@ -98,6 +101,7 @@ if [ -z "${CLEANUP}" -o "${CLEANUP}" = "${SCRIPTNAME}" ]; then
         echo "  \"failed_with_core\": ${CORE_CNT:-0},"
         echo "  \"asan_failures\": ${ASAN_CNT:-0},"
         echo "  \"ubsan_failures\": ${UBSAN_CNT:-0},"
+        echo "  \"dangling_pointers\": ${DANGLING_CNT:-0},"
         echo "  \"unknown\": ${UNKNOWN_CNT:-0},"
         echo -n "  \"failed_tests\": ["
         if [ -s "${FAILED_TESTS_FILE}" ]; then

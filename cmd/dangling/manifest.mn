@@ -1,0 +1,14 @@
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+#
+
+CORE_DEPTH = ../..
+
+# Diagnostic shim for sanitizer builds. It is driven by gyp (cmd/dangling/
+# dangling.gyp) in the builds the CI dangling jobs use; this manifest exists
+# only so the sources are not invisible to the make build. The legacy make
+# build does not produce it (it needs the ASan runtime and no_zdefs), so no
+# target is defined here.
+MODULE = nss
