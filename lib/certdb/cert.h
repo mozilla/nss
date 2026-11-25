@@ -211,7 +211,7 @@ extern void CERT_DestroyCertificate(CERTCertificate *cert);
 
 /*
 ** Make a shallow copy of a certificate "c". Just increments the
-** reference count on "c".
+** reference count on "c". Returns NULL if no reference could be taken.
 */
 extern CERTCertificate *CERT_DupCertificate(CERTCertificate *c);
 

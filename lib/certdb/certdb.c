@@ -1294,6 +1294,9 @@ CERT_DupCertificate(CERTCertificate *c)
 {
     if (c) {
         NSSCertificate *tmp = STAN_GetNSSCertificate(c);
+        if (!tmp) {
+            return NULL;
+        }
         nssCertificate_AddRef(tmp);
     }
     return c;
