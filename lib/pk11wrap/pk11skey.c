@@ -212,6 +212,8 @@ PK11_FreeSymKey(PK11SymKey *symKey)
         if (symKey->data.data) {
             PORT_Memset(symKey->data.data, 0, symKey->data.len);
             PORT_Free(symKey->data.data);
+            symKey->data.data = NULL;
+            symKey->data.len = 0;
         }
         /* free any existing data */
         if (symKey->userData && symKey->freeFunc) {

@@ -461,6 +461,7 @@ sec_DecodeSigAlg(const SECKEYPublicKey *key, SECOidTag sigAlg,
      * We'll override it in the table below if necessary */
     *mechp = PK11_AlgtagToMechanism(sigAlg);
     if (mechparamsp) {
+        mechparamsp->type = siBuffer;
         mechparamsp->data = NULL;
         mechparamsp->len = 0;
     }

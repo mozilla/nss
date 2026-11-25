@@ -1315,8 +1315,10 @@ nssToken_TraverseCertificates(
                                               objectHandles, numHandles);
         if (objects) {
             nssCryptokiObject **op;
+            /* The callback takes ownership of each instance. */
             for (op = objects; *op; op++) {
                 (void)(*callback)(*op, arg);
+                *op = NULL;
             }
             nss_ZFreeIf(objects);
         }

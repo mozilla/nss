@@ -2547,6 +2547,7 @@ sftk_convertSessionToToken(SFTKObject *obj)
 
     sftk_DestroySessionObjectData(so);
     PR_DestroyLock(so->attributeLock);
+    so->attributeLock = NULL;
 
     sftk_tokenKeyLock(so->obj.slot);
     dbKey = sftk_lookupTokenKeyByHandle(so->obj.slot, so->obj.handle);

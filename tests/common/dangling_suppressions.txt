@@ -1,0 +1,53 @@
+# Suppressions for the dangling-pointer detector (cmd/dangling/dangling.c).
+#
+# Each non-blank, non-'#' line is a POSIX extended regular expression. A report
+# is dropped if any regex matches a "<function> <file>:<line>" line of the
+# report's holder, free, OR target-allocation stack. Match on a stable function
+# name rather than a line number wherever possible.
+#
+# Keep this list short and justified: every entry is a place where the detector
+# is known to be wrong or where NSS has deliberately accepted a stale pointer.
+
+# --- Conservative-scan false positives -------------------------------------
+# These holders store random/opaque bytes that occasionally look like a heap
+# pointer into freed memory. They are data, not pointers.
+get_blinding_params
+emsa_pss_verify
+# The server session cache is one large block of session data (including
+# key material) with no pointers in it at all; at ~2 MB it produces a steady
+# trickle of coincidences.
+InitCache .*/sslsnce\.c
+# A softoken attribute value longer than ATTR_SPACE is held in a PORT_Alloc'd
+# buffer that is a memcpy copy of the attribute data -- key material, EC
+# points, moduli -- never a pointer softoken owns. Leading bytes of such a
+# blob occasionally look like a freed heap address (seen with a 65-byte EC
+# public point). The small values that could hold a handle live inline, not
+# here, so every heap holder from this site is opaque data.
+sftk_InitAttribute .*/pkcs11u\.c
+
+# --- Vendored SQLite -------------------------------------------------------
+# SQLite manages its own page cache and lookaside pool. An NSS object that
+# appears to point into a freed SQLite block is a reused-memory coincidence;
+# we do not chase dangling pointers into vendored code.
+sqlite3\.c:
+
+# --- Deliberate, documented stale pointer in softoken ----------------------
+# A session object outlives the session that created it when another thread
+# holds a reference; so->session is then stale by design. It is only ever
+# dereferenced under slot->objectLock after winning the object-removal claim,
+# which can no longer succeed once the object has left the slot hash. See the
+# comments in sftk_DeleteObject() and sftk_ClearSession() in pkcs11u.c.
+sftk_DestroySession .*/pkcs11u\.c
+
+# --- Transient parse views into handshake buffers (lib/ssl) -----------------
+# These are SECItem/pointer views into a buffer that is parsed and consumed
+# synchronously; the view is never read after the buffer is released. In the
+# gather-buffer case the release is debug-only instrumentation
+# (#ifdef DEBUG sslBuffer_Clear(&ss->gs.buf) in ssl3_HandleRecord), so nothing
+# dangles in a release build at all. Matched by where the target buffer was
+# allocated, which is stable.
+#   any ssl buffer released with sslBuffer_Clear (notably the record gather
+#   buffer ss->gs.buf, which the DEBUG build clears eagerly in ssl3_HandleRecord):
+sslBuffer_Clear
+#   the decoded inner ClientHello (ECH), freed after it is parsed:
+tls13_UnencodeChInner
