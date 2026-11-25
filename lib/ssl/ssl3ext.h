@@ -38,8 +38,9 @@ struct TLSExtensionDataStr {
 
     /* Keep track of the extensions that are advertised or negotiated. */
     PRUint16 numAdvertised;
-    PRUint16 *advertised;      /* Allocated dynamically. */
-    PRUint16 echNumAdvertised; /* Tracks Xtns offered in ClientHelloInner. */
+    unsigned int advertisedMax; /* Capacity of |advertised| and |echAdvertised|. */
+    PRUint16 *advertised;       /* Allocated dynamically. */
+    PRUint16 echNumAdvertised;  /* Tracks Xtns offered in ClientHelloInner. */
     PRUint16 *echAdvertised;
     PRUint16 numNegotiated;
     PRUint16 negotiated[SSL_MAX_EXTENSIONS];
@@ -178,6 +179,10 @@ PRBool ssl3_ExtensionAdvertised(const sslSocket *ss, PRUint16 ex_type);
 void ssl3_RecordExtensionNegotiated(const sslSocket *ss,
                                     TLSExtensionData *xtnData,
                                     PRUint16 ex_type);
+void ssl3_RecordExtensionAdvertised(TLSExtensionData *xtnData,
+                                    PRUint16 ex_type);
+void ssl3_RecordEchExtensionAdvertised(TLSExtensionData *xtnData,
+                                       PRUint16 ex_type);
 
 SECStatus ssl3_RegisterExtensionSender(const sslSocket *ss,
                                        TLSExtensionData *xtnData,

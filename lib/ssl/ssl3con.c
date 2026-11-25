@@ -5977,9 +5977,7 @@ ssl3_SendClientHello(sslSocket *ss, sslClientHelloType type)
 
     if (ss->ssl3.hs.sendingSCSV) {
         /* Since we sent the SCSV, pretend we sent empty RI extension. */
-        TLSExtensionData *xtnData = &ss->xtnData;
-        xtnData->advertised[xtnData->numAdvertised++] =
-            ssl_renegotiation_info_xtn;
+        ssl3_RecordExtensionAdvertised(&ss->xtnData, ssl_renegotiation_info_xtn);
     }
 
     flags = 0;

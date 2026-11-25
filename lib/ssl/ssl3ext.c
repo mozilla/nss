@@ -356,6 +356,28 @@ ssl3_RecordExtensionNegotiated(const sslSocket *ss, TLSExtensionData *xtnData,
     }
 }
 
+/* |advertised| and |echAdvertised| are sized to hold every extension this
+ * endpoint can record for a single handshake message. The bound is enforced
+ * here because custom extension hooks may be installed after the arrays are
+ * allocated; see ssl_EnsureAdvertisedCapacity. */
+void
+ssl3_RecordExtensionAdvertised(TLSExtensionData *xtnData, PRUint16 ex_type)
+{
+    PORT_Assert(xtnData->numAdvertised < xtnData->advertisedMax);
+    if (xtnData->numAdvertised < xtnData->advertisedMax) {
+        xtnData->advertised[xtnData->numAdvertised++] = ex_type;
+    }
+}
+
+void
+ssl3_RecordEchExtensionAdvertised(TLSExtensionData *xtnData, PRUint16 ex_type)
+{
+    PORT_Assert(xtnData->echNumAdvertised < xtnData->advertisedMax);
+    if (xtnData->echNumAdvertised < xtnData->advertisedMax) {
+        xtnData->echAdvertised[xtnData->echNumAdvertised++] = ex_type;
+    }
+}
+
 PRBool
 ssl3_ExtensionAdvertisedClientHelloInner(const sslSocket *ss, PRUint16 ex_type)
 {
@@ -698,6 +720,67 @@ ssl3_RegisterExtensionSender(const sslSocket *ss,
     return SECFailure;
 }
 
+/* The number of extensions that can be recorded in |advertised| or
+ * |echAdvertised| for a single message: the native extensions this endpoint
+ * sends, plus one for each custom extension hook. */
+static unsigned int
+ssl_AdvertisedCapacity(const sslSocket *ss)
+{
+    unsigned int capacity;
+    PRCList *cursor;
+
+    if (ss->sec.isServer) {
+        capacity = PR_MAX(PR_ARRAY_SIZE(certificateRequestHandlers),
+                          PR_ARRAY_SIZE(tls13_cert_req_senders));
+    } else {
+        capacity = PR_MAX(PR_ARRAY_SIZE(clientHelloHandlers),
+                          PR_ARRAY_SIZE(clientHelloSendersTLS));
+        ++capacity; /* For the RI SCSV, which we also track. */
+    }
+    for (cursor = PR_NEXT_LINK(&ss->extensionHooks);
+         cursor != &ss->extensionHooks;
+         cursor = PR_NEXT_LINK(cursor)) {
+        ++capacity;
+    }
+    return capacity;
+}
+
+/* Hooks may be installed after ssl3_InitExtensionData() sized the arrays:
+ * both SSL_InstallExtensionHooks() and SSL_ReconfigFD() accept them while
+ * ws is wait_client_hello, which includes the SNI socket-config callback.
+ * Resize to match the current hook list before anything is recorded. */
+static SECStatus
+ssl_EnsureAdvertisedCapacity(sslSocket *ss)
+{
+    TLSExtensionData *xtnData = &ss->xtnData;
+    unsigned int capacity = ssl_AdvertisedCapacity(ss);
+    PRUint16 *advertised;
+    PRUint16 *echAdvertised;
+
+    PORT_Assert(xtnData->numAdvertised == 0);
+    PORT_Assert(xtnData->echNumAdvertised == 0);
+
+    if (xtnData->advertised && xtnData->echAdvertised &&
+        capacity <= xtnData->advertisedMax) {
+        return SECSuccess;
+    }
+
+    advertised = PORT_ZNewArray(PRUint16, capacity);
+    echAdvertised = PORT_ZNewArray(PRUint16, capacity);
+    if (!advertised || !echAdvertised) {
+        PORT_Free(advertised);
+        PORT_Free(echAdvertised);
+        return SECFailure; /* Code already set. */
+    }
+
+    PORT_Free(xtnData->advertised);
+    PORT_Free(xtnData->echAdvertised);
+    xtnData->advertised = advertised;
+    xtnData->echAdvertised = echAdvertised;
+    xtnData->advertisedMax = capacity;
+    return SECSuccess;
+}
+
 SECStatus
 ssl_CallCustomExtensionSenders(sslSocket *ss, sslBuffer *buf,
                                SSLHandshakeType message)
@@ -764,7 +847,7 @@ ssl_CallCustomExtensionSenders(sslSocket *ss, sslBuffer *buf,
         if (message == ssl_hs_client_hello ||
             message == ssl_hs_ech_outer_client_hello ||
             message == ssl_hs_certificate_request) {
-            ss->xtnData.advertised[ss->xtnData.numAdvertised++] = hook->type;
+            ssl3_RecordExtensionAdvertised(&ss->xtnData, hook->type);
         }
     }
 
@@ -797,6 +880,11 @@ ssl_ConstructExtensions(sslSocket *ss, sslBuffer *buf, SSLHandshakeType message)
     /* Clear out any extensions previously advertised */
     ss->xtnData.numAdvertised = 0;
     ss->xtnData.echNumAdvertised = 0;
+
+    rv = ssl_EnsureAdvertisedCapacity(ss);
+    if (rv != SECSuccess) {
+        return SECFailure; /* Code already set. */
+    }
 
     switch (message) {
         case ssl_hs_client_hello:
@@ -887,8 +975,7 @@ ssl_ConstructExtensions(sslSocket *ss, sslBuffer *buf, SSLHandshakeType message)
 
         if (message == ssl_hs_client_hello ||
             message == ssl_hs_certificate_request) {
-            ss->xtnData.advertised[ss->xtnData.numAdvertised++] =
-                ex_type;
+            ssl3_RecordExtensionAdvertised(&ss->xtnData, ex_type);
         }
     }
 
@@ -1004,7 +1091,7 @@ ssl3_EmplaceExtension(sslSocket *ss, sslBuffer *buf, PRUint16 exType,
     /* False only to retain behavior with padding_xtn. Maybe
      * we can just mark that advertised as well? TODO */
     if (advertise) {
-        ss->xtnData.advertised[ss->xtnData.numAdvertised++] = exType;
+        ssl3_RecordExtensionAdvertised(&ss->xtnData, exType);
     }
 
     return SECSuccess;
@@ -1068,29 +1155,22 @@ void
 ssl3_InitExtensionData(TLSExtensionData *xtnData, const sslSocket *ss)
 {
     unsigned int advertisedMax;
-    PRCList *cursor;
 
     /* Set things up to the right starting state. */
     PORT_Memset(xtnData, 0, sizeof(*xtnData));
     xtnData->peerSupportsFfdheGroups = PR_FALSE;
     PR_INIT_CLIST(&xtnData->remoteKeyShares);
 
-    /* Allocate enough to allow for native extensions, plus any custom ones. */
-    if (ss->sec.isServer) {
-        advertisedMax = PR_MAX(PR_ARRAY_SIZE(certificateRequestHandlers),
-                               PR_ARRAY_SIZE(tls13_cert_req_senders));
-    } else {
-        advertisedMax = PR_MAX(PR_ARRAY_SIZE(clientHelloHandlers),
-                               PR_ARRAY_SIZE(clientHelloSendersTLS));
-        ++advertisedMax; /* For the RI SCSV, which we also track. */
-    }
-    for (cursor = PR_NEXT_LINK(&ss->extensionHooks);
-         cursor != &ss->extensionHooks;
-         cursor = PR_NEXT_LINK(cursor)) {
-        ++advertisedMax;
-    }
+    /* Allocate enough to allow for native extensions, plus any custom ones.
+     * More hooks can be installed before these are used, so the capacity is
+     * rechecked in ssl_EnsureAdvertisedCapacity(); leaving advertisedMax at
+     * zero here is safe and the allocation is retried there. */
+    advertisedMax = ssl_AdvertisedCapacity(ss);
     xtnData->advertised = PORT_ZNewArray(PRUint16, advertisedMax);
     xtnData->echAdvertised = PORT_ZNewArray(PRUint16, advertisedMax);
+    if (xtnData->advertised && xtnData->echAdvertised) {
+        xtnData->advertisedMax = advertisedMax;
+    }
 
     xtnData->peerDelegCred = NULL;
     xtnData->peerRequestedDelegCred = PR_FALSE;

@@ -10,6 +10,7 @@
 #include "secerr.h"
 #include "ssl.h"
 #include "sslerr.h"
+#include "sslexp.h"
 #include "sslproto.h"
 
 extern "C" {
@@ -130,6 +131,59 @@ TEST_P(ReconfigTest, ReconfigServerCert) {
 
   Connect();
   CheckKeys(ssl_auth_rsa_sign);
+}
+
+static PRBool ReconfigCertificateRequestWriter(PRFileDesc* fd,
+                                               SSLHandshakeType message,
+                                               PRUint8* data, unsigned int* len,
+                                               unsigned int maxLen, void* arg) {
+  if (message != ssl_hs_certificate_request) {
+    return PR_FALSE;
+  }
+  if (arg) {
+    ++*reinterpret_cast<size_t*>(arg);
+  }
+  *len = 0;
+  return PR_TRUE;
+}
+
+static SECStatus ReconfigNoopExtensionHandler(
+    PRFileDesc* fd, SSLHandshakeType message, const PRUint8* data,
+    unsigned int len, SSLAlertDescription* alert, void* arg) {
+  return SECSuccess;
+}
+
+// ReconfigFD copies extension hooks from the model. Because it runs from the
+// SNI callback, those hooks arrive after the server has sized its record of
+// advertised extensions.
+TEST_P(ReconfigTest, ReconfigExtensionHooks) {
+  if (version_ < SSL_LIBRARY_VERSION_TLS_1_3) {
+    GTEST_SKIP();
+  }
+  EnsureTlsSetup();
+  ScopedPRFileDesc model(CreateModel());
+
+  // ReconfigFD replaces the target's options wholesale, so the
+  // CertificateRequest has to be requested on the model.
+  EXPECT_EQ(SECSuccess,
+            SSL_OptionSet(model.get(), SSL_REQUEST_CERTIFICATE, PR_TRUE));
+
+  size_t called = 0;
+  const size_t kHookCount = 16;
+  for (size_t i = 0; i < kHookCount; ++i) {
+    EXPECT_EQ(SECSuccess, SSL_InstallExtensionHooks(
+                              model.get(), static_cast<uint16_t>(0xf000 + i),
+                              ReconfigCertificateRequestWriter, &called,
+                              ReconfigNoopExtensionHandler, nullptr));
+  }
+
+  InstallReconfigSniCallback(model.get());
+
+  StartConnect();
+  client_->Handshake();
+  server_->Handshake();
+
+  EXPECT_EQ(kHookCount, called);
 }
 
 TEST_P(ReconfigTest, ReconfigAlpnNoDoubleFree) {

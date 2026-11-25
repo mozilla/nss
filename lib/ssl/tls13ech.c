@@ -1220,7 +1220,7 @@ tls13_ChInnerAppendExtension(sslSocket *ss, PRUint16 extensionType,
     }
     /* As this function is called twice, we only want to update our state the second time. */
     if (compressing) {
-        ss->xtnData.echAdvertised[ss->xtnData.echNumAdvertised++] = extensionType;
+        ssl3_RecordEchExtensionAdvertised(&ss->xtnData, extensionType);
         SSL_TRC(50, ("Appending extension=%d to the Client Hello Inner. Compressed?=%d", extensionType, willCompress));
     }
     return SECSuccess;
@@ -1269,7 +1269,7 @@ tls13_ChInnerAdditionalExtensionWriters(sslSocket *ss, const PRUint16 *called,
         if (rv != SECSuccess) {
             return SECFailure;
         }
-        ss->xtnData.echAdvertised[ss->xtnData.echNumAdvertised++] = hook->type;
+        ssl3_RecordEchExtensionAdvertised(&ss->xtnData, hook->type);
     }
     return SECSuccess;
 }
@@ -1433,7 +1433,7 @@ tls13_ConstructInnerExtensionsFromOuter(sslSocket *ss, sslBuffer *chOuterXtnsBuf
                 }
                 /* Only update state on second invocation of this function */
                 if (finalPass) {
-                    ss->xtnData.echAdvertised[ss->xtnData.echNumAdvertised++] = extensionType;
+                    ssl3_RecordEchExtensionAdvertised(&ss->xtnData, extensionType);
                 }
                 break;
             case ssl_tls13_supported_versions_xtn:
@@ -1467,7 +1467,7 @@ tls13_ConstructInnerExtensionsFromOuter(sslSocket *ss, sslBuffer *chOuterXtnsBuf
                 }
                 /* Only update state on second invocation of this function */
                 if (finalPass) {
-                    ss->xtnData.echAdvertised[ss->xtnData.echNumAdvertised++] = extensionType;
+                    ssl3_RecordEchExtensionAdvertised(&ss->xtnData, extensionType);
                 }
                 break;
             case ssl_tls13_pre_shared_key_xtn:
@@ -1504,7 +1504,7 @@ tls13_ConstructInnerExtensionsFromOuter(sslSocket *ss, sslBuffer *chOuterXtnsBuf
                 }
                 /* Only update state on second invocation of this function */
                 if (finalPass) {
-                    ss->xtnData.echAdvertised[ss->xtnData.echNumAdvertised++] = extensionType;
+                    ssl3_RecordEchExtensionAdvertised(&ss->xtnData, extensionType);
                 }
                 break;
             default: {
@@ -1818,7 +1818,7 @@ tls13_ConstructClientHelloWithEch(sslSocket *ss, const sslSessionID *sid, PRBool
     if (rv != SECSuccess) {
         goto loser;
     }
-    ss->xtnData.echAdvertised[ss->xtnData.echNumAdvertised++] = ssl_tls13_encrypted_client_hello_xtn;
+    ssl3_RecordEchExtensionAdvertised(&ss->xtnData, ssl_tls13_encrypted_client_hello_xtn);
     rv = ssl3_EmplaceExtension(ss, chOuterXtnsBuf, ssl_tls13_encrypted_client_hello_xtn,
                                echXtn.buf, echXtn.len, PR_TRUE);
     if (rv != SECSuccess) {

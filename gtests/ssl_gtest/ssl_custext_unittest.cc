@@ -479,6 +479,46 @@ TEST_F(TlsConnectStreamTls13, CustomExtensionOnlyHandler) {
   EXPECT_EQ(SEC_ERROR_INVALID_ARGS, PORT_GetError());
 }
 
+static const uint16_t kLateFirstExtension = 0xf000;
+static const size_t kLateExtensionCount = 16;
+
+static PRBool CertificateRequestExtensionWriter(
+    PRFileDesc* fd, SSLHandshakeType message, PRUint8* data, unsigned int* len,
+    unsigned int maxLen, void* arg) {
+  if (message != ssl_hs_certificate_request) {
+    return PR_FALSE;
+  }
+  IncrementCounterArg(arg);
+  *len = 0;
+  return PR_TRUE;
+}
+
+// A server is permitted to install extension hooks from its SNI callback,
+// which runs while the ClientHello is still being processed.
+TEST_F(TlsConnectStreamTls13, CustomExtensionServerHooksFromSniCallback) {
+  EnsureTlsSetup();
+  server_->RequestClientAuth(false);
+
+  size_t called = 0;
+  server_->SetSniCallback([&called](TlsAgent* agent, const SECItem* srvNameArr,
+                                    PRUint32 srvNameArrSize) -> int32_t {
+    for (size_t i = 0; i < kLateExtensionCount; ++i) {
+      EXPECT_EQ(SECSuccess, SSL_InstallExtensionHooks(
+                                agent->ssl_fd(),
+                                static_cast<uint16_t>(kLateFirstExtension + i),
+                                CertificateRequestExtensionWriter, &called,
+                                NoopExtensionHandler, nullptr));
+    }
+    return 0;
+  });
+
+  StartConnect();
+  client_->Handshake();
+  server_->Handshake();
+
+  EXPECT_EQ(kLateExtensionCount, called);
+}
+
 TEST_F(TlsConnectStreamTls13, CustomExtensionOverrunBuffer) {
   EnsureTlsSetup();
   // This doesn't actually overrun the buffer, but it says that it does.
