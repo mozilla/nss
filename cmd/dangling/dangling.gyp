@@ -42,6 +42,21 @@
             '-lnspr4',
           ],
         },
+        # A deliberately dangling pointer the harness uses to prove the
+        # detector is live before trusting a clean run. An ordinary ASan
+        # executable; it needs nothing from NSS.
+        {
+          'target_name': 'dangling_canary',
+          'type': 'executable',
+          'sources': [
+            'dangling_canary.c',
+          ],
+          'libraries!': [
+            '-lplds4',
+            '-lplc4',
+            '-lnspr4',
+          ],
+        },
       ],
     }],
   ],

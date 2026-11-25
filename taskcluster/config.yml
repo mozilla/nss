@@ -82,6 +82,7 @@ treeherder:
         Cryptofuzz: Cryptofuzz
         DBM: Legacy (DBM) database
         Gtest: Gtests
+        DP: Dangling-pointer detector
         FIPS: FIPS
         SSL: SSL tests
         TLS: TLS fuzzing

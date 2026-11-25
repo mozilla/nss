@@ -59,6 +59,21 @@ if [ -z "${CLEANUP}" -o "${CLEANUP}" = "${SCRIPTNAME}" ]; then
     echo "UBSan failures:     ${UBSAN_CNT}"
     DANGLING_CNT=$(grep -c "WARNING: DanglingPointer" $LOGFILE 2>/dev/null | sed s/\ *//)
     echo "Dangling pointers:  ${DANGLING_CNT}"
+    # A clean count only means something if the detector was live: the
+    # canary must have been reported and the test processes must have
+    # printed scan statistics showing they scanned something.
+    DANGLING_DETECTOR=unused
+    if [ -n "${NSS_DANGLING}" ]; then
+        DANGLING_DETECTOR=live
+        if [ "${NSS_DANGLING_CANARY}" != "pass" ]; then
+            DANGLING_DETECTOR=inert
+        fi
+        if ! grep "DanglingPointer stats:" $LOGFILE 2>/dev/null |
+             grep -q -v " 0 chunks ([0-9]* words) scanned"; then
+            DANGLING_DETECTOR=inert
+        fi
+        echo "Dangling detector:  ${DANGLING_DETECTOR} (canary ${NSS_DANGLING_CANARY:-unknown})"
+    fi
     UNKNOWN_CNT=$(grep -c ">Unknown<" ${RESULTS} 2>/dev/null | sed s/\ *//)
     echo "Unknown status:     ${UNKNOWN_CNT}"
     if [ ${UNKNOWN_CNT} -gt 0 ]; then
@@ -81,7 +96,7 @@ if [ -z "${CLEANUP}" -o "${CLEANUP}" = "${SCRIPTNAME}" ]; then
 
     if [ ${FAILED_CNT} -gt 0 ] || [ ${ASAN_CNT} -gt 0 ] ||
        [ ${UBSAN_CNT} -gt 0 ] || [ ${CORE_CNT} -gt 0 ] ||
-       [ ${DANGLING_CNT} -gt 0 ]; then
+       [ ${DANGLING_CNT} -gt 0 ] || [ "${DANGLING_DETECTOR}" = "inert" ]; then
         RUN_STATUS=fail
     else
         RUN_STATUS=pass
@@ -102,6 +117,7 @@ if [ -z "${CLEANUP}" -o "${CLEANUP}" = "${SCRIPTNAME}" ]; then
         echo "  \"asan_failures\": ${ASAN_CNT:-0},"
         echo "  \"ubsan_failures\": ${UBSAN_CNT:-0},"
         echo "  \"dangling_pointers\": ${DANGLING_CNT:-0},"
+        echo "  \"dangling_detector\": \"${DANGLING_DETECTOR}\","
         echo "  \"unknown\": ${UNKNOWN_CNT:-0},"
         echo -n "  \"failed_tests\": ["
         if [ -s "${FAILED_TESTS_FILE}" ]; then

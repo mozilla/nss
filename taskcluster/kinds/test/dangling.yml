@@ -1,0 +1,52 @@
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+# Dangling-pointer detector runs. These reuse the ASan build artifacts (which
+# contain libdangling.so) and re-run the test suites with NSS_DANGLING=1, so
+# the harness preloads the detector and fails the run on any finding, and
+# also if the detector turns out to be inert (the harness runs a canary with
+# a known stale pointer first, and every test process reports what it
+# scanned). The detector costs a few times the suite's wall-time, so these
+# are separate, ASan-only jobs rather than being folded into the normal test
+# tasks.
+
+task-defaults:
+    worker:
+        docker-image: {in-tree: builds}
+        max-run-time: 10800
+        env:
+            TC_PARENT_TASK_ID: {task-reference: "<build>"}
+            NSS_CYCLES: standard
+            NSS_DANGLING: "1"
+            # Sweet spot from the min-age sweep: below ~25 teardown churn floods
+            # the report; 25 catches the shortest-lived real danglers while
+            # staying quiet. (Measured in allocations since free, not time.)
+            NSS_DANGLING_MIN_AGE: "25"
+            # A stale pointer that lives fewer frees than this between scans
+            # can be missed, so this is the sensitivity knob. 250 is four
+            # times denser than the detector's default and affordable now
+            # that scans only visit candidate holders.
+            NSS_DANGLING_SCAN_EVERY: "250"
+    from-deps:
+        kinds: [build]
+        with-attributes:
+            # ASan builds only -- the detector needs the ASan runtime, and the
+            # sanitizer-gated gyp target means libdangling.so exists nowhere else.
+            build_platform:
+                - linux-x64-asan
+                - linux-aarch64-asan
+            nspr: [false]
+            dbm: [false]
+            cc: [false]
+            modular: [false]
+            fuzz: [false]
+            tsan: [false]
+
+dangling-gtests:
+    description: Gtests under the dangling-pointer detector
+    treeherder:
+        symbol: DP(Gtest)
+    worker:
+        env:
+            NSS_TESTS: ssl_gtests gtests

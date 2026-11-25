@@ -121,6 +121,7 @@
             [ 'sanitizer_flags!=0 and fuzz==0', {
               'dependencies': [
                 'cmd/dangling/dangling.gyp:dangling',
+                'cmd/dangling/dangling.gyp:dangling_canary',
               ],
             }],
             [ 'comm_client==1', {

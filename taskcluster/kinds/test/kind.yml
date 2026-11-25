@@ -56,6 +56,7 @@ task-defaults:
 tasks-from:
     - cipher.yml
     - gtest.yml
+    - dangling.yml
 
 tasks:
     # Schedule tests that do NOT need certificates. This is defined as

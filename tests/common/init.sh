@@ -569,6 +569,60 @@ NSS=trustOrder=100
         # Fill allocations completely instead.
         ASAN_OPTIONS="max_malloc_fill_size=1073741824${ASAN_OPTIONS:+:$ASAN_OPTIONS}"
         export ASAN_OPTIONS
+        # The detector decides whether a holder is an NSS object by symbolizing
+        # its allocation stack, so ASan must have a working symbolizer. Builds
+        # whose compiler-rt has no in-process symbolizer rely on an external
+        # llvm-symbolizer, which ASan only looks for under that exact name;
+        # images that ship just a versioned llvm-symbolizer-NN leave it unable
+        # to symbolize, and the detector then classifies nothing and reports
+        # nothing. Point ASan at whatever symbolizer is actually present. Only
+        # set the path to a binary that exists -- a bad ASAN_SYMBOLIZER_PATH
+        # makes ASan abort at startup.
+        if [ -z "${ASAN_SYMBOLIZER_PATH}" ]; then
+            for _sym in llvm-symbolizer llvm-symbolizer-18 llvm-symbolizer-17 \
+                        llvm-symbolizer-16 llvm-symbolizer-15 \
+                        /usr/lib/llvm-18/bin/llvm-symbolizer \
+                        /usr/lib/llvm-17/bin/llvm-symbolizer; do
+                case "${_sym}" in
+                    /*) [ -x "${_sym}" ] && _symp="${_sym}" || _symp= ;;
+                    *)  _symp=`command -v "${_sym}" 2>/dev/null` ;;
+                esac
+                if [ -n "${_symp}" ]; then
+                    ASAN_SYMBOLIZER_PATH="${_symp}"
+                    export ASAN_SYMBOLIZER_PATH
+                    break
+                fi
+            done
+        fi
+        # Every instrumented process reports how much it scanned at exit;
+        # cleanup.sh refuses to call a run clean if nothing was scanned.
+        NSS_DANGLING_STATS=1
+        export NSS_DANGLING_STATS
+        # Prove the detector is live here before trusting a clean run: a
+        # canary with a known stale pointer must be reported. The canary's
+        # holder is not an NSS object, so point the holder filter at it.
+        if [ -x "${DIST}/${OBJDIR}/bin/dangling_canary" ]; then
+            # Capture the canary's output so that on failure we can surface its
+            # diagnostics (the armed/inactive line and a self-symbolize probe
+            # enabled by NSS_DANGLING_DIAG, plus the per-exit stats line), which
+            # tell us why the detector is inert rather than just that it is.
+            _canary_out=`NSS_DANGLING_SUPPRESSIONS= NSS_DANGLING_HOLDER_RE=dangling_canary \
+               NSS_DANGLING_SCAN_EVERY=50 NSS_DANGLING_MIN_AGE=25 \
+               NSS_DANGLING_STATS=1 NSS_DANGLING_DIAG=1 \
+               "${DIST}/${OBJDIR}/bin/dangling_canary" 2>&1`
+            if echo "${_canary_out}" | grep -q "WARNING: DanglingPointer"; then
+                NSS_DANGLING_CANARY=pass
+            else
+                echo "ERROR: dangling-pointer detector canary was not reported;" \
+                     "the detector is inert in this environment" \
+                     "(ASAN_SYMBOLIZER_PATH='${ASAN_SYMBOLIZER_PATH}'). Diagnostics:"
+                echo "${_canary_out}" | sed 's/^/    canary: /'
+                NSS_DANGLING_CANARY=fail
+            fi
+        else
+            NSS_DANGLING_CANARY=missing
+        fi
+        export NSS_DANGLING_CANARY
     fi
 
     if [ ! -d "${TESTDIR}" ]; then
@@ -834,7 +888,7 @@ NSS=trustOrder=100
     export KILL PS
     export MOZILLA_ROOT DIST TESTDIR OBJDIR QADIR
     export LOGFILE SCRIPTNAME
-    export NSS_DANGLING LD_PRELOAD NSS_DANGLING_SUPPRESSIONS
+    export NSS_DANGLING LD_PRELOAD NSS_DANGLING_SUPPRESSIONS ASAN_SYMBOLIZER_PATH
 
 #used for the distributed stress test, the server generates certificates
 #from GLOB_MIN_CERT to GLOB_MAX_CERT
