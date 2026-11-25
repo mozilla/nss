@@ -151,6 +151,6 @@ set_nspr_path()
         echo "$include is a WINNT-target NSPR; NSS only supports WIN95." 1>&2
         exit 1
     fi
-    gyp_params+=(-Dnspr_include_dir="$include")
+    gyp_params+=(-Dnspr_include_dir="<(DEPTH)/$(relative_to_cwd "$include")")
     gyp_params+=(-Dnspr_lib_dir="$lib")
 }

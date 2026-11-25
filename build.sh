@@ -85,6 +85,15 @@ static_libs=0
 clang_cl=0
 
 gyp_params=(--depth="$cwd" --generator-output=".")
+
+relative_to_cwd()
+{
+    local py
+    for py in "$python" python3 python; do
+        [ -n "$py" ] && command -v "$py" >/dev/null 2>&1 && break
+    done
+    "$py" -c 'import os, sys; print(os.path.relpath(sys.argv[1], sys.argv[2]))' "$1" "$cwd"
+}
 ninja_params=()
 
 # Assume that MSVC is wanted if this is running on windows.
@@ -272,7 +281,9 @@ fi
 target_dir="$cwd/out/$target$out_dir_suffix"
 mkdir -p "$target_dir"
 dist_dir=$(mkdir -p "$dist_dir"; cd "$dist_dir"; pwd -P)
-gyp_params+=(-Dnss_dist_dir="$dist_dir")
+# Pass include directories to gyp relative to the checkout, so that compile
+# commands carry no absolute paths and compiler caches hit across checkouts.
+gyp_params+=(-Dnss_dist_dir="<(DEPTH)/$(relative_to_cwd "$dist_dir")")
 
 # This saves a canonical representation of arguments that we are passing to gyp
 # or the NSPR build so that we can work out if a rebuild is needed.
